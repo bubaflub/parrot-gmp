@@ -1,0 +1,8 @@
+[package]
+gmp
+
+[lib]
+gmplib.so
+
+[defs]
+v __gmpz_init p
