@@ -1,9 +1,10 @@
 TODO
 ====
 
-* Finish src/GMP/raw.nci
-* use ncidef2pir.pl to generate low-level PIR libraries
-* tests for all those functions
-* documentation on those functions
-* use distutils to build libraries
-* use Winxed for a sane-wrapper class with convenience methods
+* Finish gmph2ncidef.pl (Issue #7)
+* use ncidef2pir.pl to generate low-level PIR libraries 
+* Harvest Math::GMPz tests for functions (Issue #8) 
+* documentation on those functions (Issue #9)
+* use distutils to build libraries (Issue #5)
+* use Winxed for a sane-wrapper class with convenience methods (Issue #10)
+* build examples in HLLs (Issue #11)
