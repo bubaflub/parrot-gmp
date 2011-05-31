@@ -18,27 +18,27 @@ my %mappings = (
   # 'i' types
   int => 'i',
   # 'l' types
-  'unsigned long int' => 'i',
-  'signed long int' => 'i',
-  'unsigned long' => 'l',
-  'long int' => 'l',
-  long => 'l',
+  'unsigned long int' => 'l',
+  'signed long int'   => 'l',
+  'unsigned long'     => 'l',
+  'long int'          => 'l',
+  long                => 'l',
   # 'd' types
   double => 'd',
   # 'p' types
   'char *' => 'p', # since 't' is deprecated
   # custom types
-  mpz_ptr => 'p',
-  mpz_srcptr => 'p',
+  mpz_ptr             => 'p',
+  mpz_srcptr          => 'p',
   'signed long int *' => 'p',
-  gmp_randstate_t => 'p',
+  gmp_randstate_t     => 'p',
 
   # FIXME: both mp_size_t and mp_exp_t are ints if _CRAY and _CRAYMPP are
   # not defined.  This should be the normal case, but in the future we should
   # have a way to determine this - perhaps a small C program that compiles
   # and outputs the system values like Parrot's Configure steps
   mp_size_t => 'i',
-  mp_exp_t => 'i',
+  mp_exp_t  => 'i',
 
   # FIXME: size_t is platform dependent, not sure it will always fit
   # inside an 'i' type
@@ -112,10 +112,6 @@ while(<$gmp_header>) {
     }
   }
 }
-
-use Data::Dumper;
-#print Dumper(%functions);
-print "-----\n";
 
 close $gmp_header;
 
