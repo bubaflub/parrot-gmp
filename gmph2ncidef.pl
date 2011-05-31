@@ -66,10 +66,12 @@ my @blacklist = qw(
   mpz_set_f
 );
 
-my %functions = process_gmph($filename);
+my $functions = process_gmph($filename);
+print_ncidef($functions);
 
 sub process_gmph {
   my $filename = shift;
+  my %functions;
 
   open my $gmp_header, '<', $filename;
 
@@ -120,7 +122,7 @@ sub process_gmph {
 
   close $gmp_header;
 
-  return %functions;
+  return \%functions;
 }
 
 sub process_types {
