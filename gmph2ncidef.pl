@@ -139,3 +139,12 @@ sub process_types {
   warn "No extant mapping for $type; setting as void";
   return 'v';
 }
+
+sub print_ncidef {
+  my $functions = shift;
+
+  use Data::Dumper;
+  while(my ($function_name, $details) = each(%{$functions})) {
+    print $details->{'return_type'} . " " . $details->{'internal_name'} . " " . $details->{'method_signature'} . "\n";
+  }
+}
