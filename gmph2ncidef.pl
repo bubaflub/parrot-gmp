@@ -16,12 +16,12 @@ my $filename = $ARGV[0];
 my %mappings = (
   void => 'v',
   # 'i' types
-  int => 'i',
+  int                 => 'i',
+  'unsigned long int' => 'i',
+  'signed long int'   => 'i',
+  'long int'          => 'i',
   # 'l' types
-  'unsigned long int' => 'l',
-  'signed long int'   => 'l',
   'unsigned long'     => 'l',
-  'long int'          => 'l',
   long                => 'l',
   # 'd' types
   double => 'd',
