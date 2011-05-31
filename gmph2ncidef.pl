@@ -3,6 +3,8 @@
 use strict;
 use warnings;
 
+use List::MoreUtils qw(any);
+
 # Description: reads a local gmp.h and outputs an NCI definition file
 
 if (scalar @ARGV != 1 || ! -e $ARGV[0]) {
@@ -16,6 +18,20 @@ my %mappings = (
   'unsigned long int' => 'i',
   mpz_ptr => 'p',
 
+# blacklist is an array of function names to not bother with
+my @blacklist = qw(
+  mpz_import
+  mpz_export
+  _mpz_realloc
+  mpz_realloc
+  mpz_clears
+  mpz_inits
+  mpz_inp_raw
+  mpz_inp_str
+  mpz_out_raw
+  mpz_out_str
+  mpz_set_q
+  mpz_set_f
 );
 
 open my $gmp_header, '<', $filename;
@@ -32,6 +48,8 @@ while(<$gmp_header>) {
     my $convenient_name = $1;
     # $2 is the name we must use in the NCI def
     my $internal_name = $2;
+    # skip if it's on our blacklist
+    next if any { $convenient_name eq $_ } @blacklist;
     $functions{$convenient_name}{'internal_name'} = $internal_name;
     # read until the next blank line into a definition
     my $definition;
