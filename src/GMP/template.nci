@@ -1,0 +1,7 @@
+[package]
+gmp
+
+[lib]
+gmplib.so
+
+[defs]
