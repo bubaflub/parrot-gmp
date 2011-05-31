@@ -1,0 +1,15 @@
+$include_const 'datatypes.pasm';
+
+function load[anon,load]() {
+  load_bytecode('def.pbc');
+}
+
+function gmpz_t[anon, immediate]() {
+  var gmpz_t = new 'StructView'([ DATATYPE_STRUCT, 3, DATATYPE_INT, DATATYPE_PTR, DATATYPE_INT ]);
+}
+
+namespace GMP {
+  class Integer {
+    
+  }
+}
