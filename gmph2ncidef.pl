@@ -73,7 +73,7 @@ while(<$gmp_header>) {
   next if $_ !~ m/^#/;
   # note: in the future, we will look for more functions
   # and not just mpz types
-  my $prefix = 'mpz';
+  my $prefix = '_?mpz';
   # does the line match a C-style declare?
   if ($_ =~ m/#define ($prefix\S+) (__\S+)/) {
     # $1 is the convenient name used everywhere else
@@ -121,6 +121,12 @@ close $gmp_header;
 
 sub process_types {
   my $type = shift;
+  # GMP uses the __gmp_const macro as a placeholder to handle compilers that
+  # don't support const - we'll ignore this macro as the burden is on the
+  # developer (not the bindings) to ensure no const data structures get
+  # modified
+  $type =~ s/__gmp_const//g;
+  # trim any extra space
   $type =~ s/^\s+//g;
   $type =~ s/\s+$//g;
   return $mappings{$type} if exists $mappings{$type};
