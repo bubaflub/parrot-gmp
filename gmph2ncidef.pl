@@ -15,8 +15,40 @@ my $filename = $ARGV[0];
 my %functions;
 my %mappings = (
   void => 'v',
+  # 'i' types
+  int => 'i',
+  # 'l' types
   'unsigned long int' => 'i',
+  'signed long int' => 'i',
+  'unsigned long' => 'l',
+  'long int' => 'l',
+  long => 'l',
+  # 'd' types
+  double => 'd',
+  # 'p' types
+  'char *' => 'p', # since 't' is deprecated
+  # custom types
   mpz_ptr => 'p',
+  mpz_srcptr => 'p',
+  'signed long int *' => 'p',
+  gmp_randstate_t => 'p',
+
+  # FIXME: both mp_size_t and mp_exp_t are ints if _CRAY and _CRAYMPP are
+  # not defined.  This should be the normal case, but in the future we should
+  # have a way to determine this - perhaps a small C program that compiles
+  # and outputs the system values like Parrot's Configure steps
+  mp_size_t => 'i',
+  mp_exp_t => 'i',
+
+  # FIXME: size_t is platform dependent, not sure it will always fit
+  # inside an 'i' type
+  size_t => 'i',
+
+  # FIXME: mp_limb_t is dependent on __GMP_SHORT_LIMB and _LONG_LONG_LIMB
+  mp_limb_t => 'i',
+
+  mp_bitcnt_t => 'l',
+);
 
 # blacklist is an array of function names to not bother with
 my @blacklist = qw(
