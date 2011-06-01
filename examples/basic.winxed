@@ -1,0 +1,9 @@
+function main[main](var argv) {
+  load_bytecode('GMP.pbc');
+
+  var x = new GMP.Integer();
+  mpz_set_ui(x, 30);
+  mpz_add_ui(x, x, 2);
+  int i = mpz_get_ui(x);
+  say(i);
+}
