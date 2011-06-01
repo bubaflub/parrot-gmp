@@ -6,6 +6,7 @@ function load[anon,load]() {
 
 function gmpz_t[anon, immediate]() {
   var gmpz_t = new 'StructView'([ DATATYPE_STRUCT, 3, DATATYPE_INT, DATATYPE_PTR, DATATYPE_INT ]);
+  return gmpz_t;
 }
 
 namespace GMP {
