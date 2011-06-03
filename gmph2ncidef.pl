@@ -143,8 +143,7 @@ sub process_types {
 sub print_ncidef {
   my $functions = shift;
 
-  use Data::Dumper;
   while(my ($function_name, $details) = each(%{$functions})) {
-    print $details->{'return_type'} . " " . $details->{'internal_name'} . " " . $details->{'method_signature'} . "\n";
+    print $details->{'return_type'} . " " . $details->{'internal_name'} . " " . $details->{'method_signature'} . " # " . $function_name . "\n";
   }
 }
