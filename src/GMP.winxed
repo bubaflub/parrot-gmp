@@ -20,6 +20,14 @@ namespace GMP {
       __gmpz_init(ptr);
     }
 
+    function destroy[vtable('destroy')]() {
+      if(self.ptr != null) {
+        var ptr  = self.ptr;
+        self.ptr = null;
+        using gmp.__gmpz_clear;
+        __gmpz_clear(ptr);
+      }
+    }
   }
 }
 
