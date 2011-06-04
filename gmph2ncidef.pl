@@ -18,20 +18,7 @@ my $filename = $ARGV[0];
 my %mappings = %{LoadFile('conf/mappings.yml')};
 
 # blacklist is an array of function names to not bother with
-my @blacklist = qw(
-  mpz_import
-  mpz_export
-  _mpz_realloc
-  mpz_realloc
-  mpz_clears
-  mpz_inits
-  mpz_inp_raw
-  mpz_inp_str
-  mpz_out_raw
-  mpz_out_str
-  mpz_set_q
-  mpz_set_f
-);
+my @blacklist = @{LoadFile('conf/blacklist.yml')};
 
 my $functions = process_gmph($filename);
 print_ncidef($functions);
