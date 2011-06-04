@@ -6,6 +6,7 @@ use warnings;
 use File::Slurp;
 use Web::Scraper;
 use YAML qw(LoadFile);
+use List::MoreUtils qw(any);
 
 # Description: reads the GMP documentation (a single file HTML) and outputs a
 # Winxed file with documentation and functions.
@@ -34,9 +35,14 @@ sub process_gmp_docs {
   my $filename = shift;
   my @all_functions;
 
+  my $prefix = '_?mpz';
+
   my $raw_gmp_docs = read_file( $filename );
   $raw_gmp_docs =~ s/&mdash;/-/g;
   $raw_gmp_docs =~ s/&nbsp;/ /g;
+  $raw_gmp_docs =~ s/&minus;/-/g;
+  $raw_gmp_docs =~ s/&ldquo;/"/g;
+  $raw_gmp_docs =~ s/&rdquo;/"/g;
   $raw_gmp_docs =~ s/<!--.+?-->//g;
 
   my $gmp_docs = scraper {
@@ -59,7 +65,13 @@ sub process_gmp_docs {
     my @functions_in_description = grep {!/^$/} split / - Function: /, $function, -1;
     my @parsed_functions;
     foreach (@functions_in_description) {
-      my ($return_type, $function_name, $parameters) = /([^<]+) <b>([^<]+)<\/b> \(<var>([^<]+)<\/var>\)/;
+      # skip class functions
+      next if m/class::/;
+      s!<small class="dots">\.\.\.</small>!...!g;
+      my ($return_type, $function_name, $parameters) = /([^<]+) <b>([^<]+)<\/b> \(<var>(.*?)<\/var>\)/;
+      warn "Bad line parse: $_" if (!$return_type || !$function_name || !$parameters);
+      next if $function_name !~ /^$prefix/;
+      next if any { $function_name eq $_ } @blacklist;
       my @params;
       foreach (split /\s*,\s*/, $parameters) {
         next if $_ =~ m/\.\.\./;
@@ -87,21 +99,18 @@ sub process_gmp_docs {
 sub print_winxed {
   my $functions = shift;
 
-  # TODO: refactor this prefix out into a conf file from here
-  # and from gmph2ncidef.pl
-  my $prefix = '_?mpz';
-
   foreach (@{$functions}) {
+    next if scalar @{$_->{'functions'}} == 0;
     # print documentation
     my $description = $_->{'description'};
     print "/*\n";
     foreach(@{$_->{'functions'}}) {
-      # TODO: skip blacklisted functions
       my $signature = join ", ", map { "$_->{'type'} $_->{'name'}" } @{$_->{'params'}};
       # TODO: refactor into Template::Toolkit
-      print "=head1 $_->{'return_type'} $_->{'function_name'} ($signature)\n";
+      print "=head1 $_->{'return_type'} $_->{'function_name'} ($signature)\n\n";
     }
-    print "$description\n=cut\n*/\n\n";
+    print "$description\n\n" if $description;
+    print "=cut\n*/\n\n";
     # print Winxed code
     foreach(@{$_->{'functions'}}) {
       my $signature = join ", ", map { c_to_winxed_mapping($_->{'type'}) . " $_->{'name'}" } @{$_->{'params'}};
