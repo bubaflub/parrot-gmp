@@ -14,6 +14,7 @@ double: d
 # since 't' is deprecated
 char *: p 
 # custom types
+mpz_t: p
 mpz_ptr: p
 mpz_srcptr: p
 signed long int *: p

@@ -31,25 +31,3 @@ namespace GMP {
   }
 }
 
-function mpz_set_ui(var rop, int op) {
-  if(!(rop instanceof GMP.Integer))
-    die("incorrect type");
-  using gmp.__gmpz_set_ui;
-  __gmpz_set_ui(rop, op);
-}
-
-function mpz_get_ui(var op) {
-  if(!(op instanceof GMP.Integer))
-    die("incorrect type");
-  using gmp.__gmpz_get_ui;
-  return __gmpz_get_ui(op);
-}
-
-function mpz_add_ui(var rop, var op1, int op2) {
-  if(!(rop instanceof GMP.Integer))
-    die("incorrect type");
-  if(!(op1 instanceof GMP.Integer))
-    die("incorrect type");
-  using gmp.__gmpz_add_ui;
-  __gmpz_add_ui(rop, op1, op2);
-}
