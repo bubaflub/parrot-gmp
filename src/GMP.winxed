@@ -14,7 +14,7 @@ namespace GMP {
     var ptr;
 
     function Integer() {
-      using static gmpz_t;
+      using gmpz_t;
       var ptr = self.ptr = gmpz_t.alloc();
       using gmp.__gmpz_init;
       __gmpz_init(ptr);
