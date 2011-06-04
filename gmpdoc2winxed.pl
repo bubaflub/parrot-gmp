@@ -119,9 +119,10 @@ EOF
       # print actual function calling code
       my $nci_signature = join ", ", map { $_->{'name'} } @{$_->{'params'}};
       my $internal_function_name = "__g$function_name";
+      my $return = $_->{'return_type'} eq 'void' ? '' : 'return';
       print <<EOF;
   using gmp.$internal_function_name;
-  $internal_function_name($nci_signature);
+  $return $internal_function_name($nci_signature);
 }
 
 EOF
