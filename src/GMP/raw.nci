@@ -5,142 +5,142 @@ gmp
 gmplib.so
 
 [defs]
-v __gmpz_setbit pl
-v __gmpz_sqrt pp
-i __gmpz_fdiv_qr_ui pppi
-i __gmpz_fits_uint_p p
-i __gmpz_fits_ulong_p p
-v __gmpz_urandomb ppl
-i __gmpz_fdiv_q_ui ppi
-v __gmpz_addmul ppp
-v __gmpz_fac_ui pi
-i __gmpz_tdiv_qr_ui pppi
-l __gmpz_hamdist pp
-d __gmpz_get_d p
-v __gmpz_powm_ui ppip
-v __gmpz_set_si pi
-v __gmpz_tdiv_r_2exp ppl
-v __gmpz_urandomm ppp
-v __gmpz_init p
-i __gmpz_perfect_square_p p
-v __gmpz_mod ppp
-d __gmpz_get_d_2exp pp
-v __gmpz_sub ppp
-i __gmpz_set_str ppi
-i __gmpz_cmp_d pd
-v __gmpz_add_ui ppi
-i __gmpz_tdiv_ui pi
-v __gmpz_add ppp
-v __gmpz_array_init pii
-v __gmpz_sqrtrem ppp
-i __gmpz_fits_slong_p p
-i __gmpz_init_set_str ppi
-v __gmpz_cdiv_qr pppp
-v __gmpz_lucnum2_ui ppi
-i __gmpz_kronecker_si pl
-i __gmpz_divisible_p pp
-v __gmpz_rrandomb ppl
-v __gmpz_powm_sec pppp
-i __gmpz_gcd_ui ppi
-v __gmpz_realloc2 pl
-i __gmpz_get_ui p
-i __gmpz_root ppi
-i __gmpz_getlimbn pi
-i __gmpz_tdiv_r_ui ppi
-i __gmpz_jacobi pp
-v __gmpz_dump p
-v __gmpz_mul_ui ppi
-l __gmpz_popcount p
-i __gmpz_fdiv_r_ui ppi
-i __gmpz_fits_sshort_p p
-i __gmpz_cmpabs_ui pi
-v __gmpz_neg pp
-i __gmpz_fits_ushort_p p
-v __gmpz_combit pl
-v __gmpz_random pi
-i __gmpz_get_si p
-l __gmpz_scan1 pl
-v __gmpz_bin_ui ppi
-i __gmpz_perfect_power_p p
-v __gmpz_set pp
-v __gmpz_init2 pl
-i __gmpz_cmp_si pi
-v __gmpz_and ppp
-v __gmpz_fdiv_q ppp
-v __gmpz_tdiv_q_2exp ppl
-i __gmpz_size p
-v __gmpz_cdiv_r_2exp ppl
-v __gmpz_powm pppp
-i __gmpz_cdiv_r_ui ppi
-v __gmpz_set_ui pi
-i __gmpz_cmpabs_d pd
-v __gmpz_submul ppp
-i __gmpz_remove ppp
-i __gmpz_si_kronecker lp
-i __gmpz_fits_sint_p p
-v __gmpz_init_set_d pd
-v __gmpz_fdiv_qr pppp
-v __gmpz_ui_sub pip
-v __gmpz_bin_uiui pii
-v __gmpz_cdiv_r ppp
-v __gmpz_tdiv_q ppp
-v __gmpz_fdiv_r_2exp ppl
-i __gmpz_kronecker_ui pl
-v __gmpz_divexact ppp
-v __gmpz_clear p
-v __gmpz_fib2_ui ppi
-v __gmpz_random2 pi
-i __gmpz_congruent_ui_p pll
-v __gmpz_clrbit pl
-v __gmpz_fdiv_r ppp
-v __gmpz_gcd ppp
-v __gmpz_ior ppp
-i __gmpz_divisible_ui_p pl
-p __gmpz_get_str pip
-v __gmpz_init_set_si pi
-v __gmpz_swap pp
-i __gmpz_cmp_ui pi
-v __gmpz_init_set pp
-v __gmpz_sub_ui ppi
-i __gmpz_cmp pp
-v __gmpz_cdiv_q ppp
-v __gmpz_abs pp
-v __gmpz_lcm_ui ppl
-v __gmpz_mul_2exp ppl
-v __gmpz_submul_ui ppi
-v __gmpz_com pp
-i __gmpz_fdiv_ui pi
-i __gmpz_tdiv_q_ui ppi
-i __gmpz_ui_kronecker lp
-i __gmpz_tstbit pl
-i __gmpz_probab_prime_p pi
-l __gmpz_scan0 pl
-v __gmpz_tdiv_qr pppp
-v __gmpz_mul ppp
-v __gmpz_xor ppp
-i __gmpz_cmpabs pp
-v __gmpz_set_d pd
-v __gmpz_lucnum_ui pi
-i __gmpz_congruent_p ppp
-i __gmpz_invert ppp
-v __gmpz_lcm ppp
-v __gmpz_cdiv_q_2exp ppl
-i __gmpz_millerrabin pi
-v __gmpz_fib_ui pi
-v __gmpz_divexact_ui ppl
-i __gmpz_cdiv_ui pi
-v __gmpz_ui_pow_ui pii
-v __gmpz_rootrem pppi
-i __gmpz_congruent_2exp_p ppl
-v __gmpz_gcdext ppppp
-i __gmpz_divisible_2exp_p pl
-v __gmpz_addmul_ui ppi
-i __gmpz_sizeinbase pi
-v __gmpz_fdiv_q_2exp ppl
-i __gmpz_cdiv_qr_ui pppi
-v __gmpz_init_set_ui pi
-v __gmpz_tdiv_r ppp
-i __gmpz_cdiv_q_ui ppi
-v __gmpz_nextprime pp
-v __gmpz_pow_ui ppi
-v __gmpz_mul_si ppi
+v __gmpz_setbit pl # mpz_setbit
+v __gmpz_sqrt pp # mpz_sqrt
+i __gmpz_fdiv_qr_ui pppi # mpz_fdiv_qr_ui
+i __gmpz_fits_uint_p p # mpz_fits_uint_p
+i __gmpz_fits_ulong_p p # mpz_fits_ulong_p
+v __gmpz_urandomb ppl # mpz_urandomb
+i __gmpz_fdiv_q_ui ppi # mpz_fdiv_q_ui
+v __gmpz_addmul ppp # mpz_addmul
+v __gmpz_fac_ui pi # mpz_fac_ui
+i __gmpz_tdiv_qr_ui pppi # mpz_tdiv_qr_ui
+l __gmpz_hamdist pp # mpz_hamdist
+d __gmpz_get_d p # mpz_get_d
+v __gmpz_powm_ui ppip # mpz_powm_ui
+v __gmpz_set_si pi # mpz_set_si
+v __gmpz_tdiv_r_2exp ppl # mpz_tdiv_r_2exp
+v __gmpz_urandomm ppp # mpz_urandomm
+v __gmpz_init p # mpz_init
+i __gmpz_perfect_square_p p # mpz_perfect_square_p
+v __gmpz_mod ppp # mpz_mod
+d __gmpz_get_d_2exp pp # mpz_get_d_2exp
+v __gmpz_sub ppp # mpz_sub
+i __gmpz_set_str ppi # mpz_set_str
+i __gmpz_cmp_d pd # mpz_cmp_d
+v __gmpz_add_ui ppi # mpz_add_ui
+i __gmpz_tdiv_ui pi # mpz_tdiv_ui
+v __gmpz_add ppp # mpz_add
+v __gmpz_array_init pii # mpz_array_init
+v __gmpz_sqrtrem ppp # mpz_sqrtrem
+i __gmpz_fits_slong_p p # mpz_fits_slong_p
+i __gmpz_init_set_str ppi # mpz_init_set_str
+v __gmpz_cdiv_qr pppp # mpz_cdiv_qr
+v __gmpz_lucnum2_ui ppi # mpz_lucnum2_ui
+i __gmpz_kronecker_si pl # mpz_kronecker_si
+i __gmpz_divisible_p pp # mpz_divisible_p
+v __gmpz_rrandomb ppl # mpz_rrandomb
+v __gmpz_powm_sec pppp # mpz_powm_sec
+i __gmpz_gcd_ui ppi # mpz_gcd_ui
+v __gmpz_realloc2 pl # mpz_realloc2
+i __gmpz_get_ui p # mpz_get_ui
+i __gmpz_root ppi # mpz_root
+i __gmpz_getlimbn pi # mpz_getlimbn
+i __gmpz_tdiv_r_ui ppi # mpz_tdiv_r_ui
+i __gmpz_jacobi pp # mpz_jacobi
+v __gmpz_dump p # mpz_dump
+v __gmpz_mul_ui ppi # mpz_mul_ui
+l __gmpz_popcount p # mpz_popcount
+i __gmpz_fdiv_r_ui ppi # mpz_fdiv_r_ui
+i __gmpz_fits_sshort_p p # mpz_fits_sshort_p
+i __gmpz_cmpabs_ui pi # mpz_cmpabs_ui
+v __gmpz_neg pp # mpz_neg
+i __gmpz_fits_ushort_p p # mpz_fits_ushort_p
+v __gmpz_combit pl # mpz_combit
+v __gmpz_random pi # mpz_random
+i __gmpz_get_si p # mpz_get_si
+l __gmpz_scan1 pl # mpz_scan1
+v __gmpz_bin_ui ppi # mpz_bin_ui
+i __gmpz_perfect_power_p p # mpz_perfect_power_p
+v __gmpz_set pp # mpz_set
+v __gmpz_init2 pl # mpz_init2
+i __gmpz_cmp_si pi # _mpz_cmp_si
+v __gmpz_and ppp # mpz_and
+v __gmpz_fdiv_q ppp # mpz_fdiv_q
+v __gmpz_tdiv_q_2exp ppl # mpz_tdiv_q_2exp
+i __gmpz_size p # mpz_size
+v __gmpz_cdiv_r_2exp ppl # mpz_cdiv_r_2exp
+v __gmpz_powm pppp # mpz_powm
+i __gmpz_cdiv_r_ui ppi # mpz_cdiv_r_ui
+v __gmpz_set_ui pi # mpz_set_ui
+i __gmpz_cmpabs_d pd # mpz_cmpabs_d
+v __gmpz_submul ppp # mpz_submul
+i __gmpz_remove ppp # mpz_remove
+i __gmpz_si_kronecker lp # mpz_si_kronecker
+i __gmpz_fits_sint_p p # mpz_fits_sint_p
+v __gmpz_init_set_d pd # mpz_init_set_d
+v __gmpz_fdiv_qr pppp # mpz_fdiv_qr
+v __gmpz_ui_sub pip # mpz_ui_sub
+v __gmpz_bin_uiui pii # mpz_bin_uiui
+v __gmpz_cdiv_r ppp # mpz_cdiv_r
+v __gmpz_tdiv_q ppp # mpz_tdiv_q
+v __gmpz_fdiv_r_2exp ppl # mpz_fdiv_r_2exp
+i __gmpz_kronecker_ui pl # mpz_kronecker_ui
+v __gmpz_divexact ppp # mpz_divexact
+v __gmpz_clear p # mpz_clear
+v __gmpz_fib2_ui ppi # mpz_fib2_ui
+v __gmpz_random2 pi # mpz_random2
+i __gmpz_congruent_ui_p pll # mpz_congruent_ui_p
+v __gmpz_clrbit pl # mpz_clrbit
+v __gmpz_fdiv_r ppp # mpz_fdiv_r
+v __gmpz_gcd ppp # mpz_gcd
+v __gmpz_ior ppp # mpz_ior
+i __gmpz_divisible_ui_p pl # mpz_divisible_ui_p
+p __gmpz_get_str pip # mpz_get_str
+v __gmpz_init_set_si pi # mpz_init_set_si
+v __gmpz_swap pp # mpz_swap
+i __gmpz_cmp_ui pi # _mpz_cmp_ui
+v __gmpz_init_set pp # mpz_init_set
+v __gmpz_sub_ui ppi # mpz_sub_ui
+i __gmpz_cmp pp # mpz_cmp
+v __gmpz_cdiv_q ppp # mpz_cdiv_q
+v __gmpz_abs pp # mpz_abs
+v __gmpz_lcm_ui ppl # mpz_lcm_ui
+v __gmpz_mul_2exp ppl # mpz_mul_2exp
+v __gmpz_submul_ui ppi # mpz_submul_ui
+v __gmpz_com pp # mpz_com
+i __gmpz_fdiv_ui pi # mpz_fdiv_ui
+i __gmpz_tdiv_q_ui ppi # mpz_tdiv_q_ui
+i __gmpz_ui_kronecker lp # mpz_ui_kronecker
+i __gmpz_tstbit pl # mpz_tstbit
+i __gmpz_probab_prime_p pi # mpz_probab_prime_p
+l __gmpz_scan0 pl # mpz_scan0
+v __gmpz_tdiv_qr pppp # mpz_tdiv_qr
+v __gmpz_mul ppp # mpz_mul
+v __gmpz_xor ppp # mpz_xor
+i __gmpz_cmpabs pp # mpz_cmpabs
+v __gmpz_set_d pd # mpz_set_d
+v __gmpz_lucnum_ui pi # mpz_lucnum_ui
+i __gmpz_congruent_p ppp # mpz_congruent_p
+i __gmpz_invert ppp # mpz_invert
+v __gmpz_lcm ppp # mpz_lcm
+v __gmpz_cdiv_q_2exp ppl # mpz_cdiv_q_2exp
+i __gmpz_millerrabin pi # mpz_millerrabin
+v __gmpz_fib_ui pi # mpz_fib_ui
+v __gmpz_divexact_ui ppl # mpz_divexact_ui
+i __gmpz_cdiv_ui pi # mpz_cdiv_ui
+v __gmpz_ui_pow_ui pii # mpz_ui_pow_ui
+v __gmpz_rootrem pppi # mpz_rootrem
+i __gmpz_congruent_2exp_p ppl # mpz_congruent_2exp_p
+v __gmpz_gcdext ppppp # mpz_gcdext
+i __gmpz_divisible_2exp_p pl # mpz_divisible_2exp_p
+v __gmpz_addmul_ui ppi # mpz_addmul_ui
+i __gmpz_sizeinbase pi # mpz_sizeinbase
+v __gmpz_fdiv_q_2exp ppl # mpz_fdiv_q_2exp
+i __gmpz_cdiv_qr_ui pppi # mpz_cdiv_qr_ui
+v __gmpz_init_set_ui pi # mpz_init_set_ui
+v __gmpz_tdiv_r ppp # mpz_tdiv_r
+i __gmpz_cdiv_q_ui ppi # mpz_cdiv_q_ui
+v __gmpz_nextprime pp # mpz_nextprime
+v __gmpz_pow_ui ppi # mpz_pow_ui
+v __gmpz_mul_si ppi # mpz_mul_si
