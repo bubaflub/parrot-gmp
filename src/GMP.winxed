@@ -41,7 +41,7 @@ Initialize x, and set its value to 0.
 
 function mpz_init (var x) {
   if(!(x instanceof GMP.Integer))
-    die("incorrect type for x in mpz_init");
+    throw Error("incorrect type for x in mpz_init");
   using gmp.__gmpz_init;
    __gmpz_init(x);
 }
@@ -56,7 +56,7 @@ Initialize x, with space for n-bit numbers, and set its value to 0. Calling this
 
 function mpz_init2 (var x, int n) {
   if(!(x instanceof GMP.Integer))
-    die("incorrect type for x in mpz_init2");
+    throw Error("incorrect type for x in mpz_init2");
   using gmp.__gmpz_init2;
    __gmpz_init2(x, n);
 }
@@ -71,7 +71,7 @@ Free the space occupied by x. Call this function for all mpz_t variables when yo
 
 function mpz_clear (var x) {
   if(!(x instanceof GMP.Integer))
-    die("incorrect type for x in mpz_clear");
+    throw Error("incorrect type for x in mpz_clear");
   using gmp.__gmpz_clear;
    __gmpz_clear(x);
 }
@@ -86,7 +86,7 @@ Change the space allocated for x to n bits. The value in x is preserved if it fi
 
 function mpz_realloc2 (var x, int n) {
   if(!(x instanceof GMP.Integer))
-    die("incorrect type for x in mpz_realloc2");
+    throw Error("incorrect type for x in mpz_realloc2");
   using gmp.__gmpz_realloc2;
    __gmpz_realloc2(x, n);
 }
@@ -107,30 +107,30 @@ Set the value of rop from op. mpz_set_d, mpz_set_q and mpz_set_f truncate op to 
 
 function mpz_set (var rop, var op) {
   if(!(rop instanceof GMP.Integer))
-    die("incorrect type for rop in mpz_set");
+    throw Error("incorrect type for rop in mpz_set");
   if(!(op instanceof GMP.Integer))
-    die("incorrect type for op in mpz_set");
+    throw Error("incorrect type for op in mpz_set");
   using gmp.__gmpz_set;
    __gmpz_set(rop, op);
 }
 
 function mpz_set_ui (var rop, int op) {
   if(!(rop instanceof GMP.Integer))
-    die("incorrect type for rop in mpz_set_ui");
+    throw Error("incorrect type for rop in mpz_set_ui");
   using gmp.__gmpz_set_ui;
    __gmpz_set_ui(rop, op);
 }
 
 function mpz_set_si (var rop, int op) {
   if(!(rop instanceof GMP.Integer))
-    die("incorrect type for rop in mpz_set_si");
+    throw Error("incorrect type for rop in mpz_set_si");
   using gmp.__gmpz_set_si;
    __gmpz_set_si(rop, op);
 }
 
 function mpz_set_d (var rop, float op) {
   if(!(rop instanceof GMP.Integer))
-    die("incorrect type for rop in mpz_set_d");
+    throw Error("incorrect type for rop in mpz_set_d");
   using gmp.__gmpz_set_d;
    __gmpz_set_d(rop, op);
 }
@@ -145,7 +145,7 @@ Set the value of rop from str, a null-terminated C string in base base. White sp
 
 function mpz_set_str (var rop, var str, int base) {
   if(!(rop instanceof GMP.Integer))
-    die("incorrect type for rop in mpz_set_str");
+    throw Error("incorrect type for rop in mpz_set_str");
   using gmp.__gmpz_set_str;
   return __gmpz_set_str(rop, str, base);
 }
@@ -160,9 +160,9 @@ Swap the values rop1 and rop2 efficiently.
 
 function mpz_swap (var rop1, var rop2) {
   if(!(rop1 instanceof GMP.Integer))
-    die("incorrect type for rop1 in mpz_swap");
+    throw Error("incorrect type for rop1 in mpz_swap");
   if(!(rop2 instanceof GMP.Integer))
-    die("incorrect type for rop2 in mpz_swap");
+    throw Error("incorrect type for rop2 in mpz_swap");
   using gmp.__gmpz_swap;
    __gmpz_swap(rop1, rop2);
 }
@@ -183,30 +183,30 @@ Initialize rop with limb space and set the initial numeric value from op.
 
 function mpz_init_set (var rop, var op) {
   if(!(rop instanceof GMP.Integer))
-    die("incorrect type for rop in mpz_init_set");
+    throw Error("incorrect type for rop in mpz_init_set");
   if(!(op instanceof GMP.Integer))
-    die("incorrect type for op in mpz_init_set");
+    throw Error("incorrect type for op in mpz_init_set");
   using gmp.__gmpz_init_set;
    __gmpz_init_set(rop, op);
 }
 
 function mpz_init_set_ui (var rop, int op) {
   if(!(rop instanceof GMP.Integer))
-    die("incorrect type for rop in mpz_init_set_ui");
+    throw Error("incorrect type for rop in mpz_init_set_ui");
   using gmp.__gmpz_init_set_ui;
    __gmpz_init_set_ui(rop, op);
 }
 
 function mpz_init_set_si (var rop, int op) {
   if(!(rop instanceof GMP.Integer))
-    die("incorrect type for rop in mpz_init_set_si");
+    throw Error("incorrect type for rop in mpz_init_set_si");
   using gmp.__gmpz_init_set_si;
    __gmpz_init_set_si(rop, op);
 }
 
 function mpz_init_set_d (var rop, float op) {
   if(!(rop instanceof GMP.Integer))
-    die("incorrect type for rop in mpz_init_set_d");
+    throw Error("incorrect type for rop in mpz_init_set_d");
   using gmp.__gmpz_init_set_d;
    __gmpz_init_set_d(rop, op);
 }
@@ -221,7 +221,7 @@ Initialize rop and set its value like mpz_set_str (see its documentation above f
 
 function mpz_init_set_str (var rop, var str, int base) {
   if(!(rop instanceof GMP.Integer))
-    die("incorrect type for rop in mpz_init_set_str");
+    throw Error("incorrect type for rop in mpz_init_set_str");
   using gmp.__gmpz_init_set_str;
   return __gmpz_init_set_str(rop, str, base);
 }
@@ -236,7 +236,7 @@ Return the value of op as an unsigned long. If op is too big to fit an unsigned 
 
 function mpz_get_ui (var op) {
   if(!(op instanceof GMP.Integer))
-    die("incorrect type for op in mpz_get_ui");
+    throw Error("incorrect type for op in mpz_get_ui");
   using gmp.__gmpz_get_ui;
   return __gmpz_get_ui(op);
 }
@@ -251,7 +251,7 @@ If op fits into a signed long int return the value of op. Otherwise return the l
 
 function mpz_get_si (var op) {
   if(!(op instanceof GMP.Integer))
-    die("incorrect type for op in mpz_get_si");
+    throw Error("incorrect type for op in mpz_get_si");
   using gmp.__gmpz_get_si;
   return __gmpz_get_si(op);
 }
@@ -266,7 +266,7 @@ Convert op to a double, truncating if necessary (ie. rounding towards zero). If 
 
 function mpz_get_d (var op) {
   if(!(op instanceof GMP.Integer))
-    die("incorrect type for op in mpz_get_d");
+    throw Error("incorrect type for op in mpz_get_d");
   using gmp.__gmpz_get_d;
   return __gmpz_get_d(op);
 }
@@ -281,7 +281,7 @@ Convert op to a double, truncating if necessary (ie. rounding towards zero), and
 
 function mpz_get_d_2exp (var exp, var op) {
   if(!(op instanceof GMP.Integer))
-    die("incorrect type for op in mpz_get_d_2exp");
+    throw Error("incorrect type for op in mpz_get_d_2exp");
   using gmp.__gmpz_get_d_2exp;
   return __gmpz_get_d_2exp(exp, op);
 }
@@ -296,7 +296,7 @@ Convert op to a string of digits in base base. The base argument may vary from 2
 
 function mpz_get_str (var str, int base, var op) {
   if(!(op instanceof GMP.Integer))
-    die("incorrect type for op in mpz_get_str");
+    throw Error("incorrect type for op in mpz_get_str");
   using gmp.__gmpz_get_str;
   return __gmpz_get_str(str, base, op);
 }
@@ -313,20 +313,20 @@ Set rop to op1 + op2.
 
 function mpz_add (var rop, var op1, var op2) {
   if(!(rop instanceof GMP.Integer))
-    die("incorrect type for rop in mpz_add");
+    throw Error("incorrect type for rop in mpz_add");
   if(!(op1 instanceof GMP.Integer))
-    die("incorrect type for op1 in mpz_add");
+    throw Error("incorrect type for op1 in mpz_add");
   if(!(op2 instanceof GMP.Integer))
-    die("incorrect type for op2 in mpz_add");
+    throw Error("incorrect type for op2 in mpz_add");
   using gmp.__gmpz_add;
    __gmpz_add(rop, op1, op2);
 }
 
 function mpz_add_ui (var rop, var op1, int op2) {
   if(!(rop instanceof GMP.Integer))
-    die("incorrect type for rop in mpz_add_ui");
+    throw Error("incorrect type for rop in mpz_add_ui");
   if(!(op1 instanceof GMP.Integer))
-    die("incorrect type for op1 in mpz_add_ui");
+    throw Error("incorrect type for op1 in mpz_add_ui");
   using gmp.__gmpz_add_ui;
    __gmpz_add_ui(rop, op1, op2);
 }
@@ -345,29 +345,29 @@ Set rop to op1 - op2.
 
 function mpz_sub (var rop, var op1, var op2) {
   if(!(rop instanceof GMP.Integer))
-    die("incorrect type for rop in mpz_sub");
+    throw Error("incorrect type for rop in mpz_sub");
   if(!(op1 instanceof GMP.Integer))
-    die("incorrect type for op1 in mpz_sub");
+    throw Error("incorrect type for op1 in mpz_sub");
   if(!(op2 instanceof GMP.Integer))
-    die("incorrect type for op2 in mpz_sub");
+    throw Error("incorrect type for op2 in mpz_sub");
   using gmp.__gmpz_sub;
    __gmpz_sub(rop, op1, op2);
 }
 
 function mpz_sub_ui (var rop, var op1, int op2) {
   if(!(rop instanceof GMP.Integer))
-    die("incorrect type for rop in mpz_sub_ui");
+    throw Error("incorrect type for rop in mpz_sub_ui");
   if(!(op1 instanceof GMP.Integer))
-    die("incorrect type for op1 in mpz_sub_ui");
+    throw Error("incorrect type for op1 in mpz_sub_ui");
   using gmp.__gmpz_sub_ui;
    __gmpz_sub_ui(rop, op1, op2);
 }
 
 function mpz_ui_sub (var rop, int op1, var op2) {
   if(!(rop instanceof GMP.Integer))
-    die("incorrect type for rop in mpz_ui_sub");
+    throw Error("incorrect type for rop in mpz_ui_sub");
   if(!(op2 instanceof GMP.Integer))
-    die("incorrect type for op2 in mpz_ui_sub");
+    throw Error("incorrect type for op2 in mpz_ui_sub");
   using gmp.__gmpz_ui_sub;
    __gmpz_ui_sub(rop, op1, op2);
 }
@@ -386,29 +386,29 @@ Set rop to op1 times op2.
 
 function mpz_mul (var rop, var op1, var op2) {
   if(!(rop instanceof GMP.Integer))
-    die("incorrect type for rop in mpz_mul");
+    throw Error("incorrect type for rop in mpz_mul");
   if(!(op1 instanceof GMP.Integer))
-    die("incorrect type for op1 in mpz_mul");
+    throw Error("incorrect type for op1 in mpz_mul");
   if(!(op2 instanceof GMP.Integer))
-    die("incorrect type for op2 in mpz_mul");
+    throw Error("incorrect type for op2 in mpz_mul");
   using gmp.__gmpz_mul;
    __gmpz_mul(rop, op1, op2);
 }
 
 function mpz_mul_si (var rop, var op1, int op2) {
   if(!(rop instanceof GMP.Integer))
-    die("incorrect type for rop in mpz_mul_si");
+    throw Error("incorrect type for rop in mpz_mul_si");
   if(!(op1 instanceof GMP.Integer))
-    die("incorrect type for op1 in mpz_mul_si");
+    throw Error("incorrect type for op1 in mpz_mul_si");
   using gmp.__gmpz_mul_si;
    __gmpz_mul_si(rop, op1, op2);
 }
 
 function mpz_mul_ui (var rop, var op1, int op2) {
   if(!(rop instanceof GMP.Integer))
-    die("incorrect type for rop in mpz_mul_ui");
+    throw Error("incorrect type for rop in mpz_mul_ui");
   if(!(op1 instanceof GMP.Integer))
-    die("incorrect type for op1 in mpz_mul_ui");
+    throw Error("incorrect type for op1 in mpz_mul_ui");
   using gmp.__gmpz_mul_ui;
    __gmpz_mul_ui(rop, op1, op2);
 }
@@ -425,20 +425,20 @@ Set rop to rop + op1 times op2.
 
 function mpz_addmul (var rop, var op1, var op2) {
   if(!(rop instanceof GMP.Integer))
-    die("incorrect type for rop in mpz_addmul");
+    throw Error("incorrect type for rop in mpz_addmul");
   if(!(op1 instanceof GMP.Integer))
-    die("incorrect type for op1 in mpz_addmul");
+    throw Error("incorrect type for op1 in mpz_addmul");
   if(!(op2 instanceof GMP.Integer))
-    die("incorrect type for op2 in mpz_addmul");
+    throw Error("incorrect type for op2 in mpz_addmul");
   using gmp.__gmpz_addmul;
    __gmpz_addmul(rop, op1, op2);
 }
 
 function mpz_addmul_ui (var rop, var op1, int op2) {
   if(!(rop instanceof GMP.Integer))
-    die("incorrect type for rop in mpz_addmul_ui");
+    throw Error("incorrect type for rop in mpz_addmul_ui");
   if(!(op1 instanceof GMP.Integer))
-    die("incorrect type for op1 in mpz_addmul_ui");
+    throw Error("incorrect type for op1 in mpz_addmul_ui");
   using gmp.__gmpz_addmul_ui;
    __gmpz_addmul_ui(rop, op1, op2);
 }
@@ -455,20 +455,20 @@ Set rop to rop - op1 times op2.
 
 function mpz_submul (var rop, var op1, var op2) {
   if(!(rop instanceof GMP.Integer))
-    die("incorrect type for rop in mpz_submul");
+    throw Error("incorrect type for rop in mpz_submul");
   if(!(op1 instanceof GMP.Integer))
-    die("incorrect type for op1 in mpz_submul");
+    throw Error("incorrect type for op1 in mpz_submul");
   if(!(op2 instanceof GMP.Integer))
-    die("incorrect type for op2 in mpz_submul");
+    throw Error("incorrect type for op2 in mpz_submul");
   using gmp.__gmpz_submul;
    __gmpz_submul(rop, op1, op2);
 }
 
 function mpz_submul_ui (var rop, var op1, int op2) {
   if(!(rop instanceof GMP.Integer))
-    die("incorrect type for rop in mpz_submul_ui");
+    throw Error("incorrect type for rop in mpz_submul_ui");
   if(!(op1 instanceof GMP.Integer))
-    die("incorrect type for op1 in mpz_submul_ui");
+    throw Error("incorrect type for op1 in mpz_submul_ui");
   using gmp.__gmpz_submul_ui;
    __gmpz_submul_ui(rop, op1, op2);
 }
@@ -483,9 +483,9 @@ Set rop to op1 times 2 raised to op2. This operation can also be defined as a le
 
 function mpz_mul_2exp (var rop, var op1, int op2) {
   if(!(rop instanceof GMP.Integer))
-    die("incorrect type for rop in mpz_mul_2exp");
+    throw Error("incorrect type for rop in mpz_mul_2exp");
   if(!(op1 instanceof GMP.Integer))
-    die("incorrect type for op1 in mpz_mul_2exp");
+    throw Error("incorrect type for op1 in mpz_mul_2exp");
   using gmp.__gmpz_mul_2exp;
    __gmpz_mul_2exp(rop, op1, op2);
 }
@@ -500,9 +500,9 @@ Set rop to -op.
 
 function mpz_neg (var rop, var op) {
   if(!(rop instanceof GMP.Integer))
-    die("incorrect type for rop in mpz_neg");
+    throw Error("incorrect type for rop in mpz_neg");
   if(!(op instanceof GMP.Integer))
-    die("incorrect type for op in mpz_neg");
+    throw Error("incorrect type for op in mpz_neg");
   using gmp.__gmpz_neg;
    __gmpz_neg(rop, op);
 }
@@ -517,9 +517,9 @@ Set rop to the absolute value of op.
 
 function mpz_abs (var rop, var op) {
   if(!(rop instanceof GMP.Integer))
-    die("incorrect type for rop in mpz_abs");
+    throw Error("incorrect type for rop in mpz_abs");
   if(!(op instanceof GMP.Integer))
-    die("incorrect type for op in mpz_abs");
+    throw Error("incorrect type for op in mpz_abs");
   using gmp.__gmpz_abs;
    __gmpz_abs(rop, op);
 }
@@ -548,89 +548,89 @@ function mpz_abs (var rop, var op) {
 
 function mpz_cdiv_q (var q, var n, var d) {
   if(!(q instanceof GMP.Integer))
-    die("incorrect type for q in mpz_cdiv_q");
+    throw Error("incorrect type for q in mpz_cdiv_q");
   if(!(n instanceof GMP.Integer))
-    die("incorrect type for n in mpz_cdiv_q");
+    throw Error("incorrect type for n in mpz_cdiv_q");
   if(!(d instanceof GMP.Integer))
-    die("incorrect type for d in mpz_cdiv_q");
+    throw Error("incorrect type for d in mpz_cdiv_q");
   using gmp.__gmpz_cdiv_q;
    __gmpz_cdiv_q(q, n, d);
 }
 
 function mpz_cdiv_r (var r, var n, var d) {
   if(!(r instanceof GMP.Integer))
-    die("incorrect type for r in mpz_cdiv_r");
+    throw Error("incorrect type for r in mpz_cdiv_r");
   if(!(n instanceof GMP.Integer))
-    die("incorrect type for n in mpz_cdiv_r");
+    throw Error("incorrect type for n in mpz_cdiv_r");
   if(!(d instanceof GMP.Integer))
-    die("incorrect type for d in mpz_cdiv_r");
+    throw Error("incorrect type for d in mpz_cdiv_r");
   using gmp.__gmpz_cdiv_r;
    __gmpz_cdiv_r(r, n, d);
 }
 
 function mpz_cdiv_qr (var q, var r, var n, var d) {
   if(!(q instanceof GMP.Integer))
-    die("incorrect type for q in mpz_cdiv_qr");
+    throw Error("incorrect type for q in mpz_cdiv_qr");
   if(!(r instanceof GMP.Integer))
-    die("incorrect type for r in mpz_cdiv_qr");
+    throw Error("incorrect type for r in mpz_cdiv_qr");
   if(!(n instanceof GMP.Integer))
-    die("incorrect type for n in mpz_cdiv_qr");
+    throw Error("incorrect type for n in mpz_cdiv_qr");
   if(!(d instanceof GMP.Integer))
-    die("incorrect type for d in mpz_cdiv_qr");
+    throw Error("incorrect type for d in mpz_cdiv_qr");
   using gmp.__gmpz_cdiv_qr;
    __gmpz_cdiv_qr(q, r, n, d);
 }
 
 function mpz_cdiv_q_ui (var q, var n, int d) {
   if(!(q instanceof GMP.Integer))
-    die("incorrect type for q in mpz_cdiv_q_ui");
+    throw Error("incorrect type for q in mpz_cdiv_q_ui");
   if(!(n instanceof GMP.Integer))
-    die("incorrect type for n in mpz_cdiv_q_ui");
+    throw Error("incorrect type for n in mpz_cdiv_q_ui");
   using gmp.__gmpz_cdiv_q_ui;
   return __gmpz_cdiv_q_ui(q, n, d);
 }
 
 function mpz_cdiv_r_ui (var r, var n, int d) {
   if(!(r instanceof GMP.Integer))
-    die("incorrect type for r in mpz_cdiv_r_ui");
+    throw Error("incorrect type for r in mpz_cdiv_r_ui");
   if(!(n instanceof GMP.Integer))
-    die("incorrect type for n in mpz_cdiv_r_ui");
+    throw Error("incorrect type for n in mpz_cdiv_r_ui");
   using gmp.__gmpz_cdiv_r_ui;
   return __gmpz_cdiv_r_ui(r, n, d);
 }
 
 function mpz_cdiv_qr_ui (var q, var r, var n, int d) {
   if(!(q instanceof GMP.Integer))
-    die("incorrect type for q in mpz_cdiv_qr_ui");
+    throw Error("incorrect type for q in mpz_cdiv_qr_ui");
   if(!(r instanceof GMP.Integer))
-    die("incorrect type for r in mpz_cdiv_qr_ui");
+    throw Error("incorrect type for r in mpz_cdiv_qr_ui");
   if(!(n instanceof GMP.Integer))
-    die("incorrect type for n in mpz_cdiv_qr_ui");
+    throw Error("incorrect type for n in mpz_cdiv_qr_ui");
   using gmp.__gmpz_cdiv_qr_ui;
   return __gmpz_cdiv_qr_ui(q, r, n, d);
 }
 
 function mpz_cdiv_ui (var n, int d) {
   if(!(n instanceof GMP.Integer))
-    die("incorrect type for n in mpz_cdiv_ui");
+    throw Error("incorrect type for n in mpz_cdiv_ui");
   using gmp.__gmpz_cdiv_ui;
   return __gmpz_cdiv_ui(n, d);
 }
 
 function mpz_cdiv_q_2exp (var q, var n, int b) {
   if(!(q instanceof GMP.Integer))
-    die("incorrect type for q in mpz_cdiv_q_2exp");
+    throw Error("incorrect type for q in mpz_cdiv_q_2exp");
   if(!(n instanceof GMP.Integer))
-    die("incorrect type for n in mpz_cdiv_q_2exp");
+    throw Error("incorrect type for n in mpz_cdiv_q_2exp");
   using gmp.__gmpz_cdiv_q_2exp;
    __gmpz_cdiv_q_2exp(q, n, b);
 }
 
 function mpz_cdiv_r_2exp (var r, var n, int b) {
   if(!(r instanceof GMP.Integer))
-    die("incorrect type for r in mpz_cdiv_r_2exp");
+    throw Error("incorrect type for r in mpz_cdiv_r_2exp");
   if(!(n instanceof GMP.Integer))
-    die("incorrect type for n in mpz_cdiv_r_2exp");
+    throw Error("incorrect type for n in mpz_cdiv_r_2exp");
   using gmp.__gmpz_cdiv_r_2exp;
    __gmpz_cdiv_r_2exp(r, n, b);
 }
@@ -659,89 +659,89 @@ function mpz_cdiv_r_2exp (var r, var n, int b) {
 
 function mpz_fdiv_q (var q, var n, var d) {
   if(!(q instanceof GMP.Integer))
-    die("incorrect type for q in mpz_fdiv_q");
+    throw Error("incorrect type for q in mpz_fdiv_q");
   if(!(n instanceof GMP.Integer))
-    die("incorrect type for n in mpz_fdiv_q");
+    throw Error("incorrect type for n in mpz_fdiv_q");
   if(!(d instanceof GMP.Integer))
-    die("incorrect type for d in mpz_fdiv_q");
+    throw Error("incorrect type for d in mpz_fdiv_q");
   using gmp.__gmpz_fdiv_q;
    __gmpz_fdiv_q(q, n, d);
 }
 
 function mpz_fdiv_r (var r, var n, var d) {
   if(!(r instanceof GMP.Integer))
-    die("incorrect type for r in mpz_fdiv_r");
+    throw Error("incorrect type for r in mpz_fdiv_r");
   if(!(n instanceof GMP.Integer))
-    die("incorrect type for n in mpz_fdiv_r");
+    throw Error("incorrect type for n in mpz_fdiv_r");
   if(!(d instanceof GMP.Integer))
-    die("incorrect type for d in mpz_fdiv_r");
+    throw Error("incorrect type for d in mpz_fdiv_r");
   using gmp.__gmpz_fdiv_r;
    __gmpz_fdiv_r(r, n, d);
 }
 
 function mpz_fdiv_qr (var q, var r, var n, var d) {
   if(!(q instanceof GMP.Integer))
-    die("incorrect type for q in mpz_fdiv_qr");
+    throw Error("incorrect type for q in mpz_fdiv_qr");
   if(!(r instanceof GMP.Integer))
-    die("incorrect type for r in mpz_fdiv_qr");
+    throw Error("incorrect type for r in mpz_fdiv_qr");
   if(!(n instanceof GMP.Integer))
-    die("incorrect type for n in mpz_fdiv_qr");
+    throw Error("incorrect type for n in mpz_fdiv_qr");
   if(!(d instanceof GMP.Integer))
-    die("incorrect type for d in mpz_fdiv_qr");
+    throw Error("incorrect type for d in mpz_fdiv_qr");
   using gmp.__gmpz_fdiv_qr;
    __gmpz_fdiv_qr(q, r, n, d);
 }
 
 function mpz_fdiv_q_ui (var q, var n, int d) {
   if(!(q instanceof GMP.Integer))
-    die("incorrect type for q in mpz_fdiv_q_ui");
+    throw Error("incorrect type for q in mpz_fdiv_q_ui");
   if(!(n instanceof GMP.Integer))
-    die("incorrect type for n in mpz_fdiv_q_ui");
+    throw Error("incorrect type for n in mpz_fdiv_q_ui");
   using gmp.__gmpz_fdiv_q_ui;
   return __gmpz_fdiv_q_ui(q, n, d);
 }
 
 function mpz_fdiv_r_ui (var r, var n, int d) {
   if(!(r instanceof GMP.Integer))
-    die("incorrect type for r in mpz_fdiv_r_ui");
+    throw Error("incorrect type for r in mpz_fdiv_r_ui");
   if(!(n instanceof GMP.Integer))
-    die("incorrect type for n in mpz_fdiv_r_ui");
+    throw Error("incorrect type for n in mpz_fdiv_r_ui");
   using gmp.__gmpz_fdiv_r_ui;
   return __gmpz_fdiv_r_ui(r, n, d);
 }
 
 function mpz_fdiv_qr_ui (var q, var r, var n, int d) {
   if(!(q instanceof GMP.Integer))
-    die("incorrect type for q in mpz_fdiv_qr_ui");
+    throw Error("incorrect type for q in mpz_fdiv_qr_ui");
   if(!(r instanceof GMP.Integer))
-    die("incorrect type for r in mpz_fdiv_qr_ui");
+    throw Error("incorrect type for r in mpz_fdiv_qr_ui");
   if(!(n instanceof GMP.Integer))
-    die("incorrect type for n in mpz_fdiv_qr_ui");
+    throw Error("incorrect type for n in mpz_fdiv_qr_ui");
   using gmp.__gmpz_fdiv_qr_ui;
   return __gmpz_fdiv_qr_ui(q, r, n, d);
 }
 
 function mpz_fdiv_ui (var n, int d) {
   if(!(n instanceof GMP.Integer))
-    die("incorrect type for n in mpz_fdiv_ui");
+    throw Error("incorrect type for n in mpz_fdiv_ui");
   using gmp.__gmpz_fdiv_ui;
   return __gmpz_fdiv_ui(n, d);
 }
 
 function mpz_fdiv_q_2exp (var q, var n, int b) {
   if(!(q instanceof GMP.Integer))
-    die("incorrect type for q in mpz_fdiv_q_2exp");
+    throw Error("incorrect type for q in mpz_fdiv_q_2exp");
   if(!(n instanceof GMP.Integer))
-    die("incorrect type for n in mpz_fdiv_q_2exp");
+    throw Error("incorrect type for n in mpz_fdiv_q_2exp");
   using gmp.__gmpz_fdiv_q_2exp;
    __gmpz_fdiv_q_2exp(q, n, b);
 }
 
 function mpz_fdiv_r_2exp (var r, var n, int b) {
   if(!(r instanceof GMP.Integer))
-    die("incorrect type for r in mpz_fdiv_r_2exp");
+    throw Error("incorrect type for r in mpz_fdiv_r_2exp");
   if(!(n instanceof GMP.Integer))
-    die("incorrect type for n in mpz_fdiv_r_2exp");
+    throw Error("incorrect type for n in mpz_fdiv_r_2exp");
   using gmp.__gmpz_fdiv_r_2exp;
    __gmpz_fdiv_r_2exp(r, n, b);
 }
@@ -774,89 +774,89 @@ function mpz_fdiv_r_2exp (var r, var n, int b) {
 
 function mpz_tdiv_q (var q, var n, var d) {
   if(!(q instanceof GMP.Integer))
-    die("incorrect type for q in mpz_tdiv_q");
+    throw Error("incorrect type for q in mpz_tdiv_q");
   if(!(n instanceof GMP.Integer))
-    die("incorrect type for n in mpz_tdiv_q");
+    throw Error("incorrect type for n in mpz_tdiv_q");
   if(!(d instanceof GMP.Integer))
-    die("incorrect type for d in mpz_tdiv_q");
+    throw Error("incorrect type for d in mpz_tdiv_q");
   using gmp.__gmpz_tdiv_q;
    __gmpz_tdiv_q(q, n, d);
 }
 
 function mpz_tdiv_r (var r, var n, var d) {
   if(!(r instanceof GMP.Integer))
-    die("incorrect type for r in mpz_tdiv_r");
+    throw Error("incorrect type for r in mpz_tdiv_r");
   if(!(n instanceof GMP.Integer))
-    die("incorrect type for n in mpz_tdiv_r");
+    throw Error("incorrect type for n in mpz_tdiv_r");
   if(!(d instanceof GMP.Integer))
-    die("incorrect type for d in mpz_tdiv_r");
+    throw Error("incorrect type for d in mpz_tdiv_r");
   using gmp.__gmpz_tdiv_r;
    __gmpz_tdiv_r(r, n, d);
 }
 
 function mpz_tdiv_qr (var q, var r, var n, var d) {
   if(!(q instanceof GMP.Integer))
-    die("incorrect type for q in mpz_tdiv_qr");
+    throw Error("incorrect type for q in mpz_tdiv_qr");
   if(!(r instanceof GMP.Integer))
-    die("incorrect type for r in mpz_tdiv_qr");
+    throw Error("incorrect type for r in mpz_tdiv_qr");
   if(!(n instanceof GMP.Integer))
-    die("incorrect type for n in mpz_tdiv_qr");
+    throw Error("incorrect type for n in mpz_tdiv_qr");
   if(!(d instanceof GMP.Integer))
-    die("incorrect type for d in mpz_tdiv_qr");
+    throw Error("incorrect type for d in mpz_tdiv_qr");
   using gmp.__gmpz_tdiv_qr;
    __gmpz_tdiv_qr(q, r, n, d);
 }
 
 function mpz_tdiv_q_ui (var q, var n, int d) {
   if(!(q instanceof GMP.Integer))
-    die("incorrect type for q in mpz_tdiv_q_ui");
+    throw Error("incorrect type for q in mpz_tdiv_q_ui");
   if(!(n instanceof GMP.Integer))
-    die("incorrect type for n in mpz_tdiv_q_ui");
+    throw Error("incorrect type for n in mpz_tdiv_q_ui");
   using gmp.__gmpz_tdiv_q_ui;
   return __gmpz_tdiv_q_ui(q, n, d);
 }
 
 function mpz_tdiv_r_ui (var r, var n, int d) {
   if(!(r instanceof GMP.Integer))
-    die("incorrect type for r in mpz_tdiv_r_ui");
+    throw Error("incorrect type for r in mpz_tdiv_r_ui");
   if(!(n instanceof GMP.Integer))
-    die("incorrect type for n in mpz_tdiv_r_ui");
+    throw Error("incorrect type for n in mpz_tdiv_r_ui");
   using gmp.__gmpz_tdiv_r_ui;
   return __gmpz_tdiv_r_ui(r, n, d);
 }
 
 function mpz_tdiv_qr_ui (var q, var r, var n, int d) {
   if(!(q instanceof GMP.Integer))
-    die("incorrect type for q in mpz_tdiv_qr_ui");
+    throw Error("incorrect type for q in mpz_tdiv_qr_ui");
   if(!(r instanceof GMP.Integer))
-    die("incorrect type for r in mpz_tdiv_qr_ui");
+    throw Error("incorrect type for r in mpz_tdiv_qr_ui");
   if(!(n instanceof GMP.Integer))
-    die("incorrect type for n in mpz_tdiv_qr_ui");
+    throw Error("incorrect type for n in mpz_tdiv_qr_ui");
   using gmp.__gmpz_tdiv_qr_ui;
   return __gmpz_tdiv_qr_ui(q, r, n, d);
 }
 
 function mpz_tdiv_ui (var n, int d) {
   if(!(n instanceof GMP.Integer))
-    die("incorrect type for n in mpz_tdiv_ui");
+    throw Error("incorrect type for n in mpz_tdiv_ui");
   using gmp.__gmpz_tdiv_ui;
   return __gmpz_tdiv_ui(n, d);
 }
 
 function mpz_tdiv_q_2exp (var q, var n, int b) {
   if(!(q instanceof GMP.Integer))
-    die("incorrect type for q in mpz_tdiv_q_2exp");
+    throw Error("incorrect type for q in mpz_tdiv_q_2exp");
   if(!(n instanceof GMP.Integer))
-    die("incorrect type for n in mpz_tdiv_q_2exp");
+    throw Error("incorrect type for n in mpz_tdiv_q_2exp");
   using gmp.__gmpz_tdiv_q_2exp;
    __gmpz_tdiv_q_2exp(q, n, b);
 }
 
 function mpz_tdiv_r_2exp (var r, var n, int b) {
   if(!(r instanceof GMP.Integer))
-    die("incorrect type for r in mpz_tdiv_r_2exp");
+    throw Error("incorrect type for r in mpz_tdiv_r_2exp");
   if(!(n instanceof GMP.Integer))
-    die("incorrect type for n in mpz_tdiv_r_2exp");
+    throw Error("incorrect type for n in mpz_tdiv_r_2exp");
   using gmp.__gmpz_tdiv_r_2exp;
    __gmpz_tdiv_r_2exp(r, n, b);
 }
@@ -873,20 +873,20 @@ Set r to n mod d. The sign of the divisor is ignored; the result is always non-n
 
 function mpz_mod (var r, var n, var d) {
   if(!(r instanceof GMP.Integer))
-    die("incorrect type for r in mpz_mod");
+    throw Error("incorrect type for r in mpz_mod");
   if(!(n instanceof GMP.Integer))
-    die("incorrect type for n in mpz_mod");
+    throw Error("incorrect type for n in mpz_mod");
   if(!(d instanceof GMP.Integer))
-    die("incorrect type for d in mpz_mod");
+    throw Error("incorrect type for d in mpz_mod");
   using gmp.__gmpz_mod;
    __gmpz_mod(r, n, d);
 }
 
 function mpz_mod_ui (var r, var n, int d) {
   if(!(r instanceof GMP.Integer))
-    die("incorrect type for r in mpz_mod_ui");
+    throw Error("incorrect type for r in mpz_mod_ui");
   if(!(n instanceof GMP.Integer))
-    die("incorrect type for n in mpz_mod_ui");
+    throw Error("incorrect type for n in mpz_mod_ui");
   using gmp.__gmpz_mod_ui;
   return __gmpz_mod_ui(r, n, d);
 }
@@ -903,20 +903,20 @@ Set q to n/d. These functions produce correct results only when it is known in a
 
 function mpz_divexact (var q, var n, var d) {
   if(!(q instanceof GMP.Integer))
-    die("incorrect type for q in mpz_divexact");
+    throw Error("incorrect type for q in mpz_divexact");
   if(!(n instanceof GMP.Integer))
-    die("incorrect type for n in mpz_divexact");
+    throw Error("incorrect type for n in mpz_divexact");
   if(!(d instanceof GMP.Integer))
-    die("incorrect type for d in mpz_divexact");
+    throw Error("incorrect type for d in mpz_divexact");
   using gmp.__gmpz_divexact;
    __gmpz_divexact(q, n, d);
 }
 
 function mpz_divexact_ui (var q, var n, int d) {
   if(!(q instanceof GMP.Integer))
-    die("incorrect type for q in mpz_divexact_ui");
+    throw Error("incorrect type for q in mpz_divexact_ui");
   if(!(n instanceof GMP.Integer))
-    die("incorrect type for n in mpz_divexact_ui");
+    throw Error("incorrect type for n in mpz_divexact_ui");
   using gmp.__gmpz_divexact_ui;
    __gmpz_divexact_ui(q, n, d);
 }
@@ -935,23 +935,23 @@ Return non-zero if n is exactly divisible by d, or in the case of mpz_divisible_
 
 function mpz_divisible_p (var n, var d) {
   if(!(n instanceof GMP.Integer))
-    die("incorrect type for n in mpz_divisible_p");
+    throw Error("incorrect type for n in mpz_divisible_p");
   if(!(d instanceof GMP.Integer))
-    die("incorrect type for d in mpz_divisible_p");
+    throw Error("incorrect type for d in mpz_divisible_p");
   using gmp.__gmpz_divisible_p;
   return __gmpz_divisible_p(n, d);
 }
 
 function mpz_divisible_ui_p (var n, int d) {
   if(!(n instanceof GMP.Integer))
-    die("incorrect type for n in mpz_divisible_ui_p");
+    throw Error("incorrect type for n in mpz_divisible_ui_p");
   using gmp.__gmpz_divisible_ui_p;
   return __gmpz_divisible_ui_p(n, d);
 }
 
 function mpz_divisible_2exp_p (var n, int b) {
   if(!(n instanceof GMP.Integer))
-    die("incorrect type for n in mpz_divisible_2exp_p");
+    throw Error("incorrect type for n in mpz_divisible_2exp_p");
   using gmp.__gmpz_divisible_2exp_p;
   return __gmpz_divisible_2exp_p(n, b);
 }
@@ -970,27 +970,27 @@ Return non-zero if n is congruent to c modulo d, or in the case of mpz_congruent
 
 function mpz_congruent_p (var n, var c, var d) {
   if(!(n instanceof GMP.Integer))
-    die("incorrect type for n in mpz_congruent_p");
+    throw Error("incorrect type for n in mpz_congruent_p");
   if(!(c instanceof GMP.Integer))
-    die("incorrect type for c in mpz_congruent_p");
+    throw Error("incorrect type for c in mpz_congruent_p");
   if(!(d instanceof GMP.Integer))
-    die("incorrect type for d in mpz_congruent_p");
+    throw Error("incorrect type for d in mpz_congruent_p");
   using gmp.__gmpz_congruent_p;
   return __gmpz_congruent_p(n, c, d);
 }
 
 function mpz_congruent_ui_p (var n, int c, int d) {
   if(!(n instanceof GMP.Integer))
-    die("incorrect type for n in mpz_congruent_ui_p");
+    throw Error("incorrect type for n in mpz_congruent_ui_p");
   using gmp.__gmpz_congruent_ui_p;
   return __gmpz_congruent_ui_p(n, c, d);
 }
 
 function mpz_congruent_2exp_p (var n, var c, int b) {
   if(!(n instanceof GMP.Integer))
-    die("incorrect type for n in mpz_congruent_2exp_p");
+    throw Error("incorrect type for n in mpz_congruent_2exp_p");
   if(!(c instanceof GMP.Integer))
-    die("incorrect type for c in mpz_congruent_2exp_p");
+    throw Error("incorrect type for c in mpz_congruent_2exp_p");
   using gmp.__gmpz_congruent_2exp_p;
   return __gmpz_congruent_2exp_p(n, c, b);
 }
@@ -1007,24 +1007,24 @@ Set rop to (base raised to exp) modulo mod. Negative exp is supported if an inve
 
 function mpz_powm (var rop, var base, var exp, var mod) {
   if(!(rop instanceof GMP.Integer))
-    die("incorrect type for rop in mpz_powm");
+    throw Error("incorrect type for rop in mpz_powm");
   if(!(base instanceof GMP.Integer))
-    die("incorrect type for base in mpz_powm");
+    throw Error("incorrect type for base in mpz_powm");
   if(!(exp instanceof GMP.Integer))
-    die("incorrect type for exp in mpz_powm");
+    throw Error("incorrect type for exp in mpz_powm");
   if(!(mod instanceof GMP.Integer))
-    die("incorrect type for mod in mpz_powm");
+    throw Error("incorrect type for mod in mpz_powm");
   using gmp.__gmpz_powm;
    __gmpz_powm(rop, base, exp, mod);
 }
 
 function mpz_powm_ui (var rop, var base, int exp, var mod) {
   if(!(rop instanceof GMP.Integer))
-    die("incorrect type for rop in mpz_powm_ui");
+    throw Error("incorrect type for rop in mpz_powm_ui");
   if(!(base instanceof GMP.Integer))
-    die("incorrect type for base in mpz_powm_ui");
+    throw Error("incorrect type for base in mpz_powm_ui");
   if(!(mod instanceof GMP.Integer))
-    die("incorrect type for mod in mpz_powm_ui");
+    throw Error("incorrect type for mod in mpz_powm_ui");
   using gmp.__gmpz_powm_ui;
    __gmpz_powm_ui(rop, base, exp, mod);
 }
@@ -1039,13 +1039,13 @@ Set rop to (base raised to exp) modulo mod. It is required that exp > 0 and that
 
 function mpz_powm_sec (var rop, var base, var exp, var mod) {
   if(!(rop instanceof GMP.Integer))
-    die("incorrect type for rop in mpz_powm_sec");
+    throw Error("incorrect type for rop in mpz_powm_sec");
   if(!(base instanceof GMP.Integer))
-    die("incorrect type for base in mpz_powm_sec");
+    throw Error("incorrect type for base in mpz_powm_sec");
   if(!(exp instanceof GMP.Integer))
-    die("incorrect type for exp in mpz_powm_sec");
+    throw Error("incorrect type for exp in mpz_powm_sec");
   if(!(mod instanceof GMP.Integer))
-    die("incorrect type for mod in mpz_powm_sec");
+    throw Error("incorrect type for mod in mpz_powm_sec");
   using gmp.__gmpz_powm_sec;
    __gmpz_powm_sec(rop, base, exp, mod);
 }
@@ -1062,16 +1062,16 @@ Set rop to base raised to exp. The case 0^0 yields 1.
 
 function mpz_pow_ui (var rop, var base, int exp) {
   if(!(rop instanceof GMP.Integer))
-    die("incorrect type for rop in mpz_pow_ui");
+    throw Error("incorrect type for rop in mpz_pow_ui");
   if(!(base instanceof GMP.Integer))
-    die("incorrect type for base in mpz_pow_ui");
+    throw Error("incorrect type for base in mpz_pow_ui");
   using gmp.__gmpz_pow_ui;
    __gmpz_pow_ui(rop, base, exp);
 }
 
 function mpz_ui_pow_ui (var rop, int base, int exp) {
   if(!(rop instanceof GMP.Integer))
-    die("incorrect type for rop in mpz_ui_pow_ui");
+    throw Error("incorrect type for rop in mpz_ui_pow_ui");
   using gmp.__gmpz_ui_pow_ui;
    __gmpz_ui_pow_ui(rop, base, exp);
 }
@@ -1086,9 +1086,9 @@ Set rop to the truncated integer part of the nth root of op. Return non-zero if 
 
 function mpz_root (var rop, var op, int n) {
   if(!(rop instanceof GMP.Integer))
-    die("incorrect type for rop in mpz_root");
+    throw Error("incorrect type for rop in mpz_root");
   if(!(op instanceof GMP.Integer))
-    die("incorrect type for op in mpz_root");
+    throw Error("incorrect type for op in mpz_root");
   using gmp.__gmpz_root;
   return __gmpz_root(rop, op, n);
 }
@@ -1103,11 +1103,11 @@ Set root to the truncated integer part of the nth root of u. Set rem to the rema
 
 function mpz_rootrem (var root, var rem, var u, int n) {
   if(!(root instanceof GMP.Integer))
-    die("incorrect type for root in mpz_rootrem");
+    throw Error("incorrect type for root in mpz_rootrem");
   if(!(rem instanceof GMP.Integer))
-    die("incorrect type for rem in mpz_rootrem");
+    throw Error("incorrect type for rem in mpz_rootrem");
   if(!(u instanceof GMP.Integer))
-    die("incorrect type for u in mpz_rootrem");
+    throw Error("incorrect type for u in mpz_rootrem");
   using gmp.__gmpz_rootrem;
    __gmpz_rootrem(root, rem, u, n);
 }
@@ -1122,9 +1122,9 @@ Set rop to the truncated integer part of the square root of op.
 
 function mpz_sqrt (var rop, var op) {
   if(!(rop instanceof GMP.Integer))
-    die("incorrect type for rop in mpz_sqrt");
+    throw Error("incorrect type for rop in mpz_sqrt");
   if(!(op instanceof GMP.Integer))
-    die("incorrect type for op in mpz_sqrt");
+    throw Error("incorrect type for op in mpz_sqrt");
   using gmp.__gmpz_sqrt;
    __gmpz_sqrt(rop, op);
 }
@@ -1139,11 +1139,11 @@ Set rop1 to the truncated integer part of the square root of op, like mpz_sqrt. 
 
 function mpz_sqrtrem (var rop1, var rop2, var op) {
   if(!(rop1 instanceof GMP.Integer))
-    die("incorrect type for rop1 in mpz_sqrtrem");
+    throw Error("incorrect type for rop1 in mpz_sqrtrem");
   if(!(rop2 instanceof GMP.Integer))
-    die("incorrect type for rop2 in mpz_sqrtrem");
+    throw Error("incorrect type for rop2 in mpz_sqrtrem");
   if(!(op instanceof GMP.Integer))
-    die("incorrect type for op in mpz_sqrtrem");
+    throw Error("incorrect type for op in mpz_sqrtrem");
   using gmp.__gmpz_sqrtrem;
    __gmpz_sqrtrem(rop1, rop2, op);
 }
@@ -1158,7 +1158,7 @@ Return non-zero if op is a perfect power, i.e., if there exist integers a and b,
 
 function mpz_perfect_power_p (var op) {
   if(!(op instanceof GMP.Integer))
-    die("incorrect type for op in mpz_perfect_power_p");
+    throw Error("incorrect type for op in mpz_perfect_power_p");
   using gmp.__gmpz_perfect_power_p;
   return __gmpz_perfect_power_p(op);
 }
@@ -1173,7 +1173,7 @@ Return non-zero if op is a perfect square, i.e., if the square root of op is an 
 
 function mpz_perfect_square_p (var op) {
   if(!(op instanceof GMP.Integer))
-    die("incorrect type for op in mpz_perfect_square_p");
+    throw Error("incorrect type for op in mpz_perfect_square_p");
   using gmp.__gmpz_perfect_square_p;
   return __gmpz_perfect_square_p(op);
 }
@@ -1188,7 +1188,7 @@ Determine whether n is prime. Return 2 if n is definitely prime, return 1 if n i
 
 function mpz_probab_prime_p (var n, int reps) {
   if(!(n instanceof GMP.Integer))
-    die("incorrect type for n in mpz_probab_prime_p");
+    throw Error("incorrect type for n in mpz_probab_prime_p");
   using gmp.__gmpz_probab_prime_p;
   return __gmpz_probab_prime_p(n, reps);
 }
@@ -1203,9 +1203,9 @@ Set rop to the next prime greater than op. This function uses a probabilistic al
 
 function mpz_nextprime (var rop, var op) {
   if(!(rop instanceof GMP.Integer))
-    die("incorrect type for rop in mpz_nextprime");
+    throw Error("incorrect type for rop in mpz_nextprime");
   if(!(op instanceof GMP.Integer))
-    die("incorrect type for op in mpz_nextprime");
+    throw Error("incorrect type for op in mpz_nextprime");
   using gmp.__gmpz_nextprime;
    __gmpz_nextprime(rop, op);
 }
@@ -1220,11 +1220,11 @@ Set rop to the greatest common divisor of op1 and op2. The result is always posi
 
 function mpz_gcd (var rop, var op1, var op2) {
   if(!(rop instanceof GMP.Integer))
-    die("incorrect type for rop in mpz_gcd");
+    throw Error("incorrect type for rop in mpz_gcd");
   if(!(op1 instanceof GMP.Integer))
-    die("incorrect type for op1 in mpz_gcd");
+    throw Error("incorrect type for op1 in mpz_gcd");
   if(!(op2 instanceof GMP.Integer))
-    die("incorrect type for op2 in mpz_gcd");
+    throw Error("incorrect type for op2 in mpz_gcd");
   using gmp.__gmpz_gcd;
    __gmpz_gcd(rop, op1, op2);
 }
@@ -1239,9 +1239,9 @@ Compute the greatest common divisor of op1 and op2. If rop is not NULL, store th
 
 function mpz_gcd_ui (var rop, var op1, int op2) {
   if(!(rop instanceof GMP.Integer))
-    die("incorrect type for rop in mpz_gcd_ui");
+    throw Error("incorrect type for rop in mpz_gcd_ui");
   if(!(op1 instanceof GMP.Integer))
-    die("incorrect type for op1 in mpz_gcd_ui");
+    throw Error("incorrect type for op1 in mpz_gcd_ui");
   using gmp.__gmpz_gcd_ui;
   return __gmpz_gcd_ui(rop, op1, op2);
 }
@@ -1256,15 +1256,15 @@ Set g to the greatest common divisor of a and b, and in addition set s and t to 
 
 function mpz_gcdext (var g, var s, var t, var a, var b) {
   if(!(g instanceof GMP.Integer))
-    die("incorrect type for g in mpz_gcdext");
+    throw Error("incorrect type for g in mpz_gcdext");
   if(!(s instanceof GMP.Integer))
-    die("incorrect type for s in mpz_gcdext");
+    throw Error("incorrect type for s in mpz_gcdext");
   if(!(t instanceof GMP.Integer))
-    die("incorrect type for t in mpz_gcdext");
+    throw Error("incorrect type for t in mpz_gcdext");
   if(!(a instanceof GMP.Integer))
-    die("incorrect type for a in mpz_gcdext");
+    throw Error("incorrect type for a in mpz_gcdext");
   if(!(b instanceof GMP.Integer))
-    die("incorrect type for b in mpz_gcdext");
+    throw Error("incorrect type for b in mpz_gcdext");
   using gmp.__gmpz_gcdext;
    __gmpz_gcdext(g, s, t, a, b);
 }
@@ -1281,20 +1281,20 @@ Set rop to the least common multiple of op1 and op2. rop is always positive, irr
 
 function mpz_lcm (var rop, var op1, var op2) {
   if(!(rop instanceof GMP.Integer))
-    die("incorrect type for rop in mpz_lcm");
+    throw Error("incorrect type for rop in mpz_lcm");
   if(!(op1 instanceof GMP.Integer))
-    die("incorrect type for op1 in mpz_lcm");
+    throw Error("incorrect type for op1 in mpz_lcm");
   if(!(op2 instanceof GMP.Integer))
-    die("incorrect type for op2 in mpz_lcm");
+    throw Error("incorrect type for op2 in mpz_lcm");
   using gmp.__gmpz_lcm;
    __gmpz_lcm(rop, op1, op2);
 }
 
 function mpz_lcm_ui (var rop, var op1, int op2) {
   if(!(rop instanceof GMP.Integer))
-    die("incorrect type for rop in mpz_lcm_ui");
+    throw Error("incorrect type for rop in mpz_lcm_ui");
   if(!(op1 instanceof GMP.Integer))
-    die("incorrect type for op1 in mpz_lcm_ui");
+    throw Error("incorrect type for op1 in mpz_lcm_ui");
   using gmp.__gmpz_lcm_ui;
    __gmpz_lcm_ui(rop, op1, op2);
 }
@@ -1309,11 +1309,11 @@ Compute the inverse of op1 modulo op2 and put the result in rop. If the inverse 
 
 function mpz_invert (var rop, var op1, var op2) {
   if(!(rop instanceof GMP.Integer))
-    die("incorrect type for rop in mpz_invert");
+    throw Error("incorrect type for rop in mpz_invert");
   if(!(op1 instanceof GMP.Integer))
-    die("incorrect type for op1 in mpz_invert");
+    throw Error("incorrect type for op1 in mpz_invert");
   if(!(op2 instanceof GMP.Integer))
-    die("incorrect type for op2 in mpz_invert");
+    throw Error("incorrect type for op2 in mpz_invert");
   using gmp.__gmpz_invert;
   return __gmpz_invert(rop, op1, op2);
 }
@@ -1328,9 +1328,9 @@ Calculate the Jacobi symbol (a/b). This is defined only for b odd.
 
 function mpz_jacobi (var a, var b) {
   if(!(a instanceof GMP.Integer))
-    die("incorrect type for a in mpz_jacobi");
+    throw Error("incorrect type for a in mpz_jacobi");
   if(!(b instanceof GMP.Integer))
-    die("incorrect type for b in mpz_jacobi");
+    throw Error("incorrect type for b in mpz_jacobi");
   using gmp.__gmpz_jacobi;
   return __gmpz_jacobi(a, b);
 }
@@ -1345,9 +1345,9 @@ Calculate the Legendre symbol (a/p). This is defined only for p an odd positive 
 
 function mpz_legendre (var a, var p) {
   if(!(a instanceof GMP.Integer))
-    die("incorrect type for a in mpz_legendre");
+    throw Error("incorrect type for a in mpz_legendre");
   if(!(p instanceof GMP.Integer))
-    die("incorrect type for p in mpz_legendre");
+    throw Error("incorrect type for p in mpz_legendre");
   using gmp.__gmpz_legendre;
   return __gmpz_legendre(a, p);
 }
@@ -1370,37 +1370,37 @@ Calculate the Jacobi symbol (a/b) with the Kronecker extension (a/2)=(2/a) when 
 
 function mpz_kronecker (var a, var b) {
   if(!(a instanceof GMP.Integer))
-    die("incorrect type for a in mpz_kronecker");
+    throw Error("incorrect type for a in mpz_kronecker");
   if(!(b instanceof GMP.Integer))
-    die("incorrect type for b in mpz_kronecker");
+    throw Error("incorrect type for b in mpz_kronecker");
   using gmp.__gmpz_kronecker;
   return __gmpz_kronecker(a, b);
 }
 
 function mpz_kronecker_si (var a, int b) {
   if(!(a instanceof GMP.Integer))
-    die("incorrect type for a in mpz_kronecker_si");
+    throw Error("incorrect type for a in mpz_kronecker_si");
   using gmp.__gmpz_kronecker_si;
   return __gmpz_kronecker_si(a, b);
 }
 
 function mpz_kronecker_ui (var a, int b) {
   if(!(a instanceof GMP.Integer))
-    die("incorrect type for a in mpz_kronecker_ui");
+    throw Error("incorrect type for a in mpz_kronecker_ui");
   using gmp.__gmpz_kronecker_ui;
   return __gmpz_kronecker_ui(a, b);
 }
 
 function mpz_si_kronecker (int a, var b) {
   if(!(b instanceof GMP.Integer))
-    die("incorrect type for b in mpz_si_kronecker");
+    throw Error("incorrect type for b in mpz_si_kronecker");
   using gmp.__gmpz_si_kronecker;
   return __gmpz_si_kronecker(a, b);
 }
 
 function mpz_ui_kronecker (int a, var b) {
   if(!(b instanceof GMP.Integer))
-    die("incorrect type for b in mpz_ui_kronecker");
+    throw Error("incorrect type for b in mpz_ui_kronecker");
   using gmp.__gmpz_ui_kronecker;
   return __gmpz_ui_kronecker(a, b);
 }
@@ -1415,11 +1415,11 @@ Remove all occurrences of the factor f from op and store the result in rop. The 
 
 function mpz_remove (var rop, var op, var f) {
   if(!(rop instanceof GMP.Integer))
-    die("incorrect type for rop in mpz_remove");
+    throw Error("incorrect type for rop in mpz_remove");
   if(!(op instanceof GMP.Integer))
-    die("incorrect type for op in mpz_remove");
+    throw Error("incorrect type for op in mpz_remove");
   if(!(f instanceof GMP.Integer))
-    die("incorrect type for f in mpz_remove");
+    throw Error("incorrect type for f in mpz_remove");
   using gmp.__gmpz_remove;
   return __gmpz_remove(rop, op, f);
 }
@@ -1434,7 +1434,7 @@ Set rop to op!, the factorial of op.
 
 function mpz_fac_ui (var rop, int op) {
   if(!(rop instanceof GMP.Integer))
-    die("incorrect type for rop in mpz_fac_ui");
+    throw Error("incorrect type for rop in mpz_fac_ui");
   using gmp.__gmpz_fac_ui;
    __gmpz_fac_ui(rop, op);
 }
@@ -1451,16 +1451,16 @@ Compute the binomial coefficient n over k and store the result in rop. Negative 
 
 function mpz_bin_ui (var rop, var n, int k) {
   if(!(rop instanceof GMP.Integer))
-    die("incorrect type for rop in mpz_bin_ui");
+    throw Error("incorrect type for rop in mpz_bin_ui");
   if(!(n instanceof GMP.Integer))
-    die("incorrect type for n in mpz_bin_ui");
+    throw Error("incorrect type for n in mpz_bin_ui");
   using gmp.__gmpz_bin_ui;
    __gmpz_bin_ui(rop, n, k);
 }
 
 function mpz_bin_uiui (var rop, int n, int k) {
   if(!(rop instanceof GMP.Integer))
-    die("incorrect type for rop in mpz_bin_uiui");
+    throw Error("incorrect type for rop in mpz_bin_uiui");
   using gmp.__gmpz_bin_uiui;
    __gmpz_bin_uiui(rop, n, k);
 }
@@ -1477,16 +1477,16 @@ mpz_fib_ui sets fn to to F[n], the n'th Fibonacci number. mpz_fib2_ui sets fn to
 
 function mpz_fib_ui (var fn, int n) {
   if(!(fn instanceof GMP.Integer))
-    die("incorrect type for fn in mpz_fib_ui");
+    throw Error("incorrect type for fn in mpz_fib_ui");
   using gmp.__gmpz_fib_ui;
    __gmpz_fib_ui(fn, n);
 }
 
 function mpz_fib2_ui (var fn, var fnsub1, int n) {
   if(!(fn instanceof GMP.Integer))
-    die("incorrect type for fn in mpz_fib2_ui");
+    throw Error("incorrect type for fn in mpz_fib2_ui");
   if(!(fnsub1 instanceof GMP.Integer))
-    die("incorrect type for fnsub1 in mpz_fib2_ui");
+    throw Error("incorrect type for fnsub1 in mpz_fib2_ui");
   using gmp.__gmpz_fib2_ui;
    __gmpz_fib2_ui(fn, fnsub1, n);
 }
@@ -1503,16 +1503,16 @@ mpz_lucnum_ui sets ln to to L[n], the n'th Lucas number. mpz_lucnum2_ui sets ln 
 
 function mpz_lucnum_ui (var ln, int n) {
   if(!(ln instanceof GMP.Integer))
-    die("incorrect type for ln in mpz_lucnum_ui");
+    throw Error("incorrect type for ln in mpz_lucnum_ui");
   using gmp.__gmpz_lucnum_ui;
    __gmpz_lucnum_ui(ln, n);
 }
 
 function mpz_lucnum2_ui (var ln, var lnsub1, int n) {
   if(!(ln instanceof GMP.Integer))
-    die("incorrect type for ln in mpz_lucnum2_ui");
+    throw Error("incorrect type for ln in mpz_lucnum2_ui");
   if(!(lnsub1 instanceof GMP.Integer))
-    die("incorrect type for lnsub1 in mpz_lucnum2_ui");
+    throw Error("incorrect type for lnsub1 in mpz_lucnum2_ui");
   using gmp.__gmpz_lucnum2_ui;
    __gmpz_lucnum2_ui(ln, lnsub1, n);
 }
@@ -1529,16 +1529,16 @@ Compare op1 and op2. Return a positive value if op1 > op2, zero if op1 = op2, or
 
 function mpz_cmp (var op1, var op2) {
   if(!(op1 instanceof GMP.Integer))
-    die("incorrect type for op1 in mpz_cmp");
+    throw Error("incorrect type for op1 in mpz_cmp");
   if(!(op2 instanceof GMP.Integer))
-    die("incorrect type for op2 in mpz_cmp");
+    throw Error("incorrect type for op2 in mpz_cmp");
   using gmp.__gmpz_cmp;
   return __gmpz_cmp(op1, op2);
 }
 
 function mpz_cmp_d (var op1, float op2) {
   if(!(op1 instanceof GMP.Integer))
-    die("incorrect type for op1 in mpz_cmp_d");
+    throw Error("incorrect type for op1 in mpz_cmp_d");
   using gmp.__gmpz_cmp_d;
   return __gmpz_cmp_d(op1, op2);
 }
@@ -1557,23 +1557,23 @@ Compare the absolute values of op1 and op2. Return a positive value if abs(op1) 
 
 function mpz_cmpabs (var op1, var op2) {
   if(!(op1 instanceof GMP.Integer))
-    die("incorrect type for op1 in mpz_cmpabs");
+    throw Error("incorrect type for op1 in mpz_cmpabs");
   if(!(op2 instanceof GMP.Integer))
-    die("incorrect type for op2 in mpz_cmpabs");
+    throw Error("incorrect type for op2 in mpz_cmpabs");
   using gmp.__gmpz_cmpabs;
   return __gmpz_cmpabs(op1, op2);
 }
 
 function mpz_cmpabs_d (var op1, float op2) {
   if(!(op1 instanceof GMP.Integer))
-    die("incorrect type for op1 in mpz_cmpabs_d");
+    throw Error("incorrect type for op1 in mpz_cmpabs_d");
   using gmp.__gmpz_cmpabs_d;
   return __gmpz_cmpabs_d(op1, op2);
 }
 
 function mpz_cmpabs_ui (var op1, int op2) {
   if(!(op1 instanceof GMP.Integer))
-    die("incorrect type for op1 in mpz_cmpabs_ui");
+    throw Error("incorrect type for op1 in mpz_cmpabs_ui");
   using gmp.__gmpz_cmpabs_ui;
   return __gmpz_cmpabs_ui(op1, op2);
 }
@@ -1588,11 +1588,11 @@ Set rop to op1 bitwise-and op2.
 
 function mpz_and (var rop, var op1, var op2) {
   if(!(rop instanceof GMP.Integer))
-    die("incorrect type for rop in mpz_and");
+    throw Error("incorrect type for rop in mpz_and");
   if(!(op1 instanceof GMP.Integer))
-    die("incorrect type for op1 in mpz_and");
+    throw Error("incorrect type for op1 in mpz_and");
   if(!(op2 instanceof GMP.Integer))
-    die("incorrect type for op2 in mpz_and");
+    throw Error("incorrect type for op2 in mpz_and");
   using gmp.__gmpz_and;
    __gmpz_and(rop, op1, op2);
 }
@@ -1607,11 +1607,11 @@ Set rop to op1 bitwise inclusive-or op2.
 
 function mpz_ior (var rop, var op1, var op2) {
   if(!(rop instanceof GMP.Integer))
-    die("incorrect type for rop in mpz_ior");
+    throw Error("incorrect type for rop in mpz_ior");
   if(!(op1 instanceof GMP.Integer))
-    die("incorrect type for op1 in mpz_ior");
+    throw Error("incorrect type for op1 in mpz_ior");
   if(!(op2 instanceof GMP.Integer))
-    die("incorrect type for op2 in mpz_ior");
+    throw Error("incorrect type for op2 in mpz_ior");
   using gmp.__gmpz_ior;
    __gmpz_ior(rop, op1, op2);
 }
@@ -1626,11 +1626,11 @@ Set rop to op1 bitwise exclusive-or op2.
 
 function mpz_xor (var rop, var op1, var op2) {
   if(!(rop instanceof GMP.Integer))
-    die("incorrect type for rop in mpz_xor");
+    throw Error("incorrect type for rop in mpz_xor");
   if(!(op1 instanceof GMP.Integer))
-    die("incorrect type for op1 in mpz_xor");
+    throw Error("incorrect type for op1 in mpz_xor");
   if(!(op2 instanceof GMP.Integer))
-    die("incorrect type for op2 in mpz_xor");
+    throw Error("incorrect type for op2 in mpz_xor");
   using gmp.__gmpz_xor;
    __gmpz_xor(rop, op1, op2);
 }
@@ -1645,9 +1645,9 @@ Set rop to the one's complement of op.
 
 function mpz_com (var rop, var op) {
   if(!(rop instanceof GMP.Integer))
-    die("incorrect type for rop in mpz_com");
+    throw Error("incorrect type for rop in mpz_com");
   if(!(op instanceof GMP.Integer))
-    die("incorrect type for op in mpz_com");
+    throw Error("incorrect type for op in mpz_com");
   using gmp.__gmpz_com;
    __gmpz_com(rop, op);
 }
@@ -1662,7 +1662,7 @@ If op>=0, return the population count of op, which is the number of 1 bits in th
 
 function mpz_popcount (var op) {
   if(!(op instanceof GMP.Integer))
-    die("incorrect type for op in mpz_popcount");
+    throw Error("incorrect type for op in mpz_popcount");
   using gmp.__gmpz_popcount;
   return __gmpz_popcount(op);
 }
@@ -1677,9 +1677,9 @@ If op1 and op2 are both >=0 or both <0, return the hamming distance between the 
 
 function mpz_hamdist (var op1, var op2) {
   if(!(op1 instanceof GMP.Integer))
-    die("incorrect type for op1 in mpz_hamdist");
+    throw Error("incorrect type for op1 in mpz_hamdist");
   if(!(op2 instanceof GMP.Integer))
-    die("incorrect type for op2 in mpz_hamdist");
+    throw Error("incorrect type for op2 in mpz_hamdist");
   using gmp.__gmpz_hamdist;
   return __gmpz_hamdist(op1, op2);
 }
@@ -1696,14 +1696,14 @@ Scan op, starting from bit starting_bit, towards more significant bits, until th
 
 function mpz_scan0 (var op, int starting_bit) {
   if(!(op instanceof GMP.Integer))
-    die("incorrect type for op in mpz_scan0");
+    throw Error("incorrect type for op in mpz_scan0");
   using gmp.__gmpz_scan0;
   return __gmpz_scan0(op, starting_bit);
 }
 
 function mpz_scan1 (var op, int starting_bit) {
   if(!(op instanceof GMP.Integer))
-    die("incorrect type for op in mpz_scan1");
+    throw Error("incorrect type for op in mpz_scan1");
   using gmp.__gmpz_scan1;
   return __gmpz_scan1(op, starting_bit);
 }
@@ -1718,7 +1718,7 @@ Set bit bit_index in rop.
 
 function mpz_setbit (var rop, int bit_index) {
   if(!(rop instanceof GMP.Integer))
-    die("incorrect type for rop in mpz_setbit");
+    throw Error("incorrect type for rop in mpz_setbit");
   using gmp.__gmpz_setbit;
    __gmpz_setbit(rop, bit_index);
 }
@@ -1733,7 +1733,7 @@ Clear bit bit_index in rop.
 
 function mpz_clrbit (var rop, int bit_index) {
   if(!(rop instanceof GMP.Integer))
-    die("incorrect type for rop in mpz_clrbit");
+    throw Error("incorrect type for rop in mpz_clrbit");
   using gmp.__gmpz_clrbit;
    __gmpz_clrbit(rop, bit_index);
 }
@@ -1748,7 +1748,7 @@ Complement bit bit_index in rop.
 
 function mpz_combit (var rop, int bit_index) {
   if(!(rop instanceof GMP.Integer))
-    die("incorrect type for rop in mpz_combit");
+    throw Error("incorrect type for rop in mpz_combit");
   using gmp.__gmpz_combit;
    __gmpz_combit(rop, bit_index);
 }
@@ -1763,7 +1763,7 @@ Test bit bit_index in op and return 0 or 1 accordingly.
 
 function mpz_tstbit (var op, int bit_index) {
   if(!(op instanceof GMP.Integer))
-    die("incorrect type for op in mpz_tstbit");
+    throw Error("incorrect type for op in mpz_tstbit");
   using gmp.__gmpz_tstbit;
   return __gmpz_tstbit(op, bit_index);
 }
@@ -1778,7 +1778,7 @@ Generate a uniformly distributed random integer in the range 0 to 2^n-1, inclusi
 
 function mpz_urandomb (var rop, var state, int n) {
   if(!(rop instanceof GMP.Integer))
-    die("incorrect type for rop in mpz_urandomb");
+    throw Error("incorrect type for rop in mpz_urandomb");
   using gmp.__gmpz_urandomb;
    __gmpz_urandomb(rop, state, n);
 }
@@ -1793,9 +1793,9 @@ Generate a uniform random integer in the range 0 to n-1, inclusive. The variable
 
 function mpz_urandomm (var rop, var state, var n) {
   if(!(rop instanceof GMP.Integer))
-    die("incorrect type for rop in mpz_urandomm");
+    throw Error("incorrect type for rop in mpz_urandomm");
   if(!(n instanceof GMP.Integer))
-    die("incorrect type for n in mpz_urandomm");
+    throw Error("incorrect type for n in mpz_urandomm");
   using gmp.__gmpz_urandomm;
    __gmpz_urandomm(rop, state, n);
 }
@@ -1810,7 +1810,7 @@ Generate a random integer with long strings of zeros and ones in the binary repr
 
 function mpz_rrandomb (var rop, var state, int n) {
   if(!(rop instanceof GMP.Integer))
-    die("incorrect type for rop in mpz_rrandomb");
+    throw Error("incorrect type for rop in mpz_rrandomb");
   using gmp.__gmpz_rrandomb;
    __gmpz_rrandomb(rop, state, n);
 }
@@ -1825,7 +1825,7 @@ Generate a random integer of at most max_size limbs. The generated random number
 
 function mpz_random (var rop, int max_size) {
   if(!(rop instanceof GMP.Integer))
-    die("incorrect type for rop in mpz_random");
+    throw Error("incorrect type for rop in mpz_random");
   using gmp.__gmpz_random;
    __gmpz_random(rop, max_size);
 }
@@ -1840,7 +1840,7 @@ Generate a random integer of at most max_size limbs, with long strings of zeros 
 
 function mpz_random2 (var rop, int max_size) {
   if(!(rop instanceof GMP.Integer))
-    die("incorrect type for rop in mpz_random2");
+    throw Error("incorrect type for rop in mpz_random2");
   using gmp.__gmpz_random2;
    __gmpz_random2(rop, max_size);
 }
@@ -1865,42 +1865,42 @@ Return non-zero iff the value of op fits in an unsigned long int, signed long in
 
 function mpz_fits_ulong_p (var op) {
   if(!(op instanceof GMP.Integer))
-    die("incorrect type for op in mpz_fits_ulong_p");
+    throw Error("incorrect type for op in mpz_fits_ulong_p");
   using gmp.__gmpz_fits_ulong_p;
   return __gmpz_fits_ulong_p(op);
 }
 
 function mpz_fits_slong_p (var op) {
   if(!(op instanceof GMP.Integer))
-    die("incorrect type for op in mpz_fits_slong_p");
+    throw Error("incorrect type for op in mpz_fits_slong_p");
   using gmp.__gmpz_fits_slong_p;
   return __gmpz_fits_slong_p(op);
 }
 
 function mpz_fits_uint_p (var op) {
   if(!(op instanceof GMP.Integer))
-    die("incorrect type for op in mpz_fits_uint_p");
+    throw Error("incorrect type for op in mpz_fits_uint_p");
   using gmp.__gmpz_fits_uint_p;
   return __gmpz_fits_uint_p(op);
 }
 
 function mpz_fits_sint_p (var op) {
   if(!(op instanceof GMP.Integer))
-    die("incorrect type for op in mpz_fits_sint_p");
+    throw Error("incorrect type for op in mpz_fits_sint_p");
   using gmp.__gmpz_fits_sint_p;
   return __gmpz_fits_sint_p(op);
 }
 
 function mpz_fits_ushort_p (var op) {
   if(!(op instanceof GMP.Integer))
-    die("incorrect type for op in mpz_fits_ushort_p");
+    throw Error("incorrect type for op in mpz_fits_ushort_p");
   using gmp.__gmpz_fits_ushort_p;
   return __gmpz_fits_ushort_p(op);
 }
 
 function mpz_fits_sshort_p (var op) {
   if(!(op instanceof GMP.Integer))
-    die("incorrect type for op in mpz_fits_sshort_p");
+    throw Error("incorrect type for op in mpz_fits_sshort_p");
   using gmp.__gmpz_fits_sshort_p;
   return __gmpz_fits_sshort_p(op);
 }
@@ -1915,7 +1915,7 @@ Return the size of op measured in number of digits in the given base. base can v
 
 function mpz_sizeinbase (var op, int base) {
   if(!(op instanceof GMP.Integer))
-    die("incorrect type for op in mpz_sizeinbase");
+    throw Error("incorrect type for op in mpz_sizeinbase");
   using gmp.__gmpz_sizeinbase;
   return __gmpz_sizeinbase(op, base);
 }
@@ -1932,7 +1932,7 @@ This is a special type of initialization. Fixed space of fixed_num_bits is alloc
 
 function mpz_array_init (var integer_array, int array_size, int fixed_num_bits) {
   if(!(integer_array instanceof GMP.Integer))
-    die("incorrect type for integer_array in mpz_array_init");
+    throw Error("incorrect type for integer_array in mpz_array_init");
   using gmp.__gmpz_array_init;
    __gmpz_array_init(integer_array, array_size, fixed_num_bits);
 }
@@ -1947,7 +1947,7 @@ Return limb number n from op. The sign of op is ignored, just the absolute value
 
 function mpz_getlimbn (var op, int n) {
   if(!(op instanceof GMP.Integer))
-    die("incorrect type for op in mpz_getlimbn");
+    throw Error("incorrect type for op in mpz_getlimbn");
   using gmp.__gmpz_getlimbn;
   return __gmpz_getlimbn(op, n);
 }
@@ -1962,7 +1962,7 @@ Return the size of op measured in number of limbs. If op is zero, the returned v
 
 function mpz_size (var op) {
   if(!(op instanceof GMP.Integer))
-    die("incorrect type for op in mpz_size");
+    throw Error("incorrect type for op in mpz_size");
   using gmp.__gmpz_size;
   return __gmpz_size(op);
 }

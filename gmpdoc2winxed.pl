@@ -121,7 +121,7 @@ sub print_winxed {
         if($_->{'type'} eq 'mpz_t') {
           print <<EOF;
   if(!($_->{'name'} instanceof GMP.Integer))
-    die("incorrect type for $_->{'name'} in $function_name");
+    throw Error("incorrect type for $_->{'name'} in $function_name");
 EOF
         }
       }
