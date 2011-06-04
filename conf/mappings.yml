@@ -2,12 +2,12 @@
 void: v
 # 'i' types
 int: i
-unsigned long int: i
-signed long int: i
-long int: i
 # 'l' types
 unsigned long: l
 long: l
+unsigned long int: l
+signed long int: l
+long int: l
 # 'd' types
 double: d
 # 'p' types
