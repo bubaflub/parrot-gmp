@@ -33,7 +33,9 @@ namespace GMP {
 
 /*
 =head1 void mpz_init (mpz_t x)
+
 Initialize x, and set its value to 0. 
+
 =cut
 */
 
@@ -41,25 +43,14 @@ function mpz_init (var x) {
   if(!(x instanceof GMP.Integer))
     die("incorrect type for x in mpz_init");
   using gmp.__gmpz_init;
-  __gmpz_init(x);
-}
-
-/*
-=head1 void mpz_inits (mpz_t x)
-Initialize a NULL-terminated list of mpz_t variables, and set their values to 0. 
-=cut
-*/
-
-function mpz_inits (var x) {
-  if(!(x instanceof GMP.Integer))
-    die("incorrect type for x in mpz_inits");
-  using gmp.__gmpz_inits;
-  __gmpz_inits(x);
+   __gmpz_init(x);
 }
 
 /*
 =head1 void mpz_init2 (mpz_t x, mp_bitcnt_t n)
+
 Initialize x, with space for n-bit numbers, and set its value to 0. Calling this function instead of mpz_init or mpz_inits is never necessary; reallocation is handled automatically by GMP when needed. n is only the initial space, x will grow automatically in the normal way, if necessary, for subsequent values stored. mpz_init2 makes it possible to avoid such reallocations if a maximum size is known in advance. 
+
 =cut
 */
 
@@ -67,12 +58,14 @@ function mpz_init2 (var x, int n) {
   if(!(x instanceof GMP.Integer))
     die("incorrect type for x in mpz_init2");
   using gmp.__gmpz_init2;
-  __gmpz_init2(x, n);
+   __gmpz_init2(x, n);
 }
 
 /*
 =head1 void mpz_clear (mpz_t x)
+
 Free the space occupied by x. Call this function for all mpz_t variables when you are done with them. 
+
 =cut
 */
 
@@ -80,25 +73,14 @@ function mpz_clear (var x) {
   if(!(x instanceof GMP.Integer))
     die("incorrect type for x in mpz_clear");
   using gmp.__gmpz_clear;
-  __gmpz_clear(x);
-}
-
-/*
-=head1 void mpz_clears (mpz_t x)
-Free the space occupied by a NULL-terminated list of mpz_t variables. 
-=cut
-*/
-
-function mpz_clears (var x) {
-  if(!(x instanceof GMP.Integer))
-    die("incorrect type for x in mpz_clears");
-  using gmp.__gmpz_clears;
-  __gmpz_clears(x);
+   __gmpz_clear(x);
 }
 
 /*
 =head1 void mpz_realloc2 (mpz_t x, mp_bitcnt_t n)
+
 Change the space allocated for x to n bits. The value in x is preserved if it fits, or is set to 0 if not. Calling this function is never necessary; reallocation is handled automatically by GMP when needed. But this function can be used to increase the space for a variable in order to avoid repeated automatic reallocations, or to decrease it to give memory back to the heap. 
+
 =cut
 */
 
@@ -106,17 +88,20 @@ function mpz_realloc2 (var x, int n) {
   if(!(x instanceof GMP.Integer))
     die("incorrect type for x in mpz_realloc2");
   using gmp.__gmpz_realloc2;
-  __gmpz_realloc2(x, n);
+   __gmpz_realloc2(x, n);
 }
 
 /*
 =head1 void mpz_set (mpz_t rop, mpz_t op)
+
 =head1 void mpz_set_ui (mpz_t rop, unsigned long int op)
+
 =head1 void mpz_set_si (mpz_t rop, signed long int op)
+
 =head1 void mpz_set_d (mpz_t rop, double op)
-=head1 void mpz_set_q (mpz_t rop, mpq_t op)
-=head1 void mpz_set_f (mpz_t rop, mpf_t op)
+
 Set the value of rop from op. mpz_set_d, mpz_set_q and mpz_set_f truncate op to make it an integer. 
+
 =cut
 */
 
@@ -126,47 +111,35 @@ function mpz_set (var rop, var op) {
   if(!(op instanceof GMP.Integer))
     die("incorrect type for op in mpz_set");
   using gmp.__gmpz_set;
-  __gmpz_set(rop, op);
+   __gmpz_set(rop, op);
 }
 
 function mpz_set_ui (var rop, int op) {
   if(!(rop instanceof GMP.Integer))
     die("incorrect type for rop in mpz_set_ui");
   using gmp.__gmpz_set_ui;
-  __gmpz_set_ui(rop, op);
+   __gmpz_set_ui(rop, op);
 }
 
 function mpz_set_si (var rop, int op) {
   if(!(rop instanceof GMP.Integer))
     die("incorrect type for rop in mpz_set_si");
   using gmp.__gmpz_set_si;
-  __gmpz_set_si(rop, op);
+   __gmpz_set_si(rop, op);
 }
 
 function mpz_set_d (var rop, float op) {
   if(!(rop instanceof GMP.Integer))
     die("incorrect type for rop in mpz_set_d");
   using gmp.__gmpz_set_d;
-  __gmpz_set_d(rop, op);
-}
-
-function mpz_set_q (var rop, var op) {
-  if(!(rop instanceof GMP.Integer))
-    die("incorrect type for rop in mpz_set_q");
-  using gmp.__gmpz_set_q;
-  __gmpz_set_q(rop, op);
-}
-
-function mpz_set_f (var rop, var op) {
-  if(!(rop instanceof GMP.Integer))
-    die("incorrect type for rop in mpz_set_f");
-  using gmp.__gmpz_set_f;
-  __gmpz_set_f(rop, op);
+   __gmpz_set_d(rop, op);
 }
 
 /*
 =head1 int mpz_set_str (mpz_t rop, char * str, int base)
-Set the value of rop from str, a null-terminated C string in base base. White space is allowed in the string, and is simply ignored. The base may vary from 2 to 62, or if base is 0, then the leading characters are used: 0x and 0X for hexadecimal, 0b and 0B for binary, 0 for octal, or decimal otherwise. For bases up to 36, case is ignored; upper-case and lower-case letters have the same value. For bases 37 to 62, upper-case letter represent the usual 10..35 while lower-case letter represent 36..61. This function returns 0 if the entire string is a valid number in base base. Otherwise it returns −1. 
+
+Set the value of rop from str, a null-terminated C string in base base. White space is allowed in the string, and is simply ignored. The base may vary from 2 to 62, or if base is 0, then the leading characters are used: 0x and 0X for hexadecimal, 0b and 0B for binary, 0 for octal, or decimal otherwise. For bases up to 36, case is ignored; upper-case and lower-case letters have the same value. For bases 37 to 62, upper-case letter represent the usual 10..35 while lower-case letter represent 36..61. This function returns 0 if the entire string is a valid number in base base. Otherwise it returns -1. 
+
 =cut
 */
 
@@ -174,12 +147,14 @@ function mpz_set_str (var rop, var str, int base) {
   if(!(rop instanceof GMP.Integer))
     die("incorrect type for rop in mpz_set_str");
   using gmp.__gmpz_set_str;
-  __gmpz_set_str(rop, str, base);
+  return __gmpz_set_str(rop, str, base);
 }
 
 /*
 =head1 void mpz_swap (mpz_t rop1, mpz_t rop2)
+
 Swap the values rop1 and rop2 efficiently. 
+
 =cut
 */
 
@@ -189,15 +164,20 @@ function mpz_swap (var rop1, var rop2) {
   if(!(rop2 instanceof GMP.Integer))
     die("incorrect type for rop2 in mpz_swap");
   using gmp.__gmpz_swap;
-  __gmpz_swap(rop1, rop2);
+   __gmpz_swap(rop1, rop2);
 }
 
 /*
 =head1 void mpz_init_set (mpz_t rop, mpz_t op)
+
 =head1 void mpz_init_set_ui (mpz_t rop, unsigned long int op)
+
 =head1 void mpz_init_set_si (mpz_t rop, signed long int op)
+
 =head1 void mpz_init_set_d (mpz_t rop, double op)
+
 Initialize rop with limb space and set the initial numeric value from op. 
+
 =cut
 */
 
@@ -207,33 +187,35 @@ function mpz_init_set (var rop, var op) {
   if(!(op instanceof GMP.Integer))
     die("incorrect type for op in mpz_init_set");
   using gmp.__gmpz_init_set;
-  __gmpz_init_set(rop, op);
+   __gmpz_init_set(rop, op);
 }
 
 function mpz_init_set_ui (var rop, int op) {
   if(!(rop instanceof GMP.Integer))
     die("incorrect type for rop in mpz_init_set_ui");
   using gmp.__gmpz_init_set_ui;
-  __gmpz_init_set_ui(rop, op);
+   __gmpz_init_set_ui(rop, op);
 }
 
 function mpz_init_set_si (var rop, int op) {
   if(!(rop instanceof GMP.Integer))
     die("incorrect type for rop in mpz_init_set_si");
   using gmp.__gmpz_init_set_si;
-  __gmpz_init_set_si(rop, op);
+   __gmpz_init_set_si(rop, op);
 }
 
 function mpz_init_set_d (var rop, float op) {
   if(!(rop instanceof GMP.Integer))
     die("incorrect type for rop in mpz_init_set_d");
   using gmp.__gmpz_init_set_d;
-  __gmpz_init_set_d(rop, op);
+   __gmpz_init_set_d(rop, op);
 }
 
 /*
 =head1 int mpz_init_set_str (mpz_t rop, char * str, int base)
-Initialize rop and set its value like mpz_set_str (see its documentation above for details). If the string is a correct base base number, the function returns 0; if an error occurs it returns −1. rop is initialized even if an error occurs. (I.e., you have to call mpz_clear for it.) 
+
+Initialize rop and set its value like mpz_set_str (see its documentation above for details). If the string is a correct base base number, the function returns 0; if an error occurs it returns -1. rop is initialized even if an error occurs. (I.e., you have to call mpz_clear for it.) 
+
 =cut
 */
 
@@ -241,12 +223,14 @@ function mpz_init_set_str (var rop, var str, int base) {
   if(!(rop instanceof GMP.Integer))
     die("incorrect type for rop in mpz_init_set_str");
   using gmp.__gmpz_init_set_str;
-  __gmpz_init_set_str(rop, str, base);
+  return __gmpz_init_set_str(rop, str, base);
 }
 
 /*
 =head1 unsigned long int mpz_get_ui (mpz_t op)
+
 Return the value of op as an unsigned long. If op is too big to fit an unsigned long then just the least significant bits that do fit are returned. The sign of op is ignored, only the absolute value is used. 
+
 =cut
 */
 
@@ -254,12 +238,14 @@ function mpz_get_ui (var op) {
   if(!(op instanceof GMP.Integer))
     die("incorrect type for op in mpz_get_ui");
   using gmp.__gmpz_get_ui;
-  __gmpz_get_ui(op);
+  return __gmpz_get_ui(op);
 }
 
 /*
 =head1 signed long int mpz_get_si (mpz_t op)
+
 If op fits into a signed long int return the value of op. Otherwise return the least significant part of op, with the same sign as op. If op is too big to fit in a signed long int, the returned result is probably not very useful. To find out if the value will fit, use the function mpz_fits_slong_p. 
+
 =cut
 */
 
@@ -267,12 +253,14 @@ function mpz_get_si (var op) {
   if(!(op instanceof GMP.Integer))
     die("incorrect type for op in mpz_get_si");
   using gmp.__gmpz_get_si;
-  __gmpz_get_si(op);
+  return __gmpz_get_si(op);
 }
 
 /*
 =head1 double mpz_get_d (mpz_t op)
+
 Convert op to a double, truncating if necessary (ie. rounding towards zero). If the exponent from the conversion is too big, the result is system dependent. An infinity is returned where available. A hardware overflow trap may or may not occur. 
+
 =cut
 */
 
@@ -280,12 +268,14 @@ function mpz_get_d (var op) {
   if(!(op instanceof GMP.Integer))
     die("incorrect type for op in mpz_get_d");
   using gmp.__gmpz_get_d;
-  __gmpz_get_d(op);
+  return __gmpz_get_d(op);
 }
 
 /*
 =head1 double mpz_get_d_2exp (signed long int * exp, mpz_t op)
+
 Convert op to a double, truncating if necessary (ie. rounding towards zero), and returning the exponent separately. The return value is in the range 0.5<=abs(d)<1 and the exponent is stored to *exp. d * 2^exp is the (truncated) op value. If op is zero, the return is 0.0 and 0 is stored to *exp. This is similar to the standard C frexp function (see Normalization Functions). 
+
 =cut
 */
 
@@ -293,12 +283,14 @@ function mpz_get_d_2exp (var exp, var op) {
   if(!(op instanceof GMP.Integer))
     die("incorrect type for op in mpz_get_d_2exp");
   using gmp.__gmpz_get_d_2exp;
-  __gmpz_get_d_2exp(exp, op);
+  return __gmpz_get_d_2exp(exp, op);
 }
 
 /*
 =head1 char * mpz_get_str (char * str, int base, mpz_t op)
-Convert op to a string of digits in base base. The base argument may vary from 2 to 62 or from −2 to −36. For base in the range 2..36, digits and lower-case letters are used; for −2..−36, digits and upper-case letters are used; for 37..62, digits, upper-case letters, and lower-case letters (in that significance order) are used. If str is NULL, the result string is allocated using the current allocation function (see Custom Allocation). The block will be strlen(str)+1 bytes, that being exactly enough for the string and null-terminator. If str is not NULL, it should point to a block of storage large enough for the result, that being mpz_sizeinbase (op, base) + 2. The two extra bytes are for a possible minus sign, and the null-terminator. A pointer to the result string is returned, being either the allocated block, or the given str. 
+
+Convert op to a string of digits in base base. The base argument may vary from 2 to 62 or from -2 to -36. For base in the range 2..36, digits and lower-case letters are used; for -2..-36, digits and upper-case letters are used; for 37..62, digits, upper-case letters, and lower-case letters (in that significance order) are used. If str is NULL, the result string is allocated using the current allocation function (see Custom Allocation). The block will be strlen(str)+1 bytes, that being exactly enough for the string and null-terminator. If str is not NULL, it should point to a block of storage large enough for the result, that being mpz_sizeinbase (op, base) + 2. The two extra bytes are for a possible minus sign, and the null-terminator. A pointer to the result string is returned, being either the allocated block, or the given str. 
+
 =cut
 */
 
@@ -306,13 +298,16 @@ function mpz_get_str (var str, int base, var op) {
   if(!(op instanceof GMP.Integer))
     die("incorrect type for op in mpz_get_str");
   using gmp.__gmpz_get_str;
-  __gmpz_get_str(str, base, op);
+  return __gmpz_get_str(str, base, op);
 }
 
 /*
 =head1 void mpz_add (mpz_t rop, mpz_t op1, mpz_t op2)
+
 =head1 void mpz_add_ui (mpz_t rop, mpz_t op1, unsigned long int op2)
+
 Set rop to op1 + op2. 
+
 =cut
 */
 
@@ -324,7 +319,7 @@ function mpz_add (var rop, var op1, var op2) {
   if(!(op2 instanceof GMP.Integer))
     die("incorrect type for op2 in mpz_add");
   using gmp.__gmpz_add;
-  __gmpz_add(rop, op1, op2);
+   __gmpz_add(rop, op1, op2);
 }
 
 function mpz_add_ui (var rop, var op1, int op2) {
@@ -333,14 +328,18 @@ function mpz_add_ui (var rop, var op1, int op2) {
   if(!(op1 instanceof GMP.Integer))
     die("incorrect type for op1 in mpz_add_ui");
   using gmp.__gmpz_add_ui;
-  __gmpz_add_ui(rop, op1, op2);
+   __gmpz_add_ui(rop, op1, op2);
 }
 
 /*
 =head1 void mpz_sub (mpz_t rop, mpz_t op1, mpz_t op2)
+
 =head1 void mpz_sub_ui (mpz_t rop, mpz_t op1, unsigned long int op2)
+
 =head1 void mpz_ui_sub (mpz_t rop, unsigned long int op1, mpz_t op2)
-Set rop to op1 − op2. 
+
+Set rop to op1 - op2. 
+
 =cut
 */
 
@@ -352,7 +351,7 @@ function mpz_sub (var rop, var op1, var op2) {
   if(!(op2 instanceof GMP.Integer))
     die("incorrect type for op2 in mpz_sub");
   using gmp.__gmpz_sub;
-  __gmpz_sub(rop, op1, op2);
+   __gmpz_sub(rop, op1, op2);
 }
 
 function mpz_sub_ui (var rop, var op1, int op2) {
@@ -361,7 +360,7 @@ function mpz_sub_ui (var rop, var op1, int op2) {
   if(!(op1 instanceof GMP.Integer))
     die("incorrect type for op1 in mpz_sub_ui");
   using gmp.__gmpz_sub_ui;
-  __gmpz_sub_ui(rop, op1, op2);
+   __gmpz_sub_ui(rop, op1, op2);
 }
 
 function mpz_ui_sub (var rop, int op1, var op2) {
@@ -370,14 +369,18 @@ function mpz_ui_sub (var rop, int op1, var op2) {
   if(!(op2 instanceof GMP.Integer))
     die("incorrect type for op2 in mpz_ui_sub");
   using gmp.__gmpz_ui_sub;
-  __gmpz_ui_sub(rop, op1, op2);
+   __gmpz_ui_sub(rop, op1, op2);
 }
 
 /*
 =head1 void mpz_mul (mpz_t rop, mpz_t op1, mpz_t op2)
+
 =head1 void mpz_mul_si (mpz_t rop, mpz_t op1, long int op2)
+
 =head1 void mpz_mul_ui (mpz_t rop, mpz_t op1, unsigned long int op2)
+
 Set rop to op1 times op2. 
+
 =cut
 */
 
@@ -389,7 +392,7 @@ function mpz_mul (var rop, var op1, var op2) {
   if(!(op2 instanceof GMP.Integer))
     die("incorrect type for op2 in mpz_mul");
   using gmp.__gmpz_mul;
-  __gmpz_mul(rop, op1, op2);
+   __gmpz_mul(rop, op1, op2);
 }
 
 function mpz_mul_si (var rop, var op1, int op2) {
@@ -398,7 +401,7 @@ function mpz_mul_si (var rop, var op1, int op2) {
   if(!(op1 instanceof GMP.Integer))
     die("incorrect type for op1 in mpz_mul_si");
   using gmp.__gmpz_mul_si;
-  __gmpz_mul_si(rop, op1, op2);
+   __gmpz_mul_si(rop, op1, op2);
 }
 
 function mpz_mul_ui (var rop, var op1, int op2) {
@@ -407,13 +410,16 @@ function mpz_mul_ui (var rop, var op1, int op2) {
   if(!(op1 instanceof GMP.Integer))
     die("incorrect type for op1 in mpz_mul_ui");
   using gmp.__gmpz_mul_ui;
-  __gmpz_mul_ui(rop, op1, op2);
+   __gmpz_mul_ui(rop, op1, op2);
 }
 
 /*
 =head1 void mpz_addmul (mpz_t rop, mpz_t op1, mpz_t op2)
+
 =head1 void mpz_addmul_ui (mpz_t rop, mpz_t op1, unsigned long int op2)
+
 Set rop to rop + op1 times op2. 
+
 =cut
 */
 
@@ -425,7 +431,7 @@ function mpz_addmul (var rop, var op1, var op2) {
   if(!(op2 instanceof GMP.Integer))
     die("incorrect type for op2 in mpz_addmul");
   using gmp.__gmpz_addmul;
-  __gmpz_addmul(rop, op1, op2);
+   __gmpz_addmul(rop, op1, op2);
 }
 
 function mpz_addmul_ui (var rop, var op1, int op2) {
@@ -434,13 +440,16 @@ function mpz_addmul_ui (var rop, var op1, int op2) {
   if(!(op1 instanceof GMP.Integer))
     die("incorrect type for op1 in mpz_addmul_ui");
   using gmp.__gmpz_addmul_ui;
-  __gmpz_addmul_ui(rop, op1, op2);
+   __gmpz_addmul_ui(rop, op1, op2);
 }
 
 /*
 =head1 void mpz_submul (mpz_t rop, mpz_t op1, mpz_t op2)
+
 =head1 void mpz_submul_ui (mpz_t rop, mpz_t op1, unsigned long int op2)
+
 Set rop to rop - op1 times op2. 
+
 =cut
 */
 
@@ -452,7 +461,7 @@ function mpz_submul (var rop, var op1, var op2) {
   if(!(op2 instanceof GMP.Integer))
     die("incorrect type for op2 in mpz_submul");
   using gmp.__gmpz_submul;
-  __gmpz_submul(rop, op1, op2);
+   __gmpz_submul(rop, op1, op2);
 }
 
 function mpz_submul_ui (var rop, var op1, int op2) {
@@ -461,12 +470,14 @@ function mpz_submul_ui (var rop, var op1, int op2) {
   if(!(op1 instanceof GMP.Integer))
     die("incorrect type for op1 in mpz_submul_ui");
   using gmp.__gmpz_submul_ui;
-  __gmpz_submul_ui(rop, op1, op2);
+   __gmpz_submul_ui(rop, op1, op2);
 }
 
 /*
 =head1 void mpz_mul_2exp (mpz_t rop, mpz_t op1, mp_bitcnt_t op2)
+
 Set rop to op1 times 2 raised to op2. This operation can also be defined as a left shift by op2 bits. 
+
 =cut
 */
 
@@ -476,12 +487,14 @@ function mpz_mul_2exp (var rop, var op1, int op2) {
   if(!(op1 instanceof GMP.Integer))
     die("incorrect type for op1 in mpz_mul_2exp");
   using gmp.__gmpz_mul_2exp;
-  __gmpz_mul_2exp(rop, op1, op2);
+   __gmpz_mul_2exp(rop, op1, op2);
 }
 
 /*
 =head1 void mpz_neg (mpz_t rop, mpz_t op)
-Set rop to −op. 
+
+Set rop to -op. 
+
 =cut
 */
 
@@ -491,12 +504,14 @@ function mpz_neg (var rop, var op) {
   if(!(op instanceof GMP.Integer))
     die("incorrect type for op in mpz_neg");
   using gmp.__gmpz_neg;
-  __gmpz_neg(rop, op);
+   __gmpz_neg(rop, op);
 }
 
 /*
 =head1 void mpz_abs (mpz_t rop, mpz_t op)
+
 Set rop to the absolute value of op. 
+
 =cut
 */
 
@@ -506,18 +521,26 @@ function mpz_abs (var rop, var op) {
   if(!(op instanceof GMP.Integer))
     die("incorrect type for op in mpz_abs");
   using gmp.__gmpz_abs;
-  __gmpz_abs(rop, op);
+   __gmpz_abs(rop, op);
 }
 
 /*
 =head1 void mpz_cdiv_q (mpz_t q, mpz_t n, mpz_t d)
+
 =head1 void mpz_cdiv_r (mpz_t r, mpz_t n, mpz_t d)
+
 =head1 void mpz_cdiv_qr (mpz_t q, mpz_t r, mpz_t n, mpz_t d)
+
 =head1 unsigned long int mpz_cdiv_q_ui (mpz_t q, mpz_t n, unsigned long int d)
+
 =head1 unsigned long int mpz_cdiv_r_ui (mpz_t r, mpz_t n, unsigned long int d)
+
 =head1 unsigned long int mpz_cdiv_qr_ui (mpz_t q, mpz_t r, mpz_t n, unsigned long int d)
+
 =head1 unsigned long int mpz_cdiv_ui (mpz_t n, unsigned long int d)
+
 =head1 void mpz_cdiv_q_2exp (mpz_t q, mpz_t n, mp_bitcnt_t b)
+
 =head1 void mpz_cdiv_r_2exp (mpz_t r, mpz_t n, mp_bitcnt_t b)
 
 =cut
@@ -531,7 +554,7 @@ function mpz_cdiv_q (var q, var n, var d) {
   if(!(d instanceof GMP.Integer))
     die("incorrect type for d in mpz_cdiv_q");
   using gmp.__gmpz_cdiv_q;
-  __gmpz_cdiv_q(q, n, d);
+   __gmpz_cdiv_q(q, n, d);
 }
 
 function mpz_cdiv_r (var r, var n, var d) {
@@ -542,7 +565,7 @@ function mpz_cdiv_r (var r, var n, var d) {
   if(!(d instanceof GMP.Integer))
     die("incorrect type for d in mpz_cdiv_r");
   using gmp.__gmpz_cdiv_r;
-  __gmpz_cdiv_r(r, n, d);
+   __gmpz_cdiv_r(r, n, d);
 }
 
 function mpz_cdiv_qr (var q, var r, var n, var d) {
@@ -555,7 +578,7 @@ function mpz_cdiv_qr (var q, var r, var n, var d) {
   if(!(d instanceof GMP.Integer))
     die("incorrect type for d in mpz_cdiv_qr");
   using gmp.__gmpz_cdiv_qr;
-  __gmpz_cdiv_qr(q, r, n, d);
+   __gmpz_cdiv_qr(q, r, n, d);
 }
 
 function mpz_cdiv_q_ui (var q, var n, int d) {
@@ -564,7 +587,7 @@ function mpz_cdiv_q_ui (var q, var n, int d) {
   if(!(n instanceof GMP.Integer))
     die("incorrect type for n in mpz_cdiv_q_ui");
   using gmp.__gmpz_cdiv_q_ui;
-  __gmpz_cdiv_q_ui(q, n, d);
+  return __gmpz_cdiv_q_ui(q, n, d);
 }
 
 function mpz_cdiv_r_ui (var r, var n, int d) {
@@ -573,7 +596,7 @@ function mpz_cdiv_r_ui (var r, var n, int d) {
   if(!(n instanceof GMP.Integer))
     die("incorrect type for n in mpz_cdiv_r_ui");
   using gmp.__gmpz_cdiv_r_ui;
-  __gmpz_cdiv_r_ui(r, n, d);
+  return __gmpz_cdiv_r_ui(r, n, d);
 }
 
 function mpz_cdiv_qr_ui (var q, var r, var n, int d) {
@@ -584,14 +607,14 @@ function mpz_cdiv_qr_ui (var q, var r, var n, int d) {
   if(!(n instanceof GMP.Integer))
     die("incorrect type for n in mpz_cdiv_qr_ui");
   using gmp.__gmpz_cdiv_qr_ui;
-  __gmpz_cdiv_qr_ui(q, r, n, d);
+  return __gmpz_cdiv_qr_ui(q, r, n, d);
 }
 
 function mpz_cdiv_ui (var n, int d) {
   if(!(n instanceof GMP.Integer))
     die("incorrect type for n in mpz_cdiv_ui");
   using gmp.__gmpz_cdiv_ui;
-  __gmpz_cdiv_ui(n, d);
+  return __gmpz_cdiv_ui(n, d);
 }
 
 function mpz_cdiv_q_2exp (var q, var n, int b) {
@@ -600,7 +623,7 @@ function mpz_cdiv_q_2exp (var q, var n, int b) {
   if(!(n instanceof GMP.Integer))
     die("incorrect type for n in mpz_cdiv_q_2exp");
   using gmp.__gmpz_cdiv_q_2exp;
-  __gmpz_cdiv_q_2exp(q, n, b);
+   __gmpz_cdiv_q_2exp(q, n, b);
 }
 
 function mpz_cdiv_r_2exp (var r, var n, int b) {
@@ -609,18 +632,26 @@ function mpz_cdiv_r_2exp (var r, var n, int b) {
   if(!(n instanceof GMP.Integer))
     die("incorrect type for n in mpz_cdiv_r_2exp");
   using gmp.__gmpz_cdiv_r_2exp;
-  __gmpz_cdiv_r_2exp(r, n, b);
+   __gmpz_cdiv_r_2exp(r, n, b);
 }
 
 /*
 =head1 void mpz_fdiv_q (mpz_t q, mpz_t n, mpz_t d)
+
 =head1 void mpz_fdiv_r (mpz_t r, mpz_t n, mpz_t d)
+
 =head1 void mpz_fdiv_qr (mpz_t q, mpz_t r, mpz_t n, mpz_t d)
+
 =head1 unsigned long int mpz_fdiv_q_ui (mpz_t q, mpz_t n, unsigned long int d)
+
 =head1 unsigned long int mpz_fdiv_r_ui (mpz_t r, mpz_t n, unsigned long int d)
+
 =head1 unsigned long int mpz_fdiv_qr_ui (mpz_t q, mpz_t r, mpz_t n, unsigned long int d)
+
 =head1 unsigned long int mpz_fdiv_ui (mpz_t n, unsigned long int d)
+
 =head1 void mpz_fdiv_q_2exp (mpz_t q, mpz_t n, mp_bitcnt_t b)
+
 =head1 void mpz_fdiv_r_2exp (mpz_t r, mpz_t n, mp_bitcnt_t b)
 
 =cut
@@ -634,7 +665,7 @@ function mpz_fdiv_q (var q, var n, var d) {
   if(!(d instanceof GMP.Integer))
     die("incorrect type for d in mpz_fdiv_q");
   using gmp.__gmpz_fdiv_q;
-  __gmpz_fdiv_q(q, n, d);
+   __gmpz_fdiv_q(q, n, d);
 }
 
 function mpz_fdiv_r (var r, var n, var d) {
@@ -645,7 +676,7 @@ function mpz_fdiv_r (var r, var n, var d) {
   if(!(d instanceof GMP.Integer))
     die("incorrect type for d in mpz_fdiv_r");
   using gmp.__gmpz_fdiv_r;
-  __gmpz_fdiv_r(r, n, d);
+   __gmpz_fdiv_r(r, n, d);
 }
 
 function mpz_fdiv_qr (var q, var r, var n, var d) {
@@ -658,7 +689,7 @@ function mpz_fdiv_qr (var q, var r, var n, var d) {
   if(!(d instanceof GMP.Integer))
     die("incorrect type for d in mpz_fdiv_qr");
   using gmp.__gmpz_fdiv_qr;
-  __gmpz_fdiv_qr(q, r, n, d);
+   __gmpz_fdiv_qr(q, r, n, d);
 }
 
 function mpz_fdiv_q_ui (var q, var n, int d) {
@@ -667,7 +698,7 @@ function mpz_fdiv_q_ui (var q, var n, int d) {
   if(!(n instanceof GMP.Integer))
     die("incorrect type for n in mpz_fdiv_q_ui");
   using gmp.__gmpz_fdiv_q_ui;
-  __gmpz_fdiv_q_ui(q, n, d);
+  return __gmpz_fdiv_q_ui(q, n, d);
 }
 
 function mpz_fdiv_r_ui (var r, var n, int d) {
@@ -676,7 +707,7 @@ function mpz_fdiv_r_ui (var r, var n, int d) {
   if(!(n instanceof GMP.Integer))
     die("incorrect type for n in mpz_fdiv_r_ui");
   using gmp.__gmpz_fdiv_r_ui;
-  __gmpz_fdiv_r_ui(r, n, d);
+  return __gmpz_fdiv_r_ui(r, n, d);
 }
 
 function mpz_fdiv_qr_ui (var q, var r, var n, int d) {
@@ -687,14 +718,14 @@ function mpz_fdiv_qr_ui (var q, var r, var n, int d) {
   if(!(n instanceof GMP.Integer))
     die("incorrect type for n in mpz_fdiv_qr_ui");
   using gmp.__gmpz_fdiv_qr_ui;
-  __gmpz_fdiv_qr_ui(q, r, n, d);
+  return __gmpz_fdiv_qr_ui(q, r, n, d);
 }
 
 function mpz_fdiv_ui (var n, int d) {
   if(!(n instanceof GMP.Integer))
     die("incorrect type for n in mpz_fdiv_ui");
   using gmp.__gmpz_fdiv_ui;
-  __gmpz_fdiv_ui(n, d);
+  return __gmpz_fdiv_ui(n, d);
 }
 
 function mpz_fdiv_q_2exp (var q, var n, int b) {
@@ -703,7 +734,7 @@ function mpz_fdiv_q_2exp (var q, var n, int b) {
   if(!(n instanceof GMP.Integer))
     die("incorrect type for n in mpz_fdiv_q_2exp");
   using gmp.__gmpz_fdiv_q_2exp;
-  __gmpz_fdiv_q_2exp(q, n, b);
+   __gmpz_fdiv_q_2exp(q, n, b);
 }
 
 function mpz_fdiv_r_2exp (var r, var n, int b) {
@@ -712,22 +743,32 @@ function mpz_fdiv_r_2exp (var r, var n, int b) {
   if(!(n instanceof GMP.Integer))
     die("incorrect type for n in mpz_fdiv_r_2exp");
   using gmp.__gmpz_fdiv_r_2exp;
-  __gmpz_fdiv_r_2exp(r, n, b);
+   __gmpz_fdiv_r_2exp(r, n, b);
 }
 
 /*
 =head1 void mpz_tdiv_q (mpz_t q, mpz_t n, mpz_t d)
+
 =head1 void mpz_tdiv_r (mpz_t r, mpz_t n, mpz_t d)
+
 =head1 void mpz_tdiv_qr (mpz_t q, mpz_t r, mpz_t n, mpz_t d)
+
 =head1 unsigned long int mpz_tdiv_q_ui (mpz_t q, mpz_t n, unsigned long int d)
+
 =head1 unsigned long int mpz_tdiv_r_ui (mpz_t r, mpz_t n, unsigned long int d)
+
 =head1 unsigned long int mpz_tdiv_qr_ui (mpz_t q, mpz_t r, mpz_t n, unsigned long int d)
+
 =head1 unsigned long int mpz_tdiv_ui (mpz_t n, unsigned long int d)
+
 =head1 void mpz_tdiv_q_2exp (mpz_t q, mpz_t n, mp_bitcnt_t b)
+
 =head1 void mpz_tdiv_r_2exp (mpz_t r, mpz_t n, mp_bitcnt_t b)
+
  
      
-      Divide n by d, forming a quotient q and/or remainder r. For the 2exp functions, d=2^b. The rounding is in three styles, each suiting different applications. cdiv rounds q up towards +infinity, and r will have the opposite sign to d. The c stands for “ceil”. fdiv rounds q down towards −infinity, and r will have the same sign as d. The f stands for “floor”. tdiv rounds q towards zero, and r will have the same sign as n. The t stands for “truncate”. In all cases q and r will satisfy n=q*d+r, and r will satisfy 0<=abs(r)<abs(d). The q functions calculate only the quotient, the r functions only the remainder, and the qr functions calculate both. Note that for qr the same variable cannot be passed for both q and r, or results will be unpredictable. For the ui variants the return value is the remainder, and in fact returning the remainder is all the div_ui functions do. For tdiv and cdiv the remainder can be negative, so for those the return value is the absolute value of the remainder. For the 2exp variants the divisor is 2^b. These functions are implemented as right shifts and bit masks, but of course they round the same as the other functions. For positive n both mpz_fdiv_q_2exp and mpz_tdiv_q_2exp are simple bitwise right shifts. For negative n, mpz_fdiv_q_2exp is effectively an arithmetic right shift treating n as twos complement the same as the bitwise logical functions do, whereas mpz_tdiv_q_2exp effectively treats n as sign and magnitude. 
+      Divide n by d, forming a quotient q and/or remainder r. For the 2exp functions, d=2^b. The rounding is in three styles, each suiting different applications. cdiv rounds q up towards +infinity, and r will have the opposite sign to d. The c stands for "ceil". fdiv rounds q down towards -infinity, and r will have the same sign as d. The f stands for "floor". tdiv rounds q towards zero, and r will have the same sign as n. The t stands for "truncate". In all cases q and r will satisfy n=q*d+r, and r will satisfy 0<=abs(r)<abs(d). The q functions calculate only the quotient, the r functions only the remainder, and the qr functions calculate both. Note that for qr the same variable cannot be passed for both q and r, or results will be unpredictable. For the ui variants the return value is the remainder, and in fact returning the remainder is all the div_ui functions do. For tdiv and cdiv the remainder can be negative, so for those the return value is the absolute value of the remainder. For the 2exp variants the divisor is 2^b. These functions are implemented as right shifts and bit masks, but of course they round the same as the other functions. For positive n both mpz_fdiv_q_2exp and mpz_tdiv_q_2exp are simple bitwise right shifts. For negative n, mpz_fdiv_q_2exp is effectively an arithmetic right shift treating n as twos complement the same as the bitwise logical functions do, whereas mpz_tdiv_q_2exp effectively treats n as sign and magnitude. 
+
 =cut
 */
 
@@ -739,7 +780,7 @@ function mpz_tdiv_q (var q, var n, var d) {
   if(!(d instanceof GMP.Integer))
     die("incorrect type for d in mpz_tdiv_q");
   using gmp.__gmpz_tdiv_q;
-  __gmpz_tdiv_q(q, n, d);
+   __gmpz_tdiv_q(q, n, d);
 }
 
 function mpz_tdiv_r (var r, var n, var d) {
@@ -750,7 +791,7 @@ function mpz_tdiv_r (var r, var n, var d) {
   if(!(d instanceof GMP.Integer))
     die("incorrect type for d in mpz_tdiv_r");
   using gmp.__gmpz_tdiv_r;
-  __gmpz_tdiv_r(r, n, d);
+   __gmpz_tdiv_r(r, n, d);
 }
 
 function mpz_tdiv_qr (var q, var r, var n, var d) {
@@ -763,7 +804,7 @@ function mpz_tdiv_qr (var q, var r, var n, var d) {
   if(!(d instanceof GMP.Integer))
     die("incorrect type for d in mpz_tdiv_qr");
   using gmp.__gmpz_tdiv_qr;
-  __gmpz_tdiv_qr(q, r, n, d);
+   __gmpz_tdiv_qr(q, r, n, d);
 }
 
 function mpz_tdiv_q_ui (var q, var n, int d) {
@@ -772,7 +813,7 @@ function mpz_tdiv_q_ui (var q, var n, int d) {
   if(!(n instanceof GMP.Integer))
     die("incorrect type for n in mpz_tdiv_q_ui");
   using gmp.__gmpz_tdiv_q_ui;
-  __gmpz_tdiv_q_ui(q, n, d);
+  return __gmpz_tdiv_q_ui(q, n, d);
 }
 
 function mpz_tdiv_r_ui (var r, var n, int d) {
@@ -781,7 +822,7 @@ function mpz_tdiv_r_ui (var r, var n, int d) {
   if(!(n instanceof GMP.Integer))
     die("incorrect type for n in mpz_tdiv_r_ui");
   using gmp.__gmpz_tdiv_r_ui;
-  __gmpz_tdiv_r_ui(r, n, d);
+  return __gmpz_tdiv_r_ui(r, n, d);
 }
 
 function mpz_tdiv_qr_ui (var q, var r, var n, int d) {
@@ -792,14 +833,14 @@ function mpz_tdiv_qr_ui (var q, var r, var n, int d) {
   if(!(n instanceof GMP.Integer))
     die("incorrect type for n in mpz_tdiv_qr_ui");
   using gmp.__gmpz_tdiv_qr_ui;
-  __gmpz_tdiv_qr_ui(q, r, n, d);
+  return __gmpz_tdiv_qr_ui(q, r, n, d);
 }
 
 function mpz_tdiv_ui (var n, int d) {
   if(!(n instanceof GMP.Integer))
     die("incorrect type for n in mpz_tdiv_ui");
   using gmp.__gmpz_tdiv_ui;
-  __gmpz_tdiv_ui(n, d);
+  return __gmpz_tdiv_ui(n, d);
 }
 
 function mpz_tdiv_q_2exp (var q, var n, int b) {
@@ -808,7 +849,7 @@ function mpz_tdiv_q_2exp (var q, var n, int b) {
   if(!(n instanceof GMP.Integer))
     die("incorrect type for n in mpz_tdiv_q_2exp");
   using gmp.__gmpz_tdiv_q_2exp;
-  __gmpz_tdiv_q_2exp(q, n, b);
+   __gmpz_tdiv_q_2exp(q, n, b);
 }
 
 function mpz_tdiv_r_2exp (var r, var n, int b) {
@@ -817,13 +858,16 @@ function mpz_tdiv_r_2exp (var r, var n, int b) {
   if(!(n instanceof GMP.Integer))
     die("incorrect type for n in mpz_tdiv_r_2exp");
   using gmp.__gmpz_tdiv_r_2exp;
-  __gmpz_tdiv_r_2exp(r, n, b);
+   __gmpz_tdiv_r_2exp(r, n, b);
 }
 
 /*
 =head1 void mpz_mod (mpz_t r, mpz_t n, mpz_t d)
+
 =head1 unsigned long int mpz_mod_ui (mpz_t r, mpz_t n, unsigned long int d)
+
 Set r to n mod d. The sign of the divisor is ignored; the result is always non-negative. mpz_mod_ui is identical to mpz_fdiv_r_ui above, returning the remainder as well as setting r. See mpz_fdiv_ui above if only the return value is wanted. 
+
 =cut
 */
 
@@ -835,7 +879,7 @@ function mpz_mod (var r, var n, var d) {
   if(!(d instanceof GMP.Integer))
     die("incorrect type for d in mpz_mod");
   using gmp.__gmpz_mod;
-  __gmpz_mod(r, n, d);
+   __gmpz_mod(r, n, d);
 }
 
 function mpz_mod_ui (var r, var n, int d) {
@@ -844,13 +888,16 @@ function mpz_mod_ui (var r, var n, int d) {
   if(!(n instanceof GMP.Integer))
     die("incorrect type for n in mpz_mod_ui");
   using gmp.__gmpz_mod_ui;
-  __gmpz_mod_ui(r, n, d);
+  return __gmpz_mod_ui(r, n, d);
 }
 
 /*
 =head1 void mpz_divexact (mpz_t q, mpz_t n, mpz_t d)
+
 =head1 void mpz_divexact_ui (mpz_t q, mpz_t n, unsigned long d)
+
 Set q to n/d. These functions produce correct results only when it is known in advance that d divides n. These routines are much faster than the other division functions, and are the best choice when exact division is known to occur, for example reducing a rational to lowest terms. 
+
 =cut
 */
 
@@ -862,7 +909,7 @@ function mpz_divexact (var q, var n, var d) {
   if(!(d instanceof GMP.Integer))
     die("incorrect type for d in mpz_divexact");
   using gmp.__gmpz_divexact;
-  __gmpz_divexact(q, n, d);
+   __gmpz_divexact(q, n, d);
 }
 
 function mpz_divexact_ui (var q, var n, int d) {
@@ -871,14 +918,18 @@ function mpz_divexact_ui (var q, var n, int d) {
   if(!(n instanceof GMP.Integer))
     die("incorrect type for n in mpz_divexact_ui");
   using gmp.__gmpz_divexact_ui;
-  __gmpz_divexact_ui(q, n, d);
+   __gmpz_divexact_ui(q, n, d);
 }
 
 /*
 =head1 int mpz_divisible_p (mpz_t n, mpz_t d)
+
 =head1 int mpz_divisible_ui_p (mpz_t n, unsigned long int d)
+
 =head1 int mpz_divisible_2exp_p (mpz_t n, mp_bitcnt_t b)
+
 Return non-zero if n is exactly divisible by d, or in the case of mpz_divisible_2exp_p by 2^b. n is divisible by d if there exists an integer q satisfying n = q*d. Unlike the other division functions, d=0 is accepted and following the rule it can be seen that only 0 is considered divisible by 0. 
+
 =cut
 */
 
@@ -888,28 +939,32 @@ function mpz_divisible_p (var n, var d) {
   if(!(d instanceof GMP.Integer))
     die("incorrect type for d in mpz_divisible_p");
   using gmp.__gmpz_divisible_p;
-  __gmpz_divisible_p(n, d);
+  return __gmpz_divisible_p(n, d);
 }
 
 function mpz_divisible_ui_p (var n, int d) {
   if(!(n instanceof GMP.Integer))
     die("incorrect type for n in mpz_divisible_ui_p");
   using gmp.__gmpz_divisible_ui_p;
-  __gmpz_divisible_ui_p(n, d);
+  return __gmpz_divisible_ui_p(n, d);
 }
 
 function mpz_divisible_2exp_p (var n, int b) {
   if(!(n instanceof GMP.Integer))
     die("incorrect type for n in mpz_divisible_2exp_p");
   using gmp.__gmpz_divisible_2exp_p;
-  __gmpz_divisible_2exp_p(n, b);
+  return __gmpz_divisible_2exp_p(n, b);
 }
 
 /*
 =head1 int mpz_congruent_p (mpz_t n, mpz_t c, mpz_t d)
+
 =head1 int mpz_congruent_ui_p (mpz_t n, unsigned long int c, unsigned long int d)
+
 =head1 int mpz_congruent_2exp_p (mpz_t n, mpz_t c, mp_bitcnt_t b)
+
 Return non-zero if n is congruent to c modulo d, or in the case of mpz_congruent_2exp_p modulo 2^b. n is congruent to c mod d if there exists an integer q satisfying n = c + q*d. Unlike the other division functions, d=0 is accepted and following the rule it can be seen that n and c are considered congruent mod 0 only when exactly equal. 
+
 =cut
 */
 
@@ -921,14 +976,14 @@ function mpz_congruent_p (var n, var c, var d) {
   if(!(d instanceof GMP.Integer))
     die("incorrect type for d in mpz_congruent_p");
   using gmp.__gmpz_congruent_p;
-  __gmpz_congruent_p(n, c, d);
+  return __gmpz_congruent_p(n, c, d);
 }
 
 function mpz_congruent_ui_p (var n, int c, int d) {
   if(!(n instanceof GMP.Integer))
     die("incorrect type for n in mpz_congruent_ui_p");
   using gmp.__gmpz_congruent_ui_p;
-  __gmpz_congruent_ui_p(n, c, d);
+  return __gmpz_congruent_ui_p(n, c, d);
 }
 
 function mpz_congruent_2exp_p (var n, var c, int b) {
@@ -937,13 +992,16 @@ function mpz_congruent_2exp_p (var n, var c, int b) {
   if(!(c instanceof GMP.Integer))
     die("incorrect type for c in mpz_congruent_2exp_p");
   using gmp.__gmpz_congruent_2exp_p;
-  __gmpz_congruent_2exp_p(n, c, b);
+  return __gmpz_congruent_2exp_p(n, c, b);
 }
 
 /*
 =head1 void mpz_powm (mpz_t rop, mpz_t base, mpz_t exp, mpz_t mod)
+
 =head1 void mpz_powm_ui (mpz_t rop, mpz_t base, unsigned long int exp, mpz_t mod)
+
 Set rop to (base raised to exp) modulo mod. Negative exp is supported if an inverse base^-1 mod mod exists (see mpz_invert in Number Theoretic Functions). If an inverse doesn't exist then a divide by zero is raised. 
+
 =cut
 */
 
@@ -957,7 +1015,7 @@ function mpz_powm (var rop, var base, var exp, var mod) {
   if(!(mod instanceof GMP.Integer))
     die("incorrect type for mod in mpz_powm");
   using gmp.__gmpz_powm;
-  __gmpz_powm(rop, base, exp, mod);
+   __gmpz_powm(rop, base, exp, mod);
 }
 
 function mpz_powm_ui (var rop, var base, int exp, var mod) {
@@ -968,12 +1026,14 @@ function mpz_powm_ui (var rop, var base, int exp, var mod) {
   if(!(mod instanceof GMP.Integer))
     die("incorrect type for mod in mpz_powm_ui");
   using gmp.__gmpz_powm_ui;
-  __gmpz_powm_ui(rop, base, exp, mod);
+   __gmpz_powm_ui(rop, base, exp, mod);
 }
 
 /*
 =head1 void mpz_powm_sec (mpz_t rop, mpz_t base, mpz_t exp, mpz_t mod)
+
 Set rop to (base raised to exp) modulo mod. It is required that exp > 0 and that mod is odd. This function is designed to take the same time and have the same cache access patterns for any two same-size arguments, assuming that function arguments are placed at the same position and that the machine state is identical upon function entry. This function is intended for cryptographic purposes, where resilience to side-channel attacks is desired. 
+
 =cut
 */
 
@@ -987,13 +1047,16 @@ function mpz_powm_sec (var rop, var base, var exp, var mod) {
   if(!(mod instanceof GMP.Integer))
     die("incorrect type for mod in mpz_powm_sec");
   using gmp.__gmpz_powm_sec;
-  __gmpz_powm_sec(rop, base, exp, mod);
+   __gmpz_powm_sec(rop, base, exp, mod);
 }
 
 /*
 =head1 void mpz_pow_ui (mpz_t rop, mpz_t base, unsigned long int exp)
+
 =head1 void mpz_ui_pow_ui (mpz_t rop, unsigned long int base, unsigned long int exp)
+
 Set rop to base raised to exp. The case 0^0 yields 1. 
+
 =cut
 */
 
@@ -1003,19 +1066,21 @@ function mpz_pow_ui (var rop, var base, int exp) {
   if(!(base instanceof GMP.Integer))
     die("incorrect type for base in mpz_pow_ui");
   using gmp.__gmpz_pow_ui;
-  __gmpz_pow_ui(rop, base, exp);
+   __gmpz_pow_ui(rop, base, exp);
 }
 
 function mpz_ui_pow_ui (var rop, int base, int exp) {
   if(!(rop instanceof GMP.Integer))
     die("incorrect type for rop in mpz_ui_pow_ui");
   using gmp.__gmpz_ui_pow_ui;
-  __gmpz_ui_pow_ui(rop, base, exp);
+   __gmpz_ui_pow_ui(rop, base, exp);
 }
 
 /*
 =head1 int mpz_root (mpz_t rop, mpz_t op, unsigned long int n)
+
 Set rop to the truncated integer part of the nth root of op. Return non-zero if the computation was exact, i.e., if op is rop to the nth power. 
+
 =cut
 */
 
@@ -1025,12 +1090,14 @@ function mpz_root (var rop, var op, int n) {
   if(!(op instanceof GMP.Integer))
     die("incorrect type for op in mpz_root");
   using gmp.__gmpz_root;
-  __gmpz_root(rop, op, n);
+  return __gmpz_root(rop, op, n);
 }
 
 /*
 =head1 void mpz_rootrem (mpz_t root, mpz_t rem, mpz_t u, unsigned long int n)
-Set root to the truncated integer part of the nth root of u. Set rem to the remainder, u−root**n. 
+
+Set root to the truncated integer part of the nth root of u. Set rem to the remainder, u-root**n. 
+
 =cut
 */
 
@@ -1042,12 +1109,14 @@ function mpz_rootrem (var root, var rem, var u, int n) {
   if(!(u instanceof GMP.Integer))
     die("incorrect type for u in mpz_rootrem");
   using gmp.__gmpz_rootrem;
-  __gmpz_rootrem(root, rem, u, n);
+   __gmpz_rootrem(root, rem, u, n);
 }
 
 /*
 =head1 void mpz_sqrt (mpz_t rop, mpz_t op)
+
 Set rop to the truncated integer part of the square root of op. 
+
 =cut
 */
 
@@ -1057,12 +1126,14 @@ function mpz_sqrt (var rop, var op) {
   if(!(op instanceof GMP.Integer))
     die("incorrect type for op in mpz_sqrt");
   using gmp.__gmpz_sqrt;
-  __gmpz_sqrt(rop, op);
+   __gmpz_sqrt(rop, op);
 }
 
 /*
 =head1 void mpz_sqrtrem (mpz_t rop1, mpz_t rop2, mpz_t op)
-Set rop1 to the truncated integer part of the square root of op, like mpz_sqrt. Set rop2 to the remainder op−rop1*rop1, which will be zero if op is a perfect square. If rop1 and rop2 are the same variable, the results are undefined. 
+
+Set rop1 to the truncated integer part of the square root of op, like mpz_sqrt. Set rop2 to the remainder op-rop1*rop1, which will be zero if op is a perfect square. If rop1 and rop2 are the same variable, the results are undefined. 
+
 =cut
 */
 
@@ -1074,12 +1145,14 @@ function mpz_sqrtrem (var rop1, var rop2, var op) {
   if(!(op instanceof GMP.Integer))
     die("incorrect type for op in mpz_sqrtrem");
   using gmp.__gmpz_sqrtrem;
-  __gmpz_sqrtrem(rop1, rop2, op);
+   __gmpz_sqrtrem(rop1, rop2, op);
 }
 
 /*
 =head1 int mpz_perfect_power_p (mpz_t op)
+
 Return non-zero if op is a perfect power, i.e., if there exist integers a and b, with b>1, such that op equals a raised to the power b. Under this definition both 0 and 1 are considered to be perfect powers. Negative values of op are accepted, but of course can only be odd perfect powers. 
+
 =cut
 */
 
@@ -1087,12 +1160,14 @@ function mpz_perfect_power_p (var op) {
   if(!(op instanceof GMP.Integer))
     die("incorrect type for op in mpz_perfect_power_p");
   using gmp.__gmpz_perfect_power_p;
-  __gmpz_perfect_power_p(op);
+  return __gmpz_perfect_power_p(op);
 }
 
 /*
 =head1 int mpz_perfect_square_p (mpz_t op)
+
 Return non-zero if op is a perfect square, i.e., if the square root of op is an integer. Under this definition both 0 and 1 are considered to be perfect squares. 
+
 =cut
 */
 
@@ -1100,12 +1175,14 @@ function mpz_perfect_square_p (var op) {
   if(!(op instanceof GMP.Integer))
     die("incorrect type for op in mpz_perfect_square_p");
   using gmp.__gmpz_perfect_square_p;
-  __gmpz_perfect_square_p(op);
+  return __gmpz_perfect_square_p(op);
 }
 
 /*
 =head1 int mpz_probab_prime_p (mpz_t n, int reps)
-Determine whether n is prime. Return 2 if n is definitely prime, return 1 if n is probably prime (without being certain), or return 0 if n is definitely composite. This function does some trial divisions, then some Miller-Rabin probabilistic primality tests. reps controls how many such tests are done, 5 to 10 is a reasonable number, more will reduce the chances of a composite being returned as “probably prime”. Miller-Rabin and similar tests can be more properly called compositeness tests. Numbers which fail are known to be composite but those which pass might be prime or might be composite. Only a few composites pass, hence those which pass are considered probably prime. 
+
+Determine whether n is prime. Return 2 if n is definitely prime, return 1 if n is probably prime (without being certain), or return 0 if n is definitely composite. This function does some trial divisions, then some Miller-Rabin probabilistic primality tests. reps controls how many such tests are done, 5 to 10 is a reasonable number, more will reduce the chances of a composite being returned as "probably prime". Miller-Rabin and similar tests can be more properly called compositeness tests. Numbers which fail are known to be composite but those which pass might be prime or might be composite. Only a few composites pass, hence those which pass are considered probably prime. 
+
 =cut
 */
 
@@ -1113,12 +1190,14 @@ function mpz_probab_prime_p (var n, int reps) {
   if(!(n instanceof GMP.Integer))
     die("incorrect type for n in mpz_probab_prime_p");
   using gmp.__gmpz_probab_prime_p;
-  __gmpz_probab_prime_p(n, reps);
+  return __gmpz_probab_prime_p(n, reps);
 }
 
 /*
 =head1 void mpz_nextprime (mpz_t rop, mpz_t op)
+
 Set rop to the next prime greater than op. This function uses a probabilistic algorithm to identify primes. For practical purposes it's adequate, the chance of a composite passing will be extremely small. 
+
 =cut
 */
 
@@ -1128,12 +1207,14 @@ function mpz_nextprime (var rop, var op) {
   if(!(op instanceof GMP.Integer))
     die("incorrect type for op in mpz_nextprime");
   using gmp.__gmpz_nextprime;
-  __gmpz_nextprime(rop, op);
+   __gmpz_nextprime(rop, op);
 }
 
 /*
 =head1 void mpz_gcd (mpz_t rop, mpz_t op1, mpz_t op2)
+
 Set rop to the greatest common divisor of op1 and op2. The result is always positive even if one or both input operands are negative. 
+
 =cut
 */
 
@@ -1145,12 +1226,14 @@ function mpz_gcd (var rop, var op1, var op2) {
   if(!(op2 instanceof GMP.Integer))
     die("incorrect type for op2 in mpz_gcd");
   using gmp.__gmpz_gcd;
-  __gmpz_gcd(rop, op1, op2);
+   __gmpz_gcd(rop, op1, op2);
 }
 
 /*
 =head1 unsigned long int mpz_gcd_ui (mpz_t rop, mpz_t op1, unsigned long int op2)
+
 Compute the greatest common divisor of op1 and op2. If rop is not NULL, store the result there. If the result is small enough to fit in an unsigned long int, it is returned. If the result does not fit, 0 is returned, and the result is equal to the argument op1. Note that the result will always fit if op2 is non-zero. 
+
 =cut
 */
 
@@ -1160,12 +1243,14 @@ function mpz_gcd_ui (var rop, var op1, int op2) {
   if(!(op1 instanceof GMP.Integer))
     die("incorrect type for op1 in mpz_gcd_ui");
   using gmp.__gmpz_gcd_ui;
-  __gmpz_gcd_ui(rop, op1, op2);
+  return __gmpz_gcd_ui(rop, op1, op2);
 }
 
 /*
 =head1 void mpz_gcdext (mpz_t g, mpz_t s, mpz_t t, mpz_t a, mpz_t b)
+
 Set g to the greatest common divisor of a and b, and in addition set s and t to coefficients satisfying a*s + b*t = g. The value in g is always positive, even if one or both of a and b are negative. The values in s and t are chosen such that abs(s) <= abs(b) and abs(t) <= abs(a). If t is NULL then that value is not computed. 
+
 =cut
 */
 
@@ -1181,13 +1266,16 @@ function mpz_gcdext (var g, var s, var t, var a, var b) {
   if(!(b instanceof GMP.Integer))
     die("incorrect type for b in mpz_gcdext");
   using gmp.__gmpz_gcdext;
-  __gmpz_gcdext(g, s, t, a, b);
+   __gmpz_gcdext(g, s, t, a, b);
 }
 
 /*
 =head1 void mpz_lcm (mpz_t rop, mpz_t op1, mpz_t op2)
+
 =head1 void mpz_lcm_ui (mpz_t rop, mpz_t op1, unsigned long op2)
+
 Set rop to the least common multiple of op1 and op2. rop is always positive, irrespective of the signs of op1 and op2. rop will be zero if either op1 or op2 is zero. 
+
 =cut
 */
 
@@ -1199,7 +1287,7 @@ function mpz_lcm (var rop, var op1, var op2) {
   if(!(op2 instanceof GMP.Integer))
     die("incorrect type for op2 in mpz_lcm");
   using gmp.__gmpz_lcm;
-  __gmpz_lcm(rop, op1, op2);
+   __gmpz_lcm(rop, op1, op2);
 }
 
 function mpz_lcm_ui (var rop, var op1, int op2) {
@@ -1208,12 +1296,14 @@ function mpz_lcm_ui (var rop, var op1, int op2) {
   if(!(op1 instanceof GMP.Integer))
     die("incorrect type for op1 in mpz_lcm_ui");
   using gmp.__gmpz_lcm_ui;
-  __gmpz_lcm_ui(rop, op1, op2);
+   __gmpz_lcm_ui(rop, op1, op2);
 }
 
 /*
 =head1 int mpz_invert (mpz_t rop, mpz_t op1, mpz_t op2)
+
 Compute the inverse of op1 modulo op2 and put the result in rop. If the inverse exists, the return value is non-zero and rop will satisfy 0 <= rop < op2. If an inverse doesn't exist the return value is zero and rop is undefined. 
+
 =cut
 */
 
@@ -1225,12 +1315,14 @@ function mpz_invert (var rop, var op1, var op2) {
   if(!(op2 instanceof GMP.Integer))
     die("incorrect type for op2 in mpz_invert");
   using gmp.__gmpz_invert;
-  __gmpz_invert(rop, op1, op2);
+  return __gmpz_invert(rop, op1, op2);
 }
 
 /*
 =head1 int mpz_jacobi (mpz_t a, mpz_t b)
+
 Calculate the Jacobi symbol (a/b). This is defined only for b odd. 
+
 =cut
 */
 
@@ -1240,12 +1332,14 @@ function mpz_jacobi (var a, var b) {
   if(!(b instanceof GMP.Integer))
     die("incorrect type for b in mpz_jacobi");
   using gmp.__gmpz_jacobi;
-  __gmpz_jacobi(a, b);
+  return __gmpz_jacobi(a, b);
 }
 
 /*
 =head1 int mpz_legendre (mpz_t a, mpz_t p)
+
 Calculate the Legendre symbol (a/p). This is defined only for p an odd positive prime, and for such p it's identical to the Jacobi symbol. 
+
 =cut
 */
 
@@ -1255,16 +1349,22 @@ function mpz_legendre (var a, var p) {
   if(!(p instanceof GMP.Integer))
     die("incorrect type for p in mpz_legendre");
   using gmp.__gmpz_legendre;
-  __gmpz_legendre(a, p);
+  return __gmpz_legendre(a, p);
 }
 
 /*
 =head1 int mpz_kronecker (mpz_t a, mpz_t b)
+
 =head1 int mpz_kronecker_si (mpz_t a, long b)
+
 =head1 int mpz_kronecker_ui (mpz_t a, unsigned long b)
+
 =head1 int mpz_si_kronecker (long a, mpz_t b)
+
 =head1 int mpz_ui_kronecker (unsigned long a, mpz_t b)
+
 Calculate the Jacobi symbol (a/b) with the Kronecker extension (a/2)=(2/a) when a odd, or (a/2)=0 when a even. When b is odd the Jacobi symbol and Kronecker symbol are identical, so mpz_kronecker_ui etc can be used for mixed precision Jacobi symbols too. For more information see Henri Cohen section 1.4.2 (see References), or any number theory textbook. See also the example program demos/qcn.c which uses mpz_kronecker_ui. 
+
 =cut
 */
 
@@ -1274,40 +1374,42 @@ function mpz_kronecker (var a, var b) {
   if(!(b instanceof GMP.Integer))
     die("incorrect type for b in mpz_kronecker");
   using gmp.__gmpz_kronecker;
-  __gmpz_kronecker(a, b);
+  return __gmpz_kronecker(a, b);
 }
 
 function mpz_kronecker_si (var a, int b) {
   if(!(a instanceof GMP.Integer))
     die("incorrect type for a in mpz_kronecker_si");
   using gmp.__gmpz_kronecker_si;
-  __gmpz_kronecker_si(a, b);
+  return __gmpz_kronecker_si(a, b);
 }
 
 function mpz_kronecker_ui (var a, int b) {
   if(!(a instanceof GMP.Integer))
     die("incorrect type for a in mpz_kronecker_ui");
   using gmp.__gmpz_kronecker_ui;
-  __gmpz_kronecker_ui(a, b);
+  return __gmpz_kronecker_ui(a, b);
 }
 
 function mpz_si_kronecker (int a, var b) {
   if(!(b instanceof GMP.Integer))
     die("incorrect type for b in mpz_si_kronecker");
   using gmp.__gmpz_si_kronecker;
-  __gmpz_si_kronecker(a, b);
+  return __gmpz_si_kronecker(a, b);
 }
 
 function mpz_ui_kronecker (int a, var b) {
   if(!(b instanceof GMP.Integer))
     die("incorrect type for b in mpz_ui_kronecker");
   using gmp.__gmpz_ui_kronecker;
-  __gmpz_ui_kronecker(a, b);
+  return __gmpz_ui_kronecker(a, b);
 }
 
 /*
 =head1 mp_bitcnt_t mpz_remove (mpz_t rop, mpz_t op, mpz_t f)
+
 Remove all occurrences of the factor f from op and store the result in rop. The return value is how many such occurrences were removed. 
+
 =cut
 */
 
@@ -1319,12 +1421,14 @@ function mpz_remove (var rop, var op, var f) {
   if(!(f instanceof GMP.Integer))
     die("incorrect type for f in mpz_remove");
   using gmp.__gmpz_remove;
-  __gmpz_remove(rop, op, f);
+  return __gmpz_remove(rop, op, f);
 }
 
 /*
 =head1 void mpz_fac_ui (mpz_t rop, unsigned long int op)
+
 Set rop to op!, the factorial of op. 
+
 =cut
 */
 
@@ -1332,13 +1436,16 @@ function mpz_fac_ui (var rop, int op) {
   if(!(rop instanceof GMP.Integer))
     die("incorrect type for rop in mpz_fac_ui");
   using gmp.__gmpz_fac_ui;
-  __gmpz_fac_ui(rop, op);
+   __gmpz_fac_ui(rop, op);
 }
 
 /*
 =head1 void mpz_bin_ui (mpz_t rop, mpz_t n, unsigned long int k)
+
 =head1 void mpz_bin_uiui (mpz_t rop, unsigned long int n, unsigned long int k)
+
 Compute the binomial coefficient n over k and store the result in rop. Negative values of n are supported by mpz_bin_ui, using the identity bin(-n,k) = (-1)^k * bin(n+k-1,k), see Knuth volume 1 section 1.2.6 part G. 
+
 =cut
 */
 
@@ -1348,20 +1455,23 @@ function mpz_bin_ui (var rop, var n, int k) {
   if(!(n instanceof GMP.Integer))
     die("incorrect type for n in mpz_bin_ui");
   using gmp.__gmpz_bin_ui;
-  __gmpz_bin_ui(rop, n, k);
+   __gmpz_bin_ui(rop, n, k);
 }
 
 function mpz_bin_uiui (var rop, int n, int k) {
   if(!(rop instanceof GMP.Integer))
     die("incorrect type for rop in mpz_bin_uiui");
   using gmp.__gmpz_bin_uiui;
-  __gmpz_bin_uiui(rop, n, k);
+   __gmpz_bin_uiui(rop, n, k);
 }
 
 /*
 =head1 void mpz_fib_ui (mpz_t fn, unsigned long int n)
+
 =head1 void mpz_fib2_ui (mpz_t fn, mpz_t fnsub1, unsigned long int n)
+
 mpz_fib_ui sets fn to to F[n], the n'th Fibonacci number. mpz_fib2_ui sets fn to F[n], and fnsub1 to F[n-1]. These functions are designed for calculating isolated Fibonacci numbers. When a sequence of values is wanted it's best to start with mpz_fib2_ui and iterate the defining F[n+1]=F[n]+F[n-1] or similar. 
+
 =cut
 */
 
@@ -1369,7 +1479,7 @@ function mpz_fib_ui (var fn, int n) {
   if(!(fn instanceof GMP.Integer))
     die("incorrect type for fn in mpz_fib_ui");
   using gmp.__gmpz_fib_ui;
-  __gmpz_fib_ui(fn, n);
+   __gmpz_fib_ui(fn, n);
 }
 
 function mpz_fib2_ui (var fn, var fnsub1, int n) {
@@ -1378,13 +1488,16 @@ function mpz_fib2_ui (var fn, var fnsub1, int n) {
   if(!(fnsub1 instanceof GMP.Integer))
     die("incorrect type for fnsub1 in mpz_fib2_ui");
   using gmp.__gmpz_fib2_ui;
-  __gmpz_fib2_ui(fn, fnsub1, n);
+   __gmpz_fib2_ui(fn, fnsub1, n);
 }
 
 /*
 =head1 void mpz_lucnum_ui (mpz_t ln, unsigned long int n)
+
 =head1 void mpz_lucnum2_ui (mpz_t ln, mpz_t lnsub1, unsigned long int n)
+
 mpz_lucnum_ui sets ln to to L[n], the n'th Lucas number. mpz_lucnum2_ui sets ln to L[n], and lnsub1 to L[n-1]. These functions are designed for calculating isolated Lucas numbers. When a sequence of values is wanted it's best to start with mpz_lucnum2_ui and iterate the defining L[n+1]=L[n]+L[n-1] or similar. The Fibonacci numbers and Lucas numbers are related sequences, so it's never necessary to call both mpz_fib2_ui and mpz_lucnum2_ui. The formulas for going from Fibonacci to Lucas can be found in Lucas Numbers Algorithm, the reverse is straightforward too. 
+
 =cut
 */
 
@@ -1392,7 +1505,7 @@ function mpz_lucnum_ui (var ln, int n) {
   if(!(ln instanceof GMP.Integer))
     die("incorrect type for ln in mpz_lucnum_ui");
   using gmp.__gmpz_lucnum_ui;
-  __gmpz_lucnum_ui(ln, n);
+   __gmpz_lucnum_ui(ln, n);
 }
 
 function mpz_lucnum2_ui (var ln, var lnsub1, int n) {
@@ -1401,13 +1514,16 @@ function mpz_lucnum2_ui (var ln, var lnsub1, int n) {
   if(!(lnsub1 instanceof GMP.Integer))
     die("incorrect type for lnsub1 in mpz_lucnum2_ui");
   using gmp.__gmpz_lucnum2_ui;
-  __gmpz_lucnum2_ui(ln, lnsub1, n);
+   __gmpz_lucnum2_ui(ln, lnsub1, n);
 }
 
 /*
 =head1 int mpz_cmp (mpz_t op1, mpz_t op2)
+
 =head1 int mpz_cmp_d (mpz_t op1, double op2)
+
 Compare op1 and op2. Return a positive value if op1 > op2, zero if op1 = op2, or a negative value if op1 < op2. mpz_cmp_ui and mpz_cmp_si are macros and will evaluate their arguments more than once. mpz_cmp_d can be called with an infinity, but results are undefined for a NaN. 
+
 =cut
 */
 
@@ -1417,21 +1533,25 @@ function mpz_cmp (var op1, var op2) {
   if(!(op2 instanceof GMP.Integer))
     die("incorrect type for op2 in mpz_cmp");
   using gmp.__gmpz_cmp;
-  __gmpz_cmp(op1, op2);
+  return __gmpz_cmp(op1, op2);
 }
 
 function mpz_cmp_d (var op1, float op2) {
   if(!(op1 instanceof GMP.Integer))
     die("incorrect type for op1 in mpz_cmp_d");
   using gmp.__gmpz_cmp_d;
-  __gmpz_cmp_d(op1, op2);
+  return __gmpz_cmp_d(op1, op2);
 }
 
 /*
 =head1 int mpz_cmpabs (mpz_t op1, mpz_t op2)
+
 =head1 int mpz_cmpabs_d (mpz_t op1, double op2)
+
 =head1 int mpz_cmpabs_ui (mpz_t op1, unsigned long int op2)
+
 Compare the absolute values of op1 and op2. Return a positive value if abs(op1) > abs(op2), zero if abs(op1) = abs(op2), or a negative value if abs(op1) < abs(op2). mpz_cmpabs_d can be called with an infinity, but results are undefined for a NaN. 
+
 =cut
 */
 
@@ -1441,26 +1561,28 @@ function mpz_cmpabs (var op1, var op2) {
   if(!(op2 instanceof GMP.Integer))
     die("incorrect type for op2 in mpz_cmpabs");
   using gmp.__gmpz_cmpabs;
-  __gmpz_cmpabs(op1, op2);
+  return __gmpz_cmpabs(op1, op2);
 }
 
 function mpz_cmpabs_d (var op1, float op2) {
   if(!(op1 instanceof GMP.Integer))
     die("incorrect type for op1 in mpz_cmpabs_d");
   using gmp.__gmpz_cmpabs_d;
-  __gmpz_cmpabs_d(op1, op2);
+  return __gmpz_cmpabs_d(op1, op2);
 }
 
 function mpz_cmpabs_ui (var op1, int op2) {
   if(!(op1 instanceof GMP.Integer))
     die("incorrect type for op1 in mpz_cmpabs_ui");
   using gmp.__gmpz_cmpabs_ui;
-  __gmpz_cmpabs_ui(op1, op2);
+  return __gmpz_cmpabs_ui(op1, op2);
 }
 
 /*
 =head1 void mpz_and (mpz_t rop, mpz_t op1, mpz_t op2)
+
 Set rop to op1 bitwise-and op2. 
+
 =cut
 */
 
@@ -1472,12 +1594,14 @@ function mpz_and (var rop, var op1, var op2) {
   if(!(op2 instanceof GMP.Integer))
     die("incorrect type for op2 in mpz_and");
   using gmp.__gmpz_and;
-  __gmpz_and(rop, op1, op2);
+   __gmpz_and(rop, op1, op2);
 }
 
 /*
 =head1 void mpz_ior (mpz_t rop, mpz_t op1, mpz_t op2)
+
 Set rop to op1 bitwise inclusive-or op2. 
+
 =cut
 */
 
@@ -1489,12 +1613,14 @@ function mpz_ior (var rop, var op1, var op2) {
   if(!(op2 instanceof GMP.Integer))
     die("incorrect type for op2 in mpz_ior");
   using gmp.__gmpz_ior;
-  __gmpz_ior(rop, op1, op2);
+   __gmpz_ior(rop, op1, op2);
 }
 
 /*
 =head1 void mpz_xor (mpz_t rop, mpz_t op1, mpz_t op2)
+
 Set rop to op1 bitwise exclusive-or op2. 
+
 =cut
 */
 
@@ -1506,12 +1632,14 @@ function mpz_xor (var rop, var op1, var op2) {
   if(!(op2 instanceof GMP.Integer))
     die("incorrect type for op2 in mpz_xor");
   using gmp.__gmpz_xor;
-  __gmpz_xor(rop, op1, op2);
+   __gmpz_xor(rop, op1, op2);
 }
 
 /*
 =head1 void mpz_com (mpz_t rop, mpz_t op)
+
 Set rop to the one's complement of op. 
+
 =cut
 */
 
@@ -1521,12 +1649,14 @@ function mpz_com (var rop, var op) {
   if(!(op instanceof GMP.Integer))
     die("incorrect type for op in mpz_com");
   using gmp.__gmpz_com;
-  __gmpz_com(rop, op);
+   __gmpz_com(rop, op);
 }
 
 /*
 =head1 mp_bitcnt_t mpz_popcount (mpz_t op)
+
 If op>=0, return the population count of op, which is the number of 1 bits in the binary representation. If op<0, the number of 1s is infinite, and the return value is the largest possible mp_bitcnt_t. 
+
 =cut
 */
 
@@ -1534,12 +1664,14 @@ function mpz_popcount (var op) {
   if(!(op instanceof GMP.Integer))
     die("incorrect type for op in mpz_popcount");
   using gmp.__gmpz_popcount;
-  __gmpz_popcount(op);
+  return __gmpz_popcount(op);
 }
 
 /*
 =head1 mp_bitcnt_t mpz_hamdist (mpz_t op1, mpz_t op2)
+
 If op1 and op2 are both >=0 or both <0, return the hamming distance between the two operands, which is the number of bit positions where op1 and op2 have different bit values. If one operand is >=0 and the other <0 then the number of bits different is infinite, and the return value is the largest possible mp_bitcnt_t. 
+
 =cut
 */
 
@@ -1549,13 +1681,16 @@ function mpz_hamdist (var op1, var op2) {
   if(!(op2 instanceof GMP.Integer))
     die("incorrect type for op2 in mpz_hamdist");
   using gmp.__gmpz_hamdist;
-  __gmpz_hamdist(op1, op2);
+  return __gmpz_hamdist(op1, op2);
 }
 
 /*
 =head1 mp_bitcnt_t mpz_scan0 (mpz_t op, mp_bitcnt_t starting_bit)
+
 =head1 mp_bitcnt_t mpz_scan1 (mpz_t op, mp_bitcnt_t starting_bit)
+
 Scan op, starting from bit starting_bit, towards more significant bits, until the first 0 or 1 bit (respectively) is found. Return the index of the found bit. If the bit at starting_bit is already what's sought, then starting_bit is returned. If there's no bit found, then the largest possible mp_bitcnt_t is returned. This will happen in mpz_scan0 past the end of a negative number, or mpz_scan1 past the end of a nonnegative number. 
+
 =cut
 */
 
@@ -1563,19 +1698,21 @@ function mpz_scan0 (var op, int starting_bit) {
   if(!(op instanceof GMP.Integer))
     die("incorrect type for op in mpz_scan0");
   using gmp.__gmpz_scan0;
-  __gmpz_scan0(op, starting_bit);
+  return __gmpz_scan0(op, starting_bit);
 }
 
 function mpz_scan1 (var op, int starting_bit) {
   if(!(op instanceof GMP.Integer))
     die("incorrect type for op in mpz_scan1");
   using gmp.__gmpz_scan1;
-  __gmpz_scan1(op, starting_bit);
+  return __gmpz_scan1(op, starting_bit);
 }
 
 /*
 =head1 void mpz_setbit (mpz_t rop, mp_bitcnt_t bit_index)
+
 Set bit bit_index in rop. 
+
 =cut
 */
 
@@ -1583,12 +1720,14 @@ function mpz_setbit (var rop, int bit_index) {
   if(!(rop instanceof GMP.Integer))
     die("incorrect type for rop in mpz_setbit");
   using gmp.__gmpz_setbit;
-  __gmpz_setbit(rop, bit_index);
+   __gmpz_setbit(rop, bit_index);
 }
 
 /*
 =head1 void mpz_clrbit (mpz_t rop, mp_bitcnt_t bit_index)
+
 Clear bit bit_index in rop. 
+
 =cut
 */
 
@@ -1596,12 +1735,14 @@ function mpz_clrbit (var rop, int bit_index) {
   if(!(rop instanceof GMP.Integer))
     die("incorrect type for rop in mpz_clrbit");
   using gmp.__gmpz_clrbit;
-  __gmpz_clrbit(rop, bit_index);
+   __gmpz_clrbit(rop, bit_index);
 }
 
 /*
 =head1 void mpz_combit (mpz_t rop, mp_bitcnt_t bit_index)
+
 Complement bit bit_index in rop. 
+
 =cut
 */
 
@@ -1609,12 +1750,14 @@ function mpz_combit (var rop, int bit_index) {
   if(!(rop instanceof GMP.Integer))
     die("incorrect type for rop in mpz_combit");
   using gmp.__gmpz_combit;
-  __gmpz_combit(rop, bit_index);
+   __gmpz_combit(rop, bit_index);
 }
 
 /*
 =head1 int mpz_tstbit (mpz_t op, mp_bitcnt_t bit_index)
+
 Test bit bit_index in op and return 0 or 1 accordingly. 
+
 =cut
 */
 
@@ -1622,64 +1765,14 @@ function mpz_tstbit (var op, int bit_index) {
   if(!(op instanceof GMP.Integer))
     die("incorrect type for op in mpz_tstbit");
   using gmp.__gmpz_tstbit;
-  __gmpz_tstbit(op, bit_index);
-}
-
-/*
-=head1 size_t mpz_out_str (FILE * stream, int base, mpz_t op)
-Output op on stdio stream stream, as a string of digits in base base. The base argument may vary from 2 to 62 or from −2 to −36. For base in the range 2..36, digits and lower-case letters are used; for −2..−36, digits and upper-case letters are used; for 37..62, digits, upper-case letters, and lower-case letters (in that significance order) are used. Return the number of bytes written, or if an error occurred, return 0. 
-=cut
-*/
-
-function mpz_out_str (var stream, int base, var op) {
-  if(!(op instanceof GMP.Integer))
-    die("incorrect type for op in mpz_out_str");
-  using gmp.__gmpz_out_str;
-  __gmpz_out_str(stream, base, op);
-}
-
-/*
-=head1 size_t mpz_inp_str (mpz_t rop, FILE * stream, int base)
-Input a possibly white-space preceded string in base base from stdio stream stream, and put the read integer in rop. The base may vary from 2 to 62, or if base is 0, then the leading characters are used: 0x and 0X for hexadecimal, 0b and 0B for binary, 0 for octal, or decimal otherwise. For bases up to 36, case is ignored; upper-case and lower-case letters have the same value. For bases 37 to 62, upper-case letter represent the usual 10..35 while lower-case letter represent 36..61. Return the number of bytes read, or if an error occurred, return 0. 
-=cut
-*/
-
-function mpz_inp_str (var rop, var stream, int base) {
-  if(!(rop instanceof GMP.Integer))
-    die("incorrect type for rop in mpz_inp_str");
-  using gmp.__gmpz_inp_str;
-  __gmpz_inp_str(rop, stream, base);
-}
-
-/*
-=head1 size_t mpz_out_raw (FILE * stream, mpz_t op)
-Output op on stdio stream stream, in raw binary format. The integer is written in a portable format, with 4 bytes of size information, and that many bytes of limbs. Both the size and the limbs are written in decreasing significance order (i.e., in big-endian). The output can be read with mpz_inp_raw. Return the number of bytes written, or if an error occurred, return 0. The output of this can not be read by mpz_inp_raw from GMP 1, because of changes necessary for compatibility between 32-bit and 64-bit machines. 
-=cut
-*/
-
-function mpz_out_raw (var stream, var op) {
-  if(!(op instanceof GMP.Integer))
-    die("incorrect type for op in mpz_out_raw");
-  using gmp.__gmpz_out_raw;
-  __gmpz_out_raw(stream, op);
-}
-
-/*
-=head1 size_t mpz_inp_raw (mpz_t rop, FILE * stream)
-Input from stdio stream stream in the format written by mpz_out_raw, and put the result in rop. Return the number of bytes read, or if an error occurred, return 0. This routine can read the output from mpz_out_raw also from GMP 1, in spite of changes necessary for compatibility between 32-bit and 64-bit machines. 
-=cut
-*/
-
-function mpz_inp_raw (var rop, var stream) {
-  if(!(rop instanceof GMP.Integer))
-    die("incorrect type for rop in mpz_inp_raw");
-  using gmp.__gmpz_inp_raw;
-  __gmpz_inp_raw(rop, stream);
+  return __gmpz_tstbit(op, bit_index);
 }
 
 /*
 =head1 void mpz_urandomb (mpz_t rop, gmp_randstate_t state, mp_bitcnt_t n)
-Generate a uniformly distributed random integer in the range 0 to 2^n−1, inclusive. The variable state must be initialized by calling one of the gmp_randinit functions (Random State Initialization) before invoking this function. 
+
+Generate a uniformly distributed random integer in the range 0 to 2^n-1, inclusive. The variable state must be initialized by calling one of the gmp_randinit functions (Random State Initialization) before invoking this function. 
+
 =cut
 */
 
@@ -1687,12 +1780,14 @@ function mpz_urandomb (var rop, var state, int n) {
   if(!(rop instanceof GMP.Integer))
     die("incorrect type for rop in mpz_urandomb");
   using gmp.__gmpz_urandomb;
-  __gmpz_urandomb(rop, state, n);
+   __gmpz_urandomb(rop, state, n);
 }
 
 /*
 =head1 void mpz_urandomm (mpz_t rop, gmp_randstate_t state, mpz_t n)
+
 Generate a uniform random integer in the range 0 to n-1, inclusive. The variable state must be initialized by calling one of the gmp_randinit functions (Random State Initialization) before invoking this function. 
+
 =cut
 */
 
@@ -1702,12 +1797,14 @@ function mpz_urandomm (var rop, var state, var n) {
   if(!(n instanceof GMP.Integer))
     die("incorrect type for n in mpz_urandomm");
   using gmp.__gmpz_urandomm;
-  __gmpz_urandomm(rop, state, n);
+   __gmpz_urandomm(rop, state, n);
 }
 
 /*
 =head1 void mpz_rrandomb (mpz_t rop, gmp_randstate_t state, mp_bitcnt_t n)
-Generate a random integer with long strings of zeros and ones in the binary representation. Useful for testing functions and algorithms, since this kind of random numbers have proven to be more likely to trigger corner-case bugs. The random number will be in the range 0 to 2^n−1, inclusive. The variable state must be initialized by calling one of the gmp_randinit functions (Random State Initialization) before invoking this function. 
+
+Generate a random integer with long strings of zeros and ones in the binary representation. Useful for testing functions and algorithms, since this kind of random numbers have proven to be more likely to trigger corner-case bugs. The random number will be in the range 0 to 2^n-1, inclusive. The variable state must be initialized by calling one of the gmp_randinit functions (Random State Initialization) before invoking this function. 
+
 =cut
 */
 
@@ -1715,12 +1812,14 @@ function mpz_rrandomb (var rop, var state, int n) {
   if(!(rop instanceof GMP.Integer))
     die("incorrect type for rop in mpz_rrandomb");
   using gmp.__gmpz_rrandomb;
-  __gmpz_rrandomb(rop, state, n);
+   __gmpz_rrandomb(rop, state, n);
 }
 
 /*
 =head1 void mpz_random (mpz_t rop, mp_size_t max_size)
+
 Generate a random integer of at most max_size limbs. The generated random number doesn't satisfy any particular requirements of randomness. Negative random numbers are generated when max_size is negative. This function is obsolete. Use mpz_urandomb or mpz_urandomm instead. 
+
 =cut
 */
 
@@ -1728,12 +1827,14 @@ function mpz_random (var rop, int max_size) {
   if(!(rop instanceof GMP.Integer))
     die("incorrect type for rop in mpz_random");
   using gmp.__gmpz_random;
-  __gmpz_random(rop, max_size);
+   __gmpz_random(rop, max_size);
 }
 
 /*
 =head1 void mpz_random2 (mpz_t rop, mp_size_t max_size)
+
 Generate a random integer of at most max_size limbs, with long strings of zeros and ones in the binary representation. Useful for testing functions and algorithms, since this kind of random numbers have proven to be more likely to trigger corner-case bugs. Negative random numbers are generated when max_size is negative. This function is obsolete. Use mpz_rrandomb instead. 
+
 =cut
 */
 
@@ -1741,48 +1842,24 @@ function mpz_random2 (var rop, int max_size) {
   if(!(rop instanceof GMP.Integer))
     die("incorrect type for rop in mpz_random2");
   using gmp.__gmpz_random2;
-  __gmpz_random2(rop, max_size);
-}
-
-/*
-=head1 void mpz_import (mpz_t rop, size_t count, int order, size_t size, int endian, size_t nails, const void * op)
-Set rop from an array of word data at op. The parameters specify the format of the data. count many words are read, each size bytes. order can be 1 for most significant word first or -1 for least significant first. Within each word endian can be 1 for most significant byte first, -1 for least significant first, or 0 for the native endianness of the host CPU. The most significant nails bits of each word are skipped, this can be 0 to use the full words. There is no sign taken from the data, rop will simply be a positive integer. An application can handle any sign itself, and apply it for instance with mpz_neg. There are no data alignment restrictions on op, any address is allowed. Here's an example converting an array of unsigned long data, most significant element first, and host byte order within each value.           unsigned long  a[20];
-          mpz_import (z, 20, 1, sizeof(a[0]), 0, 0, a);
-     This example assumes the full sizeof bytes are used for data in the given type, which is usually true, and certainly true for unsigned long everywhere we know of. However on Cray vector systems it may be noted that short and int are always stored in 8 bytes (and with sizeof indicating that) but use only 32 or 46 bits. The nails feature can account for this, by passing for instance 8*sizeof(int)-INT_BIT. 
-=cut
-*/
-
-function mpz_import (var rop, int count, int order, int size, int endian, int nails, var op) {
-  if(!(rop instanceof GMP.Integer))
-    die("incorrect type for rop in mpz_import");
-  using gmp.__gmpz_import;
-  __gmpz_import(rop, count, order, size, endian, nails, op);
-}
-
-/*
-=head1 void * mpz_export (void * rop, size_t * countp, int order, size_t size, int endian, size_t nails, mpz_t op)
-Fill rop with word data from op. The parameters specify the format of the data produced. Each word will be size bytes and order can be 1 for most significant word first or -1 for least significant first. Within each word endian can be 1 for most significant byte first, -1 for least significant first, or 0 for the native endianness of the host CPU. The most significant nails bits of each word are unused and set to zero, this can be 0 to produce full words. The number of words produced is written to *countp, or countp can be NULL to discard the count. rop must have enough space for the data, or if rop is NULL then a result array of the necessary size is allocated using the current GMP allocation function (see Custom Allocation). In either case the return value is the destination used, either rop or the allocated block. If op is non-zero then the most significant word produced will be non-zero. If op is zero then the count returned will be zero and nothing written to rop. If rop is NULL in this case, no block is allocated, just NULL is returned. The sign of op is ignored, just the absolute value is exported. An application can use mpz_sgn to get the sign and handle it as desired. (see Integer Comparisons) There are no data alignment restrictions on rop, any address is allowed. When an application is allocating space itself the required size can be determined with a calculation like the following. Since mpz_sizeinbase always returns at least 1, count here will be at least one, which avoids any portability problems with malloc(0), though if z is zero no space at all is actually needed (or written).           numb = 8*size - nail;
-          count = (mpz_sizeinbase (z, 2) + numb-1) / numb;
-          p = malloc (count * size);
-     
-=cut
-*/
-
-function mpz_export (var rop, var countp, int order, int size, int endian, int nails, var op) {
-  if(!(op instanceof GMP.Integer))
-    die("incorrect type for op in mpz_export");
-  using gmp.__gmpz_export;
-  __gmpz_export(rop, countp, order, size, endian, nails, op);
+   __gmpz_random2(rop, max_size);
 }
 
 /*
 =head1 int mpz_fits_ulong_p (mpz_t op)
+
 =head1 int mpz_fits_slong_p (mpz_t op)
+
 =head1 int mpz_fits_uint_p (mpz_t op)
+
 =head1 int mpz_fits_sint_p (mpz_t op)
+
 =head1 int mpz_fits_ushort_p (mpz_t op)
+
 =head1 int mpz_fits_sshort_p (mpz_t op)
+
 Return non-zero iff the value of op fits in an unsigned long int, signed long int, unsigned int, signed int, unsigned short int, or signed short int, respectively. Otherwise, return zero. 
+
 =cut
 */
 
@@ -1790,47 +1867,49 @@ function mpz_fits_ulong_p (var op) {
   if(!(op instanceof GMP.Integer))
     die("incorrect type for op in mpz_fits_ulong_p");
   using gmp.__gmpz_fits_ulong_p;
-  __gmpz_fits_ulong_p(op);
+  return __gmpz_fits_ulong_p(op);
 }
 
 function mpz_fits_slong_p (var op) {
   if(!(op instanceof GMP.Integer))
     die("incorrect type for op in mpz_fits_slong_p");
   using gmp.__gmpz_fits_slong_p;
-  __gmpz_fits_slong_p(op);
+  return __gmpz_fits_slong_p(op);
 }
 
 function mpz_fits_uint_p (var op) {
   if(!(op instanceof GMP.Integer))
     die("incorrect type for op in mpz_fits_uint_p");
   using gmp.__gmpz_fits_uint_p;
-  __gmpz_fits_uint_p(op);
+  return __gmpz_fits_uint_p(op);
 }
 
 function mpz_fits_sint_p (var op) {
   if(!(op instanceof GMP.Integer))
     die("incorrect type for op in mpz_fits_sint_p");
   using gmp.__gmpz_fits_sint_p;
-  __gmpz_fits_sint_p(op);
+  return __gmpz_fits_sint_p(op);
 }
 
 function mpz_fits_ushort_p (var op) {
   if(!(op instanceof GMP.Integer))
     die("incorrect type for op in mpz_fits_ushort_p");
   using gmp.__gmpz_fits_ushort_p;
-  __gmpz_fits_ushort_p(op);
+  return __gmpz_fits_ushort_p(op);
 }
 
 function mpz_fits_sshort_p (var op) {
   if(!(op instanceof GMP.Integer))
     die("incorrect type for op in mpz_fits_sshort_p");
   using gmp.__gmpz_fits_sshort_p;
-  __gmpz_fits_sshort_p(op);
+  return __gmpz_fits_sshort_p(op);
 }
 
 /*
 =head1 size_t mpz_sizeinbase (mpz_t op, int base)
+
 Return the size of op measured in number of digits in the given base. base can vary from 2 to 62. The sign of op is ignored, just the absolute value is used. The result will be either exact or 1 too big. If base is a power of 2, the result is always exact. If op is zero the return value is always 1. This function can be used to determine the space required when converting op to a string. The right amount of allocation is normally two more than the value returned by mpz_sizeinbase, one extra for a minus sign and one for the null-terminator. It will be noted that mpz_sizeinbase(op,2) can be used to locate the most significant 1 bit in op, counting from 1. (Unlike the bitwise functions which start from 0, See Logical and Bit Manipulation Functions.) 
+
 =cut
 */
 
@@ -1838,14 +1917,16 @@ function mpz_sizeinbase (var op, int base) {
   if(!(op instanceof GMP.Integer))
     die("incorrect type for op in mpz_sizeinbase");
   using gmp.__gmpz_sizeinbase;
-  __gmpz_sizeinbase(op, base);
+  return __gmpz_sizeinbase(op, base);
 }
 
 /*
 =head1 void mpz_array_init (mpz_t integer_array, mp_size_t array_size, mp_size_t fixed_num_bits)
+
 This is a special type of initialization. Fixed space of fixed_num_bits is allocated to each of the array_size integers in integer_array. There is no way to free the storage allocated by this function. Don't call mpz_clear! The integer_array parameter is the first mpz_t in the array. For example,           mpz_t  arr[20000];
           mpz_array_init (arr[0], 20000, 512);
      This function is only intended for programs that create a large number of integers and need to reduce memory usage by avoiding the overheads of allocating and reallocating lots of small blocks. In normal programs this function is not recommended. The space allocated to each integer by this function will not be automatically increased, unlike the normal mpz_init, so an application must ensure it is sufficient for any value stored. The following space requirements apply to various routines, mpz_abs, mpz_neg, mpz_set, mpz_set_si and mpz_set_ui need room for the value they store. mpz_add, mpz_add_ui, mpz_sub and mpz_sub_ui need room for the larger of the two operands, plus an extra mp_bits_per_limb. mpz_mul, mpz_mul_ui and mpz_mul_ui need room for the sum of the number of bits in their operands, but each rounded up to a multiple of mp_bits_per_limb. mpz_swap can be used between two array variables, but not between an array and a normal variable. For other functions, or if in doubt, the suggestion is to calculate in a regular mpz_init variable and copy the result to an array variable with mpz_set. 
+
 =cut
 */
 
@@ -1853,25 +1934,14 @@ function mpz_array_init (var integer_array, int array_size, int fixed_num_bits) 
   if(!(integer_array instanceof GMP.Integer))
     die("incorrect type for integer_array in mpz_array_init");
   using gmp.__gmpz_array_init;
-  __gmpz_array_init(integer_array, array_size, fixed_num_bits);
-}
-
-/*
-=head1 void * _mpz_realloc (mpz_t integer, mp_size_t new_alloc)
-Change the space for integer to new_alloc limbs. The value in integer is preserved if it fits, or is set to 0 if not. The return value is not useful to applications and should be ignored. mpz_realloc2 is the preferred way to accomplish allocation changes like this. mpz_realloc2 and _mpz_realloc are the same except that _mpz_realloc takes its size in limbs. 
-=cut
-*/
-
-function _mpz_realloc (var integer, int new_alloc) {
-  if(!(integer instanceof GMP.Integer))
-    die("incorrect type for integer in _mpz_realloc");
-  using gmp.__g_mpz_realloc;
-  __g_mpz_realloc(integer, new_alloc);
+   __gmpz_array_init(integer_array, array_size, fixed_num_bits);
 }
 
 /*
 =head1 mp_limb_t mpz_getlimbn (mpz_t op, mp_size_t n)
+
 Return limb number n from op. The sign of op is ignored, just the absolute value is used. The least significant limb is number 0. mpz_size can be used to find how many limbs make up op. mpz_getlimbn returns zero if n is outside the range 0 to mpz_size(op)-1. 
+
 =cut
 */
 
@@ -1879,12 +1949,14 @@ function mpz_getlimbn (var op, int n) {
   if(!(op instanceof GMP.Integer))
     die("incorrect type for op in mpz_getlimbn");
   using gmp.__gmpz_getlimbn;
-  __gmpz_getlimbn(op, n);
+  return __gmpz_getlimbn(op, n);
 }
 
 /*
 =head1 size_t mpz_size (mpz_t op)
+
 Return the size of op measured in number of limbs. If op is zero, the returned value will be zero. 
+
 =cut
 */
 
@@ -1892,2259 +1964,6 @@ function mpz_size (var op) {
   if(!(op instanceof GMP.Integer))
     die("incorrect type for op in mpz_size");
   using gmp.__gmpz_size;
-  __gmpz_size(op);
+  return __gmpz_size(op);
 }
-
-/*
-=head1 void mpq_canonicalize (mpq_t op)
-Remove any factors that are common to the numerator and denominator of op, and make the denominator positive. 
-=cut
-*/
-
-function mpq_canonicalize (var op) {
-  using gmp.__gmpq_canonicalize;
-  __gmpq_canonicalize(op);
-}
-
-/*
-=head1 void mpq_init (mpq_t x)
-Initialize x and set it to 0/1. Each variable should normally only be initialized once, or at least cleared out (using the function mpq_clear) between each initialization. 
-=cut
-*/
-
-function mpq_init (var x) {
-  using gmp.__gmpq_init;
-  __gmpq_init(x);
-}
-
-/*
-=head1 void mpq_inits (mpq_t x)
-Initialize a NULL-terminated list of mpq_t variables, and set their values to 0/1. 
-=cut
-*/
-
-function mpq_inits (var x) {
-  using gmp.__gmpq_inits;
-  __gmpq_inits(x);
-}
-
-/*
-=head1 void mpq_clear (mpq_t x)
-Free the space occupied by x. Make sure to call this function for all mpq_t variables when you are done with them. 
-=cut
-*/
-
-function mpq_clear (var x) {
-  using gmp.__gmpq_clear;
-  __gmpq_clear(x);
-}
-
-/*
-=head1 void mpq_clears (mpq_t x)
-Free the space occupied by a NULL-terminated list of mpq_t variables. 
-=cut
-*/
-
-function mpq_clears (var x) {
-  using gmp.__gmpq_clears;
-  __gmpq_clears(x);
-}
-
-/*
-=head1 void mpq_set (mpq_t rop, mpq_t op)
-=head1 void mpq_set_z (mpq_t rop, mpz_t op)
-Assign rop from op. 
-=cut
-*/
-
-function mpq_set (var rop, var op) {
-  using gmp.__gmpq_set;
-  __gmpq_set(rop, op);
-}
-
-function mpq_set_z (var rop, var op) {
-  if(!(op instanceof GMP.Integer))
-    die("incorrect type for op in mpq_set_z");
-  using gmp.__gmpq_set_z;
-  __gmpq_set_z(rop, op);
-}
-
-/*
-=head1 void mpq_set_ui (mpq_t rop, unsigned long int op1, unsigned long int op2)
-=head1 void mpq_set_si (mpq_t rop, signed long int op1, unsigned long int op2)
-Set the value of rop to op1/op2. Note that if op1 and op2 have common factors, rop has to be passed to mpq_canonicalize before any operations are performed on rop. 
-=cut
-*/
-
-function mpq_set_ui (var rop, int op1, int op2) {
-  using gmp.__gmpq_set_ui;
-  __gmpq_set_ui(rop, op1, op2);
-}
-
-function mpq_set_si (var rop, int op1, int op2) {
-  using gmp.__gmpq_set_si;
-  __gmpq_set_si(rop, op1, op2);
-}
-
-/*
-=head1 int mpq_set_str (mpq_t rop, char * str, int base)
-Set rop from a null-terminated string str in the given base. The string can be an integer like “41” or a fraction like “41/152”. The fraction must be in canonical form (see Rational Number Functions), or if not then mpq_canonicalize must be called. The numerator and optional denominator are parsed the same as in mpz_set_str (see Assigning Integers). White space is allowed in the string, and is simply ignored. The base can vary from 2 to 62, or if base is 0 then the leading characters are used: 0x or 0X for hex, 0b or 0B for binary, 0 for octal, or decimal otherwise. Note that this is done separately for the numerator and denominator, so for instance 0xEF/100 is 239/100, whereas 0xEF/0x100 is 239/256. The return value is 0 if the entire string is a valid number, or −1 if not. 
-=cut
-*/
-
-function mpq_set_str (var rop, var str, int base) {
-  using gmp.__gmpq_set_str;
-  __gmpq_set_str(rop, str, base);
-}
-
-/*
-=head1 void mpq_swap (mpq_t rop1, mpq_t rop2)
-Swap the values rop1 and rop2 efficiently. 
-=cut
-*/
-
-function mpq_swap (var rop1, var rop2) {
-  using gmp.__gmpq_swap;
-  __gmpq_swap(rop1, rop2);
-}
-
-/*
-=head1 double mpq_get_d (mpq_t op)
-Convert op to a double, truncating if necessary (ie. rounding towards zero). If the exponent from the conversion is too big or too small to fit a double then the result is system dependent. For too big an infinity is returned when available. For too small 0.0 is normally returned. Hardware overflow, underflow and denorm traps may or may not occur. 
-=cut
-*/
-
-function mpq_get_d (var op) {
-  using gmp.__gmpq_get_d;
-  __gmpq_get_d(op);
-}
-
-/*
-=head1 void mpq_set_d (mpq_t rop, double op)
-=head1 void mpq_set_f (mpq_t rop, mpf_t op)
-Set rop to the value of op. There is no rounding, this conversion is exact. 
-=cut
-*/
-
-function mpq_set_d (var rop, float op) {
-  using gmp.__gmpq_set_d;
-  __gmpq_set_d(rop, op);
-}
-
-function mpq_set_f (var rop, var op) {
-  using gmp.__gmpq_set_f;
-  __gmpq_set_f(rop, op);
-}
-
-/*
-=head1 char * mpq_get_str (char * str, int base, mpq_t op)
-Convert op to a string of digits in base base. The base may vary from 2 to 36. The string will be of the form `num/den', or if the denominator is 1 then just `num'. If str is NULL, the result string is allocated using the current allocation function (see Custom Allocation). The block will be strlen(str)+1 bytes, that being exactly enough for the string and null-terminator. If str is not NULL, it should point to a block of storage large enough for the result, that being           mpz_sizeinbase (mpq_numref(op), base)
-          + mpz_sizeinbase (mpq_denref(op), base) + 3
-     The three extra bytes are for a possible minus sign, possible slash, and the null-terminator. A pointer to the result string is returned, being either the allocated block, or the given str. 
-=cut
-*/
-
-function mpq_get_str (var str, int base, var op) {
-  using gmp.__gmpq_get_str;
-  __gmpq_get_str(str, base, op);
-}
-
-/*
-=head1 void mpq_add (mpq_t sum, mpq_t addend1, mpq_t addend2)
-Set sum to addend1 + addend2. 
-=cut
-*/
-
-function mpq_add (var sum, var addend1, var addend2) {
-  using gmp.__gmpq_add;
-  __gmpq_add(sum, addend1, addend2);
-}
-
-/*
-=head1 void mpq_sub (mpq_t difference, mpq_t minuend, mpq_t subtrahend)
-Set difference to minuend − subtrahend. 
-=cut
-*/
-
-function mpq_sub (var difference, var minuend, var subtrahend) {
-  using gmp.__gmpq_sub;
-  __gmpq_sub(difference, minuend, subtrahend);
-}
-
-/*
-=head1 void mpq_mul (mpq_t product, mpq_t multiplier, mpq_t multiplicand)
-Set product to multiplier times multiplicand. 
-=cut
-*/
-
-function mpq_mul (var product, var multiplier, var multiplicand) {
-  using gmp.__gmpq_mul;
-  __gmpq_mul(product, multiplier, multiplicand);
-}
-
-/*
-=head1 void mpq_mul_2exp (mpq_t rop, mpq_t op1, mp_bitcnt_t op2)
-Set rop to op1 times 2 raised to op2. 
-=cut
-*/
-
-function mpq_mul_2exp (var rop, var op1, int op2) {
-  using gmp.__gmpq_mul_2exp;
-  __gmpq_mul_2exp(rop, op1, op2);
-}
-
-/*
-=head1 void mpq_div (mpq_t quotient, mpq_t dividend, mpq_t divisor)
-Set quotient to dividend/divisor. 
-=cut
-*/
-
-function mpq_div (var quotient, var dividend, var divisor) {
-  using gmp.__gmpq_div;
-  __gmpq_div(quotient, dividend, divisor);
-}
-
-/*
-=head1 void mpq_div_2exp (mpq_t rop, mpq_t op1, mp_bitcnt_t op2)
-Set rop to op1 divided by 2 raised to op2. 
-=cut
-*/
-
-function mpq_div_2exp (var rop, var op1, int op2) {
-  using gmp.__gmpq_div_2exp;
-  __gmpq_div_2exp(rop, op1, op2);
-}
-
-/*
-=head1 void mpq_neg (mpq_t negated_operand, mpq_t operand)
-Set negated_operand to −operand. 
-=cut
-*/
-
-function mpq_neg (var negated_operand, var operand) {
-  using gmp.__gmpq_neg;
-  __gmpq_neg(negated_operand, operand);
-}
-
-/*
-=head1 void mpq_abs (mpq_t rop, mpq_t op)
-Set rop to the absolute value of op. 
-=cut
-*/
-
-function mpq_abs (var rop, var op) {
-  using gmp.__gmpq_abs;
-  __gmpq_abs(rop, op);
-}
-
-/*
-=head1 void mpq_inv (mpq_t inverted_number, mpq_t number)
-Set inverted_number to 1/number. If the new denominator is zero, this routine will divide by zero. 
-=cut
-*/
-
-function mpq_inv (var inverted_number, var number) {
-  using gmp.__gmpq_inv;
-  __gmpq_inv(inverted_number, number);
-}
-
-/*
-=head1 int mpq_cmp (mpq_t op1, mpq_t op2)
-Compare op1 and op2. Return a positive value if op1 > op2, zero if op1 = op2, and a negative value if op1 < op2. To determine if two rationals are equal, mpq_equal is faster than mpq_cmp. 
-=cut
-*/
-
-function mpq_cmp (var op1, var op2) {
-  using gmp.__gmpq_cmp;
-  __gmpq_cmp(op1, op2);
-}
-
-/*
-=head1 int mpq_equal (mpq_t op1, mpq_t op2)
-Return non-zero if op1 and op2 are equal, zero if they are non-equal. Although mpq_cmp can be used for the same purpose, this function is much faster. 
-=cut
-*/
-
-function mpq_equal (var op1, var op2) {
-  using gmp.__gmpq_equal;
-  __gmpq_equal(op1, op2);
-}
-
-/*
-=head1 void mpq_get_num (mpz_t numerator, mpq_t rational)
-=head1 void mpq_get_den (mpz_t denominator, mpq_t rational)
-=head1 void mpq_set_num (mpq_t rational, mpz_t numerator)
-=head1 void mpq_set_den (mpq_t rational, mpz_t denominator)
-Get or set the numerator or denominator of a rational. These functions are equivalent to calling mpz_set with an appropriate mpq_numref or mpq_denref. Direct use of mpq_numref or mpq_denref is recommended instead of these functions. 
-=cut
-*/
-
-function mpq_get_num (var numerator, var rational) {
-  if(!(numerator instanceof GMP.Integer))
-    die("incorrect type for numerator in mpq_get_num");
-  using gmp.__gmpq_get_num;
-  __gmpq_get_num(numerator, rational);
-}
-
-function mpq_get_den (var denominator, var rational) {
-  if(!(denominator instanceof GMP.Integer))
-    die("incorrect type for denominator in mpq_get_den");
-  using gmp.__gmpq_get_den;
-  __gmpq_get_den(denominator, rational);
-}
-
-function mpq_set_num (var rational, var numerator) {
-  if(!(numerator instanceof GMP.Integer))
-    die("incorrect type for numerator in mpq_set_num");
-  using gmp.__gmpq_set_num;
-  __gmpq_set_num(rational, numerator);
-}
-
-function mpq_set_den (var rational, var denominator) {
-  if(!(denominator instanceof GMP.Integer))
-    die("incorrect type for denominator in mpq_set_den");
-  using gmp.__gmpq_set_den;
-  __gmpq_set_den(rational, denominator);
-}
-
-/*
-=head1 size_t mpq_out_str (FILE * stream, int base, mpq_t op)
-Output op on stdio stream stream, as a string of digits in base base. The base may vary from 2 to 36. Output is in the form `num/den' or if the denominator is 1 then just `num'. Return the number of bytes written, or if an error occurred, return 0. 
-=cut
-*/
-
-function mpq_out_str (var stream, int base, var op) {
-  using gmp.__gmpq_out_str;
-  __gmpq_out_str(stream, base, op);
-}
-
-/*
-=head1 size_t mpq_inp_str (mpq_t rop, FILE * stream, int base)
-Read a string of digits from stream and convert them to a rational in rop. Any initial white-space characters are read and discarded. Return the number of characters read (including white space), or 0 if a rational could not be read. The input can be a fraction like `17/63' or just an integer like `123'. Reading stops at the first character not in this form, and white space is not permitted within the string. If the input might not be in canonical form, then mpq_canonicalize must be called (see Rational Number Functions). The base can be between 2 and 36, or can be 0 in which case the leading characters of the string determine the base, `0x' or `0X' for hexadecimal, `0' for octal, or decimal otherwise. The leading characters are examined separately for the numerator and denominator of a fraction, so for instance `0x10/11' is 16/11, whereas `0x10/0x11' is 16/17. 
-=cut
-*/
-
-function mpq_inp_str (var rop, var stream, int base) {
-  using gmp.__gmpq_inp_str;
-  __gmpq_inp_str(rop, stream, base);
-}
-
-/*
-=head1 void mpf_set_default_prec (mp_bitcnt_t prec)
-Set the default precision to be at least prec bits. All subsequent calls to mpf_init will use this precision, but previously initialized variables are unaffected. 
-=cut
-*/
-
-function mpf_set_default_prec (int prec) {
-  using gmp.__gmpf_set_default_prec;
-  __gmpf_set_default_prec(prec);
-}
-
-/*
-=head1 mp_bitcnt_t mpf_get_default_prec ( )
-Return the default precision actually used. 
-=cut
-*/
-
-function mpf_get_default_prec (var x) {
-  using gmp.__gmpf_get_default_prec;
-  __gmpf_get_default_prec();
-}
-
-/*
-=head1 void mpf_init (mpf_t x)
-Initialize x to 0. Normally, a variable should be initialized once only or at least be cleared, using mpf_clear, between initializations. The precision of x is undefined unless a default precision has already been established by a call to mpf_set_default_prec. 
-=cut
-*/
-
-function mpf_init (var x) {
-  using gmp.__gmpf_init;
-  __gmpf_init(x);
-}
-
-/*
-=head1 void mpf_init2 (mpf_t x, mp_bitcnt_t prec)
-Initialize x to 0 and set its precision to be at least prec bits. Normally, a variable should be initialized once only or at least be cleared, using mpf_clear, between initializations. 
-=cut
-*/
-
-function mpf_init2 (var x, int prec) {
-  using gmp.__gmpf_init2;
-  __gmpf_init2(x, prec);
-}
-
-/*
-=head1 void mpf_inits (mpf_t x)
-Initialize a NULL-terminated list of mpf_t variables, and set their values to 0. The precision of the initialized variables is undefined unless a default precision has already been established by a call to mpf_set_default_prec. 
-=cut
-*/
-
-function mpf_inits (var x) {
-  using gmp.__gmpf_inits;
-  __gmpf_inits(x);
-}
-
-/*
-=head1 void mpf_clear (mpf_t x)
-Free the space occupied by x. Make sure to call this function for all mpf_t variables when you are done with them. 
-=cut
-*/
-
-function mpf_clear (var x) {
-  using gmp.__gmpf_clear;
-  __gmpf_clear(x);
-}
-
-/*
-=head1 void mpf_clears (mpf_t x)
-Free the space occupied by a NULL-terminated list of mpf_t variables. 
-=cut
-*/
-
-function mpf_clears (var x) {
-  using gmp.__gmpf_clears;
-  __gmpf_clears(x);
-}
-
-/*
-=head1 mp_bitcnt_t mpf_get_prec (mpf_t op)
-Return the current precision of op, in bits. 
-=cut
-*/
-
-function mpf_get_prec (var op) {
-  using gmp.__gmpf_get_prec;
-  __gmpf_get_prec(op);
-}
-
-/*
-=head1 void mpf_set_prec (mpf_t rop, mp_bitcnt_t prec)
-Set the precision of rop to be at least prec bits. The value in rop will be truncated to the new precision. This function requires a call to realloc, and so should not be used in a tight loop. 
-=cut
-*/
-
-function mpf_set_prec (var rop, int prec) {
-  using gmp.__gmpf_set_prec;
-  __gmpf_set_prec(rop, prec);
-}
-
-/*
-=head1 void mpf_set_prec_raw (mpf_t rop, mp_bitcnt_t prec)
-Set the precision of rop to be at least prec bits, without changing the memory allocated. prec must be no more than the allocated precision for rop, that being the precision when rop was initialized, or in the most recent mpf_set_prec. The value in rop is unchanged, and in particular if it had a higher precision than prec it will retain that higher precision. New values written to rop will use the new prec. Before calling mpf_clear or the full mpf_set_prec, another mpf_set_prec_raw call must be made to restore rop to its original allocated precision. Failing to do so will have unpredictable results. mpf_get_prec can be used before mpf_set_prec_raw to get the original allocated precision. After mpf_set_prec_raw it reflects the prec value set. mpf_set_prec_raw is an efficient way to use an mpf_t variable at different precisions during a calculation, perhaps to gradually increase precision in an iteration, or just to use various different precisions for different purposes during a calculation. 
-=cut
-*/
-
-function mpf_set_prec_raw (var rop, int prec) {
-  using gmp.__gmpf_set_prec_raw;
-  __gmpf_set_prec_raw(rop, prec);
-}
-
-/*
-=head1 void mpf_set (mpf_t rop, mpf_t op)
-=head1 void mpf_set_ui (mpf_t rop, unsigned long int op)
-=head1 void mpf_set_si (mpf_t rop, signed long int op)
-=head1 void mpf_set_d (mpf_t rop, double op)
-=head1 void mpf_set_z (mpf_t rop, mpz_t op)
-=head1 void mpf_set_q (mpf_t rop, mpq_t op)
-Set the value of rop from op. 
-=cut
-*/
-
-function mpf_set (var rop, var op) {
-  using gmp.__gmpf_set;
-  __gmpf_set(rop, op);
-}
-
-function mpf_set_ui (var rop, int op) {
-  using gmp.__gmpf_set_ui;
-  __gmpf_set_ui(rop, op);
-}
-
-function mpf_set_si (var rop, int op) {
-  using gmp.__gmpf_set_si;
-  __gmpf_set_si(rop, op);
-}
-
-function mpf_set_d (var rop, float op) {
-  using gmp.__gmpf_set_d;
-  __gmpf_set_d(rop, op);
-}
-
-function mpf_set_z (var rop, var op) {
-  if(!(op instanceof GMP.Integer))
-    die("incorrect type for op in mpf_set_z");
-  using gmp.__gmpf_set_z;
-  __gmpf_set_z(rop, op);
-}
-
-function mpf_set_q (var rop, var op) {
-  using gmp.__gmpf_set_q;
-  __gmpf_set_q(rop, op);
-}
-
-/*
-=head1 int mpf_set_str (mpf_t rop, char * str, int base)
-Set the value of rop from the string in str. The string is of the form `M@N' or, if the base is 10 or less, alternatively `MeN'. `M' is the mantissa and `N' is the exponent. The mantissa is always in the specified base. The exponent is either in the specified base or, if base is negative, in decimal. The decimal point expected is taken from the current locale, on systems providing localeconv. The argument base may be in the ranges 2 to 62, or −62 to −2. Negative values are used to specify that the exponent is in decimal. For bases up to 36, case is ignored; upper-case and lower-case letters have the same value; for bases 37 to 62, upper-case letter represent the usual 10..35 while lower-case letter represent 36..61. Unlike the corresponding mpz function, the base will not be determined from the leading characters of the string if base is 0. This is so that numbers like `0.23' are not interpreted as octal. White space is allowed in the string, and is simply ignored. [This is not really true; white-space is ignored in the beginning of the string and within the mantissa, but not in other places, such as after a minus sign or in the exponent. We are considering changing the definition of this function, making it fail when there is any white-space in the input, since that makes a lot of sense. Please tell us your opinion about this change. Do you really want it to accept "3 14" as meaning 314 as it does now?] This function returns 0 if the entire string is a valid number in base base. Otherwise it returns −1. 
-=cut
-*/
-
-function mpf_set_str (var rop, var str, int base) {
-  using gmp.__gmpf_set_str;
-  __gmpf_set_str(rop, str, base);
-}
-
-/*
-=head1 void mpf_swap (mpf_t rop1, mpf_t rop2)
-Swap rop1 and rop2 efficiently. Both the values and the precisions of the two variables are swapped. 
-=cut
-*/
-
-function mpf_swap (var rop1, var rop2) {
-  using gmp.__gmpf_swap;
-  __gmpf_swap(rop1, rop2);
-}
-
-/*
-=head1 void mpf_init_set (mpf_t rop, mpf_t op)
-=head1 void mpf_init_set_ui (mpf_t rop, unsigned long int op)
-=head1 void mpf_init_set_si (mpf_t rop, signed long int op)
-=head1 void mpf_init_set_d (mpf_t rop, double op)
-Initialize rop and set its value from op. The precision of rop will be taken from the active default precision, as set by mpf_set_default_prec. 
-=cut
-*/
-
-function mpf_init_set (var rop, var op) {
-  using gmp.__gmpf_init_set;
-  __gmpf_init_set(rop, op);
-}
-
-function mpf_init_set_ui (var rop, int op) {
-  using gmp.__gmpf_init_set_ui;
-  __gmpf_init_set_ui(rop, op);
-}
-
-function mpf_init_set_si (var rop, int op) {
-  using gmp.__gmpf_init_set_si;
-  __gmpf_init_set_si(rop, op);
-}
-
-function mpf_init_set_d (var rop, float op) {
-  using gmp.__gmpf_init_set_d;
-  __gmpf_init_set_d(rop, op);
-}
-
-/*
-=head1 int mpf_init_set_str (mpf_t rop, char * str, int base)
-Initialize rop and set its value from the string in str. See mpf_set_str above for details on the assignment operation. Note that rop is initialized even if an error occurs. (I.e., you have to call mpf_clear for it.) The precision of rop will be taken from the active default precision, as set by mpf_set_default_prec. 
-=cut
-*/
-
-function mpf_init_set_str (var rop, var str, int base) {
-  using gmp.__gmpf_init_set_str;
-  __gmpf_init_set_str(rop, str, base);
-}
-
-/*
-=head1 double mpf_get_d (mpf_t op)
-Convert op to a double, truncating if necessary (ie. rounding towards zero). If the exponent in op is too big or too small to fit a double then the result is system dependent. For too big an infinity is returned when available. For too small 0.0 is normally returned. Hardware overflow, underflow and denorm traps may or may not occur. 
-=cut
-*/
-
-function mpf_get_d (var op) {
-  using gmp.__gmpf_get_d;
-  __gmpf_get_d(op);
-}
-
-/*
-=head1 double mpf_get_d_2exp (signed long int * exp, mpf_t op)
-Convert op to a double, truncating if necessary (ie. rounding towards zero), and with an exponent returned separately. The return value is in the range 0.5<=abs(d)<1 and the exponent is stored to *exp. d * 2^exp is the (truncated) op value. If op is zero, the return is 0.0 and 0 is stored to *exp. This is similar to the standard C frexp function (see Normalization Functions). 
-=cut
-*/
-
-function mpf_get_d_2exp (var exp, var op) {
-  using gmp.__gmpf_get_d_2exp;
-  __gmpf_get_d_2exp(exp, op);
-}
-
-/*
-=head1 long mpf_get_si (mpf_t op)
-=head1 unsigned long mpf_get_ui (mpf_t op)
-Convert op to a long or unsigned long, truncating any fraction part. If op is too big for the return type, the result is undefined. See also mpf_fits_slong_p and mpf_fits_ulong_p (see Miscellaneous Float Functions). 
-=cut
-*/
-
-function mpf_get_si (var op) {
-  using gmp.__gmpf_get_si;
-  __gmpf_get_si(op);
-}
-
-function mpf_get_ui (var op) {
-  using gmp.__gmpf_get_ui;
-  __gmpf_get_ui(op);
-}
-
-/*
-=head1 char * mpf_get_str (char * str, mp_exp_t * expptr, int base, size_t n_digits, mpf_t op)
-Convert op to a string of digits in base base. The base argument may vary from 2 to 62 or from −2 to −36. Up to n_digits digits will be generated. Trailing zeros are not returned. No more digits than can be accurately represented by op are ever generated. If n_digits is 0 then that accurate maximum number of digits are generated. For base in the range 2..36, digits and lower-case letters are used; for −2..−36, digits and upper-case letters are used; for 37..62, digits, upper-case letters, and lower-case letters (in that significance order) are used. If str is NULL, the result string is allocated using the current allocation function (see Custom Allocation). The block will be strlen(str)+1 bytes, that being exactly enough for the string and null-terminator. If str is not NULL, it should point to a block of n_digits + 2 bytes, that being enough for the mantissa, a possible minus sign, and a null-terminator. When n_digits is 0 to get all significant digits, an application won't be able to know the space required, and str should be NULL in that case. The generated string is a fraction, with an implicit radix point immediately to the left of the first digit. The applicable exponent is written through the expptr pointer. For example, the number 3.1416 would be returned as string "31416" and exponent 1. When op is zero, an empty string is produced and the exponent returned is 0. A pointer to the result string is returned, being either the allocated block or the given str. 
-=cut
-*/
-
-function mpf_get_str (var str, var expptr, int base, int n_digits, var op) {
-  using gmp.__gmpf_get_str;
-  __gmpf_get_str(str, expptr, base, n_digits, op);
-}
-
-/*
-=head1 void mpf_add (mpf_t rop, mpf_t op1, mpf_t op2)
-=head1 void mpf_add_ui (mpf_t rop, mpf_t op1, unsigned long int op2)
-Set rop to op1 + op2. 
-=cut
-*/
-
-function mpf_add (var rop, var op1, var op2) {
-  using gmp.__gmpf_add;
-  __gmpf_add(rop, op1, op2);
-}
-
-function mpf_add_ui (var rop, var op1, int op2) {
-  using gmp.__gmpf_add_ui;
-  __gmpf_add_ui(rop, op1, op2);
-}
-
-/*
-=head1 void mpf_sub (mpf_t rop, mpf_t op1, mpf_t op2)
-=head1 void mpf_ui_sub (mpf_t rop, unsigned long int op1, mpf_t op2)
-=head1 void mpf_sub_ui (mpf_t rop, mpf_t op1, unsigned long int op2)
-Set rop to op1 − op2. 
-=cut
-*/
-
-function mpf_sub (var rop, var op1, var op2) {
-  using gmp.__gmpf_sub;
-  __gmpf_sub(rop, op1, op2);
-}
-
-function mpf_ui_sub (var rop, int op1, var op2) {
-  using gmp.__gmpf_ui_sub;
-  __gmpf_ui_sub(rop, op1, op2);
-}
-
-function mpf_sub_ui (var rop, var op1, int op2) {
-  using gmp.__gmpf_sub_ui;
-  __gmpf_sub_ui(rop, op1, op2);
-}
-
-/*
-=head1 void mpf_mul (mpf_t rop, mpf_t op1, mpf_t op2)
-=head1 void mpf_mul_ui (mpf_t rop, mpf_t op1, unsigned long int op2)
-Set rop to op1 times op2. 
-=cut
-*/
-
-function mpf_mul (var rop, var op1, var op2) {
-  using gmp.__gmpf_mul;
-  __gmpf_mul(rop, op1, op2);
-}
-
-function mpf_mul_ui (var rop, var op1, int op2) {
-  using gmp.__gmpf_mul_ui;
-  __gmpf_mul_ui(rop, op1, op2);
-}
-
-/*
-=head1 void mpf_div (mpf_t rop, mpf_t op1, mpf_t op2)
-=head1 void mpf_ui_div (mpf_t rop, unsigned long int op1, mpf_t op2)
-=head1 void mpf_div_ui (mpf_t rop, mpf_t op1, unsigned long int op2)
-Set rop to op1/op2. 
-=cut
-*/
-
-function mpf_div (var rop, var op1, var op2) {
-  using gmp.__gmpf_div;
-  __gmpf_div(rop, op1, op2);
-}
-
-function mpf_ui_div (var rop, int op1, var op2) {
-  using gmp.__gmpf_ui_div;
-  __gmpf_ui_div(rop, op1, op2);
-}
-
-function mpf_div_ui (var rop, var op1, int op2) {
-  using gmp.__gmpf_div_ui;
-  __gmpf_div_ui(rop, op1, op2);
-}
-
-/*
-=head1 void mpf_sqrt (mpf_t rop, mpf_t op)
-=head1 void mpf_sqrt_ui (mpf_t rop, unsigned long int op)
-Set rop to the square root of op. 
-=cut
-*/
-
-function mpf_sqrt (var rop, var op) {
-  using gmp.__gmpf_sqrt;
-  __gmpf_sqrt(rop, op);
-}
-
-function mpf_sqrt_ui (var rop, int op) {
-  using gmp.__gmpf_sqrt_ui;
-  __gmpf_sqrt_ui(rop, op);
-}
-
-/*
-=head1 void mpf_pow_ui (mpf_t rop, mpf_t op1, unsigned long int op2)
-Set rop to op1 raised to the power op2. 
-=cut
-*/
-
-function mpf_pow_ui (var rop, var op1, int op2) {
-  using gmp.__gmpf_pow_ui;
-  __gmpf_pow_ui(rop, op1, op2);
-}
-
-/*
-=head1 void mpf_neg (mpf_t rop, mpf_t op)
-Set rop to −op. 
-=cut
-*/
-
-function mpf_neg (var rop, var op) {
-  using gmp.__gmpf_neg;
-  __gmpf_neg(rop, op);
-}
-
-/*
-=head1 void mpf_abs (mpf_t rop, mpf_t op)
-Set rop to the absolute value of op. 
-=cut
-*/
-
-function mpf_abs (var rop, var op) {
-  using gmp.__gmpf_abs;
-  __gmpf_abs(rop, op);
-}
-
-/*
-=head1 void mpf_mul_2exp (mpf_t rop, mpf_t op1, mp_bitcnt_t op2)
-Set rop to op1 times 2 raised to op2. 
-=cut
-*/
-
-function mpf_mul_2exp (var rop, var op1, int op2) {
-  using gmp.__gmpf_mul_2exp;
-  __gmpf_mul_2exp(rop, op1, op2);
-}
-
-/*
-=head1 void mpf_div_2exp (mpf_t rop, mpf_t op1, mp_bitcnt_t op2)
-Set rop to op1 divided by 2 raised to op2. 
-=cut
-*/
-
-function mpf_div_2exp (var rop, var op1, int op2) {
-  using gmp.__gmpf_div_2exp;
-  __gmpf_div_2exp(rop, op1, op2);
-}
-
-/*
-=head1 int mpf_cmp (mpf_t op1, mpf_t op2)
-=head1 int mpf_cmp_d (mpf_t op1, double op2)
-=head1 int mpf_cmp_ui (mpf_t op1, unsigned long int op2)
-=head1 int mpf_cmp_si (mpf_t op1, signed long int op2)
-Compare op1 and op2. Return a positive value if op1 > op2, zero if op1 = op2, and a negative value if op1 < op2. mpf_cmp_d can be called with an infinity, but results are undefined for a NaN. 
-=cut
-*/
-
-function mpf_cmp (var op1, var op2) {
-  using gmp.__gmpf_cmp;
-  __gmpf_cmp(op1, op2);
-}
-
-function mpf_cmp_d (var op1, float op2) {
-  using gmp.__gmpf_cmp_d;
-  __gmpf_cmp_d(op1, op2);
-}
-
-function mpf_cmp_ui (var op1, int op2) {
-  using gmp.__gmpf_cmp_ui;
-  __gmpf_cmp_ui(op1, op2);
-}
-
-function mpf_cmp_si (var op1, int op2) {
-  using gmp.__gmpf_cmp_si;
-  __gmpf_cmp_si(op1, op2);
-}
-
-/*
-=head1 int mpf_eq (mpf_t op1, mpf_t op2, mp_bitcnt_t op3)
-Return non-zero if the first op3 bits of op1 and op2 are equal, zero otherwise. I.e., test if op1 and op2 are approximately equal. Caution 1: All version of GMP up to version 4.2.4 compared just whole limbs, meaning sometimes more than op3 bits, sometimes fewer. Caution 2: This function will consider XXX11...111 and XX100...000 different, even if ... is replaced by a semi-infinite number of bits. Such numbers are really just one ulp off, and should be considered equal. 
-=cut
-*/
-
-function mpf_eq (var op1, var op2, int op3) {
-  using gmp.__gmpf_eq;
-  __gmpf_eq(op1, op2, op3);
-}
-
-/*
-=head1 void mpf_reldiff (mpf_t rop, mpf_t op1, mpf_t op2)
-Compute the relative difference between op1 and op2 and store the result in rop. This is abs(op1-op2)/op1. 
-=cut
-*/
-
-function mpf_reldiff (var rop, var op1, var op2) {
-  using gmp.__gmpf_reldiff;
-  __gmpf_reldiff(rop, op1, op2);
-}
-
-/*
-=head1 size_t mpf_out_str (FILE * stream, int base, size_t n_digits, mpf_t op)
-Print op to stream, as a string of digits. Return the number of bytes written, or if an error occurred, return 0. The mantissa is prefixed with an `0.' and is in the given base, which may vary from 2 to 62 or from −2 to −36. An exponent is then printed, separated by an `e', or if the base is greater than 10 then by an `@'. The exponent is always in decimal. The decimal point follows the current locale, on systems providing localeconv. For base in the range 2..36, digits and lower-case letters are used; for −2..−36, digits and upper-case letters are used; for 37..62, digits, upper-case letters, and lower-case letters (in that significance order) are used. Up to n_digits will be printed from the mantissa, except that no more digits than are accurately representable by op will be printed. n_digits can be 0 to select that accurate maximum. 
-=cut
-*/
-
-function mpf_out_str (var stream, int base, int n_digits, var op) {
-  using gmp.__gmpf_out_str;
-  __gmpf_out_str(stream, base, n_digits, op);
-}
-
-/*
-=head1 size_t mpf_inp_str (mpf_t rop, FILE * stream, int base)
-Read a string in base base from stream, and put the read float in rop. The string is of the form `M@N' or, if the base is 10 or less, alternatively `MeN'. `M' is the mantissa and `N' is the exponent. The mantissa is always in the specified base. The exponent is either in the specified base or, if base is negative, in decimal. The decimal point expected is taken from the current locale, on systems providing localeconv. The argument base may be in the ranges 2 to 36, or −36 to −2. Negative values are used to specify that the exponent is in decimal. Unlike the corresponding mpz function, the base will not be determined from the leading characters of the string if base is 0. This is so that numbers like `0.23' are not interpreted as octal. Return the number of bytes read, or if an error occurred, return 0. 
-=cut
-*/
-
-function mpf_inp_str (var rop, var stream, int base) {
-  using gmp.__gmpf_inp_str;
-  __gmpf_inp_str(rop, stream, base);
-}
-
-/*
-=head1 void mpf_ceil (mpf_t rop, mpf_t op)
-=head1 void mpf_floor (mpf_t rop, mpf_t op)
-=head1 void mpf_trunc (mpf_t rop, mpf_t op)
-Set rop to op rounded to an integer. mpf_ceil rounds to the next higher integer, mpf_floor to the next lower, and mpf_trunc to the integer towards zero. 
-=cut
-*/
-
-function mpf_ceil (var rop, var op) {
-  using gmp.__gmpf_ceil;
-  __gmpf_ceil(rop, op);
-}
-
-function mpf_floor (var rop, var op) {
-  using gmp.__gmpf_floor;
-  __gmpf_floor(rop, op);
-}
-
-function mpf_trunc (var rop, var op) {
-  using gmp.__gmpf_trunc;
-  __gmpf_trunc(rop, op);
-}
-
-/*
-=head1 int mpf_integer_p (mpf_t op)
-Return non-zero if op is an integer. 
-=cut
-*/
-
-function mpf_integer_p (var op) {
-  using gmp.__gmpf_integer_p;
-  __gmpf_integer_p(op);
-}
-
-/*
-=head1 int mpf_fits_ulong_p (mpf_t op)
-=head1 int mpf_fits_slong_p (mpf_t op)
-=head1 int mpf_fits_uint_p (mpf_t op)
-=head1 int mpf_fits_sint_p (mpf_t op)
-=head1 int mpf_fits_ushort_p (mpf_t op)
-=head1 int mpf_fits_sshort_p (mpf_t op)
-Return non-zero if op would fit in the respective C data type, when truncated to an integer. 
-=cut
-*/
-
-function mpf_fits_ulong_p (var op) {
-  using gmp.__gmpf_fits_ulong_p;
-  __gmpf_fits_ulong_p(op);
-}
-
-function mpf_fits_slong_p (var op) {
-  using gmp.__gmpf_fits_slong_p;
-  __gmpf_fits_slong_p(op);
-}
-
-function mpf_fits_uint_p (var op) {
-  using gmp.__gmpf_fits_uint_p;
-  __gmpf_fits_uint_p(op);
-}
-
-function mpf_fits_sint_p (var op) {
-  using gmp.__gmpf_fits_sint_p;
-  __gmpf_fits_sint_p(op);
-}
-
-function mpf_fits_ushort_p (var op) {
-  using gmp.__gmpf_fits_ushort_p;
-  __gmpf_fits_ushort_p(op);
-}
-
-function mpf_fits_sshort_p (var op) {
-  using gmp.__gmpf_fits_sshort_p;
-  __gmpf_fits_sshort_p(op);
-}
-
-/*
-=head1 void mpf_urandomb (mpf_t rop, gmp_randstate_t state, mp_bitcnt_t nbits)
-Generate a uniformly distributed random float in rop, such that 0 <= rop < 1, with nbits significant bits in the mantissa. The variable state must be initialized by calling one of the gmp_randinit functions (Random State Initialization) before invoking this function. 
-=cut
-*/
-
-function mpf_urandomb (var rop, var state, int nbits) {
-  using gmp.__gmpf_urandomb;
-  __gmpf_urandomb(rop, state, nbits);
-}
-
-/*
-=head1 void mpf_random2 (mpf_t rop, mp_size_t max_size, mp_exp_t exp)
-Generate a random float of at most max_size limbs, with long strings of zeros and ones in the binary representation. The exponent of the number is in the interval −exp to exp (in limbs). This function is useful for testing functions and algorithms, since these kind of random numbers have proven to be more likely to trigger corner-case bugs. Negative random numbers are generated when max_size is negative. 
-=cut
-*/
-
-function mpf_random2 (var rop, int max_size, int exp) {
-  using gmp.__gmpf_random2;
-  __gmpf_random2(rop, max_size, exp);
-}
-
-/*
-=head1 mp_limb_t mpn_add_n (mp_limb_t * rp, const mp_limb_t * s1p, const mp_limb_t * s2p, mp_size_t n)
-Add {s1p, n} and {s2p, n}, and write the n least significant limbs of the result to rp. Return carry, either 0 or 1. This is the lowest-level function for addition. It is the preferred function for addition, since it is written in assembly for most CPUs. For addition of a variable to itself (i.e., s1p equals s2p) use mpn_lshift with a count of 1 for optimal speed. 
-=cut
-*/
-
-function mpn_add_n (var rp, var s1p, var s2p, int n) {
-  using gmp.__gmpn_add_n;
-  __gmpn_add_n(rp, s1p, s2p, n);
-}
-
-/*
-=head1 mp_limb_t mpn_add_1 (mp_limb_t * rp, const mp_limb_t * s1p, mp_size_t n, mp_limb_t s2limb)
-Add {s1p, n} and s2limb, and write the n least significant limbs of the result to rp. Return carry, either 0 or 1. 
-=cut
-*/
-
-function mpn_add_1 (var rp, var s1p, int n, int s2limb) {
-  using gmp.__gmpn_add_1;
-  __gmpn_add_1(rp, s1p, n, s2limb);
-}
-
-/*
-=head1 mp_limb_t mpn_add (mp_limb_t * rp, const mp_limb_t * s1p, mp_size_t s1n, const mp_limb_t * s2p, mp_size_t s2n)
-Add {s1p, s1n} and {s2p, s2n}, and write the s1n least significant limbs of the result to rp. Return carry, either 0 or 1. This function requires that s1n is greater than or equal to s2n. 
-=cut
-*/
-
-function mpn_add (var rp, var s1p, int s1n, var s2p, int s2n) {
-  using gmp.__gmpn_add;
-  __gmpn_add(rp, s1p, s1n, s2p, s2n);
-}
-
-/*
-=head1 mp_limb_t mpn_sub_n (mp_limb_t * rp, const mp_limb_t * s1p, const mp_limb_t * s2p, mp_size_t n)
-Subtract {s2p, n} from {s1p, n}, and write the n least significant limbs of the result to rp. Return borrow, either 0 or 1. This is the lowest-level function for subtraction. It is the preferred function for subtraction, since it is written in assembly for most CPUs. 
-=cut
-*/
-
-function mpn_sub_n (var rp, var s1p, var s2p, int n) {
-  using gmp.__gmpn_sub_n;
-  __gmpn_sub_n(rp, s1p, s2p, n);
-}
-
-/*
-=head1 mp_limb_t mpn_sub_1 (mp_limb_t * rp, const mp_limb_t * s1p, mp_size_t n, mp_limb_t s2limb)
-Subtract s2limb from {s1p, n}, and write the n least significant limbs of the result to rp. Return borrow, either 0 or 1. 
-=cut
-*/
-
-function mpn_sub_1 (var rp, var s1p, int n, int s2limb) {
-  using gmp.__gmpn_sub_1;
-  __gmpn_sub_1(rp, s1p, n, s2limb);
-}
-
-/*
-=head1 mp_limb_t mpn_sub (mp_limb_t * rp, const mp_limb_t * s1p, mp_size_t s1n, const mp_limb_t * s2p, mp_size_t s2n)
-Subtract {s2p, s2n} from {s1p, s1n}, and write the s1n least significant limbs of the result to rp. Return borrow, either 0 or 1. This function requires that s1n is greater than or equal to s2n. 
-=cut
-*/
-
-function mpn_sub (var rp, var s1p, int s1n, var s2p, int s2n) {
-  using gmp.__gmpn_sub;
-  __gmpn_sub(rp, s1p, s1n, s2p, s2n);
-}
-
-/*
-=head1 void mpn_neg (mp_limb_t * rp, const mp_limb_t * sp, mp_size_t n)
-Perform the negation of {sp, n}, and write the result to {rp, n}. Return carry-out. 
-=cut
-*/
-
-function mpn_neg (var rp, var sp, int n) {
-  using gmp.__gmpn_neg;
-  __gmpn_neg(rp, sp, n);
-}
-
-/*
-=head1 void mpn_mul_n (mp_limb_t * rp, const mp_limb_t * s1p, const mp_limb_t * s2p, mp_size_t n)
-Multiply {s1p, n} and {s2p, n}, and write the 2*n-limb result to rp. The destination has to have space for 2*n limbs, even if the product's most significant limb is zero. No overlap is permitted between the destination and either source. If the two input operands are the same, use mpn_sqr. 
-=cut
-*/
-
-function mpn_mul_n (var rp, var s1p, var s2p, int n) {
-  using gmp.__gmpn_mul_n;
-  __gmpn_mul_n(rp, s1p, s2p, n);
-}
-
-/*
-=head1 mp_limb_t mpn_mul (mp_limb_t * rp, const mp_limb_t * s1p, mp_size_t s1n, const mp_limb_t * s2p, mp_size_t s2n)
-Multiply {s1p, s1n} and {s2p, s2n}, and write the (s1n+s2n)-limb result to rp. Return the most significant limb of the result. The destination has to have space for s1n + s2n limbs, even if the product's most significant limb is zero. No overlap is permitted between the destination and either source. This function requires that s1n is greater than or equal to s2n. 
-=cut
-*/
-
-function mpn_mul (var rp, var s1p, int s1n, var s2p, int s2n) {
-  using gmp.__gmpn_mul;
-  __gmpn_mul(rp, s1p, s1n, s2p, s2n);
-}
-
-/*
-=head1 void mpn_sqr (mp_limb_t * rp, const mp_limb_t * s1p, mp_size_t n)
-Compute the square of {s1p, n} and write the 2*n-limb result to rp. The destination has to have space for 2*n limbs, even if the result's most significant limb is zero. No overlap is permitted between the destination and the source. 
-=cut
-*/
-
-function mpn_sqr (var rp, var s1p, int n) {
-  using gmp.__gmpn_sqr;
-  __gmpn_sqr(rp, s1p, n);
-}
-
-/*
-=head1 mp_limb_t mpn_mul_1 (mp_limb_t * rp, const mp_limb_t * s1p, mp_size_t n, mp_limb_t s2limb)
-Multiply {s1p, n} by s2limb, and write the n least significant limbs of the product to rp. Return the most significant limb of the product. {s1p, n} and {rp, n} are allowed to overlap provided rp <= s1p. This is a low-level function that is a building block for general multiplication as well as other operations in GMP. It is written in assembly for most CPUs. Don't call this function if s2limb is a power of 2; use mpn_lshift with a count equal to the logarithm of s2limb instead, for optimal speed. 
-=cut
-*/
-
-function mpn_mul_1 (var rp, var s1p, int n, int s2limb) {
-  using gmp.__gmpn_mul_1;
-  __gmpn_mul_1(rp, s1p, n, s2limb);
-}
-
-/*
-=head1 mp_limb_t mpn_addmul_1 (mp_limb_t * rp, const mp_limb_t * s1p, mp_size_t n, mp_limb_t s2limb)
-Multiply {s1p, n} and s2limb, and add the n least significant limbs of the product to {rp, n} and write the result to rp. Return the most significant limb of the product, plus carry-out from the addition. This is a low-level function that is a building block for general multiplication as well as other operations in GMP. It is written in assembly for most CPUs. 
-=cut
-*/
-
-function mpn_addmul_1 (var rp, var s1p, int n, int s2limb) {
-  using gmp.__gmpn_addmul_1;
-  __gmpn_addmul_1(rp, s1p, n, s2limb);
-}
-
-/*
-=head1 mp_limb_t mpn_submul_1 (mp_limb_t * rp, const mp_limb_t * s1p, mp_size_t n, mp_limb_t s2limb)
-Multiply {s1p, n} and s2limb, and subtract the n least significant limbs of the product from {rp, n} and write the result to rp. Return the most significant limb of the product, plus borrow-out from the subtraction. This is a low-level function that is a building block for general multiplication and division as well as other operations in GMP. It is written in assembly for most CPUs. 
-=cut
-*/
-
-function mpn_submul_1 (var rp, var s1p, int n, int s2limb) {
-  using gmp.__gmpn_submul_1;
-  __gmpn_submul_1(rp, s1p, n, s2limb);
-}
-
-/*
-=head1 void mpn_tdiv_qr (mp_limb_t * qp, mp_limb_t * rp, mp_size_t qxn, const mp_limb_t * np, mp_size_t nn, const mp_limb_t * dp, mp_size_t dn)
-Divide {np, nn} by {dp, dn} and put the quotient at {qp, nn−dn+1} and the remainder at {rp, dn}. The quotient is rounded towards 0. No overlap is permitted between arguments, except that np might equal rp. The dividend size nn must be greater than or equal to divisor size dn. The most significant limb of the divisor must be non-zero. The qxn operand must be zero. 
-=cut
-*/
-
-function mpn_tdiv_qr (var qp, var rp, int qxn, var np, int nn, var dp, int dn) {
-  using gmp.__gmpn_tdiv_qr;
-  __gmpn_tdiv_qr(qp, rp, qxn, np, nn, dp, dn);
-}
-
-/*
-=head1 mp_limb_t mpn_divrem (mp_limb_t * r1p, mp_size_t qxn, mp_limb_t * rs2p, mp_size_t rs2n, const mp_limb_t * s3p, mp_size_t s3n)
-[This function is obsolete. Please call mpn_tdiv_qr instead for best performance.] Divide {rs2p, rs2n} by {s3p, s3n}, and write the quotient at r1p, with the exception of the most significant limb, which is returned. The remainder replaces the dividend at rs2p; it will be s3n limbs long (i.e., as many limbs as the divisor). In addition to an integer quotient, qxn fraction limbs are developed, and stored after the integral limbs. For most usages, qxn will be zero. It is required that rs2n is greater than or equal to s3n. It is required that the most significant bit of the divisor is set. If the quotient is not needed, pass rs2p + s3n as r1p. Aside from that special case, no overlap between arguments is permitted. Return the most significant limb of the quotient, either 0 or 1. The area at r1p needs to be rs2n − s3n + qxn limbs large. 
-=cut
-*/
-
-function mpn_divrem (var r1p, int qxn, var rs2p, int rs2n, var s3p, int s3n) {
-  using gmp.__gmpn_divrem;
-  __gmpn_divrem(r1p, qxn, rs2p, rs2n, s3p, s3n);
-}
-
-/*
-=head1 mp_limb_t mpn_divrem_1 (mp_limb_t * r1p, mp_size_t qxn, mp_limb_t * s2p, mp_size_t s2n, mp_limb_t s3limb)
-Divide {s2p, s2n} by s3limb, and write the quotient at r1p. Return the remainder. The integer quotient is written to {r1p+qxn, s2n} and in addition qxn fraction limbs are developed and written to {r1p, qxn}. Either or both s2n and qxn can be zero. For most usages, qxn will be zero. mpn_divmod_1 exists for upward source compatibility and is simply a macro calling mpn_divrem_1 with a qxn of 0. The areas at r1p and s2p have to be identical or completely separate, not partially overlapping. 
-=cut
-*/
-
-function mpn_divrem_1 (var r1p, int qxn, var s2p, int s2n, int s3limb) {
-  using gmp.__gmpn_divrem_1;
-  __gmpn_divrem_1(r1p, qxn, s2p, s2n, s3limb);
-}
-
-/*
-=head1 mp_limb_t mpn_divmod (mp_limb_t * r1p, mp_limb_t * rs2p, mp_size_t rs2n, const mp_limb_t * s3p, mp_size_t s3n)
-[This function is obsolete. Please call mpn_tdiv_qr instead for best performance.] 
-=cut
-*/
-
-function mpn_divmod (var r1p, var rs2p, int rs2n, var s3p, int s3n) {
-  using gmp.__gmpn_divmod;
-  __gmpn_divmod(r1p, rs2p, rs2n, s3p, s3n);
-}
-
-/*
-=head1  - Macro: mp_limb_t mpn_divexact_by3 (mp_limb_t * rp, mp_limb_t * sp, mp_size_t n)
-=head1 mp_limb_t mpn_divexact_by3c (mp_limb_t * rp, mp_limb_t * sp, mp_size_t n, mp_limb_t carry)
-Divide {sp, n} by 3, expecting it to divide exactly, and writing the result to {rp, n}. If 3 divides exactly, the return value is zero and the result is the quotient. If not, the return value is non-zero and the result won't be anything useful. mpn_divexact_by3c takes an initial carry parameter, which can be the return value from a previous call, so a large calculation can be done piece by piece from low to high. mpn_divexact_by3 is simply a macro calling mpn_divexact_by3c with a 0 carry parameter. These routines use a multiply-by-inverse and will be faster than mpn_divrem_1 on CPUs with fast multiplication but slow division. The source a, result q, size n, initial carry i, and return value c satisfy c*b^n + a-i = 3*q, where b=2^GMP_NUMB_BITS. The return c is always 0, 1 or 2, and the initial carry i must also be 0, 1 or 2 (these are both borrows really). When c=0 clearly q=(a-i)/3. When c!=0, the remainder (a-i) mod 3 is given by 3-c, because b == 1 mod 3 (when mp_bits_per_limb is even, which is always so currently). 
-=cut
-*/
-
-function mpn_divexact_by3 (var rp, var sp, int n) {
-  using gmp.__gmpn_divexact_by3;
-  __gmpn_divexact_by3(rp, sp, n);
-}
-
-function mpn_divexact_by3c (var rp, var sp, int n, int carry) {
-  using gmp.__gmpn_divexact_by3c;
-  __gmpn_divexact_by3c(rp, sp, n, carry);
-}
-
-/*
-=head1 mp_limb_t mpn_mod_1 (mp_limb_t * s1p, mp_size_t s1n, mp_limb_t s2limb)
-Divide {s1p, s1n} by s2limb, and return the remainder. s1n can be zero. 
-=cut
-*/
-
-function mpn_mod_1 (var s1p, int s1n, int s2limb) {
-  using gmp.__gmpn_mod_1;
-  __gmpn_mod_1(s1p, s1n, s2limb);
-}
-
-/*
-=head1 mp_limb_t mpn_lshift (mp_limb_t * rp, const mp_limb_t * sp, mp_size_t n, unsigned int count)
-Shift {sp, n} left by count bits, and write the result to {rp, n}. The bits shifted out at the left are returned in the least significant count bits of the return value (the rest of the return value is zero). count must be in the range 1 to mp_bits_per_limb−1. The regions {sp, n} and {rp, n} may overlap, provided rp >= sp. This function is written in assembly for most CPUs. 
-=cut
-*/
-
-function mpn_lshift (var rp, var sp, int n, var count) {
-  using gmp.__gmpn_lshift;
-  __gmpn_lshift(rp, sp, n, count);
-}
-
-/*
-=head1 mp_limb_t mpn_rshift (mp_limb_t * rp, const mp_limb_t * sp, mp_size_t n, unsigned int count)
-Shift {sp, n} right by count bits, and write the result to {rp, n}. The bits shifted out at the right are returned in the most significant count bits of the return value (the rest of the return value is zero). count must be in the range 1 to mp_bits_per_limb−1. The regions {sp, n} and {rp, n} may overlap, provided rp <= sp. This function is written in assembly for most CPUs. 
-=cut
-*/
-
-function mpn_rshift (var rp, var sp, int n, var count) {
-  using gmp.__gmpn_rshift;
-  __gmpn_rshift(rp, sp, n, count);
-}
-
-/*
-=head1 int mpn_cmp (const mp_limb_t * s1p, const mp_limb_t * s2p, mp_size_t n)
-Compare {s1p, n} and {s2p, n} and return a positive value if s1 > s2, 0 if they are equal, or a negative value if s1 < s2. 
-=cut
-*/
-
-function mpn_cmp (var s1p, var s2p, int n) {
-  using gmp.__gmpn_cmp;
-  __gmpn_cmp(s1p, s2p, n);
-}
-
-/*
-=head1 mp_size_t mpn_gcd (mp_limb_t * rp, mp_limb_t * xp, mp_size_t xn, mp_limb_t * yp, mp_size_t yn)
-Set {rp, retval} to the greatest common divisor of {xp, xn} and {yp, yn}. The result can be up to yn limbs, the return value is the actual number produced. Both source operands are destroyed. {xp, xn} must have at least as many bits as {yp, yn}. {yp, yn} must be odd. Both operands must have non-zero most significant limbs. No overlap is permitted between {xp, xn} and {yp, yn}. 
-=cut
-*/
-
-function mpn_gcd (var rp, var xp, int xn, var yp, int yn) {
-  using gmp.__gmpn_gcd;
-  __gmpn_gcd(rp, xp, xn, yp, yn);
-}
-
-/*
-=head1 mp_limb_t mpn_gcd_1 (const mp_limb_t * xp, mp_size_t xn, mp_limb_t ylimb)
-Return the greatest common divisor of {xp, xn} and ylimb. Both operands must be non-zero. 
-=cut
-*/
-
-function mpn_gcd_1 (var xp, int xn, int ylimb) {
-  using gmp.__gmpn_gcd_1;
-  __gmpn_gcd_1(xp, xn, ylimb);
-}
-
-/*
-=head1 mp_size_t mpn_gcdext (mp_limb_t * gp, mp_limb_t * sp, mp_size_t * sn, mp_limb_t * xp, mp_size_t xn, mp_limb_t * yp, mp_size_t yn)
-Let U be defined by {xp, xn} and let V be defined by {yp, yn}. Compute the greatest common divisor G of U and V. Compute a cofactor S such that G = US + VT. The second cofactor T is not computed but can easily be obtained from (G - U*S) / V (the division will be exact). It is required that U >= V > 0. S satisfies S = 1 or abs(S) < V / (2 G). S = 0 if and only if V divides U (i.e., G = V). Store G at gp and let the return value define its limb count. Store S at sp and let |*sn| define its limb count. S can be negative; when this happens *sn will be negative. The areas at gp and sp should each have room for xn+1 limbs. The areas {xp, xn+1} and {yp, yn+1} are destroyed (i.e. the input operands plus an extra limb past the end of each). Compatibility note: GMP 4.3.0 and 4.3.1 defined S less strictly. Earlier as well as later GMP releases define S as described here. 
-=cut
-*/
-
-function mpn_gcdext (var gp, var sp, var sn, var xp, int xn, var yp, int yn) {
-  using gmp.__gmpn_gcdext;
-  __gmpn_gcdext(gp, sp, sn, xp, xn, yp, yn);
-}
-
-/*
-=head1 mp_size_t mpn_sqrtrem (mp_limb_t * r1p, mp_limb_t * r2p, const mp_limb_t * sp, mp_size_t n)
-Compute the square root of {sp, n} and put the result at {r1p, ceil(n/2)} and the remainder at {r2p, retval}. r2p needs space for n limbs, but the return value indicates how many are produced. The most significant limb of {sp, n} must be non-zero. The areas {r1p, ceil(n/2)} and {sp, n} must be completely separate. The areas {r2p, n} and {sp, n} must be either identical or completely separate. If the remainder is not wanted then r2p can be NULL, and in this case the return value is zero or non-zero according to whether the remainder would have been zero or non-zero. A return value of zero indicates a perfect square. See also mpz_perfect_square_p. 
-=cut
-*/
-
-function mpn_sqrtrem (var r1p, var r2p, var sp, int n) {
-  using gmp.__gmpn_sqrtrem;
-  __gmpn_sqrtrem(r1p, r2p, sp, n);
-}
-
-/*
-=head1 mp_size_t mpn_get_str (unsigned char * str, int base, mp_limb_t * s1p, mp_size_t s1n)
-Convert {s1p, s1n} to a raw unsigned char array at str in base base, and return the number of characters produced. There may be leading zeros in the string. The string is not in ASCII; to convert it to printable format, add the ASCII codes for `0' or `A', depending on the base and range. base can vary from 2 to 256. The most significant limb of the input {s1p, s1n} must be non-zero. The input {s1p, s1n} is clobbered, except when base is a power of 2, in which case it's unchanged. The area at str has to have space for the largest possible number represented by a s1n long limb array, plus one extra character. 
-=cut
-*/
-
-function mpn_get_str (var str, int base, var s1p, int s1n) {
-  using gmp.__gmpn_get_str;
-  __gmpn_get_str(str, base, s1p, s1n);
-}
-
-/*
-=head1 mp_size_t mpn_set_str (mp_limb_t * rp, const unsigned char * str, size_t strsize, int base)
-Convert bytes {str,strsize} in the given base to limbs at rp. str[0] is the most significant byte and str[strsize-1] is the least significant. Each byte should be a value in the range 0 to base-1, not an ASCII character. base can vary from 2 to 256. The return value is the number of limbs written to rp. If the most significant input byte is non-zero then the high limb at rp will be non-zero, and only that exact number of limbs will be required there. If the most significant input byte is zero then there may be high zero limbs written to rp and included in the return value. strsize must be at least 1, and no overlap is permitted between {str,strsize} and the result at rp. 
-=cut
-*/
-
-function mpn_set_str (var rp, var str, int strsize, int base) {
-  using gmp.__gmpn_set_str;
-  __gmpn_set_str(rp, str, strsize, base);
-}
-
-/*
-=head1 mp_bitcnt_t mpn_scan0 (const mp_limb_t * s1p, mp_bitcnt_t bit)
-Scan s1p from bit position bit for the next clear bit. It is required that there be a clear bit within the area at s1p at or beyond bit position bit, so that the function has something to return. 
-=cut
-*/
-
-function mpn_scan0 (var s1p, int bit) {
-  using gmp.__gmpn_scan0;
-  __gmpn_scan0(s1p, bit);
-}
-
-/*
-=head1 mp_bitcnt_t mpn_scan1 (const mp_limb_t * s1p, mp_bitcnt_t bit)
-Scan s1p from bit position bit for the next set bit. It is required that there be a set bit within the area at s1p at or beyond bit position bit, so that the function has something to return. 
-=cut
-*/
-
-function mpn_scan1 (var s1p, int bit) {
-  using gmp.__gmpn_scan1;
-  __gmpn_scan1(s1p, bit);
-}
-
-/*
-=head1 void mpn_random (mp_limb_t * r1p, mp_size_t r1n)
-=head1 void mpn_random2 (mp_limb_t * r1p, mp_size_t r1n)
-Generate a random number of length r1n and store it at r1p. The most significant limb is always non-zero. mpn_random generates uniformly distributed limb data, mpn_random2 generates long strings of zeros and ones in the binary representation. mpn_random2 is intended for testing the correctness of the mpn routines. 
-=cut
-*/
-
-function mpn_random (var r1p, int r1n) {
-  using gmp.__gmpn_random;
-  __gmpn_random(r1p, r1n);
-}
-
-function mpn_random2 (var r1p, int r1n) {
-  using gmp.__gmpn_random2;
-  __gmpn_random2(r1p, r1n);
-}
-
-/*
-=head1 mp_bitcnt_t mpn_popcount (const mp_limb_t * s1p, mp_size_t n)
-Count the number of set bits in {s1p, n}. 
-=cut
-*/
-
-function mpn_popcount (var s1p, int n) {
-  using gmp.__gmpn_popcount;
-  __gmpn_popcount(s1p, n);
-}
-
-/*
-=head1 mp_bitcnt_t mpn_hamdist (const mp_limb_t * s1p, const mp_limb_t * s2p, mp_size_t n)
-Compute the hamming distance between {s1p, n} and {s2p, n}, which is the number of bit positions where the two operands have different bit values. 
-=cut
-*/
-
-function mpn_hamdist (var s1p, var s2p, int n) {
-  using gmp.__gmpn_hamdist;
-  __gmpn_hamdist(s1p, s2p, n);
-}
-
-/*
-=head1 int mpn_perfect_square_p (const mp_limb_t * s1p, mp_size_t n)
-Return non-zero iff {s1p, n} is a perfect square. 
-=cut
-*/
-
-function mpn_perfect_square_p (var s1p, int n) {
-  using gmp.__gmpn_perfect_square_p;
-  __gmpn_perfect_square_p(s1p, n);
-}
-
-/*
-=head1 void mpn_and_n (mp_limb_t * rp, const mp_limb_t * s1p, const mp_limb_t * s2p, mp_size_t n)
-Perform the bitwise logical and of {s1p, n} and {s2p, n}, and write the result to {rp, n}. 
-=cut
-*/
-
-function mpn_and_n (var rp, var s1p, var s2p, int n) {
-  using gmp.__gmpn_and_n;
-  __gmpn_and_n(rp, s1p, s2p, n);
-}
-
-/*
-=head1 void mpn_ior_n (mp_limb_t * rp, const mp_limb_t * s1p, const mp_limb_t * s2p, mp_size_t n)
-Perform the bitwise logical inclusive or of {s1p, n} and {s2p, n}, and write the result to {rp, n}. 
-=cut
-*/
-
-function mpn_ior_n (var rp, var s1p, var s2p, int n) {
-  using gmp.__gmpn_ior_n;
-  __gmpn_ior_n(rp, s1p, s2p, n);
-}
-
-/*
-=head1 void mpn_xor_n (mp_limb_t * rp, const mp_limb_t * s1p, const mp_limb_t * s2p, mp_size_t n)
-Perform the bitwise logical exclusive or of {s1p, n} and {s2p, n}, and write the result to {rp, n}. 
-=cut
-*/
-
-function mpn_xor_n (var rp, var s1p, var s2p, int n) {
-  using gmp.__gmpn_xor_n;
-  __gmpn_xor_n(rp, s1p, s2p, n);
-}
-
-/*
-=head1 void mpn_andn_n (mp_limb_t * rp, const mp_limb_t * s1p, const mp_limb_t * s2p, mp_size_t n)
-Perform the bitwise logical and of {s1p, n} and the bitwise complement of {s2p, n}, and write the result to {rp, n}. 
-=cut
-*/
-
-function mpn_andn_n (var rp, var s1p, var s2p, int n) {
-  using gmp.__gmpn_andn_n;
-  __gmpn_andn_n(rp, s1p, s2p, n);
-}
-
-/*
-=head1 void mpn_iorn_n (mp_limb_t * rp, const mp_limb_t * s1p, const mp_limb_t * s2p, mp_size_t n)
-Perform the bitwise logical inclusive or of {s1p, n} and the bitwise complement of {s2p, n}, and write the result to {rp, n}. 
-=cut
-*/
-
-function mpn_iorn_n (var rp, var s1p, var s2p, int n) {
-  using gmp.__gmpn_iorn_n;
-  __gmpn_iorn_n(rp, s1p, s2p, n);
-}
-
-/*
-=head1 void mpn_nand_n (mp_limb_t * rp, const mp_limb_t * s1p, const mp_limb_t * s2p, mp_size_t n)
-Perform the bitwise logical and of {s1p, n} and {s2p, n}, and write the bitwise complement of the result to {rp, n}. 
-=cut
-*/
-
-function mpn_nand_n (var rp, var s1p, var s2p, int n) {
-  using gmp.__gmpn_nand_n;
-  __gmpn_nand_n(rp, s1p, s2p, n);
-}
-
-/*
-=head1 void mpn_nior_n (mp_limb_t * rp, const mp_limb_t * s1p, const mp_limb_t * s2p, mp_size_t n)
-Perform the bitwise logical inclusive or of {s1p, n} and {s2p, n}, and write the bitwise complement of the result to {rp, n}. 
-=cut
-*/
-
-function mpn_nior_n (var rp, var s1p, var s2p, int n) {
-  using gmp.__gmpn_nior_n;
-  __gmpn_nior_n(rp, s1p, s2p, n);
-}
-
-/*
-=head1 void mpn_xnor_n (mp_limb_t * rp, const mp_limb_t * s1p, const mp_limb_t * s2p, mp_size_t n)
-Perform the bitwise logical exclusive or of {s1p, n} and {s2p, n}, and write the bitwise complement of the result to {rp, n}. 
-=cut
-*/
-
-function mpn_xnor_n (var rp, var s1p, var s2p, int n) {
-  using gmp.__gmpn_xnor_n;
-  __gmpn_xnor_n(rp, s1p, s2p, n);
-}
-
-/*
-=head1 void mpn_com (mp_limb_t * rp, const mp_limb_t * sp, mp_size_t n)
-Perform the bitwise complement of {sp, n}, and write the result to {rp, n}. 
-=cut
-*/
-
-function mpn_com (var rp, var sp, int n) {
-  using gmp.__gmpn_com;
-  __gmpn_com(rp, sp, n);
-}
-
-/*
-=head1 void mpn_copyi (mp_limb_t * rp, const mp_limb_t * s1p, mp_size_t n)
-Copy from {s1p, n} to {rp, n}, increasingly. 
-=cut
-*/
-
-function mpn_copyi (var rp, var s1p, int n) {
-  using gmp.__gmpn_copyi;
-  __gmpn_copyi(rp, s1p, n);
-}
-
-/*
-=head1 void mpn_copyd (mp_limb_t * rp, const mp_limb_t * s1p, mp_size_t n)
-Copy from {s1p, n} to {rp, n}, decreasingly. 
-=cut
-*/
-
-function mpn_copyd (var rp, var s1p, int n) {
-  using gmp.__gmpn_copyd;
-  __gmpn_copyd(rp, s1p, n);
-}
-
-/*
-=head1 void mpn_zero (mp_limb_t * rp, mp_size_t n)
-Zero {rp, n}. 
-=cut
-*/
-
-function mpn_zero (var rp, int n) {
-  using gmp.__gmpn_zero;
-  __gmpn_zero(rp, n);
-}
-
-/*
-=head1 void gmp_randinit_default (gmp_randstate_t state)
-Initialize state with a default algorithm. This will be a compromise between speed and randomness, and is recommended for applications with no special requirements. Currently this is gmp_randinit_mt. 
-=cut
-*/
-
-function gmp_randinit_default (var state) {
-  using gmp.__ggmp_randinit_default;
-  __ggmp_randinit_default(state);
-}
-
-/*
-=head1 void gmp_randinit_mt (gmp_randstate_t state)
-Initialize state for a Mersenne Twister algorithm. This algorithm is fast and has good randomness properties. 
-=cut
-*/
-
-function gmp_randinit_mt (var state) {
-  using gmp.__ggmp_randinit_mt;
-  __ggmp_randinit_mt(state);
-}
-
-/*
-=head1 void gmp_randinit_lc_2exp (gmp_randstate_t state, mpz_t a, unsigned long c, mp_bitcnt_t m2exp)
-Initialize state with a linear congruential algorithm X = (a*X + c) mod 2^m2exp. The low bits of X in this algorithm are not very random. The least significant bit will have a period no more than 2, and the second bit no more than 4, etc. For this reason only the high half of each X is actually used. When a random number of more than m2exp/2 bits is to be generated, multiple iterations of the recurrence are used and the results concatenated. 
-=cut
-*/
-
-function gmp_randinit_lc_2exp (var state, var a, int c, int m2exp) {
-  if(!(a instanceof GMP.Integer))
-    die("incorrect type for a in gmp_randinit_lc_2exp");
-  using gmp.__ggmp_randinit_lc_2exp;
-  __ggmp_randinit_lc_2exp(state, a, c, m2exp);
-}
-
-/*
-=head1 int gmp_randinit_lc_2exp_size (gmp_randstate_t state, mp_bitcnt_t size)
-Initialize state for a linear congruential algorithm as per gmp_randinit_lc_2exp. a, c and m2exp are selected from a table, chosen so that size bits (or more) of each X will be used, ie. m2exp/2 >= size. If successful the return value is non-zero. If size is bigger than the table data provides then the return value is zero. The maximum size currently supported is 128. 
-=cut
-*/
-
-function gmp_randinit_lc_2exp_size (var state, int size) {
-  using gmp.__ggmp_randinit_lc_2exp_size;
-  __ggmp_randinit_lc_2exp_size(state, size);
-}
-
-/*
-=head1 void gmp_randinit_set (gmp_randstate_t rop, gmp_randstate_t op)
-Initialize rop with a copy of the algorithm and state from op. 
-=cut
-*/
-
-function gmp_randinit_set (var rop, var op) {
-  using gmp.__ggmp_randinit_set;
-  __ggmp_randinit_set(rop, op);
-}
-
-/*
-=head1   ()
-This function is obsolete.Initialize state with an algorithm selected by alg. The only choice is GMP_RAND_ALG_LC, which is gmp_randinit_lc_2exp_size described above. A third parameter of type unsigned long is required, this is the size for that function. GMP_RAND_ALG_DEFAULT or 0 are the same as GMP_RAND_ALG_LC. gmp_randinit sets bits in the global variable gmp_errno to indicate an error. GMP_ERROR_UNSUPPORTED_ARGUMENT if alg is unsupported, or GMP_ERROR_INVALID_ARGUMENT if the size parameter is too big. It may be noted this error reporting is not thread safe (a good reason to use gmp_randinit_lc_2exp_size instead). 
-=cut
-*/
-
-/*
-=head1 void gmp_randclear (gmp_randstate_t state)
-Free all memory occupied by state. 
-=cut
-*/
-
-function gmp_randclear (var state) {
-  using gmp.__ggmp_randclear;
-  __ggmp_randclear(state);
-}
-
-/*
-=head1 void gmp_randseed (gmp_randstate_t state, mpz_t seed)
-=head1 void gmp_randseed_ui (gmp_randstate_t state, unsigned long int seed)
-Set an initial seed value into state. The size of a seed determines how many different sequences of random numbers that it's possible to generate. The “quality” of the seed is the randomness of a given seed compared to the previous seed used, and this affects the randomness of separate number sequences. The method for choosing a seed is critical if the generated numbers are to be used for important applications, such as generating cryptographic keys. Traditionally the system time has been used to seed, but care needs to be taken with this. If an application seeds often and the resolution of the system clock is low, then the same sequence of numbers might be repeated. Also, the system time is quite easy to guess, so if unpredictability is required then it should definitely not be the only source for the seed value. On some systems there's a special device /dev/random which provides random data better suited for use as a seed. 
-=cut
-*/
-
-function gmp_randseed (var state, var seed) {
-  if(!(seed instanceof GMP.Integer))
-    die("incorrect type for seed in gmp_randseed");
-  using gmp.__ggmp_randseed;
-  __ggmp_randseed(state, seed);
-}
-
-function gmp_randseed_ui (var state, int seed) {
-  using gmp.__ggmp_randseed_ui;
-  __ggmp_randseed_ui(state, seed);
-}
-
-/*
-=head1 unsigned long gmp_urandomb_ui (gmp_randstate_t state, unsigned long n)
-Return a uniformly distributed random number of n bits, ie. in the range 0 to 2^n-1 inclusive. n must be less than or equal to the number of bits in an unsigned long. 
-=cut
-*/
-
-function gmp_urandomb_ui (var state, int n) {
-  using gmp.__ggmp_urandomb_ui;
-  __ggmp_urandomb_ui(state, n);
-}
-
-/*
-=head1 unsigned long gmp_urandomm_ui (gmp_randstate_t state, unsigned long n)
-Return a uniformly distributed random number in the range 0 to n-1, inclusive. 
-=cut
-*/
-
-function gmp_urandomm_ui (var state, int n) {
-  using gmp.__ggmp_urandomm_ui;
-  __ggmp_urandomm_ui(state, n);
-}
-
-/*
-=head1   ()
-=head1 int gmp_vprintf (const char * fmt, va_list ap)
-Print to the standard output stdout. Return the number of characters written, or -1 if an error occurred. 
-=cut
-*/
-
-function gmp_vprintf (var fmt, var ap) {
-  using gmp.__ggmp_vprintf;
-  __ggmp_vprintf(fmt, ap);
-}
-
-/*
-=head1   ()
-=head1 int gmp_vfprintf (FILE * fp, const char * fmt, va_list ap)
-Print to the stream fp. Return the number of characters written, or -1 if an error occurred. 
-=cut
-*/
-
-function gmp_vfprintf (var fp, var fmt, var ap) {
-  using gmp.__ggmp_vfprintf;
-  __ggmp_vfprintf(fp, fmt, ap);
-}
-
-/*
-=head1   ()
-=head1 int gmp_vsprintf (char * buf, const char * fmt, va_list ap)
-Form a null-terminated string in buf. Return the number of characters written, excluding the terminating null. No overlap is permitted between the space at buf and the string fmt. These functions are not recommended, since there's no protection against exceeding the space available at buf. 
-=cut
-*/
-
-function gmp_vsprintf (var buf, var fmt, var ap) {
-  using gmp.__ggmp_vsprintf;
-  __ggmp_vsprintf(buf, fmt, ap);
-}
-
-/*
-=head1   ()
-=head1 int gmp_vsnprintf (char * buf, size_t size, const char * fmt, va_list ap)
-Form a null-terminated string in buf. No more than size bytes will be written. To get the full output, size must be enough for the string and null-terminator. The return value is the total number of characters which ought to have been produced, excluding the terminating null. If retval >= size then the actual output has been truncated to the first size-1 characters, and a null appended. No overlap is permitted between the region {buf,size} and the fmt string. Notice the return value is in ISO C99 snprintf style. This is so even if the C library vsnprintf is the older GLIBC 2.0.x style. 
-=cut
-*/
-
-function gmp_vsnprintf (var buf, int size, var fmt, var ap) {
-  using gmp.__ggmp_vsnprintf;
-  __ggmp_vsnprintf(buf, size, fmt, ap);
-}
-
-/*
-=head1   ()
-=head1 int gmp_vasprintf (char * *pp, const char * fmt, va_list ap)
-Form a null-terminated string in a block of memory obtained from the current memory allocation function (see Custom Allocation). The block will be the size of the string and null-terminator. The address of the block in stored to *pp. The return value is the number of characters produced, excluding the null-terminator. Unlike the C library asprintf, gmp_asprintf doesn't return -1 if there's no more memory available, it lets the current allocation function handle that. 
-=cut
-*/
-
-function gmp_vasprintf (var pp, var fmt, var ap) {
-  using gmp.__ggmp_vasprintf;
-  __ggmp_vasprintf(pp, fmt, ap);
-}
-
-/*
-=head1   ()
-=head1 int gmp_obstack_vprintf (struct obstack * ob, const char * fmt, va_list ap)
-Append to the current object in ob. The return value is the number of characters written. A null-terminator is not written. fmt cannot be within the current object in ob, since that object might move as it grows. These functions are available only when the C library provides the obstack feature, which probably means only on GNU systems, see Obstacks. 
-=cut
-*/
-
-function gmp_obstack_vprintf (var ob, var fmt, var ap) {
-  using gmp.__ggmp_obstack_vprintf;
-  __ggmp_obstack_vprintf(ob, fmt, ap);
-}
-
-/*
-=head1 ostream&amp; operator&lt;&lt; (ostream&amp; stream, mpz_t op)
-Print op to stream, using its ios formatting settings. ios::width is reset to 0 after output, the same as the standard ostream operator<< routines do. In hex or octal, op is printed as a signed number, the same as for decimal. This is unlike the standard operator<< routines on int etc, which instead give twos complement. 
-=cut
-*/
-
-/*
-=head1 ostream&amp; operator&lt;&lt; (ostream&amp; stream, mpq_t op)
-Print op to stream, using its ios formatting settings. ios::width is reset to 0 after output, the same as the standard ostream operator<< routines do. Output will be a fraction like `5/9', or if the denominator is 1 then just a plain integer like `123'. In hex or octal, op is printed as a signed value, the same as for decimal. If ios::showbase is set then a base indicator is shown on both the numerator and denominator (if the denominator is required). 
-=cut
-*/
-
-/*
-=head1 ostream&amp; operator&lt;&lt; (ostream&amp; stream, mpf_t op)
-Print op to stream, using its ios formatting settings. ios::width is reset to 0 after output, the same as the standard ostream operator<< routines do. The decimal point follows the standard library float operator<<, which on recent systems means the std::locale imbued on stream. Hex and octal are supported, unlike the standard operator<< on double. The mantissa will be in hex or octal, the exponent will be in decimal. For hex the exponent delimiter is an `@'. This is as per mpf_out_str. ios::showbase is supported, and will put a base on the mantissa, for example hex `0x1.8' or `0x0.8', or octal `01.4' or `00.4'. This last form is slightly strange, but at least differentiates itself from decimal. 
-=cut
-*/
-
-/*
-=head1   ()
-=head1 int gmp_vscanf (const char * fmt, va_list ap)
-Read from the standard input stdin. 
-=cut
-*/
-
-function gmp_vscanf (var fmt, var ap) {
-  using gmp.__ggmp_vscanf;
-  __ggmp_vscanf(fmt, ap);
-}
-
-/*
-=head1   ()
-=head1 int gmp_vfscanf (FILE * fp, const char * fmt, va_list ap)
-Read from the stream fp. 
-=cut
-*/
-
-function gmp_vfscanf (var fp, var fmt, var ap) {
-  using gmp.__ggmp_vfscanf;
-  __ggmp_vfscanf(fp, fmt, ap);
-}
-
-/*
-=head1   ()
-=head1 int gmp_vsscanf (const char * s, const char * fmt, va_list ap)
-Read from a null-terminated string s. 
-=cut
-*/
-
-function gmp_vsscanf (var s, var fmt, var ap) {
-  using gmp.__ggmp_vsscanf;
-  __ggmp_vsscanf(s, fmt, ap);
-}
-
-/*
-=head1 istream&amp; operator&gt;&gt; (istream&amp; stream, mpz_t rop)
-Read rop from stream, using its ios formatting settings. 
-=cut
-*/
-
-
-/*
-=head1 istream&amp; operator&gt;&gt; (istream&amp; stream, mpq_t rop)
-An integer like `123' will be read, or a fraction like `5/9'. No whitespace is allowed around the `/'. If the fraction is not in canonical form then mpq_canonicalize must be called (see Rational Number Functions) before operating on it. As per integer input, an `0' or `0x' base indicator is read when none of ios::dec, ios::oct or ios::hex are set. This is done separately for numerator and denominator, so that for instance `0x10/11' is 16/11 and `0x10/0x11' is 16/17. 
-=cut
-*/
-
-/*
-=head1 istream&amp; operator&gt;&gt; (istream&amp; stream, mpf_t rop)
-Read rop from stream, using its ios formatting settings. Hex or octal floats are not supported, but might be in the future, or perhaps it's best to accept only what the standard float operator>> does. 
-=cut
-*/
-
-/*
-=head1   ()
-=head1   ()
-=head1   ()
-
-=cut
-*/
-
-/*
-=head1 void mpz_class::mpz_class (type n)
-Construct an mpz_class. All the standard C++ types may be used, except long long and long double, and all the GMP C++ classes can be used. Any necessary conversion follows the corresponding C function, for example double follows mpz_set_d (see Assigning Integers). 
-=cut
-*/
-
-/*
-=head1 void mpz_class::mpz_class (mpz_t z)
-Construct an mpz_class from an mpz_t. The value in z is copied into the new mpz_class, there won't be any permanent association between it and z. 
-=cut
-*/
-
-/*
-=head1 void mpz_class::mpz_class (const char * s)
-=head1 void mpz_class::mpz_class (const char * s, int base = 0)
-=head1 void mpz_class::mpz_class (const string&amp; s)
-=head1 void mpz_class::mpz_class (const string&amp; s, int base = 0)
-Construct an mpz_class converted from a string using mpz_set_str (see Assigning Integers). If the string is not a valid integer, an std::invalid_argument exception is thrown. The same applies to operator=. 
-=cut
-*/
-
-
-/*
-=head1 mpz_class operator/ (mpz_class a, mpz_class d)
-=head1 mpz_class operator% (mpz_class a, mpz_class d)
-Divisions involving mpz_class round towards zero, as per the mpz_tdiv_q and mpz_tdiv_r functions (see Integer Division). This is the same as the C99 / and % operators. The mpz_fdiv... or mpz_cdiv... functions can always be called directly if desired. For example,           mpz_class q, a, d;
-          ...
-          mpz_fdiv_q (q.get_mpz_t(), a.get_mpz_t(), d.get_mpz_t());
-     
-=cut
-*/
-
-/*
-=head1 mpz_class abs (mpz_class op1)
-=head1 int cmp (mpz_class op1, type op2)
-=head1 int cmp (type op1, mpz_class op2)
-=head1 bool mpz_class::fits_sint_p ( )
-=head1 bool mpz_class::fits_slong_p ( )
-=head1 bool mpz_class::fits_sshort_p ( )
-=head1 bool mpz_class::fits_uint_p ( )
-=head1 bool mpz_class::fits_ulong_p ( )
-=head1 bool mpz_class::fits_ushort_p ( )
-=head1 double mpz_class::get_d ( )
-=head1 long mpz_class::get_si ( )
-=head1 string mpz_class::get_str (int base = 10)
-=head1 unsigned long mpz_class::get_ui ( )
-=head1 int mpz_class::set_str (const char * str, int base)
-=head1 int mpz_class::set_str (const string&amp; str, int base)
-=head1 int sgn (mpz_class op)
-=head1 mpz_class sqrt (mpz_class op)
-These functions provide a C++ class interface to the corresponding GMP C routines. cmp can be used with any of the classes or the standard C++ types, except long long and long double. 
-=cut
-*/
-
-function abs (var op1) {
-  using gmp.__gabs;
-  __gabs(op1);
-}
-
-function cmp (var op1, var op2) {
-  using gmp.__gcmp;
-  __gcmp(op1, op2);
-}
-
-function cmp (var op1, var op2) {
-  using gmp.__gcmp;
-  __gcmp(op1, op2);
-}
-
-function sgn (var op) {
-  using gmp.__gsgn;
-  __gsgn(op);
-}
-
-function sqrt (var op) {
-  using gmp.__gsqrt;
-  __gsqrt(op);
-}
-
-/*
-=head1 void mpq_class::mpq_class (type op)
-=head1 void mpq_class::mpq_class (integer num, integer den)
-Construct an mpq_class. The initial value can be a single value of any type, or a pair of integers (mpz_class or standard C++ integer types) representing a fraction, except that long long and long double are not supported. For example,           mpq_class q (99);
-          mpq_class q (1.75);
-          mpq_class q (1, 3);
-     
-=cut
-*/
-
-/*
-=head1 void mpq_class::mpq_class (const char * s)
-=head1 void mpq_class::mpq_class (const char * s, int base = 0)
-=head1 void mpq_class::mpq_class (const string&amp; s)
-=head1 void mpq_class::mpq_class (const string&amp; s, int base = 0)
-Construct an mpq_class converted from a string using mpq_set_str (see Initializing Rationals). If the string is not a valid rational, an std::invalid_argument exception is thrown. The same applies to operator=. 
-=cut
-*/
-
-/*
-=head1   ()
-Put an mpq_class into canonical form, as per Rational Number Functions. All arithmetic operators require their operands in canonical form, and will return results in canonical form. 
-=cut
-*/
-
-/*
-=head1 mpq_class abs (mpq_class op)
-=head1 int cmp (mpq_class op1, type op2)
-=head1 int cmp (type op1, mpq_class op2)
-=head1 double mpq_class::get_d ( )
-=head1 string mpq_class::get_str (int base = 10)
-=head1 int mpq_class::set_str (const char * str, int base)
-=head1 int mpq_class::set_str (const string&amp; str, int base)
-=head1 int sgn (mpq_class op)
-These functions provide a C++ class interface to the corresponding GMP C routines. cmp can be used with any of the classes or the standard C++ types, except long long and long double. 
-=cut
-*/
-
-function abs (var op) {
-  using gmp.__gabs;
-  __gabs(op);
-}
-
-function cmp (var op1, var op2) {
-  using gmp.__gcmp;
-  __gcmp(op1, op2);
-}
-
-function cmp (var op1, var op2) {
-  using gmp.__gcmp;
-  __gcmp(op1, op2);
-}
-
-function sgn (var op) {
-  using gmp.__gsgn;
-  __gsgn(op);
-}
-
-/*
-=head1   ()
-=head1   ()
-Get a reference to an mpz_class which is the numerator or denominator of an mpq_class. This can be used both for read and write access. If the object returned is modified, it modifies the original mpq_class. If direct manipulation might produce a non-canonical value, then mpq_class::canonicalize must be called before further operations. 
-=cut
-*/
-
-
-/*
-=head1   ()
-=head1   ()
-Get a reference to the underlying mpz_t numerator or denominator of an mpq_class. This can be passed to C functions expecting an mpz_t. Any modifications made to the mpz_t will modify the original mpq_class. If direct manipulation might produce a non-canonical value, then mpq_class::canonicalize must be called before further operations. 
-=cut
-*/
-
-/*
-=head1 istream&amp; operator&gt;&gt; (istream&amp; stream, mpq_class&amp; rop)
-Read rop from stream, using its ios formatting settings, the same as mpq_t operator>> (see C++ Formatted Input). If the rop read might not be in canonical form then mpq_class::canonicalize must be called. 
-=cut
-*/
-
-/*
-=head1   ()
-=head1   ()
-Construct an mpf_class. Any standard C++ type can be used, except long long and long double, and any of the GMP C++ classes can be used. If prec is given, the initial precision is that value, in bits. If prec is not given, then the initial precision is determined by the type of op given. An mpz_class, mpq_class, or C++ builtin type will give the default mpf precision (see Initializing Floats). An mpf_class or expression will give the precision of that value. The precision of a binary expression is the higher of the two operands.           mpf_class f(1.5);        // default precision
-          mpf_class f(1.5, 500);   // 500 bits (at least)
-          mpf_class f(x);          // precision of x
-          mpf_class f(abs(x));     // precision of x
-          mpf_class f(-g, 1000);   // 1000 bits (at least)
-          mpf_class f(x+y);        // greater of precisions of x and y
-     
-=cut
-*/
-
-/*
-=head1 void mpf_class::mpf_class (const char * s)
-=head1 void mpf_class::mpf_class (const char * s, unsigned long prec, int base = 0)
-=head1 void mpf_class::mpf_class (const string&amp; s)
-=head1 void mpf_class::mpf_class (const string&amp; s, unsigned long prec, int base = 0)
-Construct an mpf_class converted from a string using mpf_set_str (see Assigning Floats). If prec is given, the initial precision is that value, in bits. If not, the default mpf precision (see Initializing Floats) is used. If the string is not a valid float, an std::invalid_argument exception is thrown. The same applies to operator=. 
-=cut
-*/
-
-/*
-=head1 mpf_class&amp; mpf_class::operator= (type op)
-Convert and store the given op value to an mpf_class object. The same types are accepted as for the constructors above. Note that operator= only stores a new value, it doesn't copy or change the precision of the destination, instead the value is truncated if necessary. This is the same as mpf_set etc. Note in particular this means for mpf_class a copy constructor is not the same as a default constructor plus assignment.           mpf_class x (y);   // x created with precision of y
-          
-          mpf_class x;       // x created with default precision
-          x = y;             // value truncated to that precision
-     Applications using templated code may need to be careful about the assumptions the code makes in this area, when working with mpf_class values of various different or non-default precisions. For instance implementations of the standard complex template have been seen in both styles above, though of course complex is normally only actually specified for use with the builtin float types. 
-=cut
-*/
-
-/*
-=head1 mpf_class abs (mpf_class op)
-=head1 mpf_class ceil (mpf_class op)
-=head1 int cmp (mpf_class op1, type op2)
-=head1 int cmp (type op1, mpf_class op2)
-=head1 bool mpf_class::fits_sint_p ( )
-=head1 bool mpf_class::fits_slong_p ( )
-=head1 bool mpf_class::fits_sshort_p ( )
-=head1 bool mpf_class::fits_uint_p ( )
-=head1 bool mpf_class::fits_ulong_p ( )
-=head1 bool mpf_class::fits_ushort_p ( )
-=head1 mpf_class floor (mpf_class op)
-=head1 mpf_class hypot (mpf_class op1, mpf_class op2)
-=head1 double mpf_class::get_d ( )
-=head1 long mpf_class::get_si ( )
-=head1 string mpf_class::get_str (mp_exp_t&amp; exp, int base = 10, size_t digits = 0)
-=head1 unsigned long mpf_class::get_ui ( )
-=head1 int mpf_class::set_str (const char * str, int base)
-=head1 int mpf_class::set_str (const string&amp; str, int base)
-=head1 int sgn (mpf_class op)
-=head1 mpf_class sqrt (mpf_class op)
-=head1 mpf_class trunc (mpf_class op)
-These functions provide a C++ class interface to the corresponding GMP C routines. cmp can be used with any of the classes or the standard C++ types, except long long and long double. The accuracy provided by hypot is not currently guaranteed. 
-=cut
-*/
-
-function abs (var op) {
-  using gmp.__gabs;
-  __gabs(op);
-}
-
-function ceil (var op) {
-  using gmp.__gceil;
-  __gceil(op);
-}
-
-function cmp (var op1, var op2) {
-  using gmp.__gcmp;
-  __gcmp(op1, op2);
-}
-
-function cmp (var op1, var op2) {
-  using gmp.__gcmp;
-  __gcmp(op1, op2);
-}
-
-function floor (var op) {
-  using gmp.__gfloor;
-  __gfloor(op);
-}
-
-function hypot (var op1, var op2) {
-  using gmp.__ghypot;
-  __ghypot(op1, op2);
-}
-
-function sgn (var op) {
-  using gmp.__gsgn;
-  __gsgn(op);
-}
-
-function sqrt (var op) {
-  using gmp.__gsqrt;
-  __gsqrt(op);
-}
-
-function trunc (var op) {
-  using gmp.__gtrunc;
-  __gtrunc(op);
-}
-
-/*
-=head1   ()
-=head1 void mpf_class::set_prec (mp_bitcnt_t prec)
-=head1 void mpf_class::set_prec_raw (mp_bitcnt_t prec)
-Get or set the current precision of an mpf_class. The restrictions described for mpf_set_prec_raw (see Initializing Floats) apply to mpf_class::set_prec_raw. Note in particular that the mpf_class must be restored to it's allocated precision before being destroyed. This must be done by application code, there's no automatic mechanism for it. 
-=cut
-*/
-
-/*
-=head1   ()
-Construct a gmp_randclass, using a call to the given randinit function (see Random State Initialization). The arguments expected are the same as randinit, but with mpz_class instead of mpz_t. For example,           gmp_randclass r1 (gmp_randinit_default);
-          gmp_randclass r2 (gmp_randinit_lc_2exp_size, 32);
-          gmp_randclass r3 (gmp_randinit_lc_2exp, a, c, m2exp);
-          gmp_randclass r4 (gmp_randinit_mt);
-     gmp_randinit_lc_2exp_size will fail if the size requested is too big, an std::length_error exception is thrown in that case. 
-=cut
-*/
-
-/*
-=head1   ()
-Construct a gmp_randclass using the same parameters as gmp_randinit (see Random State Initialization). This function is obsolete and the above randinit style should be preferred. 
-=cut
-*/
-
-/*
-=head1 void gmp_randclass::seed (unsigned long int s)
-=head1 void gmp_randclass::seed (mpz_class s)
-Seed a random number generator. See see Random Number Functions, for how to choose a good seed. 
-=cut
-*/
-
-/*
-=head1 mpz_class gmp_randclass::get_z_bits (unsigned long bits)
-=head1 mpz_class gmp_randclass::get_z_bits (mpz_class bits)
-Generate a random integer with a specified number of bits. 
-=cut
-*/
-
-/*
-=head1 mpz_class gmp_randclass::get_z_range (mpz_class n)
-Generate a random integer in the range 0 to n-1 inclusive. 
-=cut
-*/
-
-/*
-=head1   ()
-=head1 mpf_class gmp_randclass::get_f (unsigned long prec)
-Generate a random float f in the range 0 <= f < 1. f will be to prec bits precision, or if prec is not given then to the precision of the destination. For example,           gmp_randclass  r;
-          ...
-          mpf_class  f (0, 512);   // 512 bits precision
-          f = r.get_f();           // random number, 512 bits
-     
-=cut
-*/
-
-/*
-=head1 MINT * itom (signed short int initial_value)
-Allocate an integer consisting of a MINT object and dynamic limb space. Initialize the integer to initial_value. Return a pointer to the MINT object. 
-=cut
-*/
-
-function itom (var initial_value) {
-  using gmp.__gitom;
-  __gitom(initial_value);
-}
-
-/*
-=head1 MINT * xtom (char * initial_value)
-Allocate an integer consisting of a MINT object and dynamic limb space. Initialize the integer from initial_value, a hexadecimal, null-terminated C string. Return a pointer to the MINT object. 
-=cut
-*/
-
-function xtom (var initial_value) {
-  using gmp.__gxtom;
-  __gxtom(initial_value);
-}
-
-/*
-=head1 void move (MINT * src, MINT * dest)
-Set dest to src by copying. Both variables must be previously initialized. 
-=cut
-*/
-
-function move (var src, var dest) {
-  using gmp.__gmove;
-  __gmove(src, dest);
-}
-
-/*
-=head1 void madd (MINT * src_1, MINT * src_2, MINT * destination)
-Add src_1 and src_2 and put the sum in destination. 
-=cut
-*/
-
-function madd (var src_1, var src_2, var destination) {
-  using gmp.__gmadd;
-  __gmadd(src_1, src_2, destination);
-}
-
-/*
-=head1 void msub (MINT * src_1, MINT * src_2, MINT * destination)
-Subtract src_2 from src_1 and put the difference in destination. 
-=cut
-*/
-
-function msub (var src_1, var src_2, var destination) {
-  using gmp.__gmsub;
-  __gmsub(src_1, src_2, destination);
-}
-
-/*
-=head1 void mult (MINT * src_1, MINT * src_2, MINT * destination)
-Multiply src_1 and src_2 and put the product in destination. 
-=cut
-*/
-
-function mult (var src_1, var src_2, var destination) {
-  using gmp.__gmult;
-  __gmult(src_1, src_2, destination);
-}
-
-/*
-=head1 void mdiv (MINT * dividend, MINT * divisor, MINT * quotient, MINT * remainder)
-=head1 void sdiv (MINT * dividend, signed short int divisor, MINT * quotient, signed short int * remainder)
-Set quotient to dividend/divisor, and remainder to dividend mod divisor. The quotient is rounded towards zero; the remainder has the same sign as the dividend unless it is zero. Some implementations of these functions work differently-or not at all-for negative arguments. 
-=cut
-*/
-
-function mdiv (var dividend, var divisor, var quotient, var remainder) {
-  using gmp.__gmdiv;
-  __gmdiv(dividend, divisor, quotient, remainder);
-}
-
-function sdiv (var dividend, var divisor, var quotient, var remainder) {
-  using gmp.__gsdiv;
-  __gsdiv(dividend, divisor, quotient, remainder);
-}
-
-/*
-=head1 void msqrt (MINT * op, MINT * root, MINT * remainder)
-Set root to the truncated integer part of the square root of op, like mpz_sqrt. Set remainder to op−root*root, i.e. zero if op is a perfect square. If root and remainder are the same variable, the results are undefined. 
-=cut
-*/
-
-function msqrt (var op, var root, var remainder) {
-  using gmp.__gmsqrt;
-  __gmsqrt(op, root, remainder);
-}
-
-/*
-=head1 void pow (MINT * base, MINT * exp, MINT * mod, MINT * dest)
-Set dest to (base raised to exp) modulo mod. Note that the name pow clashes with pow from the standard C math library (see Exponentiation and Logarithms). An application will only be able to use one or the other. 
-=cut
-*/
-
-function pow (var base, var exp, var mod, var dest) {
-  using gmp.__gpow;
-  __gpow(base, exp, mod, dest);
-}
-
-/*
-=head1 void rpow (MINT * base, signed short int exp, MINT * dest)
-Set dest to base raised to exp. 
-=cut
-*/
-
-function rpow (var base, var exp, var dest) {
-  using gmp.__grpow;
-  __grpow(base, exp, dest);
-}
-
-/*
-=head1 void gcd (MINT * op1, MINT * op2, MINT * res)
-Set res to the greatest common divisor of op1 and op2. 
-=cut
-*/
-
-function gcd (var op1, var op2, var res) {
-  using gmp.__ggcd;
-  __ggcd(op1, op2, res);
-}
-
-/*
-=head1 int mcmp (MINT * op1, MINT * op2)
-Compare op1 and op2. Return a positive value if op1 > op2, zero if op1 = op2, and a negative value if op1 < op2. 
-=cut
-*/
-
-function mcmp (var op1, var op2) {
-  using gmp.__gmcmp;
-  __gmcmp(op1, op2);
-}
-
-/*
-=head1 void min (MINT * dest)
-Input a decimal string from stdin, and put the read integer in dest. SPC and TAB are allowed in the number string, and are ignored. 
-=cut
-*/
-
-function min (var dest) {
-  using gmp.__gmin;
-  __gmin(dest);
-}
-
-/*
-=head1 void mout (MINT * src)
-Output src to stdout, as a decimal string. Also output a newline. 
-=cut
-*/
-
-function mout (var src) {
-  using gmp.__gmout;
-  __gmout(src);
-}
-
-/*
-=head1 char * mtox (MINT * op)
-Convert op to a hexadecimal string, and return a pointer to the string. The returned string is allocated using the default memory allocation function, malloc by default. It will be strlen(str)+1 bytes, that being exactly enough for the string and null-terminator. 
-=cut
-*/
-
-function mtox (var op) {
-  using gmp.__gmtox;
-  __gmtox(op);
-}
-
-/*
-=head1 void mfree (MINT * op)
-De-allocate, the space used by op. This function should only be passed a value returned by itom or xtom.
-=cut
-*/
-
-function mfree (var op) {
-  using gmp.__gmfree;
-  __gmfree(op);
-}
-
-/*
-=head1   ()
-Replace the current allocation functions from the arguments. If an argument is NULL, the corresponding default function is used. These functions will be used for all memory allocation done by GMP, apart from temporary space from alloca if that function is available and GMP is configured to use it (see Build Options). Be sure to call mp_set_memory_functions only when there are no active GMP objects allocated using the previous memory functions! Usually that means calling it before any other GMP function.
-=cut
-*/
-
-/*
-=head1 void * allocate_function (size_t alloc_size)
-Return a pointer to newly allocated space with at least alloc_size bytes. 
-=cut
-*/
-
-function allocate_function (int alloc_size) {
-  using gmp.__gallocate_function;
-  __gallocate_function(alloc_size);
-}
-
-/*
-=head1 void * reallocate_function (void * ptr, size_t old_size, size_t new_size)
-Resize a previously allocated block ptr of old_size bytes to be new_size bytes. The block may be moved if necessary or if desired, and in that case the smaller of old_size and new_size bytes must be copied to the new location. The return value is a pointer to the resized block, that being the new location if moved or just ptr if not. ptr is never NULL, it's always a previously allocated block. new_size may be bigger or smaller than old_size. 
-=cut
-*/
-
-function reallocate_function (var ptr, int old_size, int new_size) {
-  using gmp.__greallocate_function;
-  __greallocate_function(ptr, old_size, new_size);
-}
-
-/*
-=head1 void free_function (void * ptr, size_t size)
-De-allocate the space pointed to by ptr. ptr is never NULL, it's always a previously allocated block of size bytes. 
-=cut
-*/
-
-function free_function (var ptr, int size) {
-  using gmp.__gfree_function;
-  __gfree_function(ptr, size);
-}
-
-/*
-=head1   ()
-Get the current allocation functions, storing function pointers to the locations given by the arguments. If an argument is NULL, that function pointer is not stored. For example, to get just the current free function,           void (*freefunc) (void *, size_t);
-          
-          mp_get_memory_functions (NULL, NULL, &freefunc);
-     
-=cut
-*/
 
