@@ -126,12 +126,22 @@ EOF
         }
       }
       # print actual function calling code
-      my $nci_signature = join ", ", map { $_->{'name'} } @{$_->{'params'}};
+      my $nci_signature = join ", ", map {
+          if ($_->{'type'} eq 'char *') {
+            "stoa($_->{'name'})";
+          } else {
+            $_->{'name'};
+          }
+        } @{$_->{'params'}};
       my $internal_function_name = "__g$function_name";
       my $return = $_->{'return_type'} eq 'void' ? '' : 'return';
+      my $line = "$internal_function_name($nci_signature)";
+      if ($_->{'return_type'} eq 'char *') {
+        $line = "atos($line)";
+      }
       print <<EOF;
   using gmp.$internal_function_name;
-  $return $internal_function_name($nci_signature);
+  $return $line;
 }
 
 EOF
@@ -142,6 +152,11 @@ EOF
 sub c_to_winxed_mapping {
   my $c_type = shift;
   my $nci_type;
+
+  # because we map char * -> p
+  if ($c_type eq 'char *') {
+    return 'string';
+  }
 
   if (exists $c_to_nci_mappings{$c_type}) {
     $nci_type = $c_to_nci_mappings{$c_type};

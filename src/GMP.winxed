@@ -9,15 +9,43 @@ function gmpz_t[anon, immediate]() {
   return gmpz_t;
 }
 
+function stoa[anon](string s) {
+  var str_to_cstring = dlfunc(null, 'Parrot_str_to_cstring', 'ppS');
+  return str_to_cstring(getinterp(), s);
+}
+
+function atos[anon](var a) {
+  var cstring_to_str = dlfunc(null, 'Parrot_str_new', 'Sppi');
+  return cstring_to_str(getinterp(), a, 0);
+}
+
 namespace GMP {
   class Integer {
     var ptr;
 
-    function Integer() {
+    function Integer(var init[optional], int has_init[opt_flag]) {
       using gmpz_t;
       var ptr = self.ptr = gmpz_t.alloc();
-      using gmp.__gmpz_init;
-      __gmpz_init(ptr);
+
+      if (has_init) {
+        if (init instanceof 'String') {
+          using gmp.__gmpz_init_set_str;
+          __gmpz_init_set_str(ptr,init,10);
+          self.ptr = ptr;
+        }
+        else if (init instanceof 'Integer') {
+          using gmp.__gmpz_init_set_ui;
+          __gmpz_init_set_ui(ptr, int(init));
+          self.ptr = ptr;
+        }
+        else {
+          throw Error("incorrect type init for Integer constructor");
+        }
+      } else {
+        using gmp.__gmpz_init;
+        __gmpz_init(ptr);
+        self.ptr = ptr;
+      }
     }
 
     function destroy[vtable('destroy')]() {
@@ -143,11 +171,11 @@ Set the value of rop from str, a null-terminated C string in base base. White sp
 =cut
 */
 
-function mpz_set_str (var rop, var str, int base) {
+function mpz_set_str (var rop, string str, int base) {
   if(!(rop instanceof GMP.Integer))
     throw Error("incorrect type for rop in mpz_set_str");
   using gmp.__gmpz_set_str;
-  return __gmpz_set_str(rop, str, base);
+  return __gmpz_set_str(rop, stoa(str), base);
 }
 
 /*
@@ -219,11 +247,11 @@ Initialize rop and set its value like mpz_set_str (see its documentation above f
 =cut
 */
 
-function mpz_init_set_str (var rop, var str, int base) {
+function mpz_init_set_str (var rop, string str, int base) {
   if(!(rop instanceof GMP.Integer))
     throw Error("incorrect type for rop in mpz_init_set_str");
   using gmp.__gmpz_init_set_str;
-  return __gmpz_init_set_str(rop, str, base);
+  return __gmpz_init_set_str(rop, stoa(str), base);
 }
 
 /*
@@ -294,11 +322,11 @@ Convert op to a string of digits in base base. The base argument may vary from 2
 =cut
 */
 
-function mpz_get_str (var str, int base, var op) {
+function mpz_get_str (string str, int base, var op) {
   if(!(op instanceof GMP.Integer))
     throw Error("incorrect type for op in mpz_get_str");
   using gmp.__gmpz_get_str;
-  return __gmpz_get_str(str, base, op);
+  return atos(__gmpz_get_str(stoa(str), base, op));
 }
 
 /*

@@ -9,15 +9,43 @@ function gmpz_t[anon, immediate]() {
   return gmpz_t;
 }
 
+function stoa[anon](string s) {
+  var str_to_cstring = dlfunc(null, 'Parrot_str_to_cstring', 'ppS');
+  return str_to_cstring(getinterp(), s);
+}
+
+function atos[anon](var a) {
+  var cstring_to_str = dlfunc(null, 'Parrot_str_new', 'Sppi');
+  return cstring_to_str(getinterp(), a, 0);
+}
+
 namespace GMP {
   class Integer {
     var ptr;
 
-    function Integer() {
+    function Integer(var init[optional], int has_init[opt_flag]) {
       using gmpz_t;
       var ptr = self.ptr = gmpz_t.alloc();
-      using gmp.__gmpz_init;
-      __gmpz_init(ptr);
+
+      if (has_init) {
+        if (init instanceof 'String') {
+          using gmp.__gmpz_init_set_str;
+          __gmpz_init_set_str(ptr,init,10);
+          self.ptr = ptr;
+        }
+        else if (init instanceof 'Integer') {
+          using gmp.__gmpz_init_set_ui;
+          __gmpz_init_set_ui(ptr, int(init));
+          self.ptr = ptr;
+        }
+        else {
+          throw Error("incorrect type init for Integer constructor");
+        }
+      } else {
+        using gmp.__gmpz_init;
+        __gmpz_init(ptr);
+        self.ptr = ptr;
+      }
     }
 
     function destroy[vtable('destroy')]() {
