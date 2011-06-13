@@ -29,13 +29,19 @@ namespace GMP {
 
       if (has_init) {
         if (init instanceof 'String') {
-          using gmp.__gmpz_init_set_str;
-          __gmpz_init_set_str(ptr,init,10);
+          using gmp.__gmpz_init;
+          using mpz_set_str;
+          # ideally use __gmpz_init_set_str
+          __gmpz_init(ptr);
+          mpz_set_str(self, string(init), 10);
           self.ptr = ptr;
         }
         else if (init instanceof 'Integer') {
-          using gmp.__gmpz_init_set_ui;
-          __gmpz_init_set_ui(ptr, int(init));
+          using gmp.__gmpz_init;
+          using gmp.__gmpz_set_ui;
+          # ideally use __gmpz_init_set_ui
+          __gmpz_init(ptr);
+          __gmpz_set_ui(self, int(init));
           self.ptr = ptr;
         }
         else {
