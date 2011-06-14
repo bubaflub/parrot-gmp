@@ -1,4 +1,4 @@
-$load 'GMP.pbc';
+$load 'src/GMP.pbc';
 
 namespace GMP {
   class Integer;
