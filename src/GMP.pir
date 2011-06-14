@@ -9,7 +9,7 @@
 # predefined load_bytecode
 .annotate 'file', 'src/GMP.winxed'
 .annotate 'line', 4
-    load_bytecode 'def.pbc'
+    load_bytecode 'src/GMP/raw.pbc'
 # }
 .annotate 'line', 5
 
@@ -93,9 +93,9 @@
 # {
 .annotate 'line', 28
 # var ptr: $P1
-    $P7 = WSubId_1.'alloc'()
-    setattribute self, 'ptr', $P7
-    set $P1, $P7
+    $P6 = WSubId_1.'alloc'()
+    setattribute self, 'ptr', $P6
+    set $P1, $P6
 .annotate 'line', 30
     unless __ARG_2 goto __label_1
 # {
@@ -104,7 +104,7 @@
     unless $I1 goto __label_3
 # {
 .annotate 'line', 32
-    get_hll_global $P2, [ 'gmp' ] , '__gmpz_init'
+    get_hll_global $P2, [ 'GMP'; 'Raw' ] , '__gmpz_init'
 .annotate 'line', 35
     $P2($P1)
 .annotate 'line', 36
@@ -121,15 +121,13 @@
     unless $I1 goto __label_5
 # {
 .annotate 'line', 40
-    get_hll_global $P3, [ 'gmp' ] , '__gmpz_init'
-.annotate 'line', 41
-    get_hll_global $P4, [ 'gmp' ] , '__gmpz_set_ui'
+    get_hll_global $P3, [ 'GMP'; 'Raw' ] , '__gmpz_init'
 .annotate 'line', 43
     $P3($P1)
 .annotate 'line', 44
-# predefined int
-    set $I1, __ARG_1
-    $P4(self, $I1)
+# predefined string
+    set $S1, __ARG_1
+    WSubId_2(self, $S1, 10)
 .annotate 'line', 45
     setattribute self, 'ptr', $P1
 # }
@@ -138,9 +136,9 @@
 # {
 # predefined Error
 .annotate 'line', 48
-    root_new $P6, ['parrot';'Exception']
-    $P6['message'] = "incorrect type init for Integer constructor"
-    throw $P6
+    root_new $P5, ['parrot';'Exception']
+    $P5['message'] = "incorrect type init for Integer constructor"
+    throw $P5
 # }
   __label_6: # endif
   __label_4: # endif
@@ -149,9 +147,9 @@
   __label_1: # else
 # {
 .annotate 'line', 51
-    get_hll_global $P5, [ 'gmp' ] , '__gmpz_init'
+    get_hll_global $P4, [ 'GMP'; 'Raw' ] , '__gmpz_init'
 .annotate 'line', 52
-    $P5($P1)
+    $P4($P1)
 .annotate 'line', 53
     setattribute self, 'ptr', $P1
 # }
@@ -176,7 +174,7 @@
     null $P3
     setattribute self, 'ptr', $P3
 .annotate 'line', 61
-    get_hll_global $P2, [ 'gmp' ] , '__gmpz_clear'
+    get_hll_global $P2, [ 'GMP'; 'Raw' ] , '__gmpz_clear'
 .annotate 'line', 62
     $P2($P1)
 # }
@@ -208,7 +206,7 @@
     throw $P2
   __label_1: # endif
 .annotate 'line', 79
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_init'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_init'
 .annotate 'line', 80
     $P1(__ARG_1)
 # }
@@ -233,7 +231,7 @@
     throw $P2
   __label_1: # endif
 .annotate 'line', 94
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_init2'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_init2'
 .annotate 'line', 95
     $P1(__ARG_1, __ARG_2)
 # }
@@ -257,7 +255,7 @@
     throw $P2
   __label_1: # endif
 .annotate 'line', 109
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_clear'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_clear'
 .annotate 'line', 110
     $P1(__ARG_1)
 # }
@@ -282,7 +280,7 @@
     throw $P2
   __label_1: # endif
 .annotate 'line', 124
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_realloc2'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_realloc2'
 .annotate 'line', 125
     $P1(__ARG_1, __ARG_2)
 # }
@@ -317,7 +315,7 @@
     throw $P2
   __label_2: # endif
 .annotate 'line', 147
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_set'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_set'
 .annotate 'line', 148
     $P1(__ARG_1, __ARG_2)
 # }
@@ -342,7 +340,7 @@
     throw $P2
   __label_1: # endif
 .annotate 'line', 154
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_set_ui'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_set_ui'
 .annotate 'line', 155
     $P1(__ARG_1, __ARG_2)
 # }
@@ -367,7 +365,7 @@
     throw $P2
   __label_1: # endif
 .annotate 'line', 161
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_set_si'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_set_si'
 .annotate 'line', 162
     $P1(__ARG_1, __ARG_2)
 # }
@@ -392,7 +390,7 @@
     throw $P2
   __label_1: # endif
 .annotate 'line', 168
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_set_d'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_set_d'
 .annotate 'line', 169
     $P1(__ARG_1, __ARG_2)
 # }
@@ -419,7 +417,7 @@
     throw $P2
   __label_1: # endif
 .annotate 'line', 183
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_set_str'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_set_str'
 .annotate 'line', 184
     $P2 = WSubId_3(__ARG_2)
     .tailcall $P1(__ARG_1, $P2, __ARG_3)
@@ -455,7 +453,7 @@
     throw $P2
   __label_2: # endif
 .annotate 'line', 200
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_swap'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_swap'
 .annotate 'line', 201
     $P1(__ARG_1, __ARG_2)
 # }
@@ -490,7 +488,7 @@
     throw $P2
   __label_2: # endif
 .annotate 'line', 223
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_init_set'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_init_set'
 .annotate 'line', 224
     $P1(__ARG_1, __ARG_2)
 # }
@@ -515,7 +513,7 @@
     throw $P2
   __label_1: # endif
 .annotate 'line', 230
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_init_set_ui'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_init_set_ui'
 .annotate 'line', 231
     $P1(__ARG_1, __ARG_2)
 # }
@@ -540,7 +538,7 @@
     throw $P2
   __label_1: # endif
 .annotate 'line', 237
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_init_set_si'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_init_set_si'
 .annotate 'line', 238
     $P1(__ARG_1, __ARG_2)
 # }
@@ -565,7 +563,7 @@
     throw $P2
   __label_1: # endif
 .annotate 'line', 244
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_init_set_d'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_init_set_d'
 .annotate 'line', 245
     $P1(__ARG_1, __ARG_2)
 # }
@@ -592,7 +590,7 @@
     throw $P2
   __label_1: # endif
 .annotate 'line', 259
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_init_set_str'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_init_set_str'
 .annotate 'line', 260
     $P2 = WSubId_3(__ARG_2)
     .tailcall $P1(__ARG_1, $P2, __ARG_3)
@@ -617,7 +615,7 @@
     throw $P2
   __label_1: # endif
 .annotate 'line', 274
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_get_ui'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_get_ui'
 .annotate 'line', 275
     .tailcall $P1(__ARG_1)
 # }
@@ -641,7 +639,7 @@
     throw $P2
   __label_1: # endif
 .annotate 'line', 289
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_get_si'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_get_si'
 .annotate 'line', 290
     .tailcall $P1(__ARG_1)
 # }
@@ -665,7 +663,7 @@
     throw $P2
   __label_1: # endif
 .annotate 'line', 304
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_get_d'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_get_d'
 .annotate 'line', 305
     .tailcall $P1(__ARG_1)
 # }
@@ -690,7 +688,7 @@
     throw $P2
   __label_1: # endif
 .annotate 'line', 319
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_get_d_2exp'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_get_d_2exp'
 .annotate 'line', 320
     .tailcall $P1(__ARG_1, __ARG_2)
 # }
@@ -718,7 +716,7 @@
     throw $P2
   __label_1: # endif
 .annotate 'line', 334
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_get_str'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_get_str'
 .annotate 'line', 335
     $P3 = WSubId_3(__ARG_1)
     $P2 = $P1($P3, __ARG_2, __ARG_3)
@@ -766,7 +764,7 @@
     throw $P2
   __label_3: # endif
 .annotate 'line', 355
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_add'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_add'
 .annotate 'line', 356
     $P1(__ARG_1, __ARG_2, __ARG_3)
 # }
@@ -802,7 +800,7 @@
     throw $P2
   __label_2: # endif
 .annotate 'line', 364
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_add_ui'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_add_ui'
 .annotate 'line', 365
     $P1(__ARG_1, __ARG_2, __ARG_3)
 # }
@@ -848,7 +846,7 @@
     throw $P2
   __label_3: # endif
 .annotate 'line', 387
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_sub'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_sub'
 .annotate 'line', 388
     $P1(__ARG_1, __ARG_2, __ARG_3)
 # }
@@ -884,7 +882,7 @@
     throw $P2
   __label_2: # endif
 .annotate 'line', 396
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_sub_ui'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_sub_ui'
 .annotate 'line', 397
     $P1(__ARG_1, __ARG_2, __ARG_3)
 # }
@@ -920,7 +918,7 @@
     throw $P2
   __label_2: # endif
 .annotate 'line', 405
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_ui_sub'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_ui_sub'
 .annotate 'line', 406
     $P1(__ARG_1, __ARG_2, __ARG_3)
 # }
@@ -966,7 +964,7 @@
     throw $P2
   __label_3: # endif
 .annotate 'line', 428
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_mul'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_mul'
 .annotate 'line', 429
     $P1(__ARG_1, __ARG_2, __ARG_3)
 # }
@@ -1002,7 +1000,7 @@
     throw $P2
   __label_2: # endif
 .annotate 'line', 437
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_mul_si'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_mul_si'
 .annotate 'line', 438
     $P1(__ARG_1, __ARG_2, __ARG_3)
 # }
@@ -1038,7 +1036,7 @@
     throw $P2
   __label_2: # endif
 .annotate 'line', 446
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_mul_ui'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_mul_ui'
 .annotate 'line', 447
     $P1(__ARG_1, __ARG_2, __ARG_3)
 # }
@@ -1084,7 +1082,7 @@
     throw $P2
   __label_3: # endif
 .annotate 'line', 467
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_addmul'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_addmul'
 .annotate 'line', 468
     $P1(__ARG_1, __ARG_2, __ARG_3)
 # }
@@ -1120,7 +1118,7 @@
     throw $P2
   __label_2: # endif
 .annotate 'line', 476
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_addmul_ui'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_addmul_ui'
 .annotate 'line', 477
     $P1(__ARG_1, __ARG_2, __ARG_3)
 # }
@@ -1166,7 +1164,7 @@
     throw $P2
   __label_3: # endif
 .annotate 'line', 497
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_submul'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_submul'
 .annotate 'line', 498
     $P1(__ARG_1, __ARG_2, __ARG_3)
 # }
@@ -1202,7 +1200,7 @@
     throw $P2
   __label_2: # endif
 .annotate 'line', 506
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_submul_ui'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_submul_ui'
 .annotate 'line', 507
     $P1(__ARG_1, __ARG_2, __ARG_3)
 # }
@@ -1238,7 +1236,7 @@
     throw $P2
   __label_2: # endif
 .annotate 'line', 523
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_mul_2exp'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_mul_2exp'
 .annotate 'line', 524
     $P1(__ARG_1, __ARG_2, __ARG_3)
 # }
@@ -1273,7 +1271,7 @@
     throw $P2
   __label_2: # endif
 .annotate 'line', 540
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_neg'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_neg'
 .annotate 'line', 541
     $P1(__ARG_1, __ARG_2)
 # }
@@ -1308,7 +1306,7 @@
     throw $P2
   __label_2: # endif
 .annotate 'line', 557
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_abs'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_abs'
 .annotate 'line', 558
     $P1(__ARG_1, __ARG_2)
 # }
@@ -1354,7 +1352,7 @@
     throw $P2
   __label_3: # endif
 .annotate 'line', 590
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_cdiv_q'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_cdiv_q'
 .annotate 'line', 591
     $P1(__ARG_1, __ARG_2, __ARG_3)
 # }
@@ -1400,7 +1398,7 @@
     throw $P2
   __label_3: # endif
 .annotate 'line', 601
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_cdiv_r'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_cdiv_r'
 .annotate 'line', 602
     $P1(__ARG_1, __ARG_2, __ARG_3)
 # }
@@ -1457,7 +1455,7 @@
     throw $P2
   __label_4: # endif
 .annotate 'line', 614
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_cdiv_qr'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_cdiv_qr'
 .annotate 'line', 615
     $P1(__ARG_1, __ARG_2, __ARG_3, __ARG_4)
 # }
@@ -1493,7 +1491,7 @@
     throw $P2
   __label_2: # endif
 .annotate 'line', 623
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_cdiv_q_ui'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_cdiv_q_ui'
 .annotate 'line', 624
     .tailcall $P1(__ARG_1, __ARG_2, __ARG_3)
 # }
@@ -1529,7 +1527,7 @@
     throw $P2
   __label_2: # endif
 .annotate 'line', 632
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_cdiv_r_ui'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_cdiv_r_ui'
 .annotate 'line', 633
     .tailcall $P1(__ARG_1, __ARG_2, __ARG_3)
 # }
@@ -1576,7 +1574,7 @@
     throw $P2
   __label_3: # endif
 .annotate 'line', 643
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_cdiv_qr_ui'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_cdiv_qr_ui'
 .annotate 'line', 644
     .tailcall $P1(__ARG_1, __ARG_2, __ARG_3, __ARG_4)
 # }
@@ -1601,7 +1599,7 @@
     throw $P2
   __label_1: # endif
 .annotate 'line', 650
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_cdiv_ui'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_cdiv_ui'
 .annotate 'line', 651
     .tailcall $P1(__ARG_1, __ARG_2)
 # }
@@ -1637,7 +1635,7 @@
     throw $P2
   __label_2: # endif
 .annotate 'line', 659
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_cdiv_q_2exp'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_cdiv_q_2exp'
 .annotate 'line', 660
     $P1(__ARG_1, __ARG_2, __ARG_3)
 # }
@@ -1673,7 +1671,7 @@
     throw $P2
   __label_2: # endif
 .annotate 'line', 668
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_cdiv_r_2exp'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_cdiv_r_2exp'
 .annotate 'line', 669
     $P1(__ARG_1, __ARG_2, __ARG_3)
 # }
@@ -1719,7 +1717,7 @@
     throw $P2
   __label_3: # endif
 .annotate 'line', 701
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_fdiv_q'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_fdiv_q'
 .annotate 'line', 702
     $P1(__ARG_1, __ARG_2, __ARG_3)
 # }
@@ -1765,7 +1763,7 @@
     throw $P2
   __label_3: # endif
 .annotate 'line', 712
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_fdiv_r'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_fdiv_r'
 .annotate 'line', 713
     $P1(__ARG_1, __ARG_2, __ARG_3)
 # }
@@ -1822,7 +1820,7 @@
     throw $P2
   __label_4: # endif
 .annotate 'line', 725
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_fdiv_qr'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_fdiv_qr'
 .annotate 'line', 726
     $P1(__ARG_1, __ARG_2, __ARG_3, __ARG_4)
 # }
@@ -1858,7 +1856,7 @@
     throw $P2
   __label_2: # endif
 .annotate 'line', 734
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_fdiv_q_ui'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_fdiv_q_ui'
 .annotate 'line', 735
     .tailcall $P1(__ARG_1, __ARG_2, __ARG_3)
 # }
@@ -1894,7 +1892,7 @@
     throw $P2
   __label_2: # endif
 .annotate 'line', 743
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_fdiv_r_ui'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_fdiv_r_ui'
 .annotate 'line', 744
     .tailcall $P1(__ARG_1, __ARG_2, __ARG_3)
 # }
@@ -1941,7 +1939,7 @@
     throw $P2
   __label_3: # endif
 .annotate 'line', 754
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_fdiv_qr_ui'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_fdiv_qr_ui'
 .annotate 'line', 755
     .tailcall $P1(__ARG_1, __ARG_2, __ARG_3, __ARG_4)
 # }
@@ -1966,7 +1964,7 @@
     throw $P2
   __label_1: # endif
 .annotate 'line', 761
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_fdiv_ui'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_fdiv_ui'
 .annotate 'line', 762
     .tailcall $P1(__ARG_1, __ARG_2)
 # }
@@ -2002,7 +2000,7 @@
     throw $P2
   __label_2: # endif
 .annotate 'line', 770
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_fdiv_q_2exp'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_fdiv_q_2exp'
 .annotate 'line', 771
     $P1(__ARG_1, __ARG_2, __ARG_3)
 # }
@@ -2038,7 +2036,7 @@
     throw $P2
   __label_2: # endif
 .annotate 'line', 779
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_fdiv_r_2exp'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_fdiv_r_2exp'
 .annotate 'line', 780
     $P1(__ARG_1, __ARG_2, __ARG_3)
 # }
@@ -2084,7 +2082,7 @@
     throw $P2
   __label_3: # endif
 .annotate 'line', 816
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_tdiv_q'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_tdiv_q'
 .annotate 'line', 817
     $P1(__ARG_1, __ARG_2, __ARG_3)
 # }
@@ -2130,7 +2128,7 @@
     throw $P2
   __label_3: # endif
 .annotate 'line', 827
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_tdiv_r'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_tdiv_r'
 .annotate 'line', 828
     $P1(__ARG_1, __ARG_2, __ARG_3)
 # }
@@ -2187,7 +2185,7 @@
     throw $P2
   __label_4: # endif
 .annotate 'line', 840
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_tdiv_qr'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_tdiv_qr'
 .annotate 'line', 841
     $P1(__ARG_1, __ARG_2, __ARG_3, __ARG_4)
 # }
@@ -2223,7 +2221,7 @@
     throw $P2
   __label_2: # endif
 .annotate 'line', 849
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_tdiv_q_ui'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_tdiv_q_ui'
 .annotate 'line', 850
     .tailcall $P1(__ARG_1, __ARG_2, __ARG_3)
 # }
@@ -2259,7 +2257,7 @@
     throw $P2
   __label_2: # endif
 .annotate 'line', 858
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_tdiv_r_ui'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_tdiv_r_ui'
 .annotate 'line', 859
     .tailcall $P1(__ARG_1, __ARG_2, __ARG_3)
 # }
@@ -2306,7 +2304,7 @@
     throw $P2
   __label_3: # endif
 .annotate 'line', 869
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_tdiv_qr_ui'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_tdiv_qr_ui'
 .annotate 'line', 870
     .tailcall $P1(__ARG_1, __ARG_2, __ARG_3, __ARG_4)
 # }
@@ -2331,7 +2329,7 @@
     throw $P2
   __label_1: # endif
 .annotate 'line', 876
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_tdiv_ui'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_tdiv_ui'
 .annotate 'line', 877
     .tailcall $P1(__ARG_1, __ARG_2)
 # }
@@ -2367,7 +2365,7 @@
     throw $P2
   __label_2: # endif
 .annotate 'line', 885
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_tdiv_q_2exp'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_tdiv_q_2exp'
 .annotate 'line', 886
     $P1(__ARG_1, __ARG_2, __ARG_3)
 # }
@@ -2403,7 +2401,7 @@
     throw $P2
   __label_2: # endif
 .annotate 'line', 894
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_tdiv_r_2exp'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_tdiv_r_2exp'
 .annotate 'line', 895
     $P1(__ARG_1, __ARG_2, __ARG_3)
 # }
@@ -2449,7 +2447,7 @@
     throw $P2
   __label_3: # endif
 .annotate 'line', 915
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_mod'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_mod'
 .annotate 'line', 916
     $P1(__ARG_1, __ARG_2, __ARG_3)
 # }
@@ -2485,7 +2483,7 @@
     throw $P2
   __label_2: # endif
 .annotate 'line', 924
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_mod_ui'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_mod_ui'
 .annotate 'line', 925
     .tailcall $P1(__ARG_1, __ARG_2, __ARG_3)
 # }
@@ -2531,7 +2529,7 @@
     throw $P2
   __label_3: # endif
 .annotate 'line', 945
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_divexact'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_divexact'
 .annotate 'line', 946
     $P1(__ARG_1, __ARG_2, __ARG_3)
 # }
@@ -2567,7 +2565,7 @@
     throw $P2
   __label_2: # endif
 .annotate 'line', 954
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_divexact_ui'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_divexact_ui'
 .annotate 'line', 955
     $P1(__ARG_1, __ARG_2, __ARG_3)
 # }
@@ -2602,7 +2600,7 @@
     throw $P2
   __label_2: # endif
 .annotate 'line', 975
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_divisible_p'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_divisible_p'
 .annotate 'line', 976
     .tailcall $P1(__ARG_1, __ARG_2)
 # }
@@ -2627,7 +2625,7 @@
     throw $P2
   __label_1: # endif
 .annotate 'line', 982
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_divisible_ui_p'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_divisible_ui_p'
 .annotate 'line', 983
     .tailcall $P1(__ARG_1, __ARG_2)
 # }
@@ -2652,7 +2650,7 @@
     throw $P2
   __label_1: # endif
 .annotate 'line', 989
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_divisible_2exp_p'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_divisible_2exp_p'
 .annotate 'line', 990
     .tailcall $P1(__ARG_1, __ARG_2)
 # }
@@ -2698,7 +2696,7 @@
     throw $P2
   __label_3: # endif
 .annotate 'line', 1012
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_congruent_p'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_congruent_p'
 .annotate 'line', 1013
     .tailcall $P1(__ARG_1, __ARG_2, __ARG_3)
 # }
@@ -2724,7 +2722,7 @@
     throw $P2
   __label_1: # endif
 .annotate 'line', 1019
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_congruent_ui_p'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_congruent_ui_p'
 .annotate 'line', 1020
     .tailcall $P1(__ARG_1, __ARG_2, __ARG_3)
 # }
@@ -2760,7 +2758,7 @@
     throw $P2
   __label_2: # endif
 .annotate 'line', 1028
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_congruent_2exp_p'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_congruent_2exp_p'
 .annotate 'line', 1029
     .tailcall $P1(__ARG_1, __ARG_2, __ARG_3)
 # }
@@ -2817,7 +2815,7 @@
     throw $P2
   __label_4: # endif
 .annotate 'line', 1051
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_powm'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_powm'
 .annotate 'line', 1052
     $P1(__ARG_1, __ARG_2, __ARG_3, __ARG_4)
 # }
@@ -2864,7 +2862,7 @@
     throw $P2
   __label_3: # endif
 .annotate 'line', 1062
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_powm_ui'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_powm_ui'
 .annotate 'line', 1063
     $P1(__ARG_1, __ARG_2, __ARG_3, __ARG_4)
 # }
@@ -2921,7 +2919,7 @@
     throw $P2
   __label_4: # endif
 .annotate 'line', 1083
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_powm_sec'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_powm_sec'
 .annotate 'line', 1084
     $P1(__ARG_1, __ARG_2, __ARG_3, __ARG_4)
 # }
@@ -2957,7 +2955,7 @@
     throw $P2
   __label_2: # endif
 .annotate 'line', 1102
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_pow_ui'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_pow_ui'
 .annotate 'line', 1103
     $P1(__ARG_1, __ARG_2, __ARG_3)
 # }
@@ -2983,7 +2981,7 @@
     throw $P2
   __label_1: # endif
 .annotate 'line', 1109
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_ui_pow_ui'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_ui_pow_ui'
 .annotate 'line', 1110
     $P1(__ARG_1, __ARG_2, __ARG_3)
 # }
@@ -3019,7 +3017,7 @@
     throw $P2
   __label_2: # endif
 .annotate 'line', 1126
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_root'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_root'
 .annotate 'line', 1127
     .tailcall $P1(__ARG_1, __ARG_2, __ARG_3)
 # }
@@ -3066,7 +3064,7 @@
     throw $P2
   __label_3: # endif
 .annotate 'line', 1145
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_rootrem'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_rootrem'
 .annotate 'line', 1146
     $P1(__ARG_1, __ARG_2, __ARG_3, __ARG_4)
 # }
@@ -3101,7 +3099,7 @@
     throw $P2
   __label_2: # endif
 .annotate 'line', 1162
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_sqrt'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_sqrt'
 .annotate 'line', 1163
     $P1(__ARG_1, __ARG_2)
 # }
@@ -3147,7 +3145,7 @@
     throw $P2
   __label_3: # endif
 .annotate 'line', 1181
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_sqrtrem'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_sqrtrem'
 .annotate 'line', 1182
     $P1(__ARG_1, __ARG_2, __ARG_3)
 # }
@@ -3171,7 +3169,7 @@
     throw $P2
   __label_1: # endif
 .annotate 'line', 1196
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_perfect_power_p'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_perfect_power_p'
 .annotate 'line', 1197
     .tailcall $P1(__ARG_1)
 # }
@@ -3195,7 +3193,7 @@
     throw $P2
   __label_1: # endif
 .annotate 'line', 1211
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_perfect_square_p'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_perfect_square_p'
 .annotate 'line', 1212
     .tailcall $P1(__ARG_1)
 # }
@@ -3220,7 +3218,7 @@
     throw $P2
   __label_1: # endif
 .annotate 'line', 1226
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_probab_prime_p'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_probab_prime_p'
 .annotate 'line', 1227
     .tailcall $P1(__ARG_1, __ARG_2)
 # }
@@ -3255,7 +3253,7 @@
     throw $P2
   __label_2: # endif
 .annotate 'line', 1243
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_nextprime'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_nextprime'
 .annotate 'line', 1244
     $P1(__ARG_1, __ARG_2)
 # }
@@ -3301,7 +3299,7 @@
     throw $P2
   __label_3: # endif
 .annotate 'line', 1262
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_gcd'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_gcd'
 .annotate 'line', 1263
     $P1(__ARG_1, __ARG_2, __ARG_3)
 # }
@@ -3337,7 +3335,7 @@
     throw $P2
   __label_2: # endif
 .annotate 'line', 1279
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_gcd_ui'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_gcd_ui'
 .annotate 'line', 1280
     .tailcall $P1(__ARG_1, __ARG_2, __ARG_3)
 # }
@@ -3405,7 +3403,7 @@
     throw $P2
   __label_5: # endif
 .annotate 'line', 1302
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_gcdext'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_gcdext'
 .annotate 'line', 1303
     $P1(__ARG_1, __ARG_2, __ARG_3, __ARG_4, __ARG_5)
 # }
@@ -3451,7 +3449,7 @@
     throw $P2
   __label_3: # endif
 .annotate 'line', 1323
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_lcm'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_lcm'
 .annotate 'line', 1324
     $P1(__ARG_1, __ARG_2, __ARG_3)
 # }
@@ -3487,7 +3485,7 @@
     throw $P2
   __label_2: # endif
 .annotate 'line', 1332
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_lcm_ui'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_lcm_ui'
 .annotate 'line', 1333
     $P1(__ARG_1, __ARG_2, __ARG_3)
 # }
@@ -3533,7 +3531,7 @@
     throw $P2
   __label_3: # endif
 .annotate 'line', 1351
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_invert'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_invert'
 .annotate 'line', 1352
     .tailcall $P1(__ARG_1, __ARG_2, __ARG_3)
 # }
@@ -3568,7 +3566,7 @@
     throw $P2
   __label_2: # endif
 .annotate 'line', 1368
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_jacobi'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_jacobi'
 .annotate 'line', 1369
     .tailcall $P1(__ARG_1, __ARG_2)
 # }
@@ -3603,7 +3601,7 @@
     throw $P2
   __label_2: # endif
 .annotate 'line', 1385
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_legendre'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_legendre'
 .annotate 'line', 1386
     .tailcall $P1(__ARG_1, __ARG_2)
 # }
@@ -3638,7 +3636,7 @@
     throw $P2
   __label_2: # endif
 .annotate 'line', 1410
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_kronecker'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_kronecker'
 .annotate 'line', 1411
     .tailcall $P1(__ARG_1, __ARG_2)
 # }
@@ -3663,7 +3661,7 @@
     throw $P2
   __label_1: # endif
 .annotate 'line', 1417
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_kronecker_si'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_kronecker_si'
 .annotate 'line', 1418
     .tailcall $P1(__ARG_1, __ARG_2)
 # }
@@ -3688,7 +3686,7 @@
     throw $P2
   __label_1: # endif
 .annotate 'line', 1424
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_kronecker_ui'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_kronecker_ui'
 .annotate 'line', 1425
     .tailcall $P1(__ARG_1, __ARG_2)
 # }
@@ -3713,7 +3711,7 @@
     throw $P2
   __label_1: # endif
 .annotate 'line', 1431
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_si_kronecker'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_si_kronecker'
 .annotate 'line', 1432
     .tailcall $P1(__ARG_1, __ARG_2)
 # }
@@ -3738,7 +3736,7 @@
     throw $P2
   __label_1: # endif
 .annotate 'line', 1438
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_ui_kronecker'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_ui_kronecker'
 .annotate 'line', 1439
     .tailcall $P1(__ARG_1, __ARG_2)
 # }
@@ -3784,7 +3782,7 @@
     throw $P2
   __label_3: # endif
 .annotate 'line', 1457
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_remove'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_remove'
 .annotate 'line', 1458
     .tailcall $P1(__ARG_1, __ARG_2, __ARG_3)
 # }
@@ -3809,7 +3807,7 @@
     throw $P2
   __label_1: # endif
 .annotate 'line', 1472
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_fac_ui'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_fac_ui'
 .annotate 'line', 1473
     $P1(__ARG_1, __ARG_2)
 # }
@@ -3845,7 +3843,7 @@
     throw $P2
   __label_2: # endif
 .annotate 'line', 1491
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_bin_ui'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_bin_ui'
 .annotate 'line', 1492
     $P1(__ARG_1, __ARG_2, __ARG_3)
 # }
@@ -3871,7 +3869,7 @@
     throw $P2
   __label_1: # endif
 .annotate 'line', 1498
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_bin_uiui'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_bin_uiui'
 .annotate 'line', 1499
     $P1(__ARG_1, __ARG_2, __ARG_3)
 # }
@@ -3896,7 +3894,7 @@
     throw $P2
   __label_1: # endif
 .annotate 'line', 1515
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_fib_ui'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_fib_ui'
 .annotate 'line', 1516
     $P1(__ARG_1, __ARG_2)
 # }
@@ -3932,7 +3930,7 @@
     throw $P2
   __label_2: # endif
 .annotate 'line', 1524
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_fib2_ui'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_fib2_ui'
 .annotate 'line', 1525
     $P1(__ARG_1, __ARG_2, __ARG_3)
 # }
@@ -3957,7 +3955,7 @@
     throw $P2
   __label_1: # endif
 .annotate 'line', 1541
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_lucnum_ui'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_lucnum_ui'
 .annotate 'line', 1542
     $P1(__ARG_1, __ARG_2)
 # }
@@ -3993,7 +3991,7 @@
     throw $P2
   __label_2: # endif
 .annotate 'line', 1550
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_lucnum2_ui'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_lucnum2_ui'
 .annotate 'line', 1551
     $P1(__ARG_1, __ARG_2, __ARG_3)
 # }
@@ -4028,7 +4026,7 @@
     throw $P2
   __label_2: # endif
 .annotate 'line', 1569
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_cmp'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_cmp'
 .annotate 'line', 1570
     .tailcall $P1(__ARG_1, __ARG_2)
 # }
@@ -4053,7 +4051,7 @@
     throw $P2
   __label_1: # endif
 .annotate 'line', 1576
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_cmp_d'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_cmp_d'
 .annotate 'line', 1577
     .tailcall $P1(__ARG_1, __ARG_2)
 # }
@@ -4088,7 +4086,7 @@
     throw $P2
   __label_2: # endif
 .annotate 'line', 1597
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_cmpabs'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_cmpabs'
 .annotate 'line', 1598
     .tailcall $P1(__ARG_1, __ARG_2)
 # }
@@ -4113,7 +4111,7 @@
     throw $P2
   __label_1: # endif
 .annotate 'line', 1604
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_cmpabs_d'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_cmpabs_d'
 .annotate 'line', 1605
     .tailcall $P1(__ARG_1, __ARG_2)
 # }
@@ -4138,7 +4136,7 @@
     throw $P2
   __label_1: # endif
 .annotate 'line', 1611
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_cmpabs_ui'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_cmpabs_ui'
 .annotate 'line', 1612
     .tailcall $P1(__ARG_1, __ARG_2)
 # }
@@ -4184,7 +4182,7 @@
     throw $P2
   __label_3: # endif
 .annotate 'line', 1630
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_and'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_and'
 .annotate 'line', 1631
     $P1(__ARG_1, __ARG_2, __ARG_3)
 # }
@@ -4230,7 +4228,7 @@
     throw $P2
   __label_3: # endif
 .annotate 'line', 1649
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_ior'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_ior'
 .annotate 'line', 1650
     $P1(__ARG_1, __ARG_2, __ARG_3)
 # }
@@ -4276,7 +4274,7 @@
     throw $P2
   __label_3: # endif
 .annotate 'line', 1668
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_xor'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_xor'
 .annotate 'line', 1669
     $P1(__ARG_1, __ARG_2, __ARG_3)
 # }
@@ -4311,7 +4309,7 @@
     throw $P2
   __label_2: # endif
 .annotate 'line', 1685
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_com'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_com'
 .annotate 'line', 1686
     $P1(__ARG_1, __ARG_2)
 # }
@@ -4335,7 +4333,7 @@
     throw $P2
   __label_1: # endif
 .annotate 'line', 1700
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_popcount'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_popcount'
 .annotate 'line', 1701
     .tailcall $P1(__ARG_1)
 # }
@@ -4370,7 +4368,7 @@
     throw $P2
   __label_2: # endif
 .annotate 'line', 1717
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_hamdist'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_hamdist'
 .annotate 'line', 1718
     .tailcall $P1(__ARG_1, __ARG_2)
 # }
@@ -4395,7 +4393,7 @@
     throw $P2
   __label_1: # endif
 .annotate 'line', 1734
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_scan0'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_scan0'
 .annotate 'line', 1735
     .tailcall $P1(__ARG_1, __ARG_2)
 # }
@@ -4420,7 +4418,7 @@
     throw $P2
   __label_1: # endif
 .annotate 'line', 1741
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_scan1'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_scan1'
 .annotate 'line', 1742
     .tailcall $P1(__ARG_1, __ARG_2)
 # }
@@ -4445,7 +4443,7 @@
     throw $P2
   __label_1: # endif
 .annotate 'line', 1756
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_setbit'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_setbit'
 .annotate 'line', 1757
     $P1(__ARG_1, __ARG_2)
 # }
@@ -4470,7 +4468,7 @@
     throw $P2
   __label_1: # endif
 .annotate 'line', 1771
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_clrbit'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_clrbit'
 .annotate 'line', 1772
     $P1(__ARG_1, __ARG_2)
 # }
@@ -4495,7 +4493,7 @@
     throw $P2
   __label_1: # endif
 .annotate 'line', 1786
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_combit'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_combit'
 .annotate 'line', 1787
     $P1(__ARG_1, __ARG_2)
 # }
@@ -4520,7 +4518,7 @@
     throw $P2
   __label_1: # endif
 .annotate 'line', 1801
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_tstbit'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_tstbit'
 .annotate 'line', 1802
     .tailcall $P1(__ARG_1, __ARG_2)
 # }
@@ -4546,7 +4544,7 @@
     throw $P2
   __label_1: # endif
 .annotate 'line', 1816
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_urandomb'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_urandomb'
 .annotate 'line', 1817
     $P1(__ARG_1, __ARG_2, __ARG_3)
 # }
@@ -4582,7 +4580,7 @@
     throw $P2
   __label_2: # endif
 .annotate 'line', 1833
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_urandomm'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_urandomm'
 .annotate 'line', 1834
     $P1(__ARG_1, __ARG_2, __ARG_3)
 # }
@@ -4608,7 +4606,7 @@
     throw $P2
   __label_1: # endif
 .annotate 'line', 1848
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_rrandomb'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_rrandomb'
 .annotate 'line', 1849
     $P1(__ARG_1, __ARG_2, __ARG_3)
 # }
@@ -4633,7 +4631,7 @@
     throw $P2
   __label_1: # endif
 .annotate 'line', 1863
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_random'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_random'
 .annotate 'line', 1864
     $P1(__ARG_1, __ARG_2)
 # }
@@ -4658,7 +4656,7 @@
     throw $P2
   __label_1: # endif
 .annotate 'line', 1878
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_random2'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_random2'
 .annotate 'line', 1879
     $P1(__ARG_1, __ARG_2)
 # }
@@ -4682,7 +4680,7 @@
     throw $P2
   __label_1: # endif
 .annotate 'line', 1903
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_fits_ulong_p'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_fits_ulong_p'
 .annotate 'line', 1904
     .tailcall $P1(__ARG_1)
 # }
@@ -4706,7 +4704,7 @@
     throw $P2
   __label_1: # endif
 .annotate 'line', 1910
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_fits_slong_p'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_fits_slong_p'
 .annotate 'line', 1911
     .tailcall $P1(__ARG_1)
 # }
@@ -4730,7 +4728,7 @@
     throw $P2
   __label_1: # endif
 .annotate 'line', 1917
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_fits_uint_p'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_fits_uint_p'
 .annotate 'line', 1918
     .tailcall $P1(__ARG_1)
 # }
@@ -4754,7 +4752,7 @@
     throw $P2
   __label_1: # endif
 .annotate 'line', 1924
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_fits_sint_p'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_fits_sint_p'
 .annotate 'line', 1925
     .tailcall $P1(__ARG_1)
 # }
@@ -4778,7 +4776,7 @@
     throw $P2
   __label_1: # endif
 .annotate 'line', 1931
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_fits_ushort_p'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_fits_ushort_p'
 .annotate 'line', 1932
     .tailcall $P1(__ARG_1)
 # }
@@ -4802,7 +4800,7 @@
     throw $P2
   __label_1: # endif
 .annotate 'line', 1938
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_fits_sshort_p'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_fits_sshort_p'
 .annotate 'line', 1939
     .tailcall $P1(__ARG_1)
 # }
@@ -4827,7 +4825,7 @@
     throw $P2
   __label_1: # endif
 .annotate 'line', 1953
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_sizeinbase'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_sizeinbase'
 .annotate 'line', 1954
     .tailcall $P1(__ARG_1, __ARG_2)
 # }
@@ -4853,7 +4851,7 @@
     throw $P2
   __label_1: # endif
 .annotate 'line', 1970
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_array_init'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_array_init'
 .annotate 'line', 1971
     $P1(__ARG_1, __ARG_2, __ARG_3)
 # }
@@ -4878,7 +4876,7 @@
     throw $P2
   __label_1: # endif
 .annotate 'line', 1985
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_getlimbn'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_getlimbn'
 .annotate 'line', 1986
     .tailcall $P1(__ARG_1, __ARG_2)
 # }
@@ -4902,7 +4900,7 @@
     throw $P2
   __label_1: # endif
 .annotate 'line', 2000
-    get_hll_global $P1, [ 'gmp' ] , '__gmpz_size'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_size'
 .annotate 'line', 2001
     .tailcall $P1(__ARG_1)
 # }

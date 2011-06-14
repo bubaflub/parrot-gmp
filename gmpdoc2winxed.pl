@@ -140,7 +140,7 @@ EOF
         $line = "atos($line)";
       }
       print <<EOF;
-  using gmp.$internal_function_name;
+  using GMP.Raw.$internal_function_name;
   $return $line;
 }
 

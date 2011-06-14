@@ -1,7 +1,7 @@
 $include_const 'datatypes.pasm';
 
 function load[anon,load]() {
-  load_bytecode('def.pbc');
+  load_bytecode('src/GMP/raw.pbc');
 }
 
 function gmpz_t[anon, immediate]() {
@@ -29,7 +29,7 @@ namespace GMP {
 
       if (has_init) {
         if (init instanceof 'String') {
-          using gmp.__gmpz_init;
+          using GMP.Raw.__gmpz_init;
           using mpz_set_str;
           # ideally use __gmpz_init_set_str
           __gmpz_init(ptr);
@@ -37,7 +37,7 @@ namespace GMP {
           self.ptr = ptr;
         }
         else if (init instanceof 'Integer') {
-          using gmp.__gmpz_init;
+          using GMP.Raw.__gmpz_init;
           using mpz_set_str;
           # ideally use __gmpz_init_set_str
           __gmpz_init(ptr);
@@ -48,7 +48,7 @@ namespace GMP {
           throw Error("incorrect type init for Integer constructor");
         }
       } else {
-        using gmp.__gmpz_init;
+        using GMP.Raw.__gmpz_init;
         __gmpz_init(ptr);
         self.ptr = ptr;
       }
@@ -58,7 +58,7 @@ namespace GMP {
       if(self.ptr != null) {
         var ptr  = self.ptr;
         self.ptr = null;
-        using gmp.__gmpz_clear;
+        using GMP.Raw.__gmpz_clear;
         __gmpz_clear(ptr);
       }
     }
