@@ -8,34 +8,22 @@ namespace GMP {
 class Test_GMP_Init {
 
     function test_empty_init() {
-        try {
-            var x = new GMP.Integer();
-            self.assert.instance_of(class 'Integer', x);
-        } catch(e) {
-            self.assert.fail('cannot construct GMP Integer - empty');
-        }
+        var x = new GMP.Integer();
+        self.assert.instance_of(x, class GMP.Integer);
     }
 
     function test_integer_init() {
-        try {
-            var x = new GMP.Integer(32);
-            self.assert.instance_of(class 'Integer', x);
-            int i = mpz_get_ui(x);
-            self.assert.equal(i, 32);
-        } catch(e) {
-            self.assert.fail('cannot construct GMP Integer - int');
-        }
+        var x = new GMP.Integer(32);
+        self.assert.instance_of(x, class GMP.Integer);
+        int i = mpz_get_ui(x);
+        self.assert.equal(i, 32);
     }
 
     function test_string_init() {
-        try {
-            var x = new GMP.Integer("33");
-            self.assert.instance_of(class 'Integer', x);
-            int i = mpz_get_ui(x);
-            self.assert.equal(i, 33);
-        } catch(e) {
-            self.assert.fail('cannot construct GMP Integer - string');
-        }
+        var x = new GMP.Integer("33");
+        self.assert.instance_of(x, class GMP.Integer);
+        int i = mpz_get_ui(x);
+        self.assert.equal(i, 33);
     }
 }
 
