@@ -1,5 +1,5 @@
 [package]
-gmp
+GMP::Raw
 
 [lib]
 gmplib.so
