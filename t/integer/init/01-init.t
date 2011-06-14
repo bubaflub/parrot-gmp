@@ -1,5 +1,5 @@
 $load "rosella/test.pbc";
-$load "src/GMP.pbc";
+$load "src/GMP/Integer.pbc";
 
 namespace GMP {
   class Integer;
