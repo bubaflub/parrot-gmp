@@ -2,7 +2,7 @@ $load "rosella/test.pbc";
 $load "src/GMP/Integer.pbc";
 
 namespace GMP {
-  class Integer;
+    class Integer;
 }
 
 class Test_GMP_Init {
