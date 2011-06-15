@@ -32,6 +32,15 @@ class Test_GMP_Mul {
         int i = mpz_get_si(x);
         self.assert.equal(i, -1020);
     }
+
+    function test_mpz_mul_2exp() {
+        var x = new GMP.Integer();
+        var y = new GMP.Integer(3);
+        int z = 4;
+        mpz_mul_2exp(x, y, z);
+        int i = mpz_get_ui(x);
+        self.assert.equal(i, 48);
+    }
 }
 
 function main[main]() {
