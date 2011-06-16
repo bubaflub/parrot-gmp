@@ -129,6 +129,8 @@ EOF
       my $nci_signature = join ", ", map {
           if ($_->{'type'} eq 'char *') {
             "stoa($_->{'name'})";
+          } elsif ($_->{'type'} eq 'mpz_t') {
+            "$_->{'name'}.ptr";
           } else {
             $_->{'name'};
           }
