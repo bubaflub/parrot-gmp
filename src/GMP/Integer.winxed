@@ -62,6 +62,10 @@ namespace GMP {
         __gmpz_clear(ptr);
       }
     }
+
+    function get_string[vtable]() {
+      return mpz_get_str("", 10, self);
+    }
   }
 }
 
