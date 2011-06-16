@@ -12,7 +12,7 @@ class Test_GMP_AddMul {
         var z = new GMP.Integer(34);
         mpz_addmul(x, y, z);
         int i = mpz_get_ui(x);
-        self.assert.equal(i, 1360);
+        self.assert.equal(i, 1030);
     }
 
     function test_mpz_addmul_ui() {
@@ -21,7 +21,7 @@ class Test_GMP_AddMul {
         int z = 34;
         mpz_addmul_ui(x, y, z);
         int i = mpz_get_ui(x);
-        self.assert.equal(i, 1360);
+        self.assert.equal(i, 1030);
     }
 }
 

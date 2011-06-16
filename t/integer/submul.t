@@ -12,8 +12,7 @@ class Test_GMP_SubMul {
         var z = new GMP.Integer(34);
         mpz_submul(x, y, z);
         int i = mpz_get_ui(x);
-        say(i);
-        self.assert.equal(i, 340);
+        self.assert.equal(i, 980);
     }
 
     function test_mpz_submul_ui() {
@@ -22,8 +21,7 @@ class Test_GMP_SubMul {
         int z = 34;
         mpz_submul_ui(x, y, z);
         int i = mpz_get_ui(x);
-        say(i);
-        self.assert.equal(i, 340);
+        self.assert.equal(i, 980);
     }
 }
 
