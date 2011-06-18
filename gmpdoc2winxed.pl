@@ -128,13 +128,19 @@ EOF
       # print actual function calling code
       my $nci_signature = join ", ", map {
           if ($_->{'type'} eq 'char *') {
+            # box strings correctly
             "stoa($_->{'name'})";
           } elsif ($_->{'type'} eq 'mpz_t') {
+            # pass the internal pointer, not the winxed object
             "$_->{'name'}.ptr";
           } else {
+            # let NCI handle it
             $_->{'name'};
           }
         } @{$_->{'params'}};
+      # TODO: factor this out into an external conf file
+      # replace function that is #define
+      $function_name = "mpz_fdiv_r_ui" if $function_name eq 'mpz_mod_ui';
       my $internal_function_name = "__g$function_name";
       my $return = $_->{'return_type'} eq 'void' ? '' : 'return';
       my $line = "$internal_function_name($nci_signature)";

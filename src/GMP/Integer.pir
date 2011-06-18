@@ -2622,7 +2622,7 @@
     throw $P2
   __label_2: # endif
 .annotate 'line', 928
-    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_mod_ui'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_fdiv_r_ui'
 .annotate 'line', 929
     getattribute $P2, __ARG_1, 'ptr'
     getattribute $P3, __ARG_2, 'ptr'

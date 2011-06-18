@@ -925,8 +925,8 @@ function mpz_mod_ui (var r, var n, int d) {
     throw Error("incorrect type for r in mpz_mod_ui");
   if(!(n instanceof GMP.Integer))
     throw Error("incorrect type for n in mpz_mod_ui");
-  using GMP.Raw.__gmpz_mod_ui;
-  return __gmpz_mod_ui(r.ptr, n.ptr, d);
+  using GMP.Raw.__gmpz_fdiv_r_ui;
+  return __gmpz_fdiv_r_ui(r.ptr, n.ptr, d);
 }
 
 /*
