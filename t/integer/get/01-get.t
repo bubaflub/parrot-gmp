@@ -29,16 +29,15 @@ class Test_GMP_Get {
         f = mpz_get_d(y);
         self.assert.equal(f, -32);
     }
-
     function test_mpz_get_d_2exp() {
-    /*
-    Segfault on my machine
         var x = new GMP.Integer(30);
-        var exp;
+        using int_t;
+        var t = int_t();
+        var exp = t.alloc();
         float f = mpz_get_d_2exp(exp, x);
+        int i = t[exp, 0];
         self.assert.equal(f, 0.9375);
-        self.assert.equal(exp, 5);
-    */
+        self.assert.equal(i, 5);
     }
 }
 
