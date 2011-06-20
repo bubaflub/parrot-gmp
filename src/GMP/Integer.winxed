@@ -4,6 +4,11 @@ function load[anon,load]() {
   load_bytecode('src/GMP/raw.pbc');
 }
 
+function int_t() {
+  var int_t = new 'StructView'([ DATATYPE_STRUCT, 1, DATATYPE_INT ]);
+  return int_t;
+}
+
 function gmpz_t[anon, immediate]() {
   var gmpz_t = new 'StructView'([ DATATYPE_STRUCT, 3, DATATYPE_INT, DATATYPE_PTR, DATATYPE_INT ]);
   return gmpz_t;
