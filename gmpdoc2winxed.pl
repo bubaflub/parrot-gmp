@@ -19,14 +19,9 @@ my $filename = $ARGV[0];
 
 my @blacklist = @{LoadFile('conf/blacklist.yml')};
 
-my %c_to_nci_mappings  = %{LoadFile('conf/mappings.yml')};
-my %nci_to_winxed_mappings = (
-  v => '',
-  i => 'int',
-  l => 'int', # TODO: should a long be an int or a float in Winxed?
-  d => 'float',
-  p => 'var'
-);
+my %c_to_nci_mappings  = %{LoadFile('conf/c_to_nci_mappings.yml')};
+my %nci_to_winxed_mappings = %{LoadFile('conf/nci_to_winxed_mappings.yml')};
+my %aliases = %{LoadFile('conf/aliases.yml')};
 
 my $functions = process_gmp_docs($filename);
 print_winxed($functions);
@@ -138,9 +133,7 @@ EOF
             $_->{'name'};
           }
         } @{$_->{'params'}};
-      # TODO: factor this out into an external conf file
-      # replace function that is #define
-      $function_name = "mpz_fdiv_r_ui" if $function_name eq 'mpz_mod_ui';
+      $function_name = $aliases{$function_name} if exists $aliases{$function_name};
       my $internal_function_name = "__g$function_name";
       my $return = $_->{'return_type'} eq 'void' ? '' : 'return';
       my $line = "$internal_function_name($nci_signature)";
