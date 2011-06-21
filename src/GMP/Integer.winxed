@@ -1391,8 +1391,8 @@ function mpz_legendre (var a, var p) {
     throw Error("incorrect type for a in mpz_legendre");
   if(!(p instanceof GMP.Integer))
     throw Error("incorrect type for p in mpz_legendre");
-  using GMP.Raw.__gmpz_legendre;
-  return __gmpz_legendre(a.ptr, p.ptr);
+  using GMP.Raw.__gmpz_jacobi;
+  return __gmpz_jacobi(a.ptr, p.ptr);
 }
 
 /*
@@ -1416,8 +1416,8 @@ function mpz_kronecker (var a, var b) {
     throw Error("incorrect type for a in mpz_kronecker");
   if(!(b instanceof GMP.Integer))
     throw Error("incorrect type for b in mpz_kronecker");
-  using GMP.Raw.__gmpz_kronecker;
-  return __gmpz_kronecker(a.ptr, b.ptr);
+  using GMP.Raw.__gmpz_jacobi;
+  return __gmpz_jacobi(a.ptr, b.ptr);
 }
 
 function mpz_kronecker_si (var a, int b) {

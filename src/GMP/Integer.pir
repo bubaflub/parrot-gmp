@@ -3827,7 +3827,7 @@
     throw $P2
   __label_2: # endif
 .annotate 'line', 1394
-    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_legendre'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_jacobi'
 .annotate 'line', 1395
     getattribute $P2, __ARG_1, 'ptr'
     getattribute $P3, __ARG_2, 'ptr'
@@ -3864,7 +3864,7 @@
     throw $P2
   __label_2: # endif
 .annotate 'line', 1419
-    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_kronecker'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_jacobi'
 .annotate 'line', 1420
     getattribute $P2, __ARG_1, 'ptr'
     getattribute $P3, __ARG_2, 'ptr'
