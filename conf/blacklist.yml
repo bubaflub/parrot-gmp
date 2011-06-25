@@ -10,4 +10,4 @@
 - mpz_out_str
 - mpz_set_q
 - mpz_set_f
-
+- mpz_array_init

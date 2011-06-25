@@ -15,7 +15,7 @@ if (scalar @ARGV != 1 || ! -e $ARGV[0]) {
 
 my $filename = $ARGV[0];
 
-my %mappings = %{LoadFile('conf/mappings.yml')};
+my %mappings = %{LoadFile('conf/c_to_nci_mappings.yml')};
 
 # blacklist is an array of function names to not bother with
 my @blacklist = @{LoadFile('conf/blacklist.yml')};

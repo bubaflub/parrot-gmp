@@ -1964,23 +1964,6 @@ function mpz_sizeinbase (var op, int base) {
 }
 
 /*
-=head1 void mpz_array_init (mpz_t integer_array, mp_size_t array_size, mp_size_t fixed_num_bits)
-
-This is a special type of initialization. Fixed space of fixed_num_bits is allocated to each of the array_size integers in integer_array. There is no way to free the storage allocated by this function. Don't call mpz_clear! The integer_array parameter is the first mpz_t in the array. For example,           mpz_t  arr[20000];
-          mpz_array_init (arr[0], 20000, 512);
-     This function is only intended for programs that create a large number of integers and need to reduce memory usage by avoiding the overheads of allocating and reallocating lots of small blocks. In normal programs this function is not recommended. The space allocated to each integer by this function will not be automatically increased, unlike the normal mpz_init, so an application must ensure it is sufficient for any value stored. The following space requirements apply to various routines, mpz_abs, mpz_neg, mpz_set, mpz_set_si and mpz_set_ui need room for the value they store. mpz_add, mpz_add_ui, mpz_sub and mpz_sub_ui need room for the larger of the two operands, plus an extra mp_bits_per_limb. mpz_mul, mpz_mul_ui and mpz_mul_ui need room for the sum of the number of bits in their operands, but each rounded up to a multiple of mp_bits_per_limb. mpz_swap can be used between two array variables, but not between an array and a normal variable. For other functions, or if in doubt, the suggestion is to calculate in a regular mpz_init variable and copy the result to an array variable with mpz_set. 
-
-=cut
-*/
-
-function mpz_array_init (var integer_array, int array_size, int fixed_num_bits) {
-  if(!(integer_array instanceof GMP.Integer))
-    throw Error("incorrect type for integer_array in mpz_array_init");
-  using GMP.Raw.__gmpz_array_init;
-   __gmpz_array_init(integer_array.ptr, array_size, fixed_num_bits);
-}
-
-/*
 =head1 mp_limb_t mpz_getlimbn (mpz_t op, mp_size_t n)
 
 Return limb number n from op. The sign of op is ignored, just the absolute value is used. The least significant limb is number 0. mpz_size can be used to find how many limbs make up op. mpz_getlimbn returns zero if n is outside the range 0 to mpz_size(op)-1. 

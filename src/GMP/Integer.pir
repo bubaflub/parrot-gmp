@@ -5121,55 +5121,28 @@
 .end # mpz_sizeinbase
 
 
-.sub 'mpz_array_init'
-        .param pmc __ARG_1
-        .param int __ARG_2
-        .param int __ARG_3
-# Body
-# {
-.annotate 'line', 1977
-    isa $I2, __ARG_1, [ 'GMP'; 'Integer' ]
-    not $I1, $I2
-    unless $I1 goto __label_1
-# predefined Error
-.annotate 'line', 1978
-    root_new $P2, ['parrot';'Exception']
-    $P2['message'] = "incorrect type for integer_array in mpz_array_init"
-    throw $P2
-  __label_1: # endif
-.annotate 'line', 1979
-    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_array_init'
-.annotate 'line', 1980
-    getattribute $P2, __ARG_1, 'ptr'
-    $P1($P2, __ARG_2, __ARG_3)
-# }
-.annotate 'line', 1981
-
-.end # mpz_array_init
-
-
 .sub 'mpz_getlimbn'
         .param pmc __ARG_1
         .param int __ARG_2
 # Body
 # {
-.annotate 'line', 1992
+.annotate 'line', 1975
     isa $I2, __ARG_1, [ 'GMP'; 'Integer' ]
     not $I1, $I2
     unless $I1 goto __label_1
 # predefined Error
-.annotate 'line', 1993
+.annotate 'line', 1976
     root_new $P2, ['parrot';'Exception']
     $P2['message'] = "incorrect type for op in mpz_getlimbn"
     throw $P2
   __label_1: # endif
-.annotate 'line', 1994
+.annotate 'line', 1977
     get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_getlimbn'
-.annotate 'line', 1995
+.annotate 'line', 1978
     getattribute $P2, __ARG_1, 'ptr'
     .tailcall $P1($P2, __ARG_2)
 # }
-.annotate 'line', 1996
+.annotate 'line', 1979
 
 .end # mpz_getlimbn
 
@@ -5178,23 +5151,23 @@
         .param pmc __ARG_1
 # Body
 # {
-.annotate 'line', 2007
+.annotate 'line', 1990
     isa $I2, __ARG_1, [ 'GMP'; 'Integer' ]
     not $I1, $I2
     unless $I1 goto __label_1
 # predefined Error
-.annotate 'line', 2008
+.annotate 'line', 1991
     root_new $P2, ['parrot';'Exception']
     $P2['message'] = "incorrect type for op in mpz_size"
     throw $P2
   __label_1: # endif
-.annotate 'line', 2009
+.annotate 'line', 1992
     get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_size'
-.annotate 'line', 2010
+.annotate 'line', 1993
     getattribute $P2, __ARG_1, 'ptr'
     .tailcall $P1($P2)
 # }
-.annotate 'line', 2011
+.annotate 'line', 1994
 
 .end # mpz_size
 

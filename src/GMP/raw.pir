@@ -5,7 +5,7 @@
   set_global ['GMP';'Raw'], '__gmpz_setbit', nci
   dlfunc nci, lib, '__gmpz_sqrt', 'vpp'
   set_global ['GMP';'Raw'], '__gmpz_sqrt', nci
-  dlfunc nci, lib, '__gmpz_fdiv_qr_ui', 'ipppi'
+  dlfunc nci, lib, '__gmpz_fdiv_qr_ui', 'lpppl'
   set_global ['GMP';'Raw'], '__gmpz_fdiv_qr_ui', nci
   dlfunc nci, lib, '__gmpz_fits_uint_p', 'ip'
   set_global ['GMP';'Raw'], '__gmpz_fits_uint_p', nci
@@ -13,21 +13,21 @@
   set_global ['GMP';'Raw'], '__gmpz_fits_ulong_p', nci
   dlfunc nci, lib, '__gmpz_urandomb', 'vppl'
   set_global ['GMP';'Raw'], '__gmpz_urandomb', nci
-  dlfunc nci, lib, '__gmpz_fdiv_q_ui', 'ippi'
+  dlfunc nci, lib, '__gmpz_fdiv_q_ui', 'lppl'
   set_global ['GMP';'Raw'], '__gmpz_fdiv_q_ui', nci
   dlfunc nci, lib, '__gmpz_addmul', 'vppp'
   set_global ['GMP';'Raw'], '__gmpz_addmul', nci
-  dlfunc nci, lib, '__gmpz_fac_ui', 'vpi'
+  dlfunc nci, lib, '__gmpz_fac_ui', 'vpl'
   set_global ['GMP';'Raw'], '__gmpz_fac_ui', nci
-  dlfunc nci, lib, '__gmpz_tdiv_qr_ui', 'ipppi'
+  dlfunc nci, lib, '__gmpz_tdiv_qr_ui', 'lpppl'
   set_global ['GMP';'Raw'], '__gmpz_tdiv_qr_ui', nci
   dlfunc nci, lib, '__gmpz_hamdist', 'lpp'
   set_global ['GMP';'Raw'], '__gmpz_hamdist', nci
   dlfunc nci, lib, '__gmpz_get_d', 'dp'
   set_global ['GMP';'Raw'], '__gmpz_get_d', nci
-  dlfunc nci, lib, '__gmpz_powm_ui', 'vppip'
+  dlfunc nci, lib, '__gmpz_powm_ui', 'vpplp'
   set_global ['GMP';'Raw'], '__gmpz_powm_ui', nci
-  dlfunc nci, lib, '__gmpz_set_si', 'vpi'
+  dlfunc nci, lib, '__gmpz_set_si', 'vpl'
   set_global ['GMP';'Raw'], '__gmpz_set_si', nci
   dlfunc nci, lib, '__gmpz_tdiv_r_2exp', 'vppl'
   set_global ['GMP';'Raw'], '__gmpz_tdiv_r_2exp', nci
@@ -47,14 +47,12 @@
   set_global ['GMP';'Raw'], '__gmpz_set_str', nci
   dlfunc nci, lib, '__gmpz_cmp_d', 'ipd'
   set_global ['GMP';'Raw'], '__gmpz_cmp_d', nci
-  dlfunc nci, lib, '__gmpz_add_ui', 'vppi'
+  dlfunc nci, lib, '__gmpz_add_ui', 'vppl'
   set_global ['GMP';'Raw'], '__gmpz_add_ui', nci
-  dlfunc nci, lib, '__gmpz_tdiv_ui', 'ipi'
+  dlfunc nci, lib, '__gmpz_tdiv_ui', 'lpl'
   set_global ['GMP';'Raw'], '__gmpz_tdiv_ui', nci
   dlfunc nci, lib, '__gmpz_add', 'vppp'
   set_global ['GMP';'Raw'], '__gmpz_add', nci
-  dlfunc nci, lib, '__gmpz_array_init', 'vpii'
-  set_global ['GMP';'Raw'], '__gmpz_array_init', nci
   dlfunc nci, lib, '__gmpz_sqrtrem', 'vppp'
   set_global ['GMP';'Raw'], '__gmpz_sqrtrem', nci
   dlfunc nci, lib, '__gmpz_fits_slong_p', 'ip'
@@ -63,7 +61,7 @@
   set_global ['GMP';'Raw'], '__gmpz_init_set_str', nci
   dlfunc nci, lib, '__gmpz_cdiv_qr', 'vpppp'
   set_global ['GMP';'Raw'], '__gmpz_cdiv_qr', nci
-  dlfunc nci, lib, '__gmpz_lucnum2_ui', 'vppi'
+  dlfunc nci, lib, '__gmpz_lucnum2_ui', 'vppl'
   set_global ['GMP';'Raw'], '__gmpz_lucnum2_ui', nci
   dlfunc nci, lib, '__gmpz_kronecker_si', 'ipl'
   set_global ['GMP';'Raw'], '__gmpz_kronecker_si', nci
@@ -73,31 +71,31 @@
   set_global ['GMP';'Raw'], '__gmpz_rrandomb', nci
   dlfunc nci, lib, '__gmpz_powm_sec', 'vpppp'
   set_global ['GMP';'Raw'], '__gmpz_powm_sec', nci
-  dlfunc nci, lib, '__gmpz_gcd_ui', 'ippi'
+  dlfunc nci, lib, '__gmpz_gcd_ui', 'lppl'
   set_global ['GMP';'Raw'], '__gmpz_gcd_ui', nci
   dlfunc nci, lib, '__gmpz_realloc2', 'vpl'
   set_global ['GMP';'Raw'], '__gmpz_realloc2', nci
-  dlfunc nci, lib, '__gmpz_get_ui', 'ip'
+  dlfunc nci, lib, '__gmpz_get_ui', 'lp'
   set_global ['GMP';'Raw'], '__gmpz_get_ui', nci
-  dlfunc nci, lib, '__gmpz_root', 'ippi'
+  dlfunc nci, lib, '__gmpz_root', 'ippl'
   set_global ['GMP';'Raw'], '__gmpz_root', nci
   dlfunc nci, lib, '__gmpz_getlimbn', 'ipi'
   set_global ['GMP';'Raw'], '__gmpz_getlimbn', nci
-  dlfunc nci, lib, '__gmpz_tdiv_r_ui', 'ippi'
+  dlfunc nci, lib, '__gmpz_tdiv_r_ui', 'lppl'
   set_global ['GMP';'Raw'], '__gmpz_tdiv_r_ui', nci
   dlfunc nci, lib, '__gmpz_jacobi', 'ipp'
   set_global ['GMP';'Raw'], '__gmpz_jacobi', nci
   dlfunc nci, lib, '__gmpz_dump', 'vp'
   set_global ['GMP';'Raw'], '__gmpz_dump', nci
-  dlfunc nci, lib, '__gmpz_mul_ui', 'vppi'
+  dlfunc nci, lib, '__gmpz_mul_ui', 'vppl'
   set_global ['GMP';'Raw'], '__gmpz_mul_ui', nci
   dlfunc nci, lib, '__gmpz_popcount', 'lp'
   set_global ['GMP';'Raw'], '__gmpz_popcount', nci
-  dlfunc nci, lib, '__gmpz_fdiv_r_ui', 'ippi'
+  dlfunc nci, lib, '__gmpz_fdiv_r_ui', 'lppl'
   set_global ['GMP';'Raw'], '__gmpz_fdiv_r_ui', nci
   dlfunc nci, lib, '__gmpz_fits_sshort_p', 'ip'
   set_global ['GMP';'Raw'], '__gmpz_fits_sshort_p', nci
-  dlfunc nci, lib, '__gmpz_cmpabs_ui', 'ipi'
+  dlfunc nci, lib, '__gmpz_cmpabs_ui', 'ipl'
   set_global ['GMP';'Raw'], '__gmpz_cmpabs_ui', nci
   dlfunc nci, lib, '__gmpz_neg', 'vpp'
   set_global ['GMP';'Raw'], '__gmpz_neg', nci
@@ -107,11 +105,11 @@
   set_global ['GMP';'Raw'], '__gmpz_combit', nci
   dlfunc nci, lib, '__gmpz_random', 'vpi'
   set_global ['GMP';'Raw'], '__gmpz_random', nci
-  dlfunc nci, lib, '__gmpz_get_si', 'ip'
+  dlfunc nci, lib, '__gmpz_get_si', 'lp'
   set_global ['GMP';'Raw'], '__gmpz_get_si', nci
   dlfunc nci, lib, '__gmpz_scan1', 'lpl'
   set_global ['GMP';'Raw'], '__gmpz_scan1', nci
-  dlfunc nci, lib, '__gmpz_bin_ui', 'vppi'
+  dlfunc nci, lib, '__gmpz_bin_ui', 'vppl'
   set_global ['GMP';'Raw'], '__gmpz_bin_ui', nci
   dlfunc nci, lib, '__gmpz_perfect_power_p', 'ip'
   set_global ['GMP';'Raw'], '__gmpz_perfect_power_p', nci
@@ -119,7 +117,7 @@
   set_global ['GMP';'Raw'], '__gmpz_set', nci
   dlfunc nci, lib, '__gmpz_init2', 'vpl'
   set_global ['GMP';'Raw'], '__gmpz_init2', nci
-  dlfunc nci, lib, '__gmpz_cmp_si', 'ipi'
+  dlfunc nci, lib, '__gmpz_cmp_si', 'ipl'
   set_global ['GMP';'Raw'], '__gmpz_cmp_si', nci
   dlfunc nci, lib, '__gmpz_and', 'vppp'
   set_global ['GMP';'Raw'], '__gmpz_and', nci
@@ -133,15 +131,15 @@
   set_global ['GMP';'Raw'], '__gmpz_cdiv_r_2exp', nci
   dlfunc nci, lib, '__gmpz_powm', 'vpppp'
   set_global ['GMP';'Raw'], '__gmpz_powm', nci
-  dlfunc nci, lib, '__gmpz_cdiv_r_ui', 'ippi'
+  dlfunc nci, lib, '__gmpz_cdiv_r_ui', 'lppl'
   set_global ['GMP';'Raw'], '__gmpz_cdiv_r_ui', nci
-  dlfunc nci, lib, '__gmpz_set_ui', 'vpi'
+  dlfunc nci, lib, '__gmpz_set_ui', 'vpl'
   set_global ['GMP';'Raw'], '__gmpz_set_ui', nci
   dlfunc nci, lib, '__gmpz_cmpabs_d', 'ipd'
   set_global ['GMP';'Raw'], '__gmpz_cmpabs_d', nci
   dlfunc nci, lib, '__gmpz_submul', 'vppp'
   set_global ['GMP';'Raw'], '__gmpz_submul', nci
-  dlfunc nci, lib, '__gmpz_remove', 'ippp'
+  dlfunc nci, lib, '__gmpz_remove', 'lppp'
   set_global ['GMP';'Raw'], '__gmpz_remove', nci
   dlfunc nci, lib, '__gmpz_si_kronecker', 'ilp'
   set_global ['GMP';'Raw'], '__gmpz_si_kronecker', nci
@@ -151,9 +149,9 @@
   set_global ['GMP';'Raw'], '__gmpz_init_set_d', nci
   dlfunc nci, lib, '__gmpz_fdiv_qr', 'vpppp'
   set_global ['GMP';'Raw'], '__gmpz_fdiv_qr', nci
-  dlfunc nci, lib, '__gmpz_ui_sub', 'vpip'
+  dlfunc nci, lib, '__gmpz_ui_sub', 'vplp'
   set_global ['GMP';'Raw'], '__gmpz_ui_sub', nci
-  dlfunc nci, lib, '__gmpz_bin_uiui', 'vpii'
+  dlfunc nci, lib, '__gmpz_bin_uiui', 'vpll'
   set_global ['GMP';'Raw'], '__gmpz_bin_uiui', nci
   dlfunc nci, lib, '__gmpz_cdiv_r', 'vppp'
   set_global ['GMP';'Raw'], '__gmpz_cdiv_r', nci
@@ -167,7 +165,7 @@
   set_global ['GMP';'Raw'], '__gmpz_divexact', nci
   dlfunc nci, lib, '__gmpz_clear', 'vp'
   set_global ['GMP';'Raw'], '__gmpz_clear', nci
-  dlfunc nci, lib, '__gmpz_fib2_ui', 'vppi'
+  dlfunc nci, lib, '__gmpz_fib2_ui', 'vppl'
   set_global ['GMP';'Raw'], '__gmpz_fib2_ui', nci
   dlfunc nci, lib, '__gmpz_random2', 'vpi'
   set_global ['GMP';'Raw'], '__gmpz_random2', nci
@@ -185,15 +183,15 @@
   set_global ['GMP';'Raw'], '__gmpz_divisible_ui_p', nci
   dlfunc nci, lib, '__gmpz_get_str', 'ppip'
   set_global ['GMP';'Raw'], '__gmpz_get_str', nci
-  dlfunc nci, lib, '__gmpz_init_set_si', 'vpi'
+  dlfunc nci, lib, '__gmpz_init_set_si', 'vpl'
   set_global ['GMP';'Raw'], '__gmpz_init_set_si', nci
   dlfunc nci, lib, '__gmpz_swap', 'vpp'
   set_global ['GMP';'Raw'], '__gmpz_swap', nci
-  dlfunc nci, lib, '__gmpz_cmp_ui', 'ipi'
+  dlfunc nci, lib, '__gmpz_cmp_ui', 'ipl'
   set_global ['GMP';'Raw'], '__gmpz_cmp_ui', nci
   dlfunc nci, lib, '__gmpz_init_set', 'vpp'
   set_global ['GMP';'Raw'], '__gmpz_init_set', nci
-  dlfunc nci, lib, '__gmpz_sub_ui', 'vppi'
+  dlfunc nci, lib, '__gmpz_sub_ui', 'vppl'
   set_global ['GMP';'Raw'], '__gmpz_sub_ui', nci
   dlfunc nci, lib, '__gmpz_cmp', 'ipp'
   set_global ['GMP';'Raw'], '__gmpz_cmp', nci
@@ -205,13 +203,13 @@
   set_global ['GMP';'Raw'], '__gmpz_lcm_ui', nci
   dlfunc nci, lib, '__gmpz_mul_2exp', 'vppl'
   set_global ['GMP';'Raw'], '__gmpz_mul_2exp', nci
-  dlfunc nci, lib, '__gmpz_submul_ui', 'vppi'
+  dlfunc nci, lib, '__gmpz_submul_ui', 'vppl'
   set_global ['GMP';'Raw'], '__gmpz_submul_ui', nci
   dlfunc nci, lib, '__gmpz_com', 'vpp'
   set_global ['GMP';'Raw'], '__gmpz_com', nci
-  dlfunc nci, lib, '__gmpz_fdiv_ui', 'ipi'
+  dlfunc nci, lib, '__gmpz_fdiv_ui', 'lpl'
   set_global ['GMP';'Raw'], '__gmpz_fdiv_ui', nci
-  dlfunc nci, lib, '__gmpz_tdiv_q_ui', 'ippi'
+  dlfunc nci, lib, '__gmpz_tdiv_q_ui', 'lppl'
   set_global ['GMP';'Raw'], '__gmpz_tdiv_q_ui', nci
   dlfunc nci, lib, '__gmpz_ui_kronecker', 'ilp'
   set_global ['GMP';'Raw'], '__gmpz_ui_kronecker', nci
@@ -231,7 +229,7 @@
   set_global ['GMP';'Raw'], '__gmpz_cmpabs', nci
   dlfunc nci, lib, '__gmpz_set_d', 'vpd'
   set_global ['GMP';'Raw'], '__gmpz_set_d', nci
-  dlfunc nci, lib, '__gmpz_lucnum_ui', 'vpi'
+  dlfunc nci, lib, '__gmpz_lucnum_ui', 'vpl'
   set_global ['GMP';'Raw'], '__gmpz_lucnum_ui', nci
   dlfunc nci, lib, '__gmpz_congruent_p', 'ippp'
   set_global ['GMP';'Raw'], '__gmpz_congruent_p', nci
@@ -243,15 +241,15 @@
   set_global ['GMP';'Raw'], '__gmpz_cdiv_q_2exp', nci
   dlfunc nci, lib, '__gmpz_millerrabin', 'ipi'
   set_global ['GMP';'Raw'], '__gmpz_millerrabin', nci
-  dlfunc nci, lib, '__gmpz_fib_ui', 'vpi'
+  dlfunc nci, lib, '__gmpz_fib_ui', 'vpl'
   set_global ['GMP';'Raw'], '__gmpz_fib_ui', nci
+  dlfunc nci, lib, '__gmpz_cdiv_ui', 'lpl'
+  set_global ['GMP';'Raw'], '__gmpz_cdiv_ui', nci
   dlfunc nci, lib, '__gmpz_divexact_ui', 'vppl'
   set_global ['GMP';'Raw'], '__gmpz_divexact_ui', nci
-  dlfunc nci, lib, '__gmpz_cdiv_ui', 'ipi'
-  set_global ['GMP';'Raw'], '__gmpz_cdiv_ui', nci
-  dlfunc nci, lib, '__gmpz_ui_pow_ui', 'vpii'
+  dlfunc nci, lib, '__gmpz_ui_pow_ui', 'vpll'
   set_global ['GMP';'Raw'], '__gmpz_ui_pow_ui', nci
-  dlfunc nci, lib, '__gmpz_rootrem', 'vpppi'
+  dlfunc nci, lib, '__gmpz_rootrem', 'vpppl'
   set_global ['GMP';'Raw'], '__gmpz_rootrem', nci
   dlfunc nci, lib, '__gmpz_congruent_2exp_p', 'ippl'
   set_global ['GMP';'Raw'], '__gmpz_congruent_2exp_p', nci
@@ -259,24 +257,24 @@
   set_global ['GMP';'Raw'], '__gmpz_gcdext', nci
   dlfunc nci, lib, '__gmpz_divisible_2exp_p', 'ipl'
   set_global ['GMP';'Raw'], '__gmpz_divisible_2exp_p', nci
-  dlfunc nci, lib, '__gmpz_addmul_ui', 'vppi'
+  dlfunc nci, lib, '__gmpz_addmul_ui', 'vppl'
   set_global ['GMP';'Raw'], '__gmpz_addmul_ui', nci
   dlfunc nci, lib, '__gmpz_sizeinbase', 'ipi'
   set_global ['GMP';'Raw'], '__gmpz_sizeinbase', nci
   dlfunc nci, lib, '__gmpz_fdiv_q_2exp', 'vppl'
   set_global ['GMP';'Raw'], '__gmpz_fdiv_q_2exp', nci
-  dlfunc nci, lib, '__gmpz_cdiv_qr_ui', 'ipppi'
+  dlfunc nci, lib, '__gmpz_cdiv_qr_ui', 'lpppl'
   set_global ['GMP';'Raw'], '__gmpz_cdiv_qr_ui', nci
-  dlfunc nci, lib, '__gmpz_init_set_ui', 'vpi'
+  dlfunc nci, lib, '__gmpz_init_set_ui', 'vpl'
   set_global ['GMP';'Raw'], '__gmpz_init_set_ui', nci
   dlfunc nci, lib, '__gmpz_tdiv_r', 'vppp'
   set_global ['GMP';'Raw'], '__gmpz_tdiv_r', nci
-  dlfunc nci, lib, '__gmpz_cdiv_q_ui', 'ippi'
+  dlfunc nci, lib, '__gmpz_cdiv_q_ui', 'lppl'
   set_global ['GMP';'Raw'], '__gmpz_cdiv_q_ui', nci
   dlfunc nci, lib, '__gmpz_nextprime', 'vpp'
   set_global ['GMP';'Raw'], '__gmpz_nextprime', nci
-  dlfunc nci, lib, '__gmpz_pow_ui', 'vppi'
+  dlfunc nci, lib, '__gmpz_pow_ui', 'vppl'
   set_global ['GMP';'Raw'], '__gmpz_pow_ui', nci
-  dlfunc nci, lib, '__gmpz_mul_si', 'vppi'
+  dlfunc nci, lib, '__gmpz_mul_si', 'vppl'
   set_global ['GMP';'Raw'], '__gmpz_mul_si', nci
 .end
