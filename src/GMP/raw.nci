@@ -29,6 +29,7 @@ d __gmpz_get_d_2exp pp # mpz_get_d_2exp
 v __gmpz_sub ppp # mpz_sub
 i __gmpz_set_str ppi # mpz_set_str
 i __gmpz_cmp_d pd # mpz_cmp_d
+l __gmp_urandomm_ui pl # gmp_urandomm_ui
 v __gmpz_add_ui ppl # mpz_add_ui
 l __gmpz_tdiv_ui pl # mpz_tdiv_ui
 v __gmpz_add ppp # mpz_add
@@ -103,8 +104,8 @@ p __gmpz_get_str pip # mpz_get_str
 v __gmpz_swap pp # mpz_swap
 v __gmpz_init_set_si pl # mpz_init_set_si
 i __gmpz_cmp_ui pl # _mpz_cmp_ui
-v __gmpz_init_set pp # mpz_init_set
 v __gmpz_sub_ui ppl # mpz_sub_ui
+v __gmpz_init_set pp # mpz_init_set
 i __gmpz_cmp pp # mpz_cmp
 v __gmpz_cdiv_q ppp # mpz_cdiv_q
 v __gmpz_abs pp # mpz_abs
@@ -149,5 +150,6 @@ v __gmpz_init_set_ui pl # mpz_init_set_ui
 v __gmpz_tdiv_r ppp # mpz_tdiv_r
 l __gmpz_cdiv_q_ui ppl # mpz_cdiv_q_ui
 v __gmpz_nextprime pp # mpz_nextprime
+l __gmp_urandomb_ui pl # gmp_urandomb_ui
 v __gmpz_pow_ui ppl # mpz_pow_ui
 v __gmpz_mul_si ppl # mpz_mul_si

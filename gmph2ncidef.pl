@@ -34,7 +34,7 @@ sub process_gmph {
     next if $_ !~ m/^#/;
     # note: in the future, we will look for more functions
     # and not just mpz types
-    my $prefix = '(?:_?mpz|gmp_rand)';
+    my $prefix = '(?:_?mpz|gmp_u?rand)';
     # does the line match a C-style declare?
     if ($_ =~ m/#define ($prefix\S+) (__\S+)/) {
       # $1 is the convenient name used everywhere else
