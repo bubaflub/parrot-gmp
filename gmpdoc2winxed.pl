@@ -11,11 +11,13 @@ use List::MoreUtils qw(any);
 # Description: reads the GMP documentation (a single file HTML) and outputs a
 # Winxed file with documentation and functions.
 
-if (scalar @ARGV != 1 || ! -e $ARGV[0]) {
-  die "Usage: perl gmpdoc2yml.pl /path/to/gmp.html\n";
+if (scalar @ARGV != 2 || ! -e $ARGV[0]) {
+  die "Usage: perl gmpdoc2yml.pl /path/to/gmp.html \"regex prefix\"\n";
 }
 
 my $filename = $ARGV[0];
+
+my $prefix = $ARGV[1];
 
 my @blacklist = @{LoadFile('conf/blacklist.yml')};
 
@@ -29,8 +31,6 @@ print_winxed($functions);
 sub process_gmp_docs {
   my $filename = shift;
   my @all_functions;
-
-  my $prefix = '_?mpz';
 
   my $raw_gmp_docs = read_file( $filename );
   $raw_gmp_docs =~ s/&mdash;/-/g;
@@ -137,7 +137,7 @@ EOF
           }
         } @{$_->{'params'}};
       $function_name = $aliases{$function_name} if exists $aliases{$function_name};
-      my $internal_function_name = "__g$function_name";
+      my $internal_function_name = $function_name =~ /^g/ ? "__$function_name" : "__g$function_name";
       my $return = $_->{'return_type'} eq 'void' ? '' : 'return';
       my $line = "$internal_function_name($nci_signature)";
       if ($_->{'return_type'} eq 'char *') {
