@@ -2,26 +2,7 @@ $include_const 'datatypes.pasm';
 
 function load[anon,load]() {
   load_bytecode('src/GMP/raw.pbc');
-}
-
-function int_t() {
-  var int_t = new 'StructView'([ DATATYPE_STRUCT, 1, DATATYPE_INT ]);
-  return int_t;
-}
-
-function gmpz_t[anon, immediate]() {
-  var gmpz_t = new 'StructView'([ DATATYPE_STRUCT, 3, DATATYPE_INT, DATATYPE_PTR, DATATYPE_INT ]);
-  return gmpz_t;
-}
-
-function stoa[anon](string s) {
-  var str_to_cstring = dlfunc(null, 'Parrot_str_to_cstring', 'ppS');
-  return str_to_cstring(getinterp(), s);
-}
-
-function atos[anon](var a) {
-  var cstring_to_str = dlfunc(null, 'Parrot_str_new', 'Sppi');
-  return cstring_to_str(getinterp(), a, 0);
+  load_bytecode('src/GMP/Common.pbc');
 }
 
 namespace GMP {
@@ -29,8 +10,9 @@ namespace GMP {
     var ptr;
 
     function Integer(var init[optional], int has_init[opt_flag]) {
-      using gmpz_t;
-      var ptr = self.ptr = gmpz_t.alloc();
+      using GMP.Common.gmpz_t;
+      var t = gmpz_t();
+      var ptr = self.ptr = t.alloc();
 
       if (has_init) {
         if (init instanceof 'String') {

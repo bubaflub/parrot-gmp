@@ -120,10 +120,13 @@ sub print_winxed {
 EOF
         }
       }
+      # might need to use something from GMP.Common
+      my $using_statements = '';
       # print actual function calling code
       my $nci_signature = join ", ", map {
           if ($_->{'type'} eq 'char *') {
             # box strings correctly
+            $using_statements .= "using GMP.Common.stoa;\n";
             "stoa($_->{'name'})";
           } elsif ($_->{'type'} eq 'mpz_t') {
             # pass the internal pointer, not the winxed object
@@ -139,9 +142,11 @@ EOF
       my $line = "$internal_function_name($nci_signature)";
       if ($_->{'return_type'} eq 'char *') {
         $line = "atos($line)";
+        $using_statements .= "using GMP.Common.atos;\n";
       }
       print <<EOF;
   using GMP.Raw.$internal_function_name;
+  $using_statements
   $return $line;
 }
 

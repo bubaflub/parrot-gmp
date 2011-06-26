@@ -31,7 +31,7 @@ class Test_GMP_Get {
     }
     function test_mpz_get_d_2exp() {
         var x = new GMP.Integer(30);
-        using int_t;
+        using GMP.Common.int_t;
         var t = int_t();
         var exp = t.alloc();
         float f = mpz_get_d_2exp(exp, x);

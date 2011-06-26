@@ -1,0 +1,29 @@
+$include_const 'datatypes.pasm';
+
+namespace GMP {
+  namespace Common {
+    function int_t() {
+      var int_t = new 'StructView'([ DATATYPE_STRUCT, 1, DATATYPE_INT ]);
+      return int_t;
+    }
+
+    function gmp_randstate_t() {
+    
+    }
+
+    function gmpz_t() {
+      var gmpz_t = new 'StructView'([ DATATYPE_STRUCT, 3, DATATYPE_INT, DATATYPE_PTR, DATATYPE_INT ]);
+      return gmpz_t;
+    }
+
+    function stoa(string s) {
+      var str_to_cstring = dlfunc(null, 'Parrot_str_to_cstring', 'ppS');
+      return str_to_cstring(getinterp(), s);
+    }
+
+    function atos(var a) {
+      var cstring_to_str = dlfunc(null, 'Parrot_str_new', 'Sppi');
+      return cstring_to_str(getinterp(), a, 0);
+    }
+  }
+}
