@@ -19,6 +19,7 @@ mpz_ptr: p
 mpz_srcptr: p
 signed long int *: p
 gmp_randstate_t: p
+__gmp_randstate_struct *: p
 
 # FIXME: both mp_size_t and mp_exp_t are ints if _CRAY and _CRAYMPP are
 # not defined.  This should be the normal case, but in the future we should
