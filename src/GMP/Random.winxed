@@ -1,0 +1,147 @@
+function load[anon,load]() {
+  load_bytecode('src/GMP/raw.pbc');
+  load_bytecode('src/GMP/Common.pbc');
+}
+
+namespace GMP {
+  class Integer;
+}
+
+/*
+=head1 void gmp_randinit_default (gmp_randstate_t state)
+
+Initialize state with a default algorithm. This will be a compromise between speed and randomness, and is recommended for applications with no special requirements. Currently this is gmp_randinit_mt. 
+
+=cut
+*/
+
+function gmp_randinit_default (var state) {
+  using GMP.Raw.__gmp_randinit_default;
+  
+   __gmp_randinit_default(state);
+}
+
+/*
+=head1 void gmp_randinit_mt (gmp_randstate_t state)
+
+Initialize state for a Mersenne Twister algorithm. This algorithm is fast and has good randomness properties. 
+
+=cut
+*/
+
+function gmp_randinit_mt (var state) {
+  using GMP.Raw.__gmp_randinit_mt;
+  
+   __gmp_randinit_mt(state);
+}
+
+/*
+=head1 void gmp_randinit_lc_2exp (gmp_randstate_t state, mpz_t a, unsigned long c, mp_bitcnt_t m2exp)
+
+Initialize state with a linear congruential algorithm X = (a*X + c) mod 2^m2exp. The low bits of X in this algorithm are not very random. The least significant bit will have a period no more than 2, and the second bit no more than 4, etc. For this reason only the high half of each X is actually used. When a random number of more than m2exp/2 bits is to be generated, multiple iterations of the recurrence are used and the results concatenated. 
+
+=cut
+*/
+
+function gmp_randinit_lc_2exp (var state, var a, int c, int m2exp) {
+  if(!(a instanceof GMP.Integer))
+    throw Error("incorrect type for a in gmp_randinit_lc_2exp");
+  using GMP.Raw.__gmp_randinit_lc_2exp;
+  
+   __gmp_randinit_lc_2exp(state, a.ptr, c, m2exp);
+}
+
+/*
+=head1 int gmp_randinit_lc_2exp_size (gmp_randstate_t state, mp_bitcnt_t size)
+
+Initialize state for a linear congruential algorithm as per gmp_randinit_lc_2exp. a, c and m2exp are selected from a table, chosen so that size bits (or more) of each X will be used, ie. m2exp/2 >= size. If successful the return value is non-zero. If size is bigger than the table data provides then the return value is zero. The maximum size currently supported is 128. 
+
+=cut
+*/
+
+function gmp_randinit_lc_2exp_size (var state, int size) {
+  using GMP.Raw.__gmp_randinit_lc_2exp_size;
+  
+  return __gmp_randinit_lc_2exp_size(state, size);
+}
+
+/*
+=head1 void gmp_randinit_set (gmp_randstate_t rop, gmp_randstate_t op)
+
+Initialize rop with a copy of the algorithm and state from op. 
+
+=cut
+*/
+
+function gmp_randinit_set (var rop, var op) {
+  using GMP.Raw.__gmp_randinit_set;
+  
+   __gmp_randinit_set(rop, op);
+}
+
+/*
+=head1 void gmp_randclear (gmp_randstate_t state)
+
+Free all memory occupied by state. 
+
+=cut
+*/
+
+function gmp_randclear (var state) {
+  using GMP.Raw.__gmp_randclear;
+  
+   __gmp_randclear(state);
+}
+
+/*
+=head1 void gmp_randseed (gmp_randstate_t state, mpz_t seed)
+
+=head1 void gmp_randseed_ui (gmp_randstate_t state, unsigned long int seed)
+
+Set an initial seed value into state. The size of a seed determines how many different sequences of random numbers that it's possible to generate. The "quality" of the seed is the randomness of a given seed compared to the previous seed used, and this affects the randomness of separate number sequences. The method for choosing a seed is critical if the generated numbers are to be used for important applications, such as generating cryptographic keys. Traditionally the system time has been used to seed, but care needs to be taken with this. If an application seeds often and the resolution of the system clock is low, then the same sequence of numbers might be repeated. Also, the system time is quite easy to guess, so if unpredictability is required then it should definitely not be the only source for the seed value. On some systems there's a special device /dev/random which provides random data better suited for use as a seed. 
+
+=cut
+*/
+
+function gmp_randseed (var state, var seed) {
+  if(!(seed instanceof GMP.Integer))
+    throw Error("incorrect type for seed in gmp_randseed");
+  using GMP.Raw.__gmp_randseed;
+  
+   __gmp_randseed(state, seed.ptr);
+}
+
+function gmp_randseed_ui (var state, int seed) {
+  using GMP.Raw.__gmp_randseed_ui;
+  
+   __gmp_randseed_ui(state, seed);
+}
+
+/*
+=head1 unsigned long gmp_urandomb_ui (gmp_randstate_t state, unsigned long n)
+
+Return a uniformly distributed random number of n bits, ie. in the range 0 to 2^n-1 inclusive. n must be less than or equal to the number of bits in an unsigned long. 
+
+=cut
+*/
+
+function gmp_urandomb_ui (var state, int n) {
+  using GMP.Raw.__gmp_urandomb_ui;
+  
+  return __gmp_urandomb_ui(state, n);
+}
+
+/*
+=head1 unsigned long gmp_urandomm_ui (gmp_randstate_t state, unsigned long n)
+
+Return a uniformly distributed random number in the range 0 to n-1, inclusive. 
+
+=cut
+*/
+
+function gmp_urandomm_ui (var state, int n) {
+  using GMP.Raw.__gmp_urandomm_ui;
+  
+  return __gmp_urandomm_ui(state, n);
+}
+

@@ -1,0 +1,9 @@
+function load[anon,load]() {
+  load_bytecode('src/GMP/raw.pbc');
+  load_bytecode('src/GMP/Common.pbc');
+}
+
+namespace GMP {
+  class Integer;
+}
+
