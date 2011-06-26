@@ -8,7 +8,17 @@ namespace GMP {
     }
 
     function gmp_randstate_t() {
-    
+      var gmp_randstate_t = new 'StructView'([
+        DATATYPE_STRUCT,
+        6,
+        DATATYPE_PTR,
+        DATATYPE_PTR,
+        DATATYPE_PTR,
+        DATATYPE_PTR,
+        DATATYPE_PTR,
+        DATATYPE_PTR
+      ]);
+      return gmp_randstate_t;
     }
 
     function gmpz_t() {
