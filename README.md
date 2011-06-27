@@ -9,6 +9,19 @@ There is inline function-level documentation (straight from the GMP manual) incl
 
 Using the PIR functions will allow you to shoot yourself in the foot while segfaulting because that is fast. The PIR functions do no type checking and match the internal naming style of GMP ('\_\_gmpz\_add\_ui').  The Winxed convenience class does basic type checking and matches the documentation naming style of the GMP functions ('mpz\_add\_ui').
 
+Dependencies:
+
+Using:
+
+The GMP library, at least version 4.2 (and ideally 5.0.x)
+Parrot, at least version 3.2.0
+
+Developing:
+
+Winxed (bundled with Parrot version 3.5.0)
+NQP (bundled with Parrot)
+Rosella (for the test library, available via plumage)
+
 How it works:
 
 Pre-build:
