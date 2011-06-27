@@ -8,16 +8,13 @@ function main[main](var argv) {
   var x = new GMP.Integer();
   mpz_set_ui(x, 30);
   mpz_add_ui(x, x, 2);
-  int i = mpz_get_ui(x);
-  say(i);
+  say(x);
 
   var y = new GMP.Integer(32);
   mpz_add_ui(y, y, 2);
-  int j = mpz_get_ui(y);
-  say(j);
+  say(y);
 
   var z = new GMP.Integer("302");
   mpz_add_ui(z, z, 40);
-  string k = mpz_get_str("", 10, z);
-  say(k);
+  say(z);
 }
