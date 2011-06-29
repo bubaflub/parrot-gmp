@@ -4816,59 +4816,107 @@
 .end # mpz_rrandomb
 
 
-.sub 'mpz_random'
-        .param pmc __ARG_1
-        .param int __ARG_2
-# Body
-# {
-.annotate 'line', 1982
-    isa $I2, __ARG_1, [ 'GMP'; 'Integer' ]
-    not $I1, $I2
-    unless $I1 goto __label_1
-# predefined Error
-.annotate 'line', 1983
-    root_new $P2, ['parrot';'Exception']
-    $P2['message'] = "incorrect type for rop in mpz_random"
-    throw $P2
-  __label_1: # endif
-.annotate 'line', 1984
-    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_random'
-.annotate 'line', 1986
-    getattribute $P2, __ARG_1, 'ptr'
-    $P1($P2, __ARG_2)
-# }
-.annotate 'line', 1987
-
-.end # mpz_random
-
-
-.sub 'mpz_random2'
-        .param pmc __ARG_1
-        .param int __ARG_2
-# Body
-# {
-.annotate 'line', 1998
-    isa $I2, __ARG_1, [ 'GMP'; 'Integer' ]
-    not $I1, $I2
-    unless $I1 goto __label_1
-# predefined Error
-.annotate 'line', 1999
-    root_new $P2, ['parrot';'Exception']
-    $P2['message'] = "incorrect type for rop in mpz_random2"
-    throw $P2
-  __label_1: # endif
-.annotate 'line', 2000
-    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_random2'
-.annotate 'line', 2002
-    getattribute $P2, __ARG_1, 'ptr'
-    $P1($P2, __ARG_2)
-# }
-.annotate 'line', 2003
-
-.end # mpz_random2
-
-
 .sub 'mpz_fits_ulong_p'
+        .param pmc __ARG_1
+# Body
+# {
+.annotate 'line', 1992
+    isa $I2, __ARG_1, [ 'GMP'; 'Integer' ]
+    not $I1, $I2
+    unless $I1 goto __label_1
+# predefined Error
+.annotate 'line', 1993
+    root_new $P2, ['parrot';'Exception']
+    $P2['message'] = "incorrect type for op in mpz_fits_ulong_p"
+    throw $P2
+  __label_1: # endif
+.annotate 'line', 1994
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_fits_ulong_p'
+.annotate 'line', 1996
+    getattribute $P2, __ARG_1, 'ptr'
+    .tailcall $P1($P2)
+# }
+.annotate 'line', 1997
+
+.end # mpz_fits_ulong_p
+
+
+.sub 'mpz_fits_slong_p'
+        .param pmc __ARG_1
+# Body
+# {
+.annotate 'line', 2000
+    isa $I2, __ARG_1, [ 'GMP'; 'Integer' ]
+    not $I1, $I2
+    unless $I1 goto __label_1
+# predefined Error
+.annotate 'line', 2001
+    root_new $P2, ['parrot';'Exception']
+    $P2['message'] = "incorrect type for op in mpz_fits_slong_p"
+    throw $P2
+  __label_1: # endif
+.annotate 'line', 2002
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_fits_slong_p'
+.annotate 'line', 2004
+    getattribute $P2, __ARG_1, 'ptr'
+    .tailcall $P1($P2)
+# }
+.annotate 'line', 2005
+
+.end # mpz_fits_slong_p
+
+
+.sub 'mpz_fits_uint_p'
+        .param pmc __ARG_1
+# Body
+# {
+.annotate 'line', 2008
+    isa $I2, __ARG_1, [ 'GMP'; 'Integer' ]
+    not $I1, $I2
+    unless $I1 goto __label_1
+# predefined Error
+.annotate 'line', 2009
+    root_new $P2, ['parrot';'Exception']
+    $P2['message'] = "incorrect type for op in mpz_fits_uint_p"
+    throw $P2
+  __label_1: # endif
+.annotate 'line', 2010
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_fits_uint_p'
+.annotate 'line', 2012
+    getattribute $P2, __ARG_1, 'ptr'
+    .tailcall $P1($P2)
+# }
+.annotate 'line', 2013
+
+.end # mpz_fits_uint_p
+
+
+.sub 'mpz_fits_sint_p'
+        .param pmc __ARG_1
+# Body
+# {
+.annotate 'line', 2016
+    isa $I2, __ARG_1, [ 'GMP'; 'Integer' ]
+    not $I1, $I2
+    unless $I1 goto __label_1
+# predefined Error
+.annotate 'line', 2017
+    root_new $P2, ['parrot';'Exception']
+    $P2['message'] = "incorrect type for op in mpz_fits_sint_p"
+    throw $P2
+  __label_1: # endif
+.annotate 'line', 2018
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_fits_sint_p'
+.annotate 'line', 2020
+    getattribute $P2, __ARG_1, 'ptr'
+    .tailcall $P1($P2)
+# }
+.annotate 'line', 2021
+
+.end # mpz_fits_sint_p
+
+
+.sub 'mpz_fits_ushort_p'
         .param pmc __ARG_1
 # Body
 # {
@@ -4879,21 +4927,21 @@
 # predefined Error
 .annotate 'line', 2025
     root_new $P2, ['parrot';'Exception']
-    $P2['message'] = "incorrect type for op in mpz_fits_ulong_p"
+    $P2['message'] = "incorrect type for op in mpz_fits_ushort_p"
     throw $P2
   __label_1: # endif
 .annotate 'line', 2026
-    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_fits_ulong_p'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_fits_ushort_p'
 .annotate 'line', 2028
     getattribute $P2, __ARG_1, 'ptr'
     .tailcall $P1($P2)
 # }
 .annotate 'line', 2029
 
-.end # mpz_fits_ulong_p
+.end # mpz_fits_ushort_p
 
 
-.sub 'mpz_fits_slong_p'
+.sub 'mpz_fits_sshort_p'
         .param pmc __ARG_1
 # Body
 # {
@@ -4904,116 +4952,16 @@
 # predefined Error
 .annotate 'line', 2033
     root_new $P2, ['parrot';'Exception']
-    $P2['message'] = "incorrect type for op in mpz_fits_slong_p"
+    $P2['message'] = "incorrect type for op in mpz_fits_sshort_p"
     throw $P2
   __label_1: # endif
 .annotate 'line', 2034
-    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_fits_slong_p'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_fits_sshort_p'
 .annotate 'line', 2036
     getattribute $P2, __ARG_1, 'ptr'
     .tailcall $P1($P2)
 # }
 .annotate 'line', 2037
-
-.end # mpz_fits_slong_p
-
-
-.sub 'mpz_fits_uint_p'
-        .param pmc __ARG_1
-# Body
-# {
-.annotate 'line', 2040
-    isa $I2, __ARG_1, [ 'GMP'; 'Integer' ]
-    not $I1, $I2
-    unless $I1 goto __label_1
-# predefined Error
-.annotate 'line', 2041
-    root_new $P2, ['parrot';'Exception']
-    $P2['message'] = "incorrect type for op in mpz_fits_uint_p"
-    throw $P2
-  __label_1: # endif
-.annotate 'line', 2042
-    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_fits_uint_p'
-.annotate 'line', 2044
-    getattribute $P2, __ARG_1, 'ptr'
-    .tailcall $P1($P2)
-# }
-.annotate 'line', 2045
-
-.end # mpz_fits_uint_p
-
-
-.sub 'mpz_fits_sint_p'
-        .param pmc __ARG_1
-# Body
-# {
-.annotate 'line', 2048
-    isa $I2, __ARG_1, [ 'GMP'; 'Integer' ]
-    not $I1, $I2
-    unless $I1 goto __label_1
-# predefined Error
-.annotate 'line', 2049
-    root_new $P2, ['parrot';'Exception']
-    $P2['message'] = "incorrect type for op in mpz_fits_sint_p"
-    throw $P2
-  __label_1: # endif
-.annotate 'line', 2050
-    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_fits_sint_p'
-.annotate 'line', 2052
-    getattribute $P2, __ARG_1, 'ptr'
-    .tailcall $P1($P2)
-# }
-.annotate 'line', 2053
-
-.end # mpz_fits_sint_p
-
-
-.sub 'mpz_fits_ushort_p'
-        .param pmc __ARG_1
-# Body
-# {
-.annotate 'line', 2056
-    isa $I2, __ARG_1, [ 'GMP'; 'Integer' ]
-    not $I1, $I2
-    unless $I1 goto __label_1
-# predefined Error
-.annotate 'line', 2057
-    root_new $P2, ['parrot';'Exception']
-    $P2['message'] = "incorrect type for op in mpz_fits_ushort_p"
-    throw $P2
-  __label_1: # endif
-.annotate 'line', 2058
-    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_fits_ushort_p'
-.annotate 'line', 2060
-    getattribute $P2, __ARG_1, 'ptr'
-    .tailcall $P1($P2)
-# }
-.annotate 'line', 2061
-
-.end # mpz_fits_ushort_p
-
-
-.sub 'mpz_fits_sshort_p'
-        .param pmc __ARG_1
-# Body
-# {
-.annotate 'line', 2064
-    isa $I2, __ARG_1, [ 'GMP'; 'Integer' ]
-    not $I1, $I2
-    unless $I1 goto __label_1
-# predefined Error
-.annotate 'line', 2065
-    root_new $P2, ['parrot';'Exception']
-    $P2['message'] = "incorrect type for op in mpz_fits_sshort_p"
-    throw $P2
-  __label_1: # endif
-.annotate 'line', 2066
-    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_fits_sshort_p'
-.annotate 'line', 2068
-    getattribute $P2, __ARG_1, 'ptr'
-    .tailcall $P1($P2)
-# }
-.annotate 'line', 2069
 
 .end # mpz_fits_sshort_p
 
@@ -5023,23 +4971,23 @@
         .param int __ARG_2
 # Body
 # {
-.annotate 'line', 2080
+.annotate 'line', 2048
     isa $I2, __ARG_1, [ 'GMP'; 'Integer' ]
     not $I1, $I2
     unless $I1 goto __label_1
 # predefined Error
-.annotate 'line', 2081
+.annotate 'line', 2049
     root_new $P2, ['parrot';'Exception']
     $P2['message'] = "incorrect type for op in mpz_sizeinbase"
     throw $P2
   __label_1: # endif
-.annotate 'line', 2082
+.annotate 'line', 2050
     get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_sizeinbase'
-.annotate 'line', 2084
+.annotate 'line', 2052
     getattribute $P2, __ARG_1, 'ptr'
     .tailcall $P1($P2, __ARG_2)
 # }
-.annotate 'line', 2085
+.annotate 'line', 2053
 
 .end # mpz_sizeinbase
 
@@ -5049,23 +4997,23 @@
         .param int __ARG_2
 # Body
 # {
-.annotate 'line', 2096
+.annotate 'line', 2064
     isa $I2, __ARG_1, [ 'GMP'; 'Integer' ]
     not $I1, $I2
     unless $I1 goto __label_1
 # predefined Error
-.annotate 'line', 2097
+.annotate 'line', 2065
     root_new $P2, ['parrot';'Exception']
     $P2['message'] = "incorrect type for op in mpz_getlimbn"
     throw $P2
   __label_1: # endif
-.annotate 'line', 2098
+.annotate 'line', 2066
     get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_getlimbn'
-.annotate 'line', 2100
+.annotate 'line', 2068
     getattribute $P2, __ARG_1, 'ptr'
     .tailcall $P1($P2, __ARG_2)
 # }
-.annotate 'line', 2101
+.annotate 'line', 2069
 
 .end # mpz_getlimbn
 
@@ -5074,23 +5022,23 @@
         .param pmc __ARG_1
 # Body
 # {
-.annotate 'line', 2112
+.annotate 'line', 2080
     isa $I2, __ARG_1, [ 'GMP'; 'Integer' ]
     not $I1, $I2
     unless $I1 goto __label_1
 # predefined Error
-.annotate 'line', 2113
+.annotate 'line', 2081
     root_new $P2, ['parrot';'Exception']
     $P2['message'] = "incorrect type for op in mpz_size"
     throw $P2
   __label_1: # endif
-.annotate 'line', 2114
+.annotate 'line', 2082
     get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmpz_size'
-.annotate 'line', 2116
+.annotate 'line', 2084
     getattribute $P2, __ARG_1, 'ptr'
     .tailcall $P1($P2)
 # }
-.annotate 'line', 2117
+.annotate 'line', 2085
 
 .end # mpz_size
 

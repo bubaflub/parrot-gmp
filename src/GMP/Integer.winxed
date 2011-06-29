@@ -1971,38 +1971,6 @@ function mpz_rrandomb (var rop, var state, int n) {
 }
 
 /*
-=head1 void mpz_random (mpz_t rop, mp_size_t max_size)
-
-Generate a random integer of at most max_size limbs. The generated random number doesn't satisfy any particular requirements of randomness. Negative random numbers are generated when max_size is negative. This function is obsolete. Use mpz_urandomb or mpz_urandomm instead. 
-
-=cut
-*/
-
-function mpz_random (var rop, int max_size) {
-  if(!(rop instanceof GMP.Integer))
-    throw Error("incorrect type for rop in mpz_random");
-  using GMP.Raw.__gmpz_random;
-  
-   __gmpz_random(rop.ptr, max_size);
-}
-
-/*
-=head1 void mpz_random2 (mpz_t rop, mp_size_t max_size)
-
-Generate a random integer of at most max_size limbs, with long strings of zeros and ones in the binary representation. Useful for testing functions and algorithms, since this kind of random numbers have proven to be more likely to trigger corner-case bugs. Negative random numbers are generated when max_size is negative. This function is obsolete. Use mpz_rrandomb instead. 
-
-=cut
-*/
-
-function mpz_random2 (var rop, int max_size) {
-  if(!(rop instanceof GMP.Integer))
-    throw Error("incorrect type for rop in mpz_random2");
-  using GMP.Raw.__gmpz_random2;
-  
-   __gmpz_random2(rop.ptr, max_size);
-}
-
-/*
 =head1 int mpz_fits_ulong_p (mpz_t op)
 
 =head1 int mpz_fits_slong_p (mpz_t op)
