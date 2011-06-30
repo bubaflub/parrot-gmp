@@ -1,0 +1,38 @@
+function load[anon,load]() {
+  load_bytecode('distutils.pbc');
+}
+
+function main[main](argv) {
+  var rosella = {
+    "name"              : 'Parrot-GMP',
+    "abstract"          : 'Parrot bindings for the GNU Multi-Precision Library',
+    "authority"         : 'http://github.com/bubaflub',
+    "copyright_holder"  : 'Bob Kuo',
+    "keywords"          : ["parrot", "gmp"],
+    "license_type"      : 'Artistic License 2.0',
+    "license_uri"       : 'http://www.perlfoundation.org/artistic_license_2_0',
+    "checkout_uri"      : 'git://github.com/bubaflub/parrot-gmp.git',
+    "browser_uri"       : 'git://github.com/bubaflub/parrot-gmp',
+    "project_uri"       : 'git://github.com/bubaflub/parrot-gmp',
+    "pir_nqp-rx"        : {},
+    "pir_winxed"        : {},
+    "pbc_pbc"           : {},
+    "pbc_pir"           : {},
+    "pir_pir"           : {},
+    "winxed_winxed"     : {},
+    "inst_lib"          : [],
+    "installable_pbc"   : {},
+    "include_winxed"    : {},
+    "manifest_includes" : ["README.md", "setup.winxed"]
+  };
+
+  if (argv[1] == "test")
+    do_test();
+}
+
+function do_test() {
+  int result;
+  string cmd = "parrot-nqp t/harness";
+  ${ spawnw result, cmd };
+  ${ exit result };
+}
