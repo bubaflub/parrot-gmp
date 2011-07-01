@@ -131,7 +131,7 @@
     concat $S4, $S4, ".pir"
 .annotate 'line', 54
 # pbc_file: $S5
-    concat $S5, $S1, $S2
+    concat $S5, "GMP/", $S2
     concat $S5, $S5, ".pbc"
 .annotate 'line', 55
     $P2 = __ARG_1["pir_winxed"]
@@ -304,14 +304,14 @@
     if $I9 goto __label_9
     iseq $I9, $I6, 4
     unless $I9 goto __label_10
-    islt $I9, $I7, 3
+    islt $I9, $I7, 2
   __label_10:
   __label_9:
     unless $I9 goto __label_8
 # {
 # predefined die
 .annotate 'line', 107
-    die "Need GMP version > 4.3"
+    die "Need GMP version >= 4.2"
 # }
   __label_8: # endif
 # }
