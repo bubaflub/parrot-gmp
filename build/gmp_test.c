@@ -6,4 +6,5 @@ int main() {
   printf("%zu %zu\n", sizeof(mp_size_t), sizeof(mp_exp_t));
   printf("%zu\n", sizeof(size_t));
   printf("%zu\n", sizeof(mp_limb_t));
+  return 0;
 }

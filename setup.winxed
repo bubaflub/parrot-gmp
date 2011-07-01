@@ -89,9 +89,24 @@ function check_dependencies() {
   string exe  = "build/gmp_test" + string(config['exe']);
   string command = string(config['cc']) + " " + string(config['ccflags']) + " " + string(config['cc_exe_out']) + exe + " " + file;
   system(command);
-  int result;
-  // TODO capture output of this program
-  //${ spawnw result, exe};
+  var pipe = new "FileHandle";
+  pipe.encoding('utf8');
+  pipe.open(exe, "rp");
+  string output = pipe.readall();
+  pipe.close();
+  int exit_status = pipe.exit_status();
+  if (exit_status != 0) {
+    die("Could not run " + exe + ": please check that your system has libgmp");
+  }
+  var lines = split("\n", output);
+  var values = split(' ', lines[0]);
+  int gmp_major = values[0];
+  int gmp_minor = values[1];
+  int gmp_patch = values[2];
+  if (gmp_major < 4 || (gmp_major == 4 && gmp_minor < 3)) {
+    die("Need GMP version > 4.3");
+  }
+  // TODO: process other values from build/gmp_test
 }
 
 function clean_build_dir() {

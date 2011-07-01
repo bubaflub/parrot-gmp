@@ -178,8 +178,8 @@
 .annotate 'line', 69
 # var config: $P1
 # predefined getinterp
-    getinterp $P2
-    $P1 = $P2[8]
+    getinterp $P5
+    $P1 = $P5[8]
 .annotate 'line', 71
 # maj: $I1
     $I1 = $P1['MAJOR']
@@ -187,14 +187,14 @@
 # min: $I2
     $I2 = $P1['MINOR']
 .annotate 'line', 73
-    islt $I6, $I1, 3
-    if $I6 goto __label_2
-    iseq $I6, $I1, 3
-    unless $I6 goto __label_3
-    islt $I6, $I2, 2
+    islt $I9, $I1, 3
+    if $I9 goto __label_2
+    iseq $I9, $I1, 3
+    unless $I9 goto __label_3
+    islt $I9, $I2, 2
   __label_3:
   __label_2:
-    unless $I6 goto __label_1
+    unless $I9 goto __label_1
 # {
 # predefined die
 .annotate 'line', 74
@@ -205,8 +205,8 @@
 # has_libffi: $I3
     $I3 = $P1['has_libffi']
 .annotate 'line', 78
-    not $I6, $I3
-    unless $I6 goto __label_4
+    not $I9, $I3
+    unless $I9 goto __label_4
 # {
 # predefined die
 .annotate 'line', 79
@@ -217,8 +217,8 @@
 # has_gmp: $I4
     $I4 = $P1['HAS_GMP']
 .annotate 'line', 83
-    not $I6, $I4
-    unless $I6 goto __label_5
+    not $I9, $I4
+    unless $I9 goto __label_5
 # {
 # predefined die
 .annotate 'line', 84
@@ -231,30 +231,91 @@
 .annotate 'line', 89
 # exe: $S2
 # predefined string
-    $S4 = $P1['exe']
-    concat $S2, "build/gmp_test", $S4
+    $S5 = $P1['exe']
+    concat $S2, "build/gmp_test", $S5
 .annotate 'line', 90
 # command: $S3
 # predefined string
-    $S4 = $P1['cc']
+    $S5 = $P1['cc']
 # predefined string
-    $S5 = $P1['ccflags']
+    $S6 = $P1['ccflags']
 # predefined string
-    $S6 = $P1['cc_exe_out']
-    concat $S3, $S4, " "
-    concat $S3, $S3, $S5
-    concat $S3, $S3, " "
+    $S7 = $P1['cc_exe_out']
+    concat $S3, $S5, " "
     concat $S3, $S3, $S6
+    concat $S3, $S3, " "
+    concat $S3, $S3, $S7
     concat $S3, $S3, $S2
     concat $S3, $S3, " "
     concat $S3, $S3, $S1
 .annotate 'line', 91
     'system'($S3)
 .annotate 'line', 92
-# result: $I5
-    null $I5
-# }
+# var pipe: $P2
+    new $P2, [ "FileHandle" ]
+.annotate 'line', 93
+    $P2.'encoding'('utf8')
+.annotate 'line', 94
+    $P2.'open'($S2, "rp")
 .annotate 'line', 95
+# output: $S4
+    $P5 = $P2.'readall'()
+    null $S4
+    if_null $P5, __label_6
+    set $S4, $P5
+  __label_6:
+.annotate 'line', 96
+    $P2.'close'()
+.annotate 'line', 97
+# exit_status: $I5
+    $P5 = $P2.'exit_status'()
+    set $I5, $P5
+.annotate 'line', 98
+    eq $I5, 0, __label_7
+# {
+.annotate 'line', 99
+    concat $S5, "Could not run ", $S2
+    concat $S5, $S5, ": please check that your system has libgmp"
+# predefined die
+    die $S5
+# }
+  __label_7: # endif
+.annotate 'line', 101
+# var lines: $P3
+# predefined split
+    split $P3, "\n", $S4
+.annotate 'line', 102
+# var values: $P4
+    $P5 = $P3[0]
+    set $S5, $P5
+# predefined split
+    split $P4, ' ', $S5
+.annotate 'line', 103
+# gmp_major: $I6
+    $I6 = $P4[0]
+.annotate 'line', 104
+# gmp_minor: $I7
+    $I7 = $P4[1]
+.annotate 'line', 105
+# gmp_patch: $I8
+    $I8 = $P4[2]
+.annotate 'line', 106
+    islt $I9, $I6, 4
+    if $I9 goto __label_9
+    iseq $I9, $I6, 4
+    unless $I9 goto __label_10
+    islt $I9, $I7, 3
+  __label_10:
+  __label_9:
+    unless $I9 goto __label_8
+# {
+# predefined die
+.annotate 'line', 107
+    die "Need GMP version > 4.3"
+# }
+  __label_8: # endif
+# }
+.annotate 'line', 110
 
 .end # check_dependencies
 
@@ -262,35 +323,35 @@
 .sub 'clean_build_dir' :subid('WSubId_4')
 # Body
 # {
-.annotate 'line', 98
+.annotate 'line', 113
 # var config: $P1
 # predefined getinterp
     getinterp $P2
     $P1 = $P2[8]
-.annotate 'line', 99
+.annotate 'line', 114
 # exe: $S1
 # predefined string
     $S2 = $P1['exe']
     concat $S1, "build/gmp_test", $S2
-.annotate 'line', 100
+.annotate 'line', 115
 # e: $I1
     null $I1
-.annotate 'line', 101
+.annotate 'line', 116
 # pirop stat
     stat $I1, $S1, 0
-.annotate 'line', 102
+.annotate 'line', 117
     unless $I1 goto __label_1
 # {
-.annotate 'line', 103
+.annotate 'line', 118
     concat $S2, "unlink ", $S1
 # predefined say
     say $S2
-.annotate 'line', 104
+.annotate 'line', 119
     'unlink'($S1)
 # }
   __label_1: # endif
 # }
-.annotate 'line', 106
+.annotate 'line', 121
 
 .end # clean_build_dir
 
