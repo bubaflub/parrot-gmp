@@ -1,5 +1,5 @@
 $load "rosella/test.pbc";
-$load "src/GMP/Random.pbc";
+$load "GMP/Random.pbc";
 
 class Test_GMP_Randset {
     function test_gmp_randset() {
