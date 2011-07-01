@@ -1,9 +1,8 @@
-function load[anon,load]() {
-  load_bytecode('distutils.pbc');
-}
+$include_const "iglobals.pasm";
+using extern "io_ops";
 
 function main[main](argv) {
-  var rosella = {
+  var parrot_gmp = {
     "name"              : 'Parrot-GMP',
     "abstract"          : 'Parrot bindings for the GNU Multi-Precision Library',
     "authority"         : 'http://github.com/bubaflub',
@@ -14,12 +13,8 @@ function main[main](argv) {
     "checkout_uri"      : 'git://github.com/bubaflub/parrot-gmp.git',
     "browser_uri"       : 'git://github.com/bubaflub/parrot-gmp',
     "project_uri"       : 'git://github.com/bubaflub/parrot-gmp',
-    "pir_nqp-rx"        : {},
     "pir_winxed"        : {},
-    "pbc_pbc"           : {},
     "pbc_pir"           : {},
-    "pir_pir"           : {},
-    "winxed_winxed"     : {},
     "inst_lib"          : [],
     "installable_pbc"   : {},
     "include_winxed"    : {},
@@ -28,6 +23,37 @@ function main[main](argv) {
 
   if (argv[1] == "test")
     do_test();
+
+  setup_stable_libraries(parrot_gmp);
+
+  load_bytecode('distutils.pir');
+  using setup;
+  using register_step_before;
+
+  register_step_before("build", check_dependencies);
+  register_step_before("clean", clean_build_dir);
+
+  argv.shift();
+  setup(argv, parrot_gmp);
+}
+
+function setup_stable_libraries(var parrot_gmp) {
+  var libs = [
+    'raw',
+    'Common',
+    'Random',
+    'Integer'
+  ];
+
+  string prefix = "src/GMP/";
+
+  for (string source in libs) {
+    string winxed_file = prefix + source + ".winxed";
+    string pir_file    = prefix + source + ".pir";
+    string pbc_file    = prefix + source + ".pbc";
+    parrot_gmp["pir_winxed"][pir_file] = winxed_file;
+    parrot_gmp["pbc_pir"][pbc_file]    = pir_file;
+  }
 }
 
 function do_test() {
@@ -35,4 +61,44 @@ function do_test() {
   string cmd = "parrot-nqp t/harness";
   ${ spawnw result, cmd };
   ${ exit result };
+}
+
+function check_dependencies() {
+  var config = getinterp()[IGLOBALS_CONFIG_HASH];
+  // Check if Parrot is > 3.2.0
+  int maj = config['MAJOR'];
+  int min = config['MINOR'];
+  if (maj < 3 || (maj == 3 && min < 2)) {
+    die("You need at least Parrot 3.2.0 to use Parrot-GMP");
+  }
+  // Check if Parrot has been built/configured with libffi
+  int has_libffi = config['has_libffi'];
+  if (!has_libffi) {
+    die("You need to have Parrot configured with libffi to use Parrot-GMP");
+  }
+  // Check if Parrot has been built/configured with gmp
+  int has_gmp = config['HAS_GMP'];
+  if (!has_gmp) {
+    die("You need to have Parrot configured with GMP to use Parrot-GMP");
+  }
+  // Check GMP version > 4.3
+  // Also grab other system dependent information
+  string file = "build/gmp_test.c";
+  string exe  = "build/gmp_test" + string(config['exe']);
+  string command = string(config['cc']) + " " + string(config['ccflags']) + " " + string(config['cc_exe_out']) + exe + " " + file;
+  system(command);
+  int result;
+  // TODO capture output of this program
+  //${ spawnw result, exe};
+}
+
+function clean_build_dir() {
+  var config = getinterp()[IGLOBALS_CONFIG_HASH];
+  string exe = "build/gmp_test" + string(config['exe']);
+  int e = 0;
+  ${ stat e, exe, 0 };
+  if (e) {
+    say("unlink " + exe);
+    unlink(exe);
+  }
 }

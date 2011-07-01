@@ -25,7 +25,7 @@ Rosella (for the test library, available via plumage)
 
 How it works:
 
-Pre-build:
+Develop:
 
 1. The script gmph2ncidef.pl reads gmp.h and outputs an NCI definition. Combining that output with src/GMP/Raw.nci.template gives us the NCI definition file at src/GMP/Raw.nci and it is included with the distribution.
 2. A script included with parrot in tools/dev/ncidef2.pl reads this NCI definition file and generate low-level PIR functions to call the corresponding GMP calls.  This is src/GMP/Raw.pir and included with the distrubtion.
@@ -33,15 +33,13 @@ Pre-build:
 
 Build:
 
-1. Compile src/GMP/Raw.pir to src/GMP/Raw.pbc.  This gives us PIR level bindings to the GMP library.
-2. Compile src/GMP/Integer.winxed to src/GMP/Integer.pir and then to src/GMP/Integer.pbc.  This gives us the Winxed convenience class and all the functions with convenient names.
+1. winxed setup.winxed build
 
 Test:
 
-1. parrot-nqp t/harness will run all of the included tests.
+1. winxed setup.winxed test
 
 In the future:
 
-1. Distutils will be used to automate this building process and run the tests
-2. Installable from plumage
-3. Examples will be plentiful and useful
+1. Installable from plumage
+2. Examples will be plentiful and useful
