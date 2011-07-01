@@ -103,8 +103,8 @@ function check_dependencies() {
   int gmp_major = values[0];
   int gmp_minor = values[1];
   int gmp_patch = values[2];
-  if (gmp_major < 4 || (gmp_major == 4 && gmp_minor < 3)) {
-    die("Need GMP version > 4.3");
+  if (gmp_major < 4 || (gmp_major == 4 && gmp_minor < 2)) {
+    die("Need GMP version >= 4.2");
   }
   // TODO: process other values from build/gmp_test
 }
