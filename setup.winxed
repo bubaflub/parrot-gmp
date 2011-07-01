@@ -53,6 +53,7 @@ function setup_stable_libraries(var parrot_gmp) {
     string pbc_file    = prefix + source + ".pbc";
     parrot_gmp["pir_winxed"][pir_file] = winxed_file;
     parrot_gmp["pbc_pir"][pbc_file]    = pir_file;
+    parrot_gmp["inst_lib"].push(pbc_file);
   }
 }
 
