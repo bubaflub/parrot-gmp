@@ -5,6 +5,7 @@ function main[main](argv) {
   var parrot_gmp = {
     "name"              : 'Parrot-GMP',
     "abstract"          : 'Parrot bindings for the GNU Multi-Precision Library',
+    "description"       : 'Parrot bindings for the GNU Multi-Precision Library.  Currently has bindings for Integer type functions and random initialization functions.',
     "authority"         : 'http://github.com/bubaflub',
     "copyright_holder"  : 'Bob Kuo',
     "keywords"          : ["parrot", "gmp"],

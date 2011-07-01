@@ -15,7 +15,7 @@
         "copyright_holder" : "Bob Kuo",
         "generated_by"     : "distutils",
         "keywords"         : ["parrot", "gmp"],
-        "description"      : "DESCRIPTION"
+        "description"      : "Parrot bindings for the GNU Multi-Precision Library.  Currently has bindings for Integer type functions and random initialization functions."
     },
     "instructions" : {
         "fetch"    : {
@@ -48,7 +48,7 @@
         "requires"     : {
             "fetch"    : ["git"],
             "build"    : [],
-            "test"     : [],
+            "test"     : ["rosella"],
             "install"  : [],
             "runtime"  : []
         }
