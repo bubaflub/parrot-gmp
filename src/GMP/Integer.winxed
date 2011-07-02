@@ -53,6 +53,11 @@ namespace GMP {
     function get_string[vtable]() {
       return mpz_get_str("", 10, self);
     }
+
+    function get_integer[vtable]() {
+      return mpz_get_si(self);
+    }
+
   }
 }
 
