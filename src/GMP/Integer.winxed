@@ -73,7 +73,6 @@ function mpz_init (var x) {
   if(!(x instanceof GMP.Integer))
     throw Error("incorrect type for x in mpz_init");
   using GMP.Raw.__gmpz_init;
-  
    __gmpz_init(x.ptr);
 }
 
@@ -89,7 +88,6 @@ function mpz_init2 (var x, int n) {
   if(!(x instanceof GMP.Integer))
     throw Error("incorrect type for x in mpz_init2");
   using GMP.Raw.__gmpz_init2;
-  
    __gmpz_init2(x.ptr, n);
 }
 
@@ -105,7 +103,6 @@ function mpz_clear (var x) {
   if(!(x instanceof GMP.Integer))
     throw Error("incorrect type for x in mpz_clear");
   using GMP.Raw.__gmpz_clear;
-  
    __gmpz_clear(x.ptr);
 }
 
@@ -121,7 +118,6 @@ function mpz_realloc2 (var x, int n) {
   if(!(x instanceof GMP.Integer))
     throw Error("incorrect type for x in mpz_realloc2");
   using GMP.Raw.__gmpz_realloc2;
-  
    __gmpz_realloc2(x.ptr, n);
 }
 
@@ -145,7 +141,6 @@ function mpz_set (var rop, var op) {
   if(!(op instanceof GMP.Integer))
     throw Error("incorrect type for op in mpz_set");
   using GMP.Raw.__gmpz_set;
-  
    __gmpz_set(rop.ptr, op.ptr);
 }
 
@@ -153,7 +148,6 @@ function mpz_set_ui (var rop, int op) {
   if(!(rop instanceof GMP.Integer))
     throw Error("incorrect type for rop in mpz_set_ui");
   using GMP.Raw.__gmpz_set_ui;
-  
    __gmpz_set_ui(rop.ptr, op);
 }
 
@@ -161,7 +155,6 @@ function mpz_set_si (var rop, int op) {
   if(!(rop instanceof GMP.Integer))
     throw Error("incorrect type for rop in mpz_set_si");
   using GMP.Raw.__gmpz_set_si;
-  
    __gmpz_set_si(rop.ptr, op);
 }
 
@@ -169,7 +162,6 @@ function mpz_set_d (var rop, float op) {
   if(!(rop instanceof GMP.Integer))
     throw Error("incorrect type for rop in mpz_set_d");
   using GMP.Raw.__gmpz_set_d;
-  
    __gmpz_set_d(rop.ptr, op);
 }
 
@@ -204,7 +196,6 @@ function mpz_swap (var rop1, var rop2) {
   if(!(rop2 instanceof GMP.Integer))
     throw Error("incorrect type for rop2 in mpz_swap");
   using GMP.Raw.__gmpz_swap;
-  
    __gmpz_swap(rop1.ptr, rop2.ptr);
 }
 
@@ -228,7 +219,6 @@ function mpz_init_set (var rop, var op) {
   if(!(op instanceof GMP.Integer))
     throw Error("incorrect type for op in mpz_init_set");
   using GMP.Raw.__gmpz_init_set;
-  
    __gmpz_init_set(rop.ptr, op.ptr);
 }
 
@@ -236,7 +226,6 @@ function mpz_init_set_ui (var rop, int op) {
   if(!(rop instanceof GMP.Integer))
     throw Error("incorrect type for rop in mpz_init_set_ui");
   using GMP.Raw.__gmpz_init_set_ui;
-  
    __gmpz_init_set_ui(rop.ptr, op);
 }
 
@@ -244,7 +233,6 @@ function mpz_init_set_si (var rop, int op) {
   if(!(rop instanceof GMP.Integer))
     throw Error("incorrect type for rop in mpz_init_set_si");
   using GMP.Raw.__gmpz_init_set_si;
-  
    __gmpz_init_set_si(rop.ptr, op);
 }
 
@@ -252,7 +240,6 @@ function mpz_init_set_d (var rop, float op) {
   if(!(rop instanceof GMP.Integer))
     throw Error("incorrect type for rop in mpz_init_set_d");
   using GMP.Raw.__gmpz_init_set_d;
-  
    __gmpz_init_set_d(rop.ptr, op);
 }
 
@@ -285,7 +272,6 @@ function mpz_get_ui (var op) {
   if(!(op instanceof GMP.Integer))
     throw Error("incorrect type for op in mpz_get_ui");
   using GMP.Raw.__gmpz_get_ui;
-  
   return __gmpz_get_ui(op.ptr);
 }
 
@@ -301,7 +287,6 @@ function mpz_get_si (var op) {
   if(!(op instanceof GMP.Integer))
     throw Error("incorrect type for op in mpz_get_si");
   using GMP.Raw.__gmpz_get_si;
-  
   return __gmpz_get_si(op.ptr);
 }
 
@@ -317,7 +302,6 @@ function mpz_get_d (var op) {
   if(!(op instanceof GMP.Integer))
     throw Error("incorrect type for op in mpz_get_d");
   using GMP.Raw.__gmpz_get_d;
-  
   return __gmpz_get_d(op.ptr);
 }
 
@@ -333,7 +317,6 @@ function mpz_get_d_2exp (var exp, var op) {
   if(!(op instanceof GMP.Integer))
     throw Error("incorrect type for op in mpz_get_d_2exp");
   using GMP.Raw.__gmpz_get_d_2exp;
-  
   return __gmpz_get_d_2exp(exp, op.ptr);
 }
 
@@ -373,7 +356,6 @@ function mpz_add (var rop, var op1, var op2) {
   if(!(op2 instanceof GMP.Integer))
     throw Error("incorrect type for op2 in mpz_add");
   using GMP.Raw.__gmpz_add;
-  
    __gmpz_add(rop.ptr, op1.ptr, op2.ptr);
 }
 
@@ -383,7 +365,6 @@ function mpz_add_ui (var rop, var op1, int op2) {
   if(!(op1 instanceof GMP.Integer))
     throw Error("incorrect type for op1 in mpz_add_ui");
   using GMP.Raw.__gmpz_add_ui;
-  
    __gmpz_add_ui(rop.ptr, op1.ptr, op2);
 }
 
@@ -407,7 +388,6 @@ function mpz_sub (var rop, var op1, var op2) {
   if(!(op2 instanceof GMP.Integer))
     throw Error("incorrect type for op2 in mpz_sub");
   using GMP.Raw.__gmpz_sub;
-  
    __gmpz_sub(rop.ptr, op1.ptr, op2.ptr);
 }
 
@@ -417,7 +397,6 @@ function mpz_sub_ui (var rop, var op1, int op2) {
   if(!(op1 instanceof GMP.Integer))
     throw Error("incorrect type for op1 in mpz_sub_ui");
   using GMP.Raw.__gmpz_sub_ui;
-  
    __gmpz_sub_ui(rop.ptr, op1.ptr, op2);
 }
 
@@ -427,7 +406,6 @@ function mpz_ui_sub (var rop, int op1, var op2) {
   if(!(op2 instanceof GMP.Integer))
     throw Error("incorrect type for op2 in mpz_ui_sub");
   using GMP.Raw.__gmpz_ui_sub;
-  
    __gmpz_ui_sub(rop.ptr, op1, op2.ptr);
 }
 
@@ -451,7 +429,6 @@ function mpz_mul (var rop, var op1, var op2) {
   if(!(op2 instanceof GMP.Integer))
     throw Error("incorrect type for op2 in mpz_mul");
   using GMP.Raw.__gmpz_mul;
-  
    __gmpz_mul(rop.ptr, op1.ptr, op2.ptr);
 }
 
@@ -461,7 +438,6 @@ function mpz_mul_si (var rop, var op1, int op2) {
   if(!(op1 instanceof GMP.Integer))
     throw Error("incorrect type for op1 in mpz_mul_si");
   using GMP.Raw.__gmpz_mul_si;
-  
    __gmpz_mul_si(rop.ptr, op1.ptr, op2);
 }
 
@@ -471,7 +447,6 @@ function mpz_mul_ui (var rop, var op1, int op2) {
   if(!(op1 instanceof GMP.Integer))
     throw Error("incorrect type for op1 in mpz_mul_ui");
   using GMP.Raw.__gmpz_mul_ui;
-  
    __gmpz_mul_ui(rop.ptr, op1.ptr, op2);
 }
 
@@ -493,7 +468,6 @@ function mpz_addmul (var rop, var op1, var op2) {
   if(!(op2 instanceof GMP.Integer))
     throw Error("incorrect type for op2 in mpz_addmul");
   using GMP.Raw.__gmpz_addmul;
-  
    __gmpz_addmul(rop.ptr, op1.ptr, op2.ptr);
 }
 
@@ -503,7 +477,6 @@ function mpz_addmul_ui (var rop, var op1, int op2) {
   if(!(op1 instanceof GMP.Integer))
     throw Error("incorrect type for op1 in mpz_addmul_ui");
   using GMP.Raw.__gmpz_addmul_ui;
-  
    __gmpz_addmul_ui(rop.ptr, op1.ptr, op2);
 }
 
@@ -525,7 +498,6 @@ function mpz_submul (var rop, var op1, var op2) {
   if(!(op2 instanceof GMP.Integer))
     throw Error("incorrect type for op2 in mpz_submul");
   using GMP.Raw.__gmpz_submul;
-  
    __gmpz_submul(rop.ptr, op1.ptr, op2.ptr);
 }
 
@@ -535,7 +507,6 @@ function mpz_submul_ui (var rop, var op1, int op2) {
   if(!(op1 instanceof GMP.Integer))
     throw Error("incorrect type for op1 in mpz_submul_ui");
   using GMP.Raw.__gmpz_submul_ui;
-  
    __gmpz_submul_ui(rop.ptr, op1.ptr, op2);
 }
 
@@ -553,7 +524,6 @@ function mpz_mul_2exp (var rop, var op1, int op2) {
   if(!(op1 instanceof GMP.Integer))
     throw Error("incorrect type for op1 in mpz_mul_2exp");
   using GMP.Raw.__gmpz_mul_2exp;
-  
    __gmpz_mul_2exp(rop.ptr, op1.ptr, op2);
 }
 
@@ -571,7 +541,6 @@ function mpz_neg (var rop, var op) {
   if(!(op instanceof GMP.Integer))
     throw Error("incorrect type for op in mpz_neg");
   using GMP.Raw.__gmpz_neg;
-  
    __gmpz_neg(rop.ptr, op.ptr);
 }
 
@@ -589,7 +558,6 @@ function mpz_abs (var rop, var op) {
   if(!(op instanceof GMP.Integer))
     throw Error("incorrect type for op in mpz_abs");
   using GMP.Raw.__gmpz_abs;
-  
    __gmpz_abs(rop.ptr, op.ptr);
 }
 
@@ -623,7 +591,6 @@ function mpz_cdiv_q (var q, var n, var d) {
   if(!(d instanceof GMP.Integer))
     throw Error("incorrect type for d in mpz_cdiv_q");
   using GMP.Raw.__gmpz_cdiv_q;
-  
    __gmpz_cdiv_q(q.ptr, n.ptr, d.ptr);
 }
 
@@ -635,7 +602,6 @@ function mpz_cdiv_r (var r, var n, var d) {
   if(!(d instanceof GMP.Integer))
     throw Error("incorrect type for d in mpz_cdiv_r");
   using GMP.Raw.__gmpz_cdiv_r;
-  
    __gmpz_cdiv_r(r.ptr, n.ptr, d.ptr);
 }
 
@@ -649,7 +615,6 @@ function mpz_cdiv_qr (var q, var r, var n, var d) {
   if(!(d instanceof GMP.Integer))
     throw Error("incorrect type for d in mpz_cdiv_qr");
   using GMP.Raw.__gmpz_cdiv_qr;
-  
    __gmpz_cdiv_qr(q.ptr, r.ptr, n.ptr, d.ptr);
 }
 
@@ -659,7 +624,6 @@ function mpz_cdiv_q_ui (var q, var n, int d) {
   if(!(n instanceof GMP.Integer))
     throw Error("incorrect type for n in mpz_cdiv_q_ui");
   using GMP.Raw.__gmpz_cdiv_q_ui;
-  
   return __gmpz_cdiv_q_ui(q.ptr, n.ptr, d);
 }
 
@@ -669,7 +633,6 @@ function mpz_cdiv_r_ui (var r, var n, int d) {
   if(!(n instanceof GMP.Integer))
     throw Error("incorrect type for n in mpz_cdiv_r_ui");
   using GMP.Raw.__gmpz_cdiv_r_ui;
-  
   return __gmpz_cdiv_r_ui(r.ptr, n.ptr, d);
 }
 
@@ -681,7 +644,6 @@ function mpz_cdiv_qr_ui (var q, var r, var n, int d) {
   if(!(n instanceof GMP.Integer))
     throw Error("incorrect type for n in mpz_cdiv_qr_ui");
   using GMP.Raw.__gmpz_cdiv_qr_ui;
-  
   return __gmpz_cdiv_qr_ui(q.ptr, r.ptr, n.ptr, d);
 }
 
@@ -689,7 +651,6 @@ function mpz_cdiv_ui (var n, int d) {
   if(!(n instanceof GMP.Integer))
     throw Error("incorrect type for n in mpz_cdiv_ui");
   using GMP.Raw.__gmpz_cdiv_ui;
-  
   return __gmpz_cdiv_ui(n.ptr, d);
 }
 
@@ -699,7 +660,6 @@ function mpz_cdiv_q_2exp (var q, var n, int b) {
   if(!(n instanceof GMP.Integer))
     throw Error("incorrect type for n in mpz_cdiv_q_2exp");
   using GMP.Raw.__gmpz_cdiv_q_2exp;
-  
    __gmpz_cdiv_q_2exp(q.ptr, n.ptr, b);
 }
 
@@ -709,7 +669,6 @@ function mpz_cdiv_r_2exp (var r, var n, int b) {
   if(!(n instanceof GMP.Integer))
     throw Error("incorrect type for n in mpz_cdiv_r_2exp");
   using GMP.Raw.__gmpz_cdiv_r_2exp;
-  
    __gmpz_cdiv_r_2exp(r.ptr, n.ptr, b);
 }
 
@@ -743,7 +702,6 @@ function mpz_fdiv_q (var q, var n, var d) {
   if(!(d instanceof GMP.Integer))
     throw Error("incorrect type for d in mpz_fdiv_q");
   using GMP.Raw.__gmpz_fdiv_q;
-  
    __gmpz_fdiv_q(q.ptr, n.ptr, d.ptr);
 }
 
@@ -755,7 +713,6 @@ function mpz_fdiv_r (var r, var n, var d) {
   if(!(d instanceof GMP.Integer))
     throw Error("incorrect type for d in mpz_fdiv_r");
   using GMP.Raw.__gmpz_fdiv_r;
-  
    __gmpz_fdiv_r(r.ptr, n.ptr, d.ptr);
 }
 
@@ -769,7 +726,6 @@ function mpz_fdiv_qr (var q, var r, var n, var d) {
   if(!(d instanceof GMP.Integer))
     throw Error("incorrect type for d in mpz_fdiv_qr");
   using GMP.Raw.__gmpz_fdiv_qr;
-  
    __gmpz_fdiv_qr(q.ptr, r.ptr, n.ptr, d.ptr);
 }
 
@@ -779,7 +735,6 @@ function mpz_fdiv_q_ui (var q, var n, int d) {
   if(!(n instanceof GMP.Integer))
     throw Error("incorrect type for n in mpz_fdiv_q_ui");
   using GMP.Raw.__gmpz_fdiv_q_ui;
-  
   return __gmpz_fdiv_q_ui(q.ptr, n.ptr, d);
 }
 
@@ -789,7 +744,6 @@ function mpz_fdiv_r_ui (var r, var n, int d) {
   if(!(n instanceof GMP.Integer))
     throw Error("incorrect type for n in mpz_fdiv_r_ui");
   using GMP.Raw.__gmpz_fdiv_r_ui;
-  
   return __gmpz_fdiv_r_ui(r.ptr, n.ptr, d);
 }
 
@@ -801,7 +755,6 @@ function mpz_fdiv_qr_ui (var q, var r, var n, int d) {
   if(!(n instanceof GMP.Integer))
     throw Error("incorrect type for n in mpz_fdiv_qr_ui");
   using GMP.Raw.__gmpz_fdiv_qr_ui;
-  
   return __gmpz_fdiv_qr_ui(q.ptr, r.ptr, n.ptr, d);
 }
 
@@ -809,7 +762,6 @@ function mpz_fdiv_ui (var n, int d) {
   if(!(n instanceof GMP.Integer))
     throw Error("incorrect type for n in mpz_fdiv_ui");
   using GMP.Raw.__gmpz_fdiv_ui;
-  
   return __gmpz_fdiv_ui(n.ptr, d);
 }
 
@@ -819,7 +771,6 @@ function mpz_fdiv_q_2exp (var q, var n, int b) {
   if(!(n instanceof GMP.Integer))
     throw Error("incorrect type for n in mpz_fdiv_q_2exp");
   using GMP.Raw.__gmpz_fdiv_q_2exp;
-  
    __gmpz_fdiv_q_2exp(q.ptr, n.ptr, b);
 }
 
@@ -829,7 +780,6 @@ function mpz_fdiv_r_2exp (var r, var n, int b) {
   if(!(n instanceof GMP.Integer))
     throw Error("incorrect type for n in mpz_fdiv_r_2exp");
   using GMP.Raw.__gmpz_fdiv_r_2exp;
-  
    __gmpz_fdiv_r_2exp(r.ptr, n.ptr, b);
 }
 
@@ -867,7 +817,6 @@ function mpz_tdiv_q (var q, var n, var d) {
   if(!(d instanceof GMP.Integer))
     throw Error("incorrect type for d in mpz_tdiv_q");
   using GMP.Raw.__gmpz_tdiv_q;
-  
    __gmpz_tdiv_q(q.ptr, n.ptr, d.ptr);
 }
 
@@ -879,7 +828,6 @@ function mpz_tdiv_r (var r, var n, var d) {
   if(!(d instanceof GMP.Integer))
     throw Error("incorrect type for d in mpz_tdiv_r");
   using GMP.Raw.__gmpz_tdiv_r;
-  
    __gmpz_tdiv_r(r.ptr, n.ptr, d.ptr);
 }
 
@@ -893,7 +841,6 @@ function mpz_tdiv_qr (var q, var r, var n, var d) {
   if(!(d instanceof GMP.Integer))
     throw Error("incorrect type for d in mpz_tdiv_qr");
   using GMP.Raw.__gmpz_tdiv_qr;
-  
    __gmpz_tdiv_qr(q.ptr, r.ptr, n.ptr, d.ptr);
 }
 
@@ -903,7 +850,6 @@ function mpz_tdiv_q_ui (var q, var n, int d) {
   if(!(n instanceof GMP.Integer))
     throw Error("incorrect type for n in mpz_tdiv_q_ui");
   using GMP.Raw.__gmpz_tdiv_q_ui;
-  
   return __gmpz_tdiv_q_ui(q.ptr, n.ptr, d);
 }
 
@@ -913,7 +859,6 @@ function mpz_tdiv_r_ui (var r, var n, int d) {
   if(!(n instanceof GMP.Integer))
     throw Error("incorrect type for n in mpz_tdiv_r_ui");
   using GMP.Raw.__gmpz_tdiv_r_ui;
-  
   return __gmpz_tdiv_r_ui(r.ptr, n.ptr, d);
 }
 
@@ -925,7 +870,6 @@ function mpz_tdiv_qr_ui (var q, var r, var n, int d) {
   if(!(n instanceof GMP.Integer))
     throw Error("incorrect type for n in mpz_tdiv_qr_ui");
   using GMP.Raw.__gmpz_tdiv_qr_ui;
-  
   return __gmpz_tdiv_qr_ui(q.ptr, r.ptr, n.ptr, d);
 }
 
@@ -933,7 +877,6 @@ function mpz_tdiv_ui (var n, int d) {
   if(!(n instanceof GMP.Integer))
     throw Error("incorrect type for n in mpz_tdiv_ui");
   using GMP.Raw.__gmpz_tdiv_ui;
-  
   return __gmpz_tdiv_ui(n.ptr, d);
 }
 
@@ -943,7 +886,6 @@ function mpz_tdiv_q_2exp (var q, var n, int b) {
   if(!(n instanceof GMP.Integer))
     throw Error("incorrect type for n in mpz_tdiv_q_2exp");
   using GMP.Raw.__gmpz_tdiv_q_2exp;
-  
    __gmpz_tdiv_q_2exp(q.ptr, n.ptr, b);
 }
 
@@ -953,7 +895,6 @@ function mpz_tdiv_r_2exp (var r, var n, int b) {
   if(!(n instanceof GMP.Integer))
     throw Error("incorrect type for n in mpz_tdiv_r_2exp");
   using GMP.Raw.__gmpz_tdiv_r_2exp;
-  
    __gmpz_tdiv_r_2exp(r.ptr, n.ptr, b);
 }
 
@@ -975,7 +916,6 @@ function mpz_mod (var r, var n, var d) {
   if(!(d instanceof GMP.Integer))
     throw Error("incorrect type for d in mpz_mod");
   using GMP.Raw.__gmpz_mod;
-  
    __gmpz_mod(r.ptr, n.ptr, d.ptr);
 }
 
@@ -985,7 +925,6 @@ function mpz_mod_ui (var r, var n, int d) {
   if(!(n instanceof GMP.Integer))
     throw Error("incorrect type for n in mpz_mod_ui");
   using GMP.Raw.__gmpz_fdiv_r_ui;
-  
   return __gmpz_fdiv_r_ui(r.ptr, n.ptr, d);
 }
 
@@ -1007,7 +946,6 @@ function mpz_divexact (var q, var n, var d) {
   if(!(d instanceof GMP.Integer))
     throw Error("incorrect type for d in mpz_divexact");
   using GMP.Raw.__gmpz_divexact;
-  
    __gmpz_divexact(q.ptr, n.ptr, d.ptr);
 }
 
@@ -1017,7 +955,6 @@ function mpz_divexact_ui (var q, var n, int d) {
   if(!(n instanceof GMP.Integer))
     throw Error("incorrect type for n in mpz_divexact_ui");
   using GMP.Raw.__gmpz_divexact_ui;
-  
    __gmpz_divexact_ui(q.ptr, n.ptr, d);
 }
 
@@ -1039,7 +976,6 @@ function mpz_divisible_p (var n, var d) {
   if(!(d instanceof GMP.Integer))
     throw Error("incorrect type for d in mpz_divisible_p");
   using GMP.Raw.__gmpz_divisible_p;
-  
   return __gmpz_divisible_p(n.ptr, d.ptr);
 }
 
@@ -1047,7 +983,6 @@ function mpz_divisible_ui_p (var n, int d) {
   if(!(n instanceof GMP.Integer))
     throw Error("incorrect type for n in mpz_divisible_ui_p");
   using GMP.Raw.__gmpz_divisible_ui_p;
-  
   return __gmpz_divisible_ui_p(n.ptr, d);
 }
 
@@ -1055,7 +990,6 @@ function mpz_divisible_2exp_p (var n, int b) {
   if(!(n instanceof GMP.Integer))
     throw Error("incorrect type for n in mpz_divisible_2exp_p");
   using GMP.Raw.__gmpz_divisible_2exp_p;
-  
   return __gmpz_divisible_2exp_p(n.ptr, b);
 }
 
@@ -1079,7 +1013,6 @@ function mpz_congruent_p (var n, var c, var d) {
   if(!(d instanceof GMP.Integer))
     throw Error("incorrect type for d in mpz_congruent_p");
   using GMP.Raw.__gmpz_congruent_p;
-  
   return __gmpz_congruent_p(n.ptr, c.ptr, d.ptr);
 }
 
@@ -1087,7 +1020,6 @@ function mpz_congruent_ui_p (var n, int c, int d) {
   if(!(n instanceof GMP.Integer))
     throw Error("incorrect type for n in mpz_congruent_ui_p");
   using GMP.Raw.__gmpz_congruent_ui_p;
-  
   return __gmpz_congruent_ui_p(n.ptr, c, d);
 }
 
@@ -1097,7 +1029,6 @@ function mpz_congruent_2exp_p (var n, var c, int b) {
   if(!(c instanceof GMP.Integer))
     throw Error("incorrect type for c in mpz_congruent_2exp_p");
   using GMP.Raw.__gmpz_congruent_2exp_p;
-  
   return __gmpz_congruent_2exp_p(n.ptr, c.ptr, b);
 }
 
@@ -1121,7 +1052,6 @@ function mpz_powm (var rop, var base, var exp, var mod) {
   if(!(mod instanceof GMP.Integer))
     throw Error("incorrect type for mod in mpz_powm");
   using GMP.Raw.__gmpz_powm;
-  
    __gmpz_powm(rop.ptr, base.ptr, exp.ptr, mod.ptr);
 }
 
@@ -1133,7 +1063,6 @@ function mpz_powm_ui (var rop, var base, int exp, var mod) {
   if(!(mod instanceof GMP.Integer))
     throw Error("incorrect type for mod in mpz_powm_ui");
   using GMP.Raw.__gmpz_powm_ui;
-  
    __gmpz_powm_ui(rop.ptr, base.ptr, exp, mod.ptr);
 }
 
@@ -1155,7 +1084,6 @@ function mpz_powm_sec (var rop, var base, var exp, var mod) {
   if(!(mod instanceof GMP.Integer))
     throw Error("incorrect type for mod in mpz_powm_sec");
   using GMP.Raw.__gmpz_powm_sec;
-  
    __gmpz_powm_sec(rop.ptr, base.ptr, exp.ptr, mod.ptr);
 }
 
@@ -1175,7 +1103,6 @@ function mpz_pow_ui (var rop, var base, int exp) {
   if(!(base instanceof GMP.Integer))
     throw Error("incorrect type for base in mpz_pow_ui");
   using GMP.Raw.__gmpz_pow_ui;
-  
    __gmpz_pow_ui(rop.ptr, base.ptr, exp);
 }
 
@@ -1183,7 +1110,6 @@ function mpz_ui_pow_ui (var rop, int base, int exp) {
   if(!(rop instanceof GMP.Integer))
     throw Error("incorrect type for rop in mpz_ui_pow_ui");
   using GMP.Raw.__gmpz_ui_pow_ui;
-  
    __gmpz_ui_pow_ui(rop.ptr, base, exp);
 }
 
@@ -1201,7 +1127,6 @@ function mpz_root (var rop, var op, int n) {
   if(!(op instanceof GMP.Integer))
     throw Error("incorrect type for op in mpz_root");
   using GMP.Raw.__gmpz_root;
-  
   return __gmpz_root(rop.ptr, op.ptr, n);
 }
 
@@ -1221,7 +1146,6 @@ function mpz_rootrem (var root, var rem, var u, int n) {
   if(!(u instanceof GMP.Integer))
     throw Error("incorrect type for u in mpz_rootrem");
   using GMP.Raw.__gmpz_rootrem;
-  
    __gmpz_rootrem(root.ptr, rem.ptr, u.ptr, n);
 }
 
@@ -1239,7 +1163,6 @@ function mpz_sqrt (var rop, var op) {
   if(!(op instanceof GMP.Integer))
     throw Error("incorrect type for op in mpz_sqrt");
   using GMP.Raw.__gmpz_sqrt;
-  
    __gmpz_sqrt(rop.ptr, op.ptr);
 }
 
@@ -1259,7 +1182,6 @@ function mpz_sqrtrem (var rop1, var rop2, var op) {
   if(!(op instanceof GMP.Integer))
     throw Error("incorrect type for op in mpz_sqrtrem");
   using GMP.Raw.__gmpz_sqrtrem;
-  
    __gmpz_sqrtrem(rop1.ptr, rop2.ptr, op.ptr);
 }
 
@@ -1275,7 +1197,6 @@ function mpz_perfect_power_p (var op) {
   if(!(op instanceof GMP.Integer))
     throw Error("incorrect type for op in mpz_perfect_power_p");
   using GMP.Raw.__gmpz_perfect_power_p;
-  
   return __gmpz_perfect_power_p(op.ptr);
 }
 
@@ -1291,7 +1212,6 @@ function mpz_perfect_square_p (var op) {
   if(!(op instanceof GMP.Integer))
     throw Error("incorrect type for op in mpz_perfect_square_p");
   using GMP.Raw.__gmpz_perfect_square_p;
-  
   return __gmpz_perfect_square_p(op.ptr);
 }
 
@@ -1307,7 +1227,6 @@ function mpz_probab_prime_p (var n, int reps) {
   if(!(n instanceof GMP.Integer))
     throw Error("incorrect type for n in mpz_probab_prime_p");
   using GMP.Raw.__gmpz_probab_prime_p;
-  
   return __gmpz_probab_prime_p(n.ptr, reps);
 }
 
@@ -1325,7 +1244,6 @@ function mpz_nextprime (var rop, var op) {
   if(!(op instanceof GMP.Integer))
     throw Error("incorrect type for op in mpz_nextprime");
   using GMP.Raw.__gmpz_nextprime;
-  
    __gmpz_nextprime(rop.ptr, op.ptr);
 }
 
@@ -1345,7 +1263,6 @@ function mpz_gcd (var rop, var op1, var op2) {
   if(!(op2 instanceof GMP.Integer))
     throw Error("incorrect type for op2 in mpz_gcd");
   using GMP.Raw.__gmpz_gcd;
-  
    __gmpz_gcd(rop.ptr, op1.ptr, op2.ptr);
 }
 
@@ -1363,7 +1280,6 @@ function mpz_gcd_ui (var rop, var op1, int op2) {
   if(!(op1 instanceof GMP.Integer))
     throw Error("incorrect type for op1 in mpz_gcd_ui");
   using GMP.Raw.__gmpz_gcd_ui;
-  
   return __gmpz_gcd_ui(rop.ptr, op1.ptr, op2);
 }
 
@@ -1387,7 +1303,6 @@ function mpz_gcdext (var g, var s, var t, var a, var b) {
   if(!(b instanceof GMP.Integer))
     throw Error("incorrect type for b in mpz_gcdext");
   using GMP.Raw.__gmpz_gcdext;
-  
    __gmpz_gcdext(g.ptr, s.ptr, t.ptr, a.ptr, b.ptr);
 }
 
@@ -1409,7 +1324,6 @@ function mpz_lcm (var rop, var op1, var op2) {
   if(!(op2 instanceof GMP.Integer))
     throw Error("incorrect type for op2 in mpz_lcm");
   using GMP.Raw.__gmpz_lcm;
-  
    __gmpz_lcm(rop.ptr, op1.ptr, op2.ptr);
 }
 
@@ -1419,7 +1333,6 @@ function mpz_lcm_ui (var rop, var op1, int op2) {
   if(!(op1 instanceof GMP.Integer))
     throw Error("incorrect type for op1 in mpz_lcm_ui");
   using GMP.Raw.__gmpz_lcm_ui;
-  
    __gmpz_lcm_ui(rop.ptr, op1.ptr, op2);
 }
 
@@ -1439,7 +1352,6 @@ function mpz_invert (var rop, var op1, var op2) {
   if(!(op2 instanceof GMP.Integer))
     throw Error("incorrect type for op2 in mpz_invert");
   using GMP.Raw.__gmpz_invert;
-  
   return __gmpz_invert(rop.ptr, op1.ptr, op2.ptr);
 }
 
@@ -1457,7 +1369,6 @@ function mpz_jacobi (var a, var b) {
   if(!(b instanceof GMP.Integer))
     throw Error("incorrect type for b in mpz_jacobi");
   using GMP.Raw.__gmpz_jacobi;
-  
   return __gmpz_jacobi(a.ptr, b.ptr);
 }
 
@@ -1475,7 +1386,6 @@ function mpz_legendre (var a, var p) {
   if(!(p instanceof GMP.Integer))
     throw Error("incorrect type for p in mpz_legendre");
   using GMP.Raw.__gmpz_jacobi;
-  
   return __gmpz_jacobi(a.ptr, p.ptr);
 }
 
@@ -1501,7 +1411,6 @@ function mpz_kronecker (var a, var b) {
   if(!(b instanceof GMP.Integer))
     throw Error("incorrect type for b in mpz_kronecker");
   using GMP.Raw.__gmpz_jacobi;
-  
   return __gmpz_jacobi(a.ptr, b.ptr);
 }
 
@@ -1509,7 +1418,6 @@ function mpz_kronecker_si (var a, int b) {
   if(!(a instanceof GMP.Integer))
     throw Error("incorrect type for a in mpz_kronecker_si");
   using GMP.Raw.__gmpz_kronecker_si;
-  
   return __gmpz_kronecker_si(a.ptr, b);
 }
 
@@ -1517,7 +1425,6 @@ function mpz_kronecker_ui (var a, int b) {
   if(!(a instanceof GMP.Integer))
     throw Error("incorrect type for a in mpz_kronecker_ui");
   using GMP.Raw.__gmpz_kronecker_ui;
-  
   return __gmpz_kronecker_ui(a.ptr, b);
 }
 
@@ -1525,7 +1432,6 @@ function mpz_si_kronecker (int a, var b) {
   if(!(b instanceof GMP.Integer))
     throw Error("incorrect type for b in mpz_si_kronecker");
   using GMP.Raw.__gmpz_si_kronecker;
-  
   return __gmpz_si_kronecker(a, b.ptr);
 }
 
@@ -1533,7 +1439,6 @@ function mpz_ui_kronecker (int a, var b) {
   if(!(b instanceof GMP.Integer))
     throw Error("incorrect type for b in mpz_ui_kronecker");
   using GMP.Raw.__gmpz_ui_kronecker;
-  
   return __gmpz_ui_kronecker(a, b.ptr);
 }
 
@@ -1553,7 +1458,6 @@ function mpz_remove (var rop, var op, var f) {
   if(!(f instanceof GMP.Integer))
     throw Error("incorrect type for f in mpz_remove");
   using GMP.Raw.__gmpz_remove;
-  
   return __gmpz_remove(rop.ptr, op.ptr, f.ptr);
 }
 
@@ -1569,7 +1473,6 @@ function mpz_fac_ui (var rop, int op) {
   if(!(rop instanceof GMP.Integer))
     throw Error("incorrect type for rop in mpz_fac_ui");
   using GMP.Raw.__gmpz_fac_ui;
-  
    __gmpz_fac_ui(rop.ptr, op);
 }
 
@@ -1589,7 +1492,6 @@ function mpz_bin_ui (var rop, var n, int k) {
   if(!(n instanceof GMP.Integer))
     throw Error("incorrect type for n in mpz_bin_ui");
   using GMP.Raw.__gmpz_bin_ui;
-  
    __gmpz_bin_ui(rop.ptr, n.ptr, k);
 }
 
@@ -1597,7 +1499,6 @@ function mpz_bin_uiui (var rop, int n, int k) {
   if(!(rop instanceof GMP.Integer))
     throw Error("incorrect type for rop in mpz_bin_uiui");
   using GMP.Raw.__gmpz_bin_uiui;
-  
    __gmpz_bin_uiui(rop.ptr, n, k);
 }
 
@@ -1615,7 +1516,6 @@ function mpz_fib_ui (var fn, int n) {
   if(!(fn instanceof GMP.Integer))
     throw Error("incorrect type for fn in mpz_fib_ui");
   using GMP.Raw.__gmpz_fib_ui;
-  
    __gmpz_fib_ui(fn.ptr, n);
 }
 
@@ -1625,7 +1525,6 @@ function mpz_fib2_ui (var fn, var fnsub1, int n) {
   if(!(fnsub1 instanceof GMP.Integer))
     throw Error("incorrect type for fnsub1 in mpz_fib2_ui");
   using GMP.Raw.__gmpz_fib2_ui;
-  
    __gmpz_fib2_ui(fn.ptr, fnsub1.ptr, n);
 }
 
@@ -1643,7 +1542,6 @@ function mpz_lucnum_ui (var ln, int n) {
   if(!(ln instanceof GMP.Integer))
     throw Error("incorrect type for ln in mpz_lucnum_ui");
   using GMP.Raw.__gmpz_lucnum_ui;
-  
    __gmpz_lucnum_ui(ln.ptr, n);
 }
 
@@ -1653,7 +1551,6 @@ function mpz_lucnum2_ui (var ln, var lnsub1, int n) {
   if(!(lnsub1 instanceof GMP.Integer))
     throw Error("incorrect type for lnsub1 in mpz_lucnum2_ui");
   using GMP.Raw.__gmpz_lucnum2_ui;
-  
    __gmpz_lucnum2_ui(ln.ptr, lnsub1.ptr, n);
 }
 
@@ -1661,6 +1558,10 @@ function mpz_lucnum2_ui (var ln, var lnsub1, int n) {
 =head1 int mpz_cmp (mpz_t op1, mpz_t op2)
 
 =head1 int mpz_cmp_d (mpz_t op1, double op2)
+
+=head1 int mpz_cmp_si (mpz_t op1, signed long int op2)
+
+=head1 int mpz_cmp_ui (mpz_t op1, unsigned long int op2)
 
 Compare op1 and op2. Return a positive value if op1 > op2, zero if op1 = op2, or a negative value if op1 < op2. mpz_cmp_ui and mpz_cmp_si are macros and will evaluate their arguments more than once. mpz_cmp_d can be called with an infinity, but results are undefined for a NaN. 
 
@@ -1673,7 +1574,6 @@ function mpz_cmp (var op1, var op2) {
   if(!(op2 instanceof GMP.Integer))
     throw Error("incorrect type for op2 in mpz_cmp");
   using GMP.Raw.__gmpz_cmp;
-  
   return __gmpz_cmp(op1.ptr, op2.ptr);
 }
 
@@ -1681,8 +1581,21 @@ function mpz_cmp_d (var op1, float op2) {
   if(!(op1 instanceof GMP.Integer))
     throw Error("incorrect type for op1 in mpz_cmp_d");
   using GMP.Raw.__gmpz_cmp_d;
-  
   return __gmpz_cmp_d(op1.ptr, op2);
+}
+
+function mpz_cmp_si (var op1, int op2) {
+  if(!(op1 instanceof GMP.Integer))
+    throw Error("incorrect type for op1 in mpz_cmp_si");
+  using GMP.Raw.__gmpz_cmp_si;
+  return __gmpz_cmp_si(op1.ptr, op2);
+}
+
+function mpz_cmp_ui (var op1, int op2) {
+  if(!(op1 instanceof GMP.Integer))
+    throw Error("incorrect type for op1 in mpz_cmp_ui");
+  using GMP.Raw.__gmpz_cmp_ui;
+  return __gmpz_cmp_ui(op1.ptr, op2);
 }
 
 /*
@@ -1703,7 +1616,6 @@ function mpz_cmpabs (var op1, var op2) {
   if(!(op2 instanceof GMP.Integer))
     throw Error("incorrect type for op2 in mpz_cmpabs");
   using GMP.Raw.__gmpz_cmpabs;
-  
   return __gmpz_cmpabs(op1.ptr, op2.ptr);
 }
 
@@ -1711,7 +1623,6 @@ function mpz_cmpabs_d (var op1, float op2) {
   if(!(op1 instanceof GMP.Integer))
     throw Error("incorrect type for op1 in mpz_cmpabs_d");
   using GMP.Raw.__gmpz_cmpabs_d;
-  
   return __gmpz_cmpabs_d(op1.ptr, op2);
 }
 
@@ -1719,8 +1630,22 @@ function mpz_cmpabs_ui (var op1, int op2) {
   if(!(op1 instanceof GMP.Integer))
     throw Error("incorrect type for op1 in mpz_cmpabs_ui");
   using GMP.Raw.__gmpz_cmpabs_ui;
-  
   return __gmpz_cmpabs_ui(op1.ptr, op2);
+}
+
+/*
+=head1 int mpz_sgn (mpz_t op)
+
+Return +1 if op > 0, 0 if op = 0, and -1 if op < 0. This function is actually implemented as a macro. It evaluates its argument multiple times. 
+
+=cut
+*/
+
+function mpz_sgn (var op) {
+  if(!(op instanceof GMP.Integer))
+    throw Error("incorrect type for op in mpz_sgn");
+  using GMP.Raw.__gmpz_sgn;
+  return __gmpz_sgn(op.ptr);
 }
 
 /*
@@ -1739,7 +1664,6 @@ function mpz_and (var rop, var op1, var op2) {
   if(!(op2 instanceof GMP.Integer))
     throw Error("incorrect type for op2 in mpz_and");
   using GMP.Raw.__gmpz_and;
-  
    __gmpz_and(rop.ptr, op1.ptr, op2.ptr);
 }
 
@@ -1759,7 +1683,6 @@ function mpz_ior (var rop, var op1, var op2) {
   if(!(op2 instanceof GMP.Integer))
     throw Error("incorrect type for op2 in mpz_ior");
   using GMP.Raw.__gmpz_ior;
-  
    __gmpz_ior(rop.ptr, op1.ptr, op2.ptr);
 }
 
@@ -1779,7 +1702,6 @@ function mpz_xor (var rop, var op1, var op2) {
   if(!(op2 instanceof GMP.Integer))
     throw Error("incorrect type for op2 in mpz_xor");
   using GMP.Raw.__gmpz_xor;
-  
    __gmpz_xor(rop.ptr, op1.ptr, op2.ptr);
 }
 
@@ -1797,7 +1719,6 @@ function mpz_com (var rop, var op) {
   if(!(op instanceof GMP.Integer))
     throw Error("incorrect type for op in mpz_com");
   using GMP.Raw.__gmpz_com;
-  
    __gmpz_com(rop.ptr, op.ptr);
 }
 
@@ -1813,7 +1734,6 @@ function mpz_popcount (var op) {
   if(!(op instanceof GMP.Integer))
     throw Error("incorrect type for op in mpz_popcount");
   using GMP.Raw.__gmpz_popcount;
-  
   return __gmpz_popcount(op.ptr);
 }
 
@@ -1831,7 +1751,6 @@ function mpz_hamdist (var op1, var op2) {
   if(!(op2 instanceof GMP.Integer))
     throw Error("incorrect type for op2 in mpz_hamdist");
   using GMP.Raw.__gmpz_hamdist;
-  
   return __gmpz_hamdist(op1.ptr, op2.ptr);
 }
 
@@ -1849,7 +1768,6 @@ function mpz_scan0 (var op, int starting_bit) {
   if(!(op instanceof GMP.Integer))
     throw Error("incorrect type for op in mpz_scan0");
   using GMP.Raw.__gmpz_scan0;
-  
   return __gmpz_scan0(op.ptr, starting_bit);
 }
 
@@ -1857,7 +1775,6 @@ function mpz_scan1 (var op, int starting_bit) {
   if(!(op instanceof GMP.Integer))
     throw Error("incorrect type for op in mpz_scan1");
   using GMP.Raw.__gmpz_scan1;
-  
   return __gmpz_scan1(op.ptr, starting_bit);
 }
 
@@ -1873,7 +1790,6 @@ function mpz_setbit (var rop, int bit_index) {
   if(!(rop instanceof GMP.Integer))
     throw Error("incorrect type for rop in mpz_setbit");
   using GMP.Raw.__gmpz_setbit;
-  
    __gmpz_setbit(rop.ptr, bit_index);
 }
 
@@ -1889,7 +1805,6 @@ function mpz_clrbit (var rop, int bit_index) {
   if(!(rop instanceof GMP.Integer))
     throw Error("incorrect type for rop in mpz_clrbit");
   using GMP.Raw.__gmpz_clrbit;
-  
    __gmpz_clrbit(rop.ptr, bit_index);
 }
 
@@ -1905,7 +1820,6 @@ function mpz_combit (var rop, int bit_index) {
   if(!(rop instanceof GMP.Integer))
     throw Error("incorrect type for rop in mpz_combit");
   using GMP.Raw.__gmpz_combit;
-  
    __gmpz_combit(rop.ptr, bit_index);
 }
 
@@ -1921,7 +1835,6 @@ function mpz_tstbit (var op, int bit_index) {
   if(!(op instanceof GMP.Integer))
     throw Error("incorrect type for op in mpz_tstbit");
   using GMP.Raw.__gmpz_tstbit;
-  
   return __gmpz_tstbit(op.ptr, bit_index);
 }
 
@@ -1937,7 +1850,6 @@ function mpz_urandomb (var rop, var state, int n) {
   if(!(rop instanceof GMP.Integer))
     throw Error("incorrect type for rop in mpz_urandomb");
   using GMP.Raw.__gmpz_urandomb;
-  
    __gmpz_urandomb(rop.ptr, state, n);
 }
 
@@ -1955,7 +1867,6 @@ function mpz_urandomm (var rop, var state, var n) {
   if(!(n instanceof GMP.Integer))
     throw Error("incorrect type for n in mpz_urandomm");
   using GMP.Raw.__gmpz_urandomm;
-  
    __gmpz_urandomm(rop.ptr, state, n.ptr);
 }
 
@@ -1971,7 +1882,6 @@ function mpz_rrandomb (var rop, var state, int n) {
   if(!(rop instanceof GMP.Integer))
     throw Error("incorrect type for rop in mpz_rrandomb");
   using GMP.Raw.__gmpz_rrandomb;
-  
    __gmpz_rrandomb(rop.ptr, state, n);
 }
 
@@ -1997,7 +1907,6 @@ function mpz_fits_ulong_p (var op) {
   if(!(op instanceof GMP.Integer))
     throw Error("incorrect type for op in mpz_fits_ulong_p");
   using GMP.Raw.__gmpz_fits_ulong_p;
-  
   return __gmpz_fits_ulong_p(op.ptr);
 }
 
@@ -2005,7 +1914,6 @@ function mpz_fits_slong_p (var op) {
   if(!(op instanceof GMP.Integer))
     throw Error("incorrect type for op in mpz_fits_slong_p");
   using GMP.Raw.__gmpz_fits_slong_p;
-  
   return __gmpz_fits_slong_p(op.ptr);
 }
 
@@ -2013,7 +1921,6 @@ function mpz_fits_uint_p (var op) {
   if(!(op instanceof GMP.Integer))
     throw Error("incorrect type for op in mpz_fits_uint_p");
   using GMP.Raw.__gmpz_fits_uint_p;
-  
   return __gmpz_fits_uint_p(op.ptr);
 }
 
@@ -2021,7 +1928,6 @@ function mpz_fits_sint_p (var op) {
   if(!(op instanceof GMP.Integer))
     throw Error("incorrect type for op in mpz_fits_sint_p");
   using GMP.Raw.__gmpz_fits_sint_p;
-  
   return __gmpz_fits_sint_p(op.ptr);
 }
 
@@ -2029,7 +1935,6 @@ function mpz_fits_ushort_p (var op) {
   if(!(op instanceof GMP.Integer))
     throw Error("incorrect type for op in mpz_fits_ushort_p");
   using GMP.Raw.__gmpz_fits_ushort_p;
-  
   return __gmpz_fits_ushort_p(op.ptr);
 }
 
@@ -2037,8 +1942,31 @@ function mpz_fits_sshort_p (var op) {
   if(!(op instanceof GMP.Integer))
     throw Error("incorrect type for op in mpz_fits_sshort_p");
   using GMP.Raw.__gmpz_fits_sshort_p;
-  
   return __gmpz_fits_sshort_p(op.ptr);
+}
+
+/*
+=head1 int mpz_odd_p (mpz_t op)
+
+=head1 int mpz_even_p (mpz_t op)
+
+Determine whether op is odd or even, respectively. Return non-zero if yes, zero if no. These macros evaluate their argument more than once. 
+
+=cut
+*/
+
+function mpz_odd_p (var op) {
+  if(!(op instanceof GMP.Integer))
+    throw Error("incorrect type for op in mpz_odd_p");
+  using GMP.Raw.__gmpz_odd_p;
+  return __gmpz_odd_p(op.ptr);
+}
+
+function mpz_even_p (var op) {
+  if(!(op instanceof GMP.Integer))
+    throw Error("incorrect type for op in mpz_even_p");
+  using GMP.Raw.__gmpz_even_p;
+  return __gmpz_even_p(op.ptr);
 }
 
 /*
@@ -2053,7 +1981,6 @@ function mpz_sizeinbase (var op, int base) {
   if(!(op instanceof GMP.Integer))
     throw Error("incorrect type for op in mpz_sizeinbase");
   using GMP.Raw.__gmpz_sizeinbase;
-  
   return __gmpz_sizeinbase(op.ptr, base);
 }
 
@@ -2069,7 +1996,6 @@ function mpz_getlimbn (var op, int n) {
   if(!(op instanceof GMP.Integer))
     throw Error("incorrect type for op in mpz_getlimbn");
   using GMP.Raw.__gmpz_getlimbn;
-  
   return __gmpz_getlimbn(op.ptr, n);
 }
 
@@ -2085,7 +2011,6 @@ function mpz_size (var op) {
   if(!(op instanceof GMP.Integer))
     throw Error("incorrect type for op in mpz_size");
   using GMP.Raw.__gmpz_size;
-  
   return __gmpz_size(op.ptr);
 }
 
