@@ -52,18 +52,19 @@ sub process_gmp_docs {
 
   foreach (@{$res->{'data'}}) {
     my $function = $_->{'function'};
-    next if $function !~ m/- Function:/;
+    next if $function !~ m/- (?:Function|Macro): [^G]/;
     my $description = $_->{'description'};
     my $raw_description = $_->{'raw_description'};
     $function = substr($function, 0, length($function) - length($raw_description) - 25);
     $function =~ s/^Function:  //g;
-    my @functions_in_description = grep {!/^$/} split / - Function: /, $function, -1;
+    my @functions_in_description = grep {!/^$/} split / - (?:Function|Macro): /, $function, -1;
     my @parsed_functions;
     foreach (@functions_in_description) {
       # skip class functions
       next if m/class::/;
       s!<small class="dots">\.\.\.</small>!...!g;
       my ($return_type, $function_name, $parameters) = /([^<]+) <b>([^<]+)<\/b> \(<var>(.*?)<\/var>\)/;
+      next if !$function_name;
       warn "Bad line parse: $_" if (!$return_type || !$function_name || !$parameters);
       next if $function_name !~ /^$prefix/;
       next if any { $function_name eq $_ } @blacklist;
