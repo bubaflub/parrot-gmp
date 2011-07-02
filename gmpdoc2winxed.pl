@@ -147,7 +147,9 @@ EOF
       }
       print <<EOF;
   using GMP.Raw.$internal_function_name;
-  $using_statements
+EOF
+      print "  ", $using_statements, "\n" if $using_statements;
+      print <<EOF;
   $return $line;
 }
 
