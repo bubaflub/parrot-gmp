@@ -61,3 +61,44 @@ namespace GMP {
   }
 }
 
+/*
+=head1 int mpz_sgn (mpz_t op)
+
+Return +1 if op > 0, 0 if op = 0, and -1 if op < 0. This function is actually implemented as a macro. It evaluates its argument multiple times. 
+
+=cut
+*/
+
+function mpz_sgn (var op) {
+  if(!(op instanceof GMP.Integer))
+    throw Error("incorrect type for op in mpz_sgn");
+  int i = mpz_cmp_ui(op, 0);
+  if (i > 0)
+    return 1;
+  if (i < 0)
+    return -1;
+  return 0;
+}
+
+/*
+=head1 int mpz_odd_p (mpz_t op)
+
+=head1 int mpz_even_p (mpz_t op)
+
+Determine whether op is odd or even, respectively. Return non-zero if yes, zero if no. These macros evaluate their argument more than once. 
+
+=cut
+*/
+
+function mpz_odd_p (var op) {
+  if(!(op instanceof GMP.Integer))
+    throw Error("incorrect type for op in mpz_odd_p");
+  return mpz_tstbit(op, 0);
+}
+
+function mpz_even_p (var op) {
+  if(!(op instanceof GMP.Integer))
+    throw Error("incorrect type for op in mpz_even_p");
+  return !mpz_tstbit(op, 0);
+}
+

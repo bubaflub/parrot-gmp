@@ -14,3 +14,6 @@
 - gmp_randinit
 - mpz_random
 - mpz_random2
+- mpz_sgn
+- mpz_odd_p
+- mpz_even_p
