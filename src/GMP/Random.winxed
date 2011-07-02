@@ -1,6 +1,6 @@
 function load[anon,load]() {
-  load_bytecode('src/GMP/raw.pbc');
-  load_bytecode('src/GMP/Common.pbc');
+  load_bytecode('GMP/raw.pbc');
+  load_bytecode('GMP/Common.pbc');
 }
 
 namespace GMP {

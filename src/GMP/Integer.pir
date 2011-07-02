@@ -9,10 +9,10 @@
 # predefined load_bytecode
 .annotate 'file', 'src/GMP/Integer.winxed'
 .annotate 'line', 4
-    load_bytecode 'src/GMP/raw.pbc'
+    load_bytecode 'GMP/raw.pbc'
 # predefined load_bytecode
 .annotate 'line', 5
-    load_bytecode 'src/GMP/Common.pbc'
+    load_bytecode 'GMP/Common.pbc'
 # }
 .annotate 'line', 6
 
