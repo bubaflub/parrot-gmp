@@ -58,6 +58,226 @@ namespace GMP {
       return mpz_get_si(self);
     }
 
+    function get_number[vtable]() {
+      return mpz_get_d(self);
+    }
+
+    function get_bool[vtable]() {
+      return mpz_get_ui(self);
+    }
+
+    function set_integer_native[vtable](int value) {
+      mpz_set_si(self, value);
+    }
+
+    function set_number_native[vtable](float value) {
+      mpz_set_d(self, value);
+    }
+
+    function set_string_native[vtable](string value) {
+      int i = mpz_set_str(self, value, 10);
+    }
+
+    /* vtable overrides to implement
+    function add[vtable](var value, var dest) {
+      var ret = new GMP.Integer();
+      mpz_add(ret, value, dest);
+      return ret;
+    }
+
+    function add_int[vtable](int value, var dest) {
+      return 
+    }
+
+    function add_float[vtable](float value, var dest) {
+      return 
+    }
+
+    function i_add(var value) {
+
+    }
+
+    function i_add_int(int value) {
+
+    }
+
+    function i_add_float(float value) {
+
+    }
+
+    function subtract[vtable](var value, var dest) {
+      return 
+    }
+
+    function subtract_int[vtable](int value, var dest) {
+      return 
+    }
+
+    function subtract_float[vtable](float value, var dest) {
+      return 
+    }
+
+    function i_subtract(var value) {
+
+    }
+
+    function i_subtract_int(int value) {
+
+    }
+
+    function i_subtract_float(float value) {
+
+    }
+
+    function multiply[vtable](var value, var dest) {
+      return 
+    }
+
+    function multiply_int[vtable](int value, var dest) {
+      return 
+    }
+
+    function multiply_float[vtable](float value, var dest) {
+      return 
+    }
+
+    function i_multiply(var value) {
+
+    }
+
+    function i_multiply_int(int value) {
+
+    }
+
+    function i_multiply_float(float value) {
+
+    }
+
+    function divide[vtable](var value, var dest) {
+      return 
+    }
+
+    function divide_int[vtable](var value, var dest) {
+      return 
+    }
+
+    function divide_float[vtable](varalue, var dest) {
+      return 
+    }
+
+    function i_divide(var value) {
+
+    }
+
+    function i_divide_int(int value) {
+
+    }
+
+    function i_divide_float(float value) {
+
+    }
+
+    function floor_divide[vtable](var value, var dest) {
+      return 
+    }
+
+    function floor_divide_int[vtable](int value, var dest) {
+      return 
+    }
+
+    function floor_divide_float[vtable](float value, var dest) {
+      return 
+    }
+
+    function i_floor_divide(var value) {
+
+    }
+
+    function i_floor_divide_int(int value) {
+
+    }
+
+    function i_floor_divide_float(float value) {
+
+    }
+
+    function modulus[vtable](var value, var dest) {
+      return 
+    }
+
+    function modulus_int[vtable](int value, var dest) {
+      return 
+    }
+
+    function modulus_float[vtable](float value, var dest) {
+      return 
+    }
+
+    function i_modulus(var value) {
+
+    }
+
+    function i_modulus_int(int value) {
+
+    }
+
+    function i_modulus_float(float value) {
+
+    }
+
+    function increment() {
+
+    }
+
+    function decrement() {
+
+    }
+
+    function absolute[vtable](var dest) {
+      return
+    }
+
+    function i_absolute() {
+
+    }
+
+    function neg(var dest) {
+      return
+    }
+
+    function i_neg() {
+
+    }
+
+    function is_equal(var value) {
+      return
+    }
+
+    function is_equal_num(var value) {
+      return
+    }
+
+    function is_equal_string(var value) {
+      return
+    }
+
+    function is_same(var value) {
+      return
+    }
+
+    function cmp(var value) {
+      return
+    }
+
+    function cmp_num(var value) {
+      return
+    }
+
+    function cmp_string(var value) {
+      return
+    }
+
+    */
   }
 }
 
