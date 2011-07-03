@@ -75,7 +75,7 @@ namespace GMP {
     }
 
     function set_string_native[vtable](string value) {
-      int i = mpz_set_string(self, value, 10);
+      int i = mpz_set_str(self, value, 10);
     }
 
     /* vtable overrides to implement
