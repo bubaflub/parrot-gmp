@@ -93,188 +93,229 @@ namespace GMP {
       return dest;
     }
 
-    /* vtable overrides to implement
-    function i_add(var value) {
-
+    function i_add[vtable](var value) {
+      mpz_add(self, self, value);
     }
 
-    function i_add_int(int value) {
-
+    function i_add_int[vtable](int value) {
+      mpz_add_ui(self, self, value);
     }
 
-    function i_add_float(float value) {
-
+    function i_add_float[vtable](float value) {
+      mpz_add_ui(self, self, int(value));
     }
 
     function subtract[vtable](var value, var dest) {
-      return 
+      mpz_sub(dest, self, value);
+      return dest;
     }
 
     function subtract_int[vtable](int value, var dest) {
-      return 
+      mpz_sub_ui(dest, self, value);
+      return dest;
     }
 
     function subtract_float[vtable](float value, var dest) {
-      return 
+      mpz_sub_ui(dest, self, int(value));
+      return dest;
     }
 
-    function i_subtract(var value) {
-
+    function i_subtract[vtable](var value) {
+      mpz_sub(self, self, value);
     }
 
-    function i_subtract_int(int value) {
-
+    function i_subtract_int[vtable](int value) {
+      mpz_sub_ui(self, self, value);
     }
 
-    function i_subtract_float(float value) {
-
+    function i_subtract_float[vtable](float value) {
+      mpz_sub_ui(self, self, int(value));
     }
 
     function multiply[vtable](var value, var dest) {
-      return 
+      mpz_mul(dest, self, value);
+      return dest;
     }
 
     function multiply_int[vtable](int value, var dest) {
-      return 
+      mpz_mul_si(dest, self, value);
+      return dest;
     }
 
     function multiply_float[vtable](float value, var dest) {
-      return 
+      mpz_mul_si(dest, self, int(value));
+      return dest;
     }
 
-    function i_multiply(var value) {
-
+    function i_multiply[vtable](var value) {
+      mpz_mul(self, self, value);
     }
 
-    function i_multiply_int(int value) {
-
+    function i_multiply_int[vtable](int value) {
+      mpz_mul_si(self, self, value);
     }
 
-    function i_multiply_float(float value) {
-
+    function i_multiply_float[vtable](float value) {
+      mpz_mul_si(self, self, int(value));
     }
 
     function divide[vtable](var value, var dest) {
-      return 
+      mpz_tdiv_q(dest, self, value);
+      return dest;
     }
 
-    function divide_int[vtable](var value, var dest) {
-      return 
+    function divide_int[vtable](int value, var dest) {
+      mpz_tdiv_q_ui(dest, self, value);
+      if (value < 0) {
+        mpz_mul_si(dest, dest, -1);
+      }
+      return dest;
     }
 
-    function divide_float[vtable](varalue, var dest) {
-      return 
+    function divide_float[vtable](float value, var dest) {
+      mpz_tdiv_q_ui(dest, self, int(value));
+      if (value < 0) {
+        mpz_mul_si(dest, dest, -1);
+      }
+      return dest;
     }
 
-    function i_divide(var value) {
-
+    function i_divide[vtable](var value) {
+      mpz_tdiv_q(self, self, value);
     }
 
-    function i_divide_int(int value) {
-
+    function i_divide_int[vtable](int value) {
+      mpz_tdiv_q_ui(self, self, value);
+      if (value < 0) {
+        mpz_mul_si(self, self, -1);
+      }
     }
 
-    function i_divide_float(float value) {
-
+    function i_divide_float[vtable](float value) {
+      mpz_tdiv_q_ui(self, self, int(value));
+      if (value < 0) {
+        mpz_mul_si(self, self, -1);
+      }
     }
 
     function floor_divide[vtable](var value, var dest) {
-      return 
+      mpz_fdiv_q(dest, self, value);
+      return dest;
     }
 
     function floor_divide_int[vtable](int value, var dest) {
-      return 
+      mpz_fdiv_q_ui(dest, self, value);
+      if (value < 0) {
+        mpz_mul_si(dest, dest, -1);
+      }
+      return dest;
     }
 
     function floor_divide_float[vtable](float value, var dest) {
-      return 
+      mpz_fdiv_q_ui(dest, self, int(value));
+      if (value < 0) {
+        mpz_mul_si(dest, dest, -1);
+      }
+      return dest;
     }
 
-    function i_floor_divide(var value) {
-
+    function i_floor_divide[vtable](var value) {
+      mpz_fdiv_q(self, self, value);
     }
 
-    function i_floor_divide_int(int value) {
-
+    function i_floor_divide_int[vtable](int value) {
+      mpz_fdiv_q_ui(self, self, value);
+      if (value < 0) {
+        mpz_mul_si(self, self, -1);
+      }
     }
 
-    function i_floor_divide_float(float value) {
-
+    function i_floor_divide_float[vtable](float value) {
+      mpz_fdiv_q_ui(self, self, int(value));
+      if (value < 0) {
+        mpz_mul_si(self, self, -1);
+      }
     }
 
     function modulus[vtable](var value, var dest) {
-      return 
+      mpz_mod(dest, self, value);
+      return dest;
     }
 
     function modulus_int[vtable](int value, var dest) {
-      return 
+      mpz_mod_ui(dest, self, value);
+      return dest;
     }
 
     function modulus_float[vtable](float value, var dest) {
-      return 
+      mpz_mod_ui(dest, self, int(value));
+      return dest;
     }
 
-    function i_modulus(var value) {
-
+    function i_modulus[vtable](var value) {
+      mpz_mod(self, self, value);
     }
 
-    function i_modulus_int(int value) {
-
+    function i_modulus_int[vtable](int value) {
+      mpz_mod_ui(self, self, value);
     }
 
-    function i_modulus_float(float value) {
-
+    function i_modulus_float[vtable](float value) {
+      mpz_mod_ui(self, self, int(value));
     }
 
-    function increment() {
-
+    function increment[vtable]() {
+      mpz_add_ui(self, self, 1);
     }
 
-    function decrement() {
-
+    function decrement[vtable]() {
+      mpz_add_si(self, self, -1);
     }
 
     function absolute[vtable](var dest) {
+      mpz_abs(dest, self);
+      return dest;
+    }
+
+    function i_absolute[vtable]() {
+      mpz_abs(self, self);
+    }
+
+    function neg[vtable](var dest) {
+      mpz_neg(dest, self);
+      return dest;
+    }
+
+    function i_neg[vtable]() {
+      mpz_neg(self, self);
+    }
+
+    /* vtable overrides to implement
+    function is_equal[vtable](var value) {
       return
     }
 
-    function i_absolute() {
-
-    }
-
-    function neg(var dest) {
+    function is_equal_num[vtable](var value) {
       return
     }
 
-    function i_neg() {
-
-    }
-
-    function is_equal(var value) {
+    function is_equal_string[vtable](var value) {
       return
     }
 
-    function is_equal_num(var value) {
+    function is_same[vtable](var value) {
       return
     }
 
-    function is_equal_string(var value) {
+    function cmp[vtable](var value) {
       return
     }
 
-    function is_same(var value) {
+    function cmp_num[vtable](var value) {
       return
     }
 
-    function cmp(var value) {
-      return
-    }
-
-    function cmp_num(var value) {
-      return
-    }
-
-    function cmp_string(var value) {
+    function cmp_string[vtable](var value) {
       return
     }
 
