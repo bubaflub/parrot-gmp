@@ -78,21 +78,22 @@ namespace GMP {
       int i = mpz_set_str(self, value, 10);
     }
 
-    /* vtable overrides to implement
     function add[vtable](var value, var dest) {
-      var ret = new GMP.Integer();
-      mpz_add(ret, value, dest);
-      return ret;
+      mpz_add(dest, self, value);
+      return dest;
     }
 
     function add_int[vtable](int value, var dest) {
-      return 
+      mpz_add_ui(dest, self, value);
+      return dest;
     }
 
     function add_float[vtable](float value, var dest) {
-      return 
+      mpz_add_ui(dest, self, int(value));
+      return dest;
     }
 
+    /* vtable overrides to implement
     function i_add(var value) {
 
     }
