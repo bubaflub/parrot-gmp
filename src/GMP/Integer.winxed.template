@@ -269,7 +269,7 @@ namespace GMP {
     }
 
     function decrement[vtable]() {
-      mpz_add_si(self, self, -1);
+      mpz_sub_ui(self, self, 1);
     }
 
     function absolute[vtable](var dest) {

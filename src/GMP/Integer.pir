@@ -841,10 +841,11 @@
 
 
 .sub 'decrement' :method :vtable
+.const 'Sub' WSubId_11 = "WSubId_11"
 # Body
 # {
 .annotate 'line', 272
-    'mpz_add_si'(self, self, -1)
+    WSubId_11(self, self, 1)
 # }
 .annotate 'line', 273
 
