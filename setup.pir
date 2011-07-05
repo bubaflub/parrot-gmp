@@ -101,52 +101,56 @@
 # Body
 # {
 .annotate 'line', 42
+    $P2 = __ARG_1["pbc_pir"]
+    $P2["GMP/raw.pbc"] = "src/GMP/raw.pir"
+.annotate 'line', 43
+    $P2 = __ARG_1["inst_lib"]
+    $P2.'push'("GMP/raw.pbc")
+.annotate 'line', 45
 # var libs: $P1
     root_new $P1, ['parrot';'ResizablePMCArray']
-    box $P2, 'raw'
-    push $P1, $P2
     box $P2, 'Common'
     push $P1, $P2
     box $P2, 'Random'
     push $P1, $P2
     box $P2, 'Integer'
     push $P1, $P2
-.annotate 'line', 49
+.annotate 'line', 51
 # prefix: $S1
     set $S1, "src/GMP/"
-.annotate 'line', 51
+.annotate 'line', 53
     iter $P3, $P1
     set $P3, 0
   __label_1: # for iteration
     unless $P3 goto __label_2
     shift $S2, $P3
 # {
-.annotate 'line', 52
+.annotate 'line', 54
 # winxed_file: $S3
     concat $S3, $S1, $S2
     concat $S3, $S3, ".winxed"
-.annotate 'line', 53
+.annotate 'line', 55
 # pir_file: $S4
     concat $S4, $S1, $S2
     concat $S4, $S4, ".pir"
-.annotate 'line', 54
+.annotate 'line', 56
 # pbc_file: $S5
     concat $S5, "GMP/", $S2
     concat $S5, $S5, ".pbc"
-.annotate 'line', 55
+.annotate 'line', 57
     $P2 = __ARG_1["pir_winxed"]
     $P2[$S4] = $S3
-.annotate 'line', 56
+.annotate 'line', 58
     $P2 = __ARG_1["pbc_pir"]
     $P2[$S5] = $S4
-.annotate 'line', 57
+.annotate 'line', 59
     $P2 = __ARG_1["inst_lib"]
     $P2.'push'($S5)
 # }
     goto __label_1
   __label_2: # endfor
 # }
-.annotate 'line', 59
+.annotate 'line', 62
 
 .end # setup_stable_libraries
 
@@ -154,20 +158,20 @@
 .sub 'do_test' :subid('WSubId_1')
 # Body
 # {
-.annotate 'line', 62
+.annotate 'line', 65
 # result: $I1
     null $I1
-.annotate 'line', 63
+.annotate 'line', 66
 # cmd: $S1
     set $S1, "parrot-nqp t/harness"
-.annotate 'line', 64
+.annotate 'line', 67
 # pirop spawnw
     spawnw $I1, $S1
-.annotate 'line', 65
+.annotate 'line', 68
 # pirop exit
     exit $I1
 # }
-.annotate 'line', 66
+.annotate 'line', 69
 
 .end # do_test
 
@@ -175,18 +179,18 @@
 .sub 'check_dependencies' :subid('WSubId_3')
 # Body
 # {
-.annotate 'line', 69
+.annotate 'line', 72
 # var config: $P1
 # predefined getinterp
     getinterp $P5
     $P1 = $P5[8]
-.annotate 'line', 71
+.annotate 'line', 74
 # maj: $I1
     $I1 = $P1['MAJOR']
-.annotate 'line', 72
+.annotate 'line', 75
 # min: $I2
     $I2 = $P1['MINOR']
-.annotate 'line', 73
+.annotate 'line', 76
     islt $I9, $I1, 3
     if $I9 goto __label_2
     iseq $I9, $I1, 3
@@ -197,43 +201,43 @@
     unless $I9 goto __label_1
 # {
 # predefined die
-.annotate 'line', 74
+.annotate 'line', 77
     die "You need at least Parrot 3.2.0 to use Parrot-GMP"
 # }
   __label_1: # endif
-.annotate 'line', 77
+.annotate 'line', 80
 # has_libffi: $I3
     $I3 = $P1['has_libffi']
-.annotate 'line', 78
+.annotate 'line', 81
     not $I9, $I3
     unless $I9 goto __label_4
 # {
 # predefined die
-.annotate 'line', 79
+.annotate 'line', 82
     die "You need to have Parrot configured with libffi to use Parrot-GMP"
 # }
   __label_4: # endif
-.annotate 'line', 82
+.annotate 'line', 85
 # has_gmp: $I4
     $I4 = $P1['HAS_GMP']
-.annotate 'line', 83
+.annotate 'line', 86
     not $I9, $I4
     unless $I9 goto __label_5
 # {
 # predefined die
-.annotate 'line', 84
+.annotate 'line', 87
     die "You need to have Parrot configured with GMP to use Parrot-GMP"
 # }
   __label_5: # endif
-.annotate 'line', 88
+.annotate 'line', 91
 # file: $S1
     set $S1, "build/gmp_test.c"
-.annotate 'line', 89
+.annotate 'line', 92
 # exe: $S2
 # predefined string
     $S5 = $P1['exe']
     concat $S2, "build/gmp_test", $S5
-.annotate 'line', 90
+.annotate 'line', 93
 # command: $S3
 # predefined string
     $S5 = $P1['cc']
@@ -248,58 +252,58 @@
     concat $S3, $S3, $S2
     concat $S3, $S3, " "
     concat $S3, $S3, $S1
-.annotate 'line', 91
+.annotate 'line', 94
     'system'($S3)
-.annotate 'line', 92
+.annotate 'line', 95
 # var pipe: $P2
     new $P2, [ "FileHandle" ]
-.annotate 'line', 93
+.annotate 'line', 96
     $P2.'encoding'('utf8')
-.annotate 'line', 94
+.annotate 'line', 97
     $P2.'open'($S2, "rp")
-.annotate 'line', 95
+.annotate 'line', 98
 # output: $S4
     $P5 = $P2.'readall'()
     null $S4
     if_null $P5, __label_6
     set $S4, $P5
   __label_6:
-.annotate 'line', 96
+.annotate 'line', 99
     $P2.'close'()
-.annotate 'line', 97
+.annotate 'line', 100
 # exit_status: $I5
     $P5 = $P2.'exit_status'()
     set $I5, $P5
-.annotate 'line', 98
+.annotate 'line', 101
     eq $I5, 0, __label_7
 # {
-.annotate 'line', 99
+.annotate 'line', 102
     concat $S5, "Could not run ", $S2
     concat $S5, $S5, ": please check that your system has libgmp"
 # predefined die
     die $S5
 # }
   __label_7: # endif
-.annotate 'line', 101
+.annotate 'line', 104
 # var lines: $P3
 # predefined split
     split $P3, "\n", $S4
-.annotate 'line', 102
+.annotate 'line', 105
 # var values: $P4
     $P5 = $P3[0]
     set $S5, $P5
 # predefined split
     split $P4, ' ', $S5
-.annotate 'line', 103
+.annotate 'line', 106
 # gmp_major: $I6
     $I6 = $P4[0]
-.annotate 'line', 104
+.annotate 'line', 107
 # gmp_minor: $I7
     $I7 = $P4[1]
-.annotate 'line', 105
+.annotate 'line', 108
 # gmp_patch: $I8
     $I8 = $P4[2]
-.annotate 'line', 106
+.annotate 'line', 109
     islt $I9, $I6, 4
     if $I9 goto __label_9
     iseq $I9, $I6, 4
@@ -310,12 +314,12 @@
     unless $I9 goto __label_8
 # {
 # predefined die
-.annotate 'line', 107
+.annotate 'line', 110
     die "Need GMP version >= 4.2"
 # }
   __label_8: # endif
 # }
-.annotate 'line', 110
+.annotate 'line', 113
 
 .end # check_dependencies
 
@@ -323,35 +327,35 @@
 .sub 'clean_build_dir' :subid('WSubId_4')
 # Body
 # {
-.annotate 'line', 113
+.annotate 'line', 116
 # var config: $P1
 # predefined getinterp
     getinterp $P2
     $P1 = $P2[8]
-.annotate 'line', 114
+.annotate 'line', 117
 # exe: $S1
 # predefined string
     $S2 = $P1['exe']
     concat $S1, "build/gmp_test", $S2
-.annotate 'line', 115
+.annotate 'line', 118
 # e: $I1
     null $I1
-.annotate 'line', 116
+.annotate 'line', 119
 # pirop stat
     stat $I1, $S1, 0
-.annotate 'line', 117
+.annotate 'line', 120
     unless $I1 goto __label_1
 # {
-.annotate 'line', 118
+.annotate 'line', 121
     concat $S2, "unlink ", $S1
 # predefined say
     say $S2
-.annotate 'line', 119
+.annotate 'line', 122
     'unlink'($S1)
 # }
   __label_1: # endif
 # }
-.annotate 'line', 121
+.annotate 'line', 124
 
 .end # clean_build_dir
 

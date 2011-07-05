@@ -39,8 +39,10 @@ function main[main](argv) {
 }
 
 function setup_stable_libraries(var parrot_gmp) {
+  parrot_gmp["pbc_pir"]["GMP/raw.pbc"] = "src/GMP/raw.pir";
+  parrot_gmp["inst_lib"].push("GMP/raw.pbc");
+
   var libs = [
-    'raw',
     'Common',
     'Random',
     'Integer'
@@ -56,6 +58,7 @@ function setup_stable_libraries(var parrot_gmp) {
     parrot_gmp["pbc_pir"][pbc_file]    = pir_file;
     parrot_gmp["inst_lib"].push(pbc_file);
   }
+
 }
 
 function do_test() {
