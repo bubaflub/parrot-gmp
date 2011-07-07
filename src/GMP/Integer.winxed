@@ -290,36 +290,44 @@ namespace GMP {
       mpz_neg(self, self);
     }
 
-    /* vtable overrides to implement
     function is_equal[vtable](var value) {
-      return
+      return mpz_cmp(self, value) == 0;
     }
 
     function is_equal_num[vtable](var value) {
-      return
+      return mpz_cmp_si(self, int(value)) == 0;
     }
 
     function is_equal_string[vtable](var value) {
-      return
-    }
-
-    function is_same[vtable](var value) {
-      return
+      return mpz_get_str("", 10, self) == value;
     }
 
     function cmp[vtable](var value) {
-      return
+      int i = mpz_cmp(self, value);
+      if(i > 0)
+        return 1;
+      if(i < 0)
+        return -1;
+      return 0;
     }
 
     function cmp_num[vtable](var value) {
-      return
+      int i = mpz_cmp_si(self, int(value));
+      if(i > 0)
+        return 1;
+      if(i < 0)
+        return -1;
+      return 0;
     }
 
     function cmp_string[vtable](var value) {
-      return
+      string rep = mpz_get_str("", 10, self);
+      if (rep < value)
+        return -1;
+      if (rep > value)
+        return 1;
+      return 0;
     }
-
-    */
   }
 }
 
