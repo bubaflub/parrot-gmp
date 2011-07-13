@@ -35,7 +35,7 @@ To develop:
 
 1. The script bin/gmph2ncidef.pl reads gmp.h and outputs an NCI definition. Combining that output with src/GMP/Raw.nci.template gives us the NCI definition file at src/GMP/Raw.nci and it is included with the distribution.
 2. A script included with parrot in tools/dev/ncidef2pir.pl reads this NCI definition file and generate low-level PIR functions to call the corresponding GMP calls.  This is src/GMP/Raw.pir and included with the distrubtion.
-3. The script bin/gmpdoc2winxed.pl reads the GMP documentation (as a single HTML file) and outputs Winxed function calls.  Combining that output with src/GMP/Integer.winxed.template gives us the Winxed file at src/GMP/Integer.winxed and it is icnluded with the distribution.
+3. The script bin/gmpdoc2winxed.pl reads the GMP documentation (as a single HTML file) and outputs Winxed function calls.  Combining that output with src/GMP/Integer.winxed.template gives us the Winxed file at src/GMP/Integer.winxed and it is included with the distribution.
 
 To build:
 
