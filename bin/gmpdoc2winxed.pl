@@ -12,7 +12,7 @@ use List::MoreUtils qw(any);
 # Winxed file with documentation and functions.
 
 if (scalar @ARGV != 2 || ! -e $ARGV[0]) {
-  die "Usage: perl gmpdoc2yml.pl /path/to/gmp.html \"regex prefix\"\n";
+  die "Usage: perl gmpdoc2winxed.pl /path/to/gmp.html \"regex prefix\"\n";
 }
 
 my $filename = $ARGV[0];
