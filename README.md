@@ -18,7 +18,6 @@ For using the bindings:
 
 The GMP library, at least version 4.2 (and ideally 5.0.x)
 Parrot, at least version 3.2.0
-libffi (for now)
 
 For developing the bindings themselves:
 

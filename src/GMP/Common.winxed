@@ -1,4 +1,11 @@
 $include_const 'datatypes.pasm';
+$include_const "iglobals.pasm";
+
+function load[anon,load]() {
+  var config = getinterp()[IGLOBALS_CONFIG_HASH];
+  string file = 'GMP/thunks' + string(config['load_ext']);
+  loadlib(file);
+}
 
 namespace GMP {
   namespace Common {
