@@ -82,9 +82,7 @@
     dlfunc $P1, $P2, 'Parrot_str_to_cstring', 'ppS'
 .annotate 'line', 26
 # predefined getinterp
-.annotate 'line', 24
     getinterp $P2
-.annotate 'line', 26
     .tailcall $P1($P2, __ARG_1)
 # }
 .annotate 'line', 27
@@ -103,9 +101,7 @@
     dlfunc $P1, $P2, 'Parrot_str_new', 'Sppi'
 .annotate 'line', 31
 # predefined getinterp
-.annotate 'line', 29
     getinterp $P2
-.annotate 'line', 31
     .tailcall $P1($P2, __ARG_1, 0)
 # }
 .annotate 'line', 32

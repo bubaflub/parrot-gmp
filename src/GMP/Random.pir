@@ -25,7 +25,7 @@
 # Body
 # {
 .annotate 'line', 19
-    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmp_randinit_default'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ], '__gmp_randinit_default'
 .annotate 'line', 21
     $P1(__ARG_1)
 # }
@@ -39,7 +39,7 @@
 # Body
 # {
 .annotate 'line', 33
-    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmp_randinit_mt'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ], '__gmp_randinit_mt'
 .annotate 'line', 35
     $P1(__ARG_1)
 # }
@@ -66,7 +66,7 @@
     throw $P2
   __label_1: # endif
 .annotate 'line', 49
-    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmp_randinit_lc_2exp'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ], '__gmp_randinit_lc_2exp'
 .annotate 'line', 51
     getattribute $P2, __ARG_2, 'ptr'
     $P1(__ARG_1, $P2, __ARG_3, __ARG_4)
@@ -82,7 +82,7 @@
 # Body
 # {
 .annotate 'line', 63
-    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmp_randinit_lc_2exp_size'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ], '__gmp_randinit_lc_2exp_size'
 .annotate 'line', 65
     .tailcall $P1(__ARG_1, __ARG_2)
 # }
@@ -97,7 +97,7 @@
 # Body
 # {
 .annotate 'line', 77
-    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmp_randinit_set'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ], '__gmp_randinit_set'
 .annotate 'line', 79
     $P1(__ARG_1, __ARG_2)
 # }
@@ -111,7 +111,7 @@
 # Body
 # {
 .annotate 'line', 91
-    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmp_randclear'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ], '__gmp_randclear'
 .annotate 'line', 93
     $P1(__ARG_1)
 # }
@@ -136,7 +136,7 @@
     throw $P2
   __label_1: # endif
 .annotate 'line', 109
-    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmp_randseed'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ], '__gmp_randseed'
 .annotate 'line', 111
     getattribute $P2, __ARG_2, 'ptr'
     $P1(__ARG_1, $P2)
@@ -152,7 +152,7 @@
 # Body
 # {
 .annotate 'line', 115
-    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmp_randseed_ui'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ], '__gmp_randseed_ui'
 .annotate 'line', 117
     $P1(__ARG_1, __ARG_2)
 # }
@@ -167,7 +167,7 @@
 # Body
 # {
 .annotate 'line', 129
-    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmp_urandomb_ui'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ], '__gmp_urandomb_ui'
 .annotate 'line', 131
     .tailcall $P1(__ARG_1, __ARG_2)
 # }
@@ -182,7 +182,7 @@
 # Body
 # {
 .annotate 'line', 143
-    get_hll_global $P1, [ 'GMP'; 'Raw' ] , '__gmp_urandomm_ui'
+    get_hll_global $P1, [ 'GMP'; 'Raw' ], '__gmp_urandomm_ui'
 .annotate 'line', 145
     .tailcall $P1(__ARG_1, __ARG_2)
 # }
