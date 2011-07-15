@@ -462,7 +462,7 @@
 # predefined string
     $P1 = WSubId_7('o')
     set $S6, $P1
-    concat $S4, "src/GMP/thunks", $S6
+    concat $S4, "GMP/thunks", $S6
 .annotate 'line', 159
     root_new $P2, ['parrot';'ResizablePMCArray']
 .annotate 'line', 160
@@ -507,11 +507,10 @@
     spawnw $I1, $S2
 .annotate 'line', 172
 # shared_obj: $S5
+# predefined string
     $P1 = WSubId_7('load_ext')
-    set $I3, "src/GMP/thunks"
-    set $I4, $P1
-    add $I2, $I3, $I4
-    set $S5, $I2
+    set $S6, $P1
+    concat $S5, "GMP/thunks", $S6
 .annotate 'line', 173
     root_new $P2, ['parrot';'ResizablePMCArray']
 .annotate 'line', 174

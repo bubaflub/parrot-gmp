@@ -155,7 +155,7 @@ function build_nci_thunks() {
   ${ spawnw result, command };
 
   string file = "src/GMP/thunks.c";
-  string obj = "src/GMP/thunks" + string(_config('o'));
+  string obj = "GMP/thunks" + string(_config('o'));
   command = _build_command([
     _config('cc'),
     _config('ccflags'),
@@ -169,7 +169,7 @@ function build_nci_thunks() {
   ]);
   say(command);
   ${ spawnw result, command };
-  string shared_obj = "src/GMP/thunks" + _config('load_ext');
+  string shared_obj = "GMP/thunks" + string(_config('load_ext'));
   command = _build_command([
     _config('ld'),
     _config('ld_out'),
