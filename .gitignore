@@ -1,2 +1,6 @@
 build/gmp_test
 *.pbc
+src/GMP/thunks.c
+src/GMP/thunks.o
+src/GMP/thunks.so
+src/GMP/thunks.bundle
