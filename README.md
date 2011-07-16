@@ -14,40 +14,58 @@ Building and installing the library will generate bytecode under the GMP/ direct
 Dependencies
 ============
 
-For using the bindings:
+For using the bindings
+----------------------
 
-The GMP library, at least version 4.2 (and ideally 5.0.x)
-Parrot, at least version 3.2.0
+* The GMP library, at least version 4.2 (and ideally 5.0.x)
+* Parrot, at least version 3.2.0
 
-For developing the bindings themselves:
+For developing the bindings
+---------------------------
 
-Winxed (bundled with Parrot version 3.5.0)
-NQP (bundled with Parrot)
-Rosella (for the test library, available via plumage)
+* Winxed (bundled with Parrot version 3.5.0)
+* NQP (bundled with Parrot)
+* Rosella (for the test library, available via plumage)
 
 The bare minimum requirements are checked in setup.winxed.
 
 How it works
 ============
 
-To develop:
+To develop
+----------
 
-1. The script bin/gmph2ncidef.pl reads gmp.h and outputs an NCI definition. Combining that output with src/GMP/Raw.nci.template gives us the NCI definition file at src/GMP/Raw.nci and it is included with the distribution.
-2. A script included with parrot in tools/dev/ncidef2pir.pl reads this NCI definition file and generate low-level PIR functions to call the corresponding GMP calls.  This is src/GMP/Raw.pir and included with the distrubtion.
-3. The script bin/gmpdoc2winxed.pl reads the GMP documentation (as a single HTML file) and outputs Winxed function calls.  Combining that output with src/GMP/Integer.winxed.template gives us the Winxed file at src/GMP/Integer.winxed and it is included with the distribution.
+1. The script `bin/gmph2ncidef.pl` reads gmp.h and outputs an NCI definition. Appending that output to src/GMP/Raw.nci.template gives us the NCI definition file at src/GMP/Raw.nci and it is included with the distribution.
+2. A script included with parrot in `tools/dev/ncidef2pir.pl` reads this NCI definition file and generate low-level PIR functions to call the corresponding GMP calls.  This is src/GMP/Raw.pir and included with the distrubtion.
+3. The script `bin/gmpdoc2winxed.pl` reads the GMP documentation (as a single HTML file) and outputs Winxed function calls.  Appending that output to src/GMP/Integer.winxed.template gives us the Winxed file at src/GMP/Integer.winxed and it is included with the distribution. src/GMP/Random.winxed is generated in the same way.
 
-To build:
+To build
+--------
 
-1. winxed setup.winxed build
+1. `winxed setup.winxed build`
 
-Test:
+Test
+----
 
-1. winxed setup.winxed test
+1. `winxed setup.winxed test`
 
-Install:
+OR
 
-1. winxed setup.winxed install
+1. `parrot-nqp t/harness`
 
-In the future:
+To run individual test files:
+
+`winxed t/integer/add.t`
+
+Install
+-------
+
+1. `winxed setup.winxed install`
+
+Depending on your permissions you may need to use `sudo`
+
+In the future
+-------------
 
 1. Examples will be plentiful and useful
+2. Bindings will also cover Rational and Decimal functions
