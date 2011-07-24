@@ -25,7 +25,7 @@ Table of Contents
 The Way of the NCI Ninja
 ------------------------
 
-NCI stands for native call interface. If you are familiar with Java, it fulfills some of the same purposes as JNI - it allows you to interface with existing C libraries without having to write C code.  Furthermore, the actual implementation details of a function you want to use are not important - you only need to know the function signature (the return type, the function name, and the parameters) and any structs taht are used.
+NCI stands for native call interface. If you are familiar with Java, it fulfills some of the same purposes as JNI - it allows you to interface with existing C libraries without having to write C code.  Furthermore, the actual implementation details of a function you want to use are not important - you only need to know the function signature (the return type, the function name, and the parameters) and any structs that are used.
 
 TODO: add note about how NCI architecture in Parrot
   calling conventions?
@@ -77,13 +77,13 @@ One annoyance with `parrot_nci_thunk_gen` is that the NCI definition file format
 
 for example,
 
-    v __mpz_add_ui ppi
+    v __gmpz_add_ui ppi
 
 The NCI definition file format for `parrot_nci_thunk_gen` does not include a package or library name and looks like:
 
     return_type function_parameters
 
-for example,
+for example, the previous function would be:
 
     v   ppi
 
