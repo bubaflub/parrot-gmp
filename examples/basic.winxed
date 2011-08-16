@@ -15,6 +15,6 @@ function main[main](var argv) {
   say(y);
 
   var z = new GMP.Integer("302");
-  mpz_add_ui(z, z, 40);
+  z = z + 40;
   say(z);
 }

@@ -4,7 +4,6 @@
     .local pmc gmp
     .local pmc mpz_init
     .include "datatypes.pasm"
-    load_bytecode 'dumper.pbc'
     gmp = loadlib 'libgmp'
     $I0 = defined gmp
     if $I0, gmp_loaded
