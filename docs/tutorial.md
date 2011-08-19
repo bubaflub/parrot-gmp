@@ -31,10 +31,8 @@ TODO: add note about how NCI architecture in Parrot
   calling conventions?
   thunk / libffi
 
-TODO: add links to examples of usages
-  examples included with Parrot
-  Plobsing's Parrot-ZeroMQ
-  Other examples
+
+There are some examples under `examples/nci` included with Parrot that you can look at.  Also, there are a number of library bindings that are included with Parrot and probably the best example to look at would be `runtime/parrot/library/libpcre.pir`.  There are also a number of other projects like this one that use NCI but are not distributed with Parrot.  See (plobsing's excellent bindings for ZeroMQ)[https://github.com/plobsing/parrot-zeromq].
 
 
 The Tools of the NCI Ninja

@@ -8,13 +8,13 @@ function main[main](var argv) {
   var x = new GMP.Integer();
   mpz_set_ui(x, 30);
   mpz_add_ui(x, x, 2);
-  say(x);
+  say(x); # this should be 32
 
   var y = new GMP.Integer(32);
   mpz_add_ui(y, y, 2);
-  say(y);
+  say(y); # this should be 34
 
   var z = new GMP.Integer("302");
   z = z + 40;
-  say(z);
+  say(z); # this should be 342
 }
