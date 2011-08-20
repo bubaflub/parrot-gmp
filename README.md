@@ -11,6 +11,8 @@ Using the PIR functions will allow you to shoot yourself in the foot while segfa
 
 Building and installing the library will generate bytecode under the GMP/ directory, such as GMP/Integer.pbc.
 
+For more in-depth information, please see docs/tutorial.md.
+
 Dependencies
 ============
 

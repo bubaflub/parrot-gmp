@@ -112,10 +112,29 @@ We can then call `parrot_nci_thunk_gen` to generate C code that will get compile
 Slaying the GMP Beast
 ---------------------
 
-TODO: how to build step by step (install.sh)
+### Generating the source files
+
+0. To do development, you'll need a copy of Parrot and the GMP sources.  Furthermore, one of the Parrot-GMP scripts reads the HTML GMP documentation, to generate that run `makeinfo --html --no-split doc/gmp.texi -o doc/gmp.html`.
+1. The file `src/GMP/thunks.nci` contains a list of NCI thunks that need to be generated for Parrot-GMP.  Although it is included with the repo, to regenerate this file run: `perl bin/ncithunker.pl <path_to_parrot> src/GMP/raw.nci > src/GMP/thunks.nci`.
+2. The file `src/GMP/raw.nci` contains a list of function signatures.  This file is also included with the repo, but if you want to regenerate it run: `rm src/GMP/raw.nci`, `cp src/GMP/raw.nci.template src/GMP/raw.nci`, and `perl bin/gmph2ncidef.pl <path_to_gmp/gmp.h> >> src/GMP/raw.nci`.
+3. The file `src/GMP/raw.pir` contains code to load those functions defined in the NCI definition file and put them into the correct namespace.  This file is included with the repo, but if you want to regenerate it run: `perl <path_to_parrot/tools/dev/ncidef2pir.pl> src/GMP/raw.nci`.
+4. This file is then compiled to `GMP/raw.pbc` by distutils included with the repo.  To do this manually run: `parrot -o GMP/raw.pbc src/GMP/raw.pir`.
+5. The file `src/GMP/Integer.winxed` contains the Winxed convenience class for accesing the GMP Integer functions.  This file is icnluded with the repo, but if you want to regenerate it run: `rm src/GMP/Integer.winxed`, `cp src/GMP/Integer.winxed.template src/GMP/Integer.winxed`, `perl bin/gmpdoc2winxed.pl <path_to_gmp/doc/gmp.html "_?mpz" >> src/GMP/Integer.winxed`.
+6. The file `src/GMP/Random.winxed` contains the Winxed code for random state initiatialization.  This file is included with the repo, but if you want to regenerate it run: `rm src/GMP/Random.winxed`, `cp src/GMP/Random.winxed.template src/GMP/Random.winxed`, `perl bin/gmpdoc2winxed.pl <path_to_gmp/doc/gmp.html> "gmp_u?rand" >> src/GMP.winxed`.
+7. The file `src/GMP/Integer.pir` is the PIR source generated from the corresponding Winxed file.  It is included with the repo, but if you want to regenerate it run: `winxed -o src/GMP/Integer.pir -c src/GMP/Integer.winxed`.
+8. This file is then compiled to `GMP/Integer.pbc` by distutils included with this repo.  To do this manually run: `parrot -o GMP/Integer.pbc src/GMP/Integer.pir`.
+9. Steps 7 and 8 can be repeated for `src/GMP/Common.winxed` to generate `src/GMP/Common.pir` and `GMP/Common.pbc`.
+10. Steps 7 and 8 can be repeated for `src/GMP/Random.winxed` to generate `src/GMP/Random.pir` and `GMP/Random.pbc`.
+
+### Specific gotchas with GMP
+
+The functions that are listed in the documentation do not match up with the functions as they are defined in the source code.  For example, in the documentation the function mpz\_add\_ui that is described is actually \_\_gmpz\_add\_ui and then in the GMP headers there is a #define that maps mpz\_add\_ui to \_\_gmpz\_add\_ui.  With Perl XS the code is compiled with the headers so they don't have to worry about it, but with Parrot NCI we don't do anything with the C pre-processor.
+
+Structs in the C code need to be represented in Parrot with a StructView so we can properly allocate the correct amount of space.  Thankfully the GMP structs are relatively tame; see (dukeleto's Parrot-libgit2 bindings)[https://github.com/letolabs/parrot-libgit2] for instances of nested structs.
+
+Strings have undergone some changes in Parrot recently, and as a result we often have to do some backflips to use them correctly.  
+
 TODO: specific gotchas
-  #defines
-  structs
   String nonsense
 TODO: how to compile the thunks
 TODO: Rosella, distutils
