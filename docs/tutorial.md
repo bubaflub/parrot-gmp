@@ -42,6 +42,7 @@ The two important opcodes that are foundational for NCI are `loadlib` and `dlfun
 
 TODO: more detailed information about loadlib and dlfunc variants
 TODO: more examples of using loadlib and dlfunc
+TODO: talk about NCI/Utils
 
 Using just `loadlib` and `dlfunc` you can do any NCI calls that you may need.  And if you only need to call one or two functions you can probably stop here.  But if you want to provide bindings for an entire library than there is absolutetly no reason to craft all of these calls by hand.  Parrot comes with a script called `ncidef2pir.pl` located in the tools/dev directory that reads a specially formatted file, called an NCI definition, and outputs PIR code that will load your library, load each function specified, and put that function into a namespace you chose.
 
@@ -108,6 +109,8 @@ For example, in the Parrot-GMP project we have our existing NCI definition file 
 
 We can then call `parrot_nci_thunk_gen` to generate C code that will get compiled into a shared library and loaded with the rest of the Parrot-GMP library.
 
+Only one gotcha: since we already have our strings as 'p' type in our previous definition file and `parrot\_nci\_thunk\_gen` expects strings to be marked with an 'S', you will still have to manually go over your files to make sure those thunks are correct.
+
 
 Slaying the GMP Beast
 ---------------------
@@ -132,9 +135,11 @@ The functions that are listed in the documentation do not match up with the func
 
 Structs in the C code need to be represented in Parrot with a StructView so we can properly allocate the correct amount of space.  Thankfully the GMP structs are relatively tame; see (dukeleto's Parrot-libgit2 bindings)[https://github.com/letolabs/parrot-libgit2] for instances of nested structs.
 
-Strings have undergone some changes in Parrot recently, and as a result we often have to do some backflips to use them correctly.  
+Strings have undergone some changes in Parrot recently, and as a result we often have to do some backflips to use them correctly.  In general, in NCI definitions (the kind that are used for `ncidef2pir.pl`) strings are represented as 'p' - a pointer to an array of chars.  But for `parrot\_nci\_thunk\_gen` strings are represented with an 'S'.
 
-TODO: specific gotchas
-  String nonsense
-TODO: how to compile the thunks
-TODO: Rosella, distutils
+### Distutils, Rosella, and Thunks
+
+The repo contains all of the files that you need to use Parrot-GMP - those above steps are optional for development or rebuilding from source.  Distutils is the standard Parrot way to manage building and installing.  To build do `winxed setup.winxed build` and install do `winxed setup.winxed install`.  There are a few special non-standard things Parrot-GMP has to do when installing - checking if Parrot was configured with GMP, what the version of GMP is, if libffi is available - so see setup.winxed for exactly how that is done.
+
+Rosella is Whiteknight's excellent utility library, and Parrot-GMP uses the testing framework there.  It is not strictly necessary for using Parrot-GMP, only for testing.  Run `winxed setup.winxed test` or `parrot-nqp t/harness` to run the test suite.  The test files themselves live under `t/` and are organized into files by which GMP function they exercise and into folder by generic functionality.
+
