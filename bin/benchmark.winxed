@@ -1,0 +1,60 @@
+$load "GMP/Integer.pbc";
+
+namespace GMP {
+    class Integer;
+}
+
+function main[main]() {
+    float gmp_raw_time_start;
+    float gmp_raw_time_end;
+    float gmp_vtable_time_start;
+    float gmp_vtable_time_end;
+    float pir_time_start;
+    float pir_time_end;
+    int num_iterations = 40000;
+
+    ${ time gmp_raw_time_start };
+    test_gmp_raw(num_iterations);
+    ${ time gmp_raw_time_end };
+
+    ${ time gmp_vtable_time_start };
+    test_gmp_vtable(num_iterations);
+    ${ time gmp_vtable_time_end };
+
+    ${ time pir_time_start };
+    test_pir(num_iterations);
+    ${ time pir_time_end };
+
+    float gmp_raw_time = gmp_raw_time_end - gmp_raw_time_start;
+    float gmp_vtable_time = gmp_vtable_time_end - gmp_vtable_time_start;
+    float pir_time = pir_time_end - pir_time_start;
+
+    say("Number of iterations: " + string(num_iterations));
+    say("Time in GMP (vtable): " + string(gmp_vtable_time));
+    say("Time in GMP (direct method call): " + string(gmp_raw_time));
+    say("Time in PIR: " + string(pir_time));
+}
+
+function test_gmp_vtable(int num_iterations) {
+    var x = new GMP.Integer(0);
+    var y = new GMP.Integer(2);
+    for (int i = 0; i < num_iterations; i++ ) {
+        x = x + y;
+    }
+}
+
+function test_gmp_raw(int num_iterations) {
+    var x = new GMP.Integer(0);
+    var y = new GMP.Integer(2);
+    for (int i = 0; i < num_iterations; i++) {
+        mpz_add(x, x, y);
+    }
+}
+
+function test_pir(int num_iterations) {
+    int x = 0;
+    int y = 2;
+    for (int i = 0; i < num_iterations; i++) {
+        x = x + y;
+    }
+}
