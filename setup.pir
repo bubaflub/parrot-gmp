@@ -14,6 +14,7 @@
 .const 'Sub' WSubId_5 = "WSubId_5"
 .const 'Sub' WSubId_6 = "WSubId_6"
 .const 'Sub' WSubId_7 = "WSubId_7"
+.const 'Sub' WSubId_8 = "WSubId_8"
 # Body
 # {
 .annotate 'file', 'setup.winxed'
@@ -105,15 +106,17 @@
 .annotate 'line', 40
     $P4("build", WSubId_6)
 .annotate 'line', 41
-    'register_step_after'("install", WSubId_7)
+    $P4("clean", WSubId_7)
+.annotate 'line', 42
+    'register_step_after'("install", WSubId_8)
 # }
   __label_2: # endif
-.annotate 'line', 44
-    __ARG_1.'shift'()
 .annotate 'line', 45
+    __ARG_1.'shift'()
+.annotate 'line', 46
     $P3(__ARG_1, $P1)
 # }
-.annotate 'line', 46
+.annotate 'line', 47
 
 .end # main
 
@@ -122,13 +125,13 @@
         .param pmc __ARG_1
 # Body
 # {
-.annotate 'line', 49
+.annotate 'line', 50
     $P2 = __ARG_1["pbc_pir"]
     $P2["GMP/raw.pbc"] = "src/GMP/raw.pir"
-.annotate 'line', 50
+.annotate 'line', 51
     $P2 = __ARG_1["inst_lib"]
     $P2.'push'("GMP/raw.pbc")
-.annotate 'line', 52
+.annotate 'line', 53
 # var libs: $P1
     root_new $P1, ['parrot';'ResizablePMCArray']
     box $P2, 'Common'
@@ -137,10 +140,10 @@
     push $P1, $P2
     box $P2, 'Integer'
     push $P1, $P2
-.annotate 'line', 58
+.annotate 'line', 59
 # prefix: $S1
     set $S1, "src/GMP/"
-.annotate 'line', 60
+.annotate 'line', 61
     if_null $P1, __label_2
     iter $P3, $P1
     set $P3, 0
@@ -148,81 +151,81 @@
     unless $P3 goto __label_2
     shift $S2, $P3
 # {
-.annotate 'line', 61
+.annotate 'line', 62
 # winxed_file: $S3
     concat $S3, $S1, $S2
     concat $S3, $S3, ".winxed"
-.annotate 'line', 62
+.annotate 'line', 63
 # pir_file: $S4
     concat $S4, $S1, $S2
     concat $S4, $S4, ".pir"
-.annotate 'line', 63
+.annotate 'line', 64
 # pbc_file: $S5
     concat $S5, "GMP/", $S2
     concat $S5, $S5, ".pbc"
-.annotate 'line', 64
+.annotate 'line', 65
     $P2 = __ARG_1["pir_winxed"]
     $P2[$S4] = $S3
-.annotate 'line', 65
+.annotate 'line', 66
     $P2 = __ARG_1["pbc_pir"]
     $P2[$S5] = $S4
-.annotate 'line', 66
+.annotate 'line', 67
     $P2 = __ARG_1["inst_lib"]
     $P2.'push'($S5)
 # }
     goto __label_1
   __label_2: # endfor
 # }
-.annotate 'line', 69
+.annotate 'line', 70
 
 .end # setup_stable_libraries
 
 
 .sub 'do_test' :subid('WSubId_1')
-.const 'Sub' WSubId_8 = "WSubId_8"
+.const 'Sub' WSubId_9 = "WSubId_9"
 # Body
 # {
-.annotate 'line', 72
+.annotate 'line', 73
 # result: $I1
     null $I1
-.annotate 'line', 73
+.annotate 'line', 74
 # command: $S1
     root_new $P2, ['parrot';'ResizablePMCArray']
     box $P3, "parrot-nqp"
     push $P2, $P3
     box $P3, "t/harness"
     push $P2, $P3
-    $P1 = WSubId_8($P2)
+    $P1 = WSubId_9($P2)
     null $S1
     if_null $P1, __label_1
     set $S1, $P1
   __label_1:
-.annotate 'line', 77
+.annotate 'line', 78
 # pirop spawnw
     spawnw $I1, $S1
-.annotate 'line', 78
+.annotate 'line', 79
 # pirop exit
     exit $I1
 # }
-.annotate 'line', 79
+.annotate 'line', 80
 
 .end # do_test
 
 
 .sub 'check_dependencies' :subid('WSubId_3')
 .const 'Sub' WSubId_5 = "WSubId_5"
-.const 'Sub' WSubId_8 = "WSubId_8"
+.const 'Sub' WSubId_9 = "WSubId_9"
 # Body
 # {
-.annotate 'line', 83
+.annotate 'line', 84
 # maj: $I1
     $P4 = WSubId_5('MAJOR')
     set $I1, $P4
-.annotate 'line', 84
+.annotate 'line', 85
 # min: $I2
     $P4 = WSubId_5('MINOR')
     set $I2, $P4
-.annotate 'line', 85
+.annotate 'line', 86
     islt $I8, $I1, 3
     if $I8 goto __label_2
     iseq $I8, $I1, 3
@@ -233,115 +236,115 @@
     unless $I8 goto __label_1
 # {
 # predefined die
-.annotate 'line', 86
+.annotate 'line', 87
     die "You need at least Parrot 3.2.0 to use Parrot-GMP"
 # }
   __label_1: # endif
-.annotate 'line', 89
+.annotate 'line', 90
 # has_gmp: $I3
     $P4 = WSubId_5('HAS_GMP')
     set $I3, $P4
-.annotate 'line', 90
+.annotate 'line', 91
     not $I8, $I3
     unless $I8 goto __label_4
 # {
 # predefined die
-.annotate 'line', 91
+.annotate 'line', 92
     die "You need to have Parrot configured with GMP to use Parrot-GMP"
 # }
   __label_4: # endif
-.annotate 'line', 95
+.annotate 'line', 96
 # file: $S1
     set $S1, "build/gmp_test.c"
-.annotate 'line', 96
+.annotate 'line', 97
 # exe: $S2
 # predefined string
     $P4 = WSubId_5('exe')
     set $S5, $P4
     concat $S2, "build/gmp_test", $S5
-.annotate 'line', 97
+.annotate 'line', 98
 # command: $S3
     root_new $P5, ['parrot';'ResizablePMCArray']
-.annotate 'line', 98
-    $P7 = WSubId_5('cc')
-.annotate 'line', 97
-    push $P5, $P7
 .annotate 'line', 99
-    $P8 = WSubId_5('ccflags')
-.annotate 'line', 97
-    push $P5, $P8
+    $P7 = WSubId_5('cc')
+.annotate 'line', 98
+    push $P5, $P7
 .annotate 'line', 100
-    $P9 = WSubId_5('cc_exe_out')
-.annotate 'line', 97
-    push $P5, $P9
+    $P8 = WSubId_5('ccflags')
+.annotate 'line', 98
+    push $P5, $P8
 .annotate 'line', 101
-    box $P6, $S2
-.annotate 'line', 97
-    push $P5, $P6
+    $P9 = WSubId_5('cc_exe_out')
+.annotate 'line', 98
+    push $P5, $P9
 .annotate 'line', 102
-    box $P6, $S1
-.annotate 'line', 97
+    box $P6, $S2
+.annotate 'line', 98
     push $P5, $P6
-    $P4 = WSubId_8($P5)
+.annotate 'line', 103
+    box $P6, $S1
+.annotate 'line', 98
+    push $P5, $P6
+    $P4 = WSubId_9($P5)
     null $S3
     if_null $P4, __label_5
     set $S3, $P4
   __label_5:
-.annotate 'line', 104
+.annotate 'line', 105
 # predefined say
     say $S3
-.annotate 'line', 105
-    'system'($S3)
 .annotate 'line', 106
+    'system'($S3)
+.annotate 'line', 107
 # var pipe: $P1
     new $P1, [ "FileHandle" ]
-.annotate 'line', 107
-    $P1.'encoding'('utf8')
 .annotate 'line', 108
-    $P1.'open'($S2, "rp")
+    $P1.'encoding'('utf8')
 .annotate 'line', 109
+    $P1.'open'($S2, "rp")
+.annotate 'line', 110
 # output: $S4
     $P4 = $P1.'readall'()
     null $S4
     if_null $P4, __label_6
     set $S4, $P4
   __label_6:
-.annotate 'line', 110
-    $P1.'close'()
 .annotate 'line', 111
+    $P1.'close'()
+.annotate 'line', 112
 # exit_status: $I4
     $P4 = $P1.'exit_status'()
     set $I4, $P4
-.annotate 'line', 112
+.annotate 'line', 113
     eq $I4, 0, __label_7
 # {
-.annotate 'line', 113
+.annotate 'line', 114
     concat $S5, "Could not run ", $S2
     concat $S5, $S5, ": please check that your system has libgmp"
 # predefined die
     die $S5
 # }
   __label_7: # endif
-.annotate 'line', 115
+.annotate 'line', 116
 # var lines: $P2
 # predefined split
     split $P2, "\n", $S4
-.annotate 'line', 116
+.annotate 'line', 117
 # var values: $P3
     $P4 = $P2[0]
     set $S5, $P4
 # predefined split
     split $P3, ' ', $S5
-.annotate 'line', 117
+.annotate 'line', 118
 # gmp_major: $I5
     $I5 = $P3[0]
-.annotate 'line', 118
+.annotate 'line', 119
 # gmp_minor: $I6
     $I6 = $P3[1]
-.annotate 'line', 119
+.annotate 'line', 120
 # gmp_patch: $I7
     $I7 = $P3[2]
-.annotate 'line', 120
+.annotate 'line', 121
     islt $I8, $I5, 4
     if $I8 goto __label_9
     iseq $I8, $I5, 4
@@ -352,45 +355,40 @@
     unless $I8 goto __label_8
 # {
 # predefined die
-.annotate 'line', 121
+.annotate 'line', 122
     die "Need GMP version >= 4.2"
 # }
   __label_8: # endif
 # }
-.annotate 'line', 124
+.annotate 'line', 125
 
 .end # check_dependencies
 
 
 .sub 'clean_build_dir' :subid('WSubId_4')
 .const 'Sub' WSubId_5 = "WSubId_5"
-.const 'Sub' WSubId_9 = "WSubId_9"
+.const 'Sub' WSubId_10 = "WSubId_10"
 # Body
 # {
-.annotate 'line', 127
-# var config: $P1
-# predefined getinterp
-    getinterp $P2
-    $P1 = $P2[8]
 .annotate 'line', 128
 # exe: $S1
 # predefined string
-    $P2 = WSubId_5('exe')
-    set $S2, $P2
+    $P1 = WSubId_5('exe')
+    set $S2, $P1
     concat $S1, "build/gmp_test", $S2
 .annotate 'line', 129
-    WSubId_9($S1)
+    WSubId_10($S1)
 .annotate 'line', 130
-    WSubId_9("src/GMP/thunks.c")
+    WSubId_10("src/GMP/thunks.c")
 .annotate 'line', 131
-    WSubId_9("src/GMP/thunks.o")
+    WSubId_10("src/GMP/thunks.o")
 # }
 .annotate 'line', 132
 
 .end # clean_build_dir
 
 
-.sub '_unlink_file' :subid('WSubId_9')
+.sub '_unlink_file' :subid('WSubId_10')
         .param string __ARG_1
 # Body
 # {
@@ -418,7 +416,7 @@
 
 
 .sub 'build_nci_thunks' :subid('WSubId_6')
-.const 'Sub' WSubId_8 = "WSubId_8"
+.const 'Sub' WSubId_9 = "WSubId_9"
 .const 'Sub' WSubId_5 = "WSubId_5"
 # Body
 # {
@@ -441,7 +439,7 @@
     push $P2, $P3
     box $P3, "<src/GMP/thunks.nci"
     push $P2, $P3
-    $P1 = WSubId_8($P2)
+    $P1 = WSubId_9($P2)
     null $S2
     if_null $P1, __label_1
     set $S2, $P1
@@ -468,95 +466,91 @@
 .annotate 'line', 158
     push $P2, $P4
 .annotate 'line', 160
-    $P5 = WSubId_5('ccflags')
+    $P5 = WSubId_5('embed-cflags')
 .annotate 'line', 158
     push $P2, $P5
 .annotate 'line', 161
-    $P6 = WSubId_5('embed-cflags')
+    $P6 = WSubId_5('libparrot_linkflags')
 .annotate 'line', 158
     push $P2, $P6
-.annotate 'line', 162
-    $P7 = WSubId_5('libparrot_linkflags')
-.annotate 'line', 158
-    push $P2, $P7
     box $P3, "-Ipmc/pmc_nci.h"
     push $P2, $P3
-.annotate 'line', 164
-    $P8 = WSubId_5('cc_o_out')
+.annotate 'line', 163
+    $P7 = WSubId_5('cc_o_out')
 .annotate 'line', 158
-    push $P2, $P8
-.annotate 'line', 165
+    push $P2, $P7
+.annotate 'line', 164
     box $P3, $S4
 .annotate 'line', 158
     push $P2, $P3
     box $P3, "-c"
     push $P2, $P3
-.annotate 'line', 167
+.annotate 'line', 166
     box $P3, $S3
 .annotate 'line', 158
     push $P2, $P3
-    $P1 = WSubId_8($P2)
+    $P1 = WSubId_9($P2)
     set $S2, $P1
-.annotate 'line', 169
+.annotate 'line', 168
 # predefined say
     say $S2
-.annotate 'line', 170
+.annotate 'line', 169
 # pirop spawnw
     spawnw $I1, $S2
-.annotate 'line', 171
+.annotate 'line', 170
 # shared_obj: $S5
 # predefined string
     $P1 = WSubId_5('load_ext')
     set $S6, $P1
     concat $S5, "GMP/thunks", $S6
-.annotate 'line', 172
+.annotate 'line', 171
     root_new $P2, ['parrot';'ResizablePMCArray']
-.annotate 'line', 173
+.annotate 'line', 172
     $P4 = WSubId_5('ld')
-.annotate 'line', 172
+.annotate 'line', 171
     push $P2, $P4
-.annotate 'line', 174
+.annotate 'line', 173
     $P5 = WSubId_5('ld_out')
-.annotate 'line', 172
+.annotate 'line', 171
     push $P2, $P5
-.annotate 'line', 175
+.annotate 'line', 174
     box $P3, $S5
-.annotate 'line', 172
+.annotate 'line', 171
+    push $P2, $P3
+.annotate 'line', 175
+    box $P3, $S4
+.annotate 'line', 171
     push $P2, $P3
 .annotate 'line', 176
-    box $P3, $S4
-.annotate 'line', 172
-    push $P2, $P3
-.annotate 'line', 177
     $P6 = WSubId_5('ldflags')
-.annotate 'line', 172
+.annotate 'line', 171
     push $P2, $P6
-.annotate 'line', 178
+.annotate 'line', 177
     $P7 = WSubId_5('ld_debug')
-.annotate 'line', 172
+.annotate 'line', 171
     push $P2, $P7
-.annotate 'line', 179
+.annotate 'line', 178
     $P8 = WSubId_5('rpath_blib')
-.annotate 'line', 172
+.annotate 'line', 171
     push $P2, $P8
-.annotate 'line', 180
+.annotate 'line', 179
     $P9 = WSubId_5('linkflags')
-.annotate 'line', 172
+.annotate 'line', 171
     push $P2, $P9
-.annotate 'line', 181
+.annotate 'line', 180
     $P10 = WSubId_5('ld_load_flags')
-.annotate 'line', 172
+.annotate 'line', 171
     push $P2, $P10
-    $P1 = WSubId_8($P2)
+    $P1 = WSubId_9($P2)
     set $S2, $P1
-.annotate 'line', 183
+.annotate 'line', 182
 # predefined string
     $P1 = WSubId_5('parrot_is_shared')
     set $S6, $P1
     if_null $S6, __label_2
     unless $S6 goto __label_2
 # {
-.annotate 'line', 184
+.annotate 'line', 183
 # predefined string
     $P2 = WSubId_5('inst_libparrot_ldflags')
     set $S7, $P2
@@ -564,24 +558,49 @@
     concat $S2, $S2, $S7
 # }
   __label_2: # endif
-.annotate 'line', 186
+.annotate 'line', 185
 # predefined say
     say $S2
-.annotate 'line', 187
+.annotate 'line', 186
 # pirop spawnw
     spawnw $I1, $S2
 # }
-.annotate 'line', 188
+.annotate 'line', 187
 
 .end # build_nci_thunks
 
 
-.sub 'install_nci_thunks' :subid('WSubId_7')
+.sub 'clean_nci_thunks' :subid('WSubId_7')
+.const 'Sub' WSubId_10 = "WSubId_10"
 .const 'Sub' WSubId_5 = "WSubId_5"
-.const 'Sub' WSubId_8 = "WSubId_8"
 # Body
 # {
+.annotate 'line', 190
+    WSubId_10("src/GMP/thunks.c")
 .annotate 'line', 191
+# predefined string
+    $P1 = WSubId_5('o')
+    set $S1, $P1
+    concat $S2, "GMP/thunks", $S1
+    WSubId_10($S2)
+.annotate 'line', 192
+# predefined string
+    $P1 = WSubId_5('load_ext')
+    set $S1, $P1
+    concat $S2, "GMP/thunks", $S1
+    WSubId_10($S2)
+# }
+.annotate 'line', 193
+
+.end # clean_nci_thunks
+
+
+.sub 'install_nci_thunks' :subid('WSubId_8')
+.const 'Sub' WSubId_5 = "WSubId_5"
+.const 'Sub' WSubId_9 = "WSubId_9"
+# Body
+# {
+.annotate 'line', 196
 # install_path: $S1
 # predefined string
     $P1 = WSubId_5('libdir')
@@ -590,7 +609,7 @@
     $P2 = WSubId_5('versiondir')
     set $S5, $P2
     concat $S1, $S4, $S5
-.annotate 'line', 192
+.annotate 'line', 197
 # predefined string
     $P1 = WSubId_5('slash')
     set $S4, $P1
@@ -600,41 +619,41 @@
     concat $S1, $S1, $S4
     concat $S1, $S1, 'dynext'
     concat $S1, $S1, $S5
-.annotate 'line', 193
+.annotate 'line', 198
 # shared_obj: $S2
 # predefined string
     $P1 = WSubId_5('load_ext')
     set $S4, $P1
     concat $S2, "GMP/thunks", $S4
-.annotate 'line', 194
+.annotate 'line', 199
 # result: $I1
     null $I1
-.annotate 'line', 195
+.annotate 'line', 200
 # command: $S3
     root_new $P2, ['parrot';'ResizablePMCArray']
     box $P3, 'cp'
     push $P2, $P3
-.annotate 'line', 197
+.annotate 'line', 202
     box $P3, $S2
-.annotate 'line', 195
+.annotate 'line', 200
     push $P2, $P3
-.annotate 'line', 198
+.annotate 'line', 203
     box $P3, $S1
-.annotate 'line', 195
+.annotate 'line', 200
     push $P2, $P3
-    $P1 = WSubId_8($P2)
+    $P1 = WSubId_9($P2)
     null $S3
     if_null $P1, __label_1
     set $S3, $P1
   __label_1:
-.annotate 'line', 200
+.annotate 'line', 205
 # predefined say
     say $S3
-.annotate 'line', 201
+.annotate 'line', 206
 # pirop spawnw
     spawnw $I1, $S3
 # }
-.annotate 'line', 202
+.annotate 'line', 207
 
 .end # install_nci_thunks
 
@@ -643,33 +662,33 @@
         .param string __ARG_1
 # Body
 # {
-.annotate 'line', 205
+.annotate 'line', 210
 # var config: $P1
     null $P1
-.annotate 'line', 206
+.annotate 'line', 211
 # pirop get_global
     get_global $P1, 'config'
 # predefined string
-.annotate 'line', 207
+.annotate 'line', 212
     $S1 = $P1[__ARG_1]
     .return($S1)
 # }
-.annotate 'line', 208
+.annotate 'line', 213
 
 .end # _config
 
 
-.sub '_build_command' :subid('WSubId_8')
+.sub '_build_command' :subid('WSubId_9')
         .param pmc __ARG_1
 # Body
 # {
 # predefined string
-.annotate 'line', 211
+.annotate 'line', 216
 # predefined join
     join $S1, ' ', __ARG_1
     .return($S1)
 # }
-.annotate 'line', 212
+.annotate 'line', 217
 
 .end # _build_command
 

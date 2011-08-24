@@ -38,6 +38,7 @@ function main[main](argv) {
 
   if (_config('has_libffi') != 1) {
     register_step_before("build", build_nci_thunks);
+    register_step_before("clean", clean_nci_thunks);
     register_step_after("install", install_nci_thunks);
   }
 
@@ -124,7 +125,6 @@ function check_dependencies() {
 }
 
 function clean_build_dir() {
-  var config = getinterp()[IGLOBALS_CONFIG_HASH];
   string exe = "build/gmp_test" + string(_config('exe'));
   _unlink_file(exe);
   _unlink_file("src/GMP/thunks.c");
@@ -185,6 +185,12 @@ function build_nci_thunks() {
   }
   say(command);
   ${ spawnw result, command };
+}
+
+function clean_nci_thunks() {
+  _unlink_file("src/GMP/thunks.c");
+  _unlink_file("GMP/thunks" + string(_config('o')));
+  _unlink_file("GMP/thunks" + string(_config('load_ext')));
 }
 
 function install_nci_thunks() {
