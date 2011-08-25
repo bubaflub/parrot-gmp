@@ -158,6 +158,7 @@ function build_nci_thunks() {
   command = _build_command([
     _config('cc'),
     _config('ccflags'),
+    _config('cc_shared'),
     _config('embed-cflags'),
     _config('libparrot_linkflags'),
     "-Ipmc/pmc_nci.h",
