@@ -4,3 +4,5 @@ src/GMP/thunks.c
 GMP/thunks.o
 GMP/thunks.so
 GMP/thunks.bundle
+core
+*.sw*
